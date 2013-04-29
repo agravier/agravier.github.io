@@ -3,7 +3,28 @@ Theme by Alexandre Gravier (al.gravier@gmail.com) based on
 the Slate Theme for GitHub Pages by Jason Costello, @jsncostello
 *******************************************************************************/
 
-@import url(pygment_trac.css);
+/* @import url(autumn.css); */
+/* @import url(borland.css); */
+/* @import url(bw.css); */
+/* @import url(colorful.css); */
+/* @import url(default.css); */
+/* @import url(emacs.css); */
+/* @import url(friendly.css); */
+/* @import url(fruity.css); */ /* very colorful, just need to put a black background */
+/* @import url(manni.css); */
+@import url(monokai.css); /* green, good, just change the background */
+/* @import url(murphy.css); */
+/* @import url(native.css); */ /* soft blue, just need to change background */
+/* @import url(pastie.css); */
+/* @import url(perldoc.css); */
+/* @import url(pygment_trac.css); */
+/* @import url(pygments.css); */
+/* @import url(rrt.css); */
+/* @import url(tango.css); */
+/* @import url(trac.css); */
+/* @import url(vim.css); */ /* not bad, generally dark-friendly but some elements are a bit too dark */
+/* @import url(vs.css); */
+
 
 /*******************************************************************************
 MeyerWeb Reset
@@ -59,7 +80,7 @@ body {
   box-sizing: border-box;
   color: #ccc;
   background: #212121;
-  font-size: 16px;
+  font-size: 14px;
   font-family: 'Myriad Pro', Calibri, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
@@ -68,36 +89,37 @@ body {
 h1, h2, h3, h4, h5, h6 {
   margin: 10px 0;
   font-weight: 700;
-  color: white;
+  color: #f0f0f0;
   font-family: 'Lucida Grande', 'Calibri', Helvetica, Arial, sans-serif;
   letter-spacing: -1px;
 }
 
 h1 {
-  font-size: 36px;
+  font-size: 28px;
+  color: #feeaaa;
   font-weight: 700;
-}
-
-h2 {
-  padding-bottom: 10px;
-  font-size: 32px;
+  padding-bottom: 20px;
   background: url('../images/bg_hr.png') repeat-x bottom;
 }
 
+h2 {
+  font-size: 25px;
+}
+
 h3 {
-  font-size: 24px;
+  font-size: 22px;
 }
 
 h4 {
-  font-size: 21px;
+  font-size: 19px;
 }
 
 h5 {
-  font-size: 18px;
+  font-size: 16px;
 }
 
 h6 {
-  font-size: 16px;
+  font-size: 14px;
 }
 
 p {
@@ -140,6 +162,11 @@ a {
 
 #header_wrap h1 {
   display: inline;
+  font-size: 36px;
+  color: white;
+  font-weight: 700;
+  padding-bottom: none;
+  background: none;
 }
 
 #project_title h1 {
@@ -233,8 +260,8 @@ img {
 
 pre, code {
   width: 100%;
-  color: #222;
-  background-color: #fff;
+  color: #cccccc;
+  background-color: black;
 
   font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace;
   font-size: 14px;
@@ -333,6 +360,22 @@ form {
 img {
   width: 100%;
   max-width: 100%;
+}
+
+ul.related li {
+  height: 1.55em;
+  overflow: hidden;
+  list-style: none; 
+  padding:0; 
+}
+
+ul.related li span.title { 
+  font-size: medium;
+}
+
+ul.related li span.date { 
+  font-size: small;
+  color: #55bb55; 
 }
 
 /*******************************************************************************
