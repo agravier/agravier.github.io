@@ -125,6 +125,9 @@ a {
   -ms-transition: text-shadow 0.3s ease;
 }
 
+#header_wrap a {
+  color: #ff6600;
+}
 
 #header_wrap a:hover {
   color: #ba69ff;
