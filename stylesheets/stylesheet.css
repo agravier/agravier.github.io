@@ -370,11 +370,10 @@ ul.related li {
 }
 
 ul.related li span.title { 
-  font-size: medium;
+  text-align: right;
 }
 
 ul.related li span.date { 
-  font-size: small;
   color: #55bb55; 
 }
 
@@ -492,7 +491,7 @@ Small Device Styles
 
 @media screen and (max-width: 480px) {
   body {
-    font-size:14px;
+    font-size:12px;
   }
 
   #downloads {
@@ -528,20 +527,24 @@ Small Device Styles
   box-shadow: none;
 }
 
+#header_wrap h1 {
+  font-size: 24px;
+}
+
   h1 {
-    font-size: 28px;
+    font-size: 22px;
   }
 
   h2 {
-    font-size: 24px;
+    font-size: 20px;
   }
 
   h3 {
-    font-size: 21px;
+    font-size: 18px;
   }
 
   h4 {
-    font-size: 18px;
+    font-size: 16px;
   }
 
   h5 {
