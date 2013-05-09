@@ -3,7 +3,7 @@ layout: post
 title: "Unit testing in clojure: mocking and lazy evaluation, atticus.mock and overloaded functions"
 ---
 
-I first [posted this text](http://agravier.blogspot.com/2010/11/unit-testing-in-clojure-mocking-and.html "Permalink to the original post of Unit testing in clojure: mocking and lazy evaluation, atticus.mock and overloaded functions") on my previous blog. I have copied it here in an effort to gather some of my past writings on this website. 
+I originally [posted this text](http://agravier.blogspot.com/2010/11/unit-testing-in-clojure-mocking-and.html "Permalink to the original post of Unit testing in clojure: mocking and lazy evaluation, atticus.mock and overloaded functions") on my previous blog. I have copied it here in an effort to gather some of my past writings on this website. 
 
 ---
 
