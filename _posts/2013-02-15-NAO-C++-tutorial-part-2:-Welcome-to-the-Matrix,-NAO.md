@@ -46,54 +46,49 @@ The first statement indicates that CMake version 2.8 or higher is required. The 
 
 Finally, the&nbsp;<span style="font-family: 'Courier New', Courier, monospace;">find_package</span><span style="font-family: inherit;">&nbsp;part tells CMake to load the qibuild module.&nbsp;</span><br />
 
-As this is a CMake file, we should normally be able to directly process it with the meta-build tool CMake, like so: <span style="font-family: Courier New, Courier, monospace;">cmake CMakeLists.txt</span><span style="font-family: inherit;">. This should roughly perform like </span><span style="font-family: Courier New, Courier, monospace;">qibuild configure</span><span style="font-family: inherit;">. B</span>ut it doesn't work, we get the following message: <i>Could not find module Findqibuild.cmake or a configuration file for package qibuild.</i>&nbsp;That's because we also need to inform CMake of the path to the qibuild module in our ~/nao/devtools folder: &nbsp;<span style="font-family: Courier New, Courier, monospace;">cmake -Dqibuild_DIR=~/nao/devtools/qibuild/cmake/qibuild/ CMakeLists.txt</span><span style="font-family: inherit;">. This now should work, and the screen output should be similar to that of&nbsp;</span><span style="font-family: inherit;">&nbsp;</span><span style="font-family: Courier New, Courier, monospace;">qibuild configure</span><span style="font-family: inherit;">. The disk output is different, though, in that using the </span><span style="font-family: Courier New, Courier, monospace;">qibuild configure</span><span style="font-family: inherit;"> command result in all build files in one neat folder named after your toolchain, while using directly </span><span style="font-family: Courier New, Courier, monospace;">cmake</span><span style="font-family: inherit;"> without further options results in a mess of build files directly in the project folder. We could need to further refine our command to get something clean like with qiBuild. It's not necessary though, as that's what </span><span style="font-family: Courier New, Courier, monospace;">qibuild configure</span><span style="font-family: inherit;"> does for you: calling </span><span style="font-family: Courier New, Courier, monospace;">cmake</span><span style="font-family: inherit;"> with the right options, and take care of the housekeeping.</span><br />
-<span style="font-family: inherit;"><br /></span>
+As this is a CMake file, we should normally be able to directly process it with the meta-build tool CMake, like so: <span style="font-family: Courier New, Courier, monospace;">cmake CMakeLists.txt</span><span style="font-family: inherit;">. This should roughly perform like </span><span style="font-family: Courier New, Courier, monospace;">qibuild configure</span><span style="font-family: inherit;">. B</span>ut it doesn't work, we get the following message: <i>Could not find module Findqibuild.cmake or a configuration file for package qibuild.</i>&nbsp;That's because we also need to inform CMake of the path to the qibuild module in our ~/nao/devtools folder: &nbsp;<span style="font-family: Courier New, Courier, monospace;">cmake -Dqibuild_DIR=~/nao/devtools/qibuild/cmake/qibuild/ CMakeLists.txt</span><span style="font-family: inherit;">. This now should work, and the screen output should be similar to that of&nbsp;</span><span style="font-family: inherit;">&nbsp;</span><span style="font-family: Courier New, Courier, monospace;">qibuild configure</span><span style="font-family: inherit;">. The disk output is different, though, in that using the </span><span style="font-family: Courier New, Courier, monospace;">qibuild configure</span><span style="font-family: inherit;"> command result in all build files in one neat folder named after your toolchain, while using directly </span><span style="font-family: Courier New, Courier, monospace;">cmake</span><span style="font-family: inherit;"> without further options results in a mess of build files directly in the project folder. We could need to further refine our command to get something clean like with qiBuild. It's not necessary though, as that's what </span><span style="font-family: Courier New, Courier, monospace;">qibuild configure</span><span style="font-family: inherit;"> does for you: calling </span><span style="font-family: Courier New, Courier, monospace;">cmake</span><span style="font-family: inherit;"> with the right options, and take care of the housekeeping.</span>
+
 <h3>
 The <i>main.cpp</i> and <i>test.cpp</i> file</h3>
 Those two files seem pretty simple, as the default main.cpp is a "hello, world", and the provided test.cpp is the "hello world" of C++ unit testing. However, it's good to have a quick look at how these two files are handled by our build tools.<br />
 
-Let's look at the rest of the&nbsp;CMakeLists.txt file:<br />
+Let's look at the rest of the&nbsp;CMakeLists.txt file:
 
-<span style="font-family: Courier New, Courier, monospace;"># Create a executable named "project"</span><span style="font-family: 'Courier New', Courier, monospace;">&nbsp;with the source file: main.cpp</span><br />
-<span style="font-family: Courier New, Courier, monospace;">qi_create_bin(project "main.cpp")</span><br />
-<span style="font-family: inherit;"><br /></span>
-<span style="font-family: Courier New, Courier, monospace;"># Add a simple test:</span><br />
-<span style="font-family: Courier New, Courier, monospace;">enable_testing()</span><br />
-<span style="font-family: Courier New, Courier, monospace;">qi_create_test(test_project "test.cpp")</span><br />
-<div>
-<br /></div>
-<div>
-The&nbsp;<span style="font-family: 'Courier New', Courier, monospace;">qi_create_bin(project main.cpp)</span>&nbsp;command instructs CMake that the file main.cpp should be used to create an executable named "project". &nbsp;</div>
-<div>
-<br /></div>
+<div class="highlight"><pre><code># Create a executable named "project" with the source file: main.cpp
+qi_create_bin(project "main.cpp")
+
+# Add a simple test:
+enable_testing()
+qi_create_test(test_project "test.cpp")</code></pre></div>
+
+
+The&nbsp;<span style="font-family: 'Courier New', Courier, monospace;">qi_create_bin(project main.cpp)</span>&nbsp;command instructs CMake that the file main.cpp should be used to create an executable named "project".
+
 <div>
 <span style="font-family: 'Courier New', Courier, monospace;">enable_testing()</span><span style="font-family: inherit;">&nbsp;is necessary to let you use any testing-related command later.</span></div>
 <span style="font-family: inherit;"><br /></span>
 <span style="font-family: inherit;">The </span><span style="font-family: Courier New, Courier, monospace;">qi_create_test(test_project "test.cpp")</span><span style="font-family: inherit;">&nbsp;is such a command. It tells that the test.cpp file should be used to make a test binary "test_project."</span><br />
-<div>
-<br /></div>
-<div>
-A test is successful if it returns 0. You run all tests with:</div>
-<div>
-<br /></div>
+
+A test is successful if it returns 0. You run all tests with:
+
 <div>
 <span style="font-family: Courier New, Courier, monospace;">qibuild test</span></div>
 <div>
 <span style="font-family: Courier New, Courier, monospace;"><br /></span></div>
+
 <div>
 <span style="font-family: inherit;">The test results are printed and also stored in the&nbsp;</span>build-tests/results folder.</div>
-<div>
-<br /></div>
+
 <div>
 You can call qiBuild commands from anywhere in the workspace by specifying the project name. For instance, calling&nbsp;<span style="font-family: 'Courier New', Courier, monospace;">qibuild configure helloworld</span>&nbsp;from the ~/nao/workspace/project directory works as expected: it configures the helloworld project in&nbsp;~/nao/workspace/helloworld. Calling&nbsp;&nbsp;<span style="font-family: 'Courier New', Courier, monospace;">qibuild configure</span><span style="font-family: inherit;">&nbsp;without specifying a project name will configure the project that corresponds to the working directory.</span></div>
+
 <div>
-<span style="font-family: inherit;"><br /></span></div>
-<div>
-<span style="font-family: inherit;">Now, let's make a real project that runs against NAO and does something useful.&nbsp;</span><br />
-<span style="font-family: inherit;"><br /></span></div>
+<span style="font-family: inherit;">Now, let's make a real project that runs against NAO and does something useful.&nbsp;</span>
+</div>
+
 <h2>
 A real project that actually does something</h2>
-<div>
+
 We will make a C++ module that uses the <a href="http://www.aldebaran-robotics.com/documentation/family/robots/inertial_robot.html" target="_blank">inertial unit</a> to plot the displacement on the center of gravity of the robot while he stands.<br />
 
 <span style="font-family: Courier New, Courier, monospace;">qibuild create inertial_monitor</span><br />
@@ -125,8 +120,10 @@ memoryProxy = boost::shared_ptr<ALMemoryProxy>(new ALMemoryProxy(broker));
 Let's say that we define this to make the code more readable:<br />
 
 {% highlight c++ %}
-const std::string intertialSensorXKey("Device/SubDeviceList/InertialSensor/AngleX/Sensor/Value"),  
-                  intertialSensorYKey("Device/SubDeviceList/InertialSensor/AngleY/Sensor/Value"); 
+const std::string intertialSensorXKey(
+                      "Device/SubDeviceList/InertialSensor/AngleX/Sensor/Value"),  
+                  intertialSensorYKey(
+                      "Device/SubDeviceList/InertialSensor/AngleY/Sensor/Value"); 
 {% endhighlight %}
 
 <br />
@@ -146,7 +143,8 @@ Or it could also look like that:<br />
 
 {% highlight c++ %}
 while (true) {  
-  std::cout << "X: " << memoryProxy->getData(intertialSensorXKey) << ", Y: " << memoryProxy->getData(intertialSensorXKey) << std::endl;  
+  std::cout << "X: " << memoryProxy->getData(intertialSensorXKey) << ", Y: " 
+            << memoryProxy->getData(intertialSensorXKey) << std::endl;  
   boost::this_thread::sleep(boost::posix_time::seconds(1));  
 } 
 {% endhighlight %}
@@ -168,7 +166,8 @@ main.cpp</h3>
 #include <iostream> // output, etc  
 #include <boost/program_options.hpp> // a clean way to process command-line arguments  
 #include <boost/shared_ptr.hpp> // Good practice to use C++ facilities in C++.  
-#include <boost/thread/thread.hpp> // To use Boost's sleep. There are others, but Boost is a good portable library.  
+#include <boost/thread/thread.hpp> // To use Boost's sleep. There are others, but Boost is a
+                                   // good portable library.  
 #include <alcommon/albroker.h> // To handle Naoqi brokers (the local one and the one on NAO)  
 #include <alcommon/albrokermanager.h> // same  
 #include <alerror/alerror.h> // To catch and process Aldebaran's exceptions  
@@ -178,10 +177,13 @@ void parseOpt(std::string* naoBrokerIP, int* naoBrokerPort, int argc, char* argv
   namespace po = boost::program_options; // shorter to write po than boost::program_options  
   po::options_description desc("Allowed options");  
   desc.add_options()  
-      ("pip", po::value<std::string>(naoBrokerIP)->default_value("nao.local"), "IP of the parent broker. Default: nao.local")  
-      ("pport", po::value<int>(naoBrokerPort)->default_value(9559), "Port of the parent broker. Default: 9559");  
+      ("pip", po::value<std::string>(naoBrokerIP)->default_value("nao.local"),
+       "IP of the parent broker. Default: nao.local")  
+      ("pport", po::value<int>(naoBrokerPort)->default_value(9559),
+       "Port of the parent broker. Default: 9559");  
   po::variables_map vm; // Map containing all the options with their values  
-  // program option library throws all kind of errors, we just catch them all, print usage and exit  
+  // program option library throws all kind of errors, we just catch them all,
+  // print usage and exit.
   try {  
     po::store(po::parse_command_line(argc, argv, desc), vm);  
     po::notify(vm);  
@@ -192,7 +194,8 @@ void parseOpt(std::string* naoBrokerIP, int* naoBrokerPort, int argc, char* argv
   }  
 }  
   
-boost::shared_ptr<AL::ALBroker> makeLocalBroker(const std::string parentBrokerIP, int parentBrokerPort) {  
+boost::shared_ptr<AL::ALBroker> makeLocalBroker(const std::string parentBrokerIP,
+                                                int parentBrokerPort) {  
   // Name, IP and port of our local broker that talks to NAO's broker:  
   const std::string brokerName = "localbroker";  
   int brokerPort = 54000;   // FIXME: would be a good idea to look for a free port first  
@@ -238,7 +241,8 @@ int main(int argc, char* argv[]) {
     return 3;  
   }  
   
-  const std::string intertialSensorXKey("Device/SubDeviceList/InertialSensor/AngleX/Sensor/Value"),  
+  const std::string intertialSensorXKey(
+      "Device/SubDeviceList/InertialSensor/AngleX/Sensor/Value"),  
       intertialSensorYKey("Device/SubDeviceList/InertialSensor/AngleY/Sensor/Value");  
   
   while (true) {  
@@ -275,10 +279,9 @@ Configure and compile the project for your computer:</h3>
 <h3>
 Call the program from your computer, for instance:&nbsp;</h3>
 <span style="font-family: Courier New, Courier, monospace;">cd ~/nao/workspace/inertial_monitor</span><br />
-<span style="font-family: Courier New, Courier, monospace;">build-local/sdk/bin/inertial_monitor --pip 192.168.1.11 --pport 9559</span><br />
-<br />
+<span style="font-family: Courier New, Courier, monospace;">build-local/sdk/bin/inertial_monitor --pip 192.168.1.11 --pport 9559</span>
 
-It should display a list (X, Y) of values. Here, I run it with NAO standing, and make NAO lie on its belly:<br /><br />
+It should display a list (X, Y) of values. Here, I run it with NAO standing, and make NAO lie on its belly:
 
 <span style="font-family: Courier New, Courier, monospace;">build-local/sdk/bin/inertial_monitor --pip 192.168.2.3 --pport 9559</span><br />
 <span style="font-family: Courier New, Courier, monospace;"><i>[INFO ] Starting ALNetwork</i></span><br />
@@ -302,10 +305,9 @@ It should display a list (X, Y) of values. Here, I run it with NAO standing, and
 <span style="font-family: Courier New, Courier, monospace;"><i>X: -0.0483597, Y: 0.0257009</i></span><br />
 <span style="font-family: Courier New, Courier, monospace;"><i>X: -0.00962669, Y: 0.075939</i></span><br />
 
-<br />
-You can stop it with Ctrl-C.<br /><br />
+You can stop it with Ctrl-C.
 
-Note the change in Y value in the middle of that list. In general, we note also that the values are not very stable. Here, I'm sitting on a bed with NAO next to me, so the inertial sensor values vary more, but even on a flat and stable ground, they might vary a bit when NAO is immobile.<br /><br />
+Note the change in Y value in the middle of that list. In general, we note also that the values are not very stable. Here, I'm sitting on a bed with NAO next to me, so the inertial sensor values vary more, but even on a flat and stable ground, they might vary a bit when NAO is immobile.
 
-In the next part, we will transform that program into a module that runs directly on NAO.<br /><br />
-</div>
+In the next part, we will transform that program into a module that runs directly on NAO.
+
