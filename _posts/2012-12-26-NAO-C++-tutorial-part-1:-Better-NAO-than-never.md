@@ -7,6 +7,7 @@ I originally [posted this text](http://janebotics.blogspot.com/2012/12/better-na
 
 ---
 
+## Better NAO than never (NAO tutorial part 1)
 
 <h3>Preamble to this whole series of tutorial posts</h3>
 I'd like to thank <b>Jane</b> for hosting these posts on her blog, and&nbsp;<b>Dimitri Merejkowsky</b> from Aldebran, for his detailed feedback.<br />
