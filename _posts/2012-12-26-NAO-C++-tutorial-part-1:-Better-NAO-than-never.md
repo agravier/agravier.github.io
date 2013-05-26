@@ -30,7 +30,7 @@ Know the tools</h2>
 <div>
 <br /></div>
 <div>
-Qiuild can configure projects for various robots (Atom or Geode NAO) or to run on a separate computer. For that, it uses <b>CMake</b>, wich is a cross-platform and multi-platform meta-build tool.&nbsp;</div>
+Qibuild can configure projects for various robots (Atom or Geode NAO) or to run on a separate computer. For that, it uses <b>CMake</b>, wich is a cross-platform and multi-platform meta-build tool.&nbsp;</div>
 <div>
 <br /></div>
 <div>

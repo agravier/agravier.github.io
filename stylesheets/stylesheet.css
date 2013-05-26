@@ -242,6 +242,10 @@ strong {
   font-weight: bold;
 }
 
+b {
+  font-weight: bold;
+}
+
 img {
   position: relative;
   margin: 0 auto;
