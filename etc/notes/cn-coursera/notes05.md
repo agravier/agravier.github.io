@@ -13,7 +13,7 @@ title: Lecture notes in Computational Neuroscience (Week 5)
 - Resistor R: resists the flow of current
 - Battery E: causes drop in electrical potential
 
-Conductance: \\(g = R\^{-1}\\)
+Conductance: \\(g = R^ {-1}\\)
 
 Kirchhoff's current law: the total current at a junction of wires is zero (note: current is a signed quantity).
 
@@ -104,8 +104,8 @@ In case of square pulse, (step-wise constant current input), the solution is
 \\[
 V(t) = 
 \begin{cases}
-  V\_\infty \left(1-e\^{-\frac{t}{\tau}}\right) & \textrm{ when there is current input} \\\\
-  V\_\infty \left(e\^{-\frac{t}{\tau}}\right) & \textrm{ when there is no current input}
+  V\_\infty \left(1-e^ {-\frac{t}{\tau}}\right) & \textrm{ when there is current input} \\\\
+  V\_\infty \left(e^ {-\frac{t}{\tau}}\right) & \textrm{ when there is no current input}
 \end{cases}
 \\]
 
@@ -161,7 +161,7 @@ This circuit is now active, in that the conductance of the Na and K channels is 
 
 ###### Potassium VG channels
 
-There is a molecular "gate" with a probability to be open that increases with depolarisation (for K channels) or polarisation (for Na channels). In K channels, this probability \\(P\_K\\) depends on the configuration of four sub-units of the channel;  \\(P\_K = n\^4\\) 
+There is a molecular "gate" with a probability to be open that increases with depolarisation (for K channels) or polarisation (for Na channels). In K channels, this probability \\(P\_K\\) depends on the configuration of four sub-units of the channel;  \\(P\_K = n^ 4\\) 
 
 Q: What is an assumption we make here?
 
@@ -170,7 +170,7 @@ Q: What is an assumption we make here?
 - At any given time, we only need to know if a single subunit is open to determine if the channel will be open. 
 - All of the above.
 
-Explanation: The probability of both of two independent events happening is the product of the probabilities of each event happening separately. If we assume the 4 subunits open and close independent of one another, then the probability that all of them will be open at the same time is the probability that one of them is open at any given time (n), raised to the 4th power, so that the probability the channel is open (all subunits are in the open configuration) is n*n*n*n. A similar concept would apply if we flipped 4 coins at the same time; the probability of getting 4 heads would be (1/2)\^4, since the probability of getting heads on each individual quarter does not depend on whether or not any of the other quarters land on heads.
+Explanation: The probability of both of two independent events happening is the product of the probabilities of each event happening separately. If we assume the 4 subunits open and close independent of one another, then the probability that all of them will be open at the same time is the probability that one of them is open at any given time (n), raised to the 4th power, so that the probability the channel is open (all subunits are in the open configuration) is n*n*n*n. A similar concept would apply if we flipped 4 coins at the same time; the probability of getting 4 heads would be \\(\frac{1}{2}^ 4\\), since the probability of getting heads on each individual quarter does not depend on whether or not any of the other quarters land on heads.
 
 Each of the channel's subunits fluctuates between open (probability n) and closed (1-n) state. Current only flows though the channel when all four units are open at the same time. \\(n\\) does **not** directly depend on the voltage. Rather, the **transition** of each sub-unit between open and closed state occurs at a voltage-dependent rates \\(\alpha(V)\\) for the closed-to-open transition and \\(\beta(V)\\) for the open-to-closed transition. With that, n varies as such:
 
@@ -211,7 +211,7 @@ n\_\infty(V) = \frac{\alpha\_n(V)}{\alpha\_n(V)+\beta\_n(V)}
 
 The Na+ channel has 3 subunit. It also has an additional second gating mechanism that has to be de-inactivated.
 
-Let m the probability of the Na gate subunits to be open, and h that of the additional inactivation gate being open: \\(P\_\textrm{Na} ~ m\^3h\\).
+Let m the probability of the Na gate subunits to be open, and h that of the additional inactivation gate being open: \\(P\_\textrm{Na} ~ m^ 3h\\).
 
 Voltage increases m (making it an **activation variable**), but decreases h (**inactivation variable**). As a result, sodium flows are transient and self-limiting.
 
@@ -239,8 +239,8 @@ Combining these individual ion channels models, we obtain all voltage-dependent 
 
 \\[
 \begin{cases}
-g\_K(V) =& \overline{g}\_K n\^4\\\\
-g\_\textrm{Na}(V) =& \overline{g}\_\textrm{Na} m\^3h
+g\_K(V) =& \overline{g}\_K n^ 4\\\\
+g\_\textrm{Na}(V) =& \overline{g}\_\textrm{Na} m^ 3h
 \end{cases}
 \\]
 
@@ -259,7 +259,7 @@ The HH model is that system of equations:
 \frac{\textrm{d}n}{\textrm{d}t} = \alpha\_n(V)(1-n)-\beta\_n(V)n\\\\
 \frac{\textrm{d}m}{\textrm{d}t} = \alpha\_m(V)(1-m)-\beta\_m(V)m\\\\
 \frac{\textrm{d}h}{\textrm{d}t} = \alpha\_h(V)(1-h)-\beta\_h(V)h\\\\
--C\_m \frac{\textrm{d}V}{\textrm{d}t} = g\_L\left(V-E\_L\right) + \overline{g}\_Kn\^4\left(V-E\_K\right) + \overline{g}\_\textrm{Na}m\^3h\left(V-E\_\textrm{Na}\right) - I\_e
+-C\_m \frac{\textrm{d}V}{\textrm{d}t} = g\_L\left(V-E\_L\right) + \overline{g}\_Kn^ 4\left(V-E\_K\right) + \overline{g}\_\textrm{Na}m^ 3h\left(V-E\_\textrm{Na}\right) - I\_e
 \end{cases}
 \\]
 
@@ -343,7 +343,7 @@ Back to the expression \\(
 \\), \\(f\\) could be quadratic, or a linear plus an exponential:
 
 \\[
-f(V) = -a(V-V\_0) + e\^{\frac{V-V\_\textrm{th}}{\Delta}}
+f(V) = -a(V-V\_0) + e^ {\frac{V-V\_\textrm{th}}{\Delta}}
 \\]
 
 \\(\Delta\\) determines the sharpness of the rise of f(V) in the exponential part.
@@ -401,7 +401,7 @@ It's a "zoomed" version of the 2D model above:
 
 \\[
 \begin{cases}
-\frac{\textrm{d}V}{\textrm{d}t} = -\alpha V + \beta V\^2 + \gamma + I(t)\\\\
+\frac{\textrm{d}V}{\textrm{d}t} = -\alpha V + \beta V^ 2 + \gamma + I(t)\\\\
 \frac{\textrm{d}u}{\textrm{d}t} = a(bV-u)\\\\
 \textrm{if } V\geq V\_\textrm{th},& \textrm{ then }V\from c, u\from u+d
 \end{cases}
@@ -433,13 +433,13 @@ A dendrite segment is a circuit with two continuous resistances along the dendri
 The changes in current are a function of space: a voltage difference between two points in the membrane will drive a current towards the larger difference.
 
 \\[
-\frac{1}{r\_i}\frac{\partial{d}\^2V\_m(x,t)}{\partial{d}x\^2} = c\_m\frac{\partial{d}V}{\partial{d}t} + \frac{V\_m}{r\_m} 
+\frac{1}{r\_i}\frac{\partial{d}^ 2V\_m(x,t)}{\partial{d}x^ 2} = c\_m\frac{\partial{d}V}{\partial{d}t} + \frac{V\_m}{r\_m} 
 \\]
 
 which is equivalent to 
 
 \\[
-\lambda\^2\frac{\partial{d}\^2V\_m}{\partial{d}x\^2} = \tau\_m\frac{\partial{d}V\_m}{\partial{d}t} + V\_m 
+\lambda^ 2\frac{\partial{d}^ 2V\_m}{\partial{d}x^ 2} = \tau\_m\frac{\partial{d}V\_m}{\partial{d}t} + V\_m 
 \\]
 
 where \\(\tau\_m = r\_mc\_m\\) is the time constant (timescale) and \\(\lambda=\sqrt{\frac{r\_m}{r\_i}}\\) is the space constant (spatial scale, indicating how far the signal can propagate).
@@ -465,16 +465,16 @@ Explanation: As the number of channels increases along the membrane that allows 
 For a constant current input at x=0 on an infinite cable, the potential decays exponentially with distance:
 
 \\[
-v(x) \propto e\^{\left(-\frac{|x|}{\lambda}\right)}
+v(x) \propto e^ {\left(-\frac{|x|}{\lambda}\right)}
 \\]
 
 For a discrete input, the propagation velocity is \\(c = \frac{2\lambda}{\tau}\\). The full expression for the propagation is:
 
 \\[
-v(x,t) \propto \sqrt{\frac{\tau}{4\pi\lambda\^2t}} e\^{-\frac{t}{\tau}-\frac{\tau x\^2}{4\lambda\^2t}}
+v(x,t) \propto \sqrt{\frac{\tau}{4\pi\lambda^ 2t}} e^ {-\frac{t}{\tau}-\frac{\tau x^ 2}{4\lambda^ 2t}}
 \\]
 
-\\(e\^(-\frac{\tau x\^2}{4\lambda\^2t}\\) is a diffusive spread, and \\(e\^-\frac{t}{\tau}\\) is the exponential decay.
+\\(e^ (-\frac{\tau x^ 2}{4\lambda^ 2t}\\) is a diffusive spread, and \\(e^ -\frac{t}{\tau}\\) is the exponential decay.
 
 This expression filters the input pulses, much like a convolution filter.
 
@@ -488,7 +488,7 @@ We divide the dendrites into pieces of cable, or compartments, that are each ass
 
 Each compartment is now described by a simpler differential equation that depends on \\(\frac{\textrm{d}V}{\textrm{d}t}\\), but not on \\(x\\).
 
-The dendritic branching of compartment of diameter d1 into children with diameters d11 and d12 can be simplified in such model into one compartment of the diameter d1 when and appropriate electronic length, if \\(d\_{11}\^\frac{3}{2}+d\_{12}\^\frac{3}{2}=d\_1\^\frac{3}{2}\\). Applying recursively, we can get down to one single cable going out of the soma.
+The dendritic branching of compartment of diameter d1 into children with diameters d11 and d12 can be simplified in such model into one compartment of the diameter d1 when and appropriate electronic length, if \\(d\_{11}^ \frac{3}{2}+d\_{12}^ \frac{3}{2}=d\_1^ \frac{3}{2}\\). Applying recursively, we can get down to one single cable going out of the soma.
 
 This property is often approximately satisfied by biological dendrites, so it's a common simplification.
 
@@ -573,7 +573,7 @@ Also, the presence of correlated response could be itself in some cases indicati
 
 #### Pairwise, triplet, ... n-tuplet spike patterns
 
-Array recording techniques pose a challenge: how to represent those data? Enumeration of correlations is astronomical: for a 100 cells, that makes 10000 pairwise statistics, 100\^3 triplet, etc...
+Array recording techniques pose a challenge: how to represent those data? Enumeration of correlations is astronomical: for a 100 cells, that makes 10000 pairwise statistics, \\(100^ 3\\) triplet, etc...
 
 There are many different approaches to this problem. 
 
