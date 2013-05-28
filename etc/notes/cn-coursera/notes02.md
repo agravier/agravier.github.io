@@ -256,11 +256,11 @@ Besides the average of the spike-conditional distribution, we consider its covar
 
 Reminder: 
 
-- \\(Var(x) = <(\bar{x} - x)\^2>\\) where <> denotes the avearage.
-- \\(Cov(v) = <(v - \bar{v}) (v - \bar{v})\^T>\\) where \\(v\\) is a column vector. So component \\(C\_{i,j}\\) of the covariance matrix is \\(<(x\_i-\bar{x}\_i)(x\_j-\bar{x}\_j)>\\)
-- We perform the Eigenvector decomposition: \\(C = V \Sigma V\^T\\), where
+- \\(Var(x) = <(\bar{x} - x)^ 2>\\) where <> denotes the avearage.
+- \\(Cov(v) = <(v - \bar{v}) (v - \bar{v})^ T>\\) where \\(v\\) is a column vector. So component \\(C\_{i,j}\\) of the covariance matrix is \\(<(x\_i-\bar{x}\_i)(x\_j-\bar{x}\_j)>\\)
+- We perform the Eigenvector decomposition: \\(C = V \Sigma V^ T\\), where
   - V is a matrix of Eigenvectors,
-  - \Sigma is a diagonal matrix of Eigenvalues \\(\sigma\_i\^2\\)
+  - \Sigma is a diagonal matrix of Eigenvalues \\(\sigma\_i^ 2\\)
 
 The Eigenvectors of the decomposition of the covariance matrix make a new coordinate system in which to represent the data. Each Eigenvector has a corresponding Eigenvalue that is the squared variance of the data along that axis in that new coordinate system. We select the Eigenvectors with the highest Eigenvalues, and call those principal components of the spike-conditional distribution.
 
@@ -371,13 +371,13 @@ Discretize time into equal bins. There is an _independent_ coin flip in each bin
 
 To simplify out analysis, let's first assume that the firing rate is constant: \\( p = r \Delta t \\)
 
-What is the distribution of the number of spikes? Time being equally partitioned, the probability that the n bins contain in total k spikes is \\( P\_n[k] = \binom{n}{k} p\^k (1-p)\^{n-k} \\). The mean number of spikes (expected value) is \\( \mathrm{E}(x) = np \\). The variance is \\( \mathrm{Var}(x) = np (1-p) \\).
+What is the distribution of the number of spikes? Time being equally partitioned, the probability that the n bins contain in total k spikes is \\( P\_n[k] = \binom{n}{k} p^ k (1-p)^ {n-k} \\). The mean number of spikes (expected value) is \\( \mathrm{E}(x) = np \\). The variance is \\( \mathrm{Var}(x) = np (1-p) \\).
 
 ##### Poisson
 
 Bringing the bin size to the limit, for a duration of T time units, we have the Poisson distribution:
 
-- Distribution: \\( P\_T[k] = (rT)\^k \frac{\mathrm{exp}(-rT)}{k!} \\)
+- Distribution: \\( P\_T[k] = (rT)^ k \frac{\mathrm{exp}(-rT)}{k!} \\)
 - Mean: \\( E(x) = rT \\)
 - Variance: \\( \mathrm{Var}(x) = rT \\)
 - Fano factor (\\( = \frac{\mathrm{Var}}{\mathrm{E}} \\)): \\( F = 1 \\)

@@ -244,15 +244,15 @@ As maximization technique, we can set the gradient to 0. The derivative of the l
 \ln(P[r|s]) = \sum\_{a=1}^N r\_a \frac{f'(s)}{f(s)} = 0
 \\]
 
-where \\(f\_a = A e^{-\frac{1}{2\sigma\_a\^2}(s-s\_a)\^2}\\) in our case, which makes that the solution is 
+where \\(f\_a = A e^{-\frac{1}{2\sigma\_a^ 2}(s-s\_a)^ 2}\\) in our case, which makes that the solution is 
 
 \\[
-s\^* = \frac{\sum\_{a=1}\^N\frac{r\_as\_a}{\sigma\_a\^2}}{\frac{r\_a}{\sigma\_a\^2}}
+s^ * = \frac{\sum\_{a=1}^ N\frac{r\_as\_a}{\sigma\_a^ 2}}{\frac{r\_a}{\sigma\_a^ 2}}
 \\]
 
 If variances are all equal, we find an expression of the population vector.
 
-If not, the **informativeness** of each neuron is taken into account in the expression of \\(s\^*\\), as the inverse of the spread is used to weight its contribution!
+If not, the **informativeness** of each neuron is taken into account in the expression of \\(s^ *\\), as the inverse of the spread is used to weight its contribution!
 
 
 ###### Maximum a posteriori
@@ -273,10 +273,10 @@ In the case of this question, our prior would be P(B). Our evidence is represent
 
 We want to maximize \\(\textrm{ln} p[s|r] = \textrm{ln} P[r|s] + \textrm{ln} p[s] - \textrm{ln} P[r]\\)
 
-Again, we replace \\( ln(P[r|s]) \\) by \\( \sum\_{a=1}\^N r\_a \frac{f'(s)}{f(s)} \\), find \\(s\^*\\) for which the derivative of the function is 0:
+Again, we replace \\( ln(P[r|s]) \\) by \\( \sum\_{a=1}^ N r\_a \frac{f'(s)}{f(s)} \\), find \\(s^ *\\) for which the derivative of the function is 0:
 
 \\[
-s\^* = \frac{T\sum\_{a=1}\^N\frac{r\_as\_a}{\sigma\_a\^2} + \frac{s\_\textrm{prior}}{\sigma\^2\_\textrm{prior}}}{T\sum\_{a=1}\^N \frac{r\_a}{\sigma\_a\^2} + \frac{1}{\sigma\^2\_\textrm{prior}}}
+s^ * = \frac{T\sum\_{a=1}^ N\frac{r\_as\_a}{\sigma\_a^ 2} + \frac{s\_\textrm{prior}}{\sigma^ 2\_\textrm{prior}}}{T\sum\_{a=1}^ N \frac{r\_a}{\sigma\_a^ 2} + \frac{1}{\sigma^ 2\_\textrm{prior}}}
 \\]
 
 Now, compared to the ML case, information about the prior is taken into account, and here in the case of a gaussian prior distribution, the smaller its spread, the more influence \\(s\_\textrm{prior}\\) has.

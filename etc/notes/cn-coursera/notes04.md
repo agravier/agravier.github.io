@@ -58,9 +58,9 @@ H = -\sum\_ip\_i\textrm{log}\_2p\_i
 
 and \\( p\_i = \frac{1}{8} \\)
 
-so \\( H = -\sum\_{i=1}\^8\frac{1}{8}\textrm{log}\_2\left(\frac{1}{8}\right) = \textrm{log}\_2\frac{1}{8}. \\)
+so \\( H = -\sum\_{i=1}^ 8\frac{1}{8}\textrm{log}\_2\left(\frac{1}{8}\right) = \textrm{log}\_2\frac{1}{8}. \\)
 
-as \\( 8 = 2\^3 \\), \\( H = -\textrm{log}\_2\frac{1}{8} = -(\textrm{log}\_21-\textrm{log}\_28) = 3\\)
+as \\( 8 = 2^ 3 \\), \\( H = -\textrm{log}\_2\frac{1}{8} = -(\textrm{log}\_21-\textrm{log}\_28) = 3\\)
 
 
 Q: Which response do you think has the most intrinsic capability of encoding a stimulus?
