@@ -25,7 +25,6 @@ the Slate Theme for GitHub Pages by Jason Costello, @jsncostello
 /* @import url(vim.css); */ /* not bad, generally dark-friendly but some elements are a bit too dark */
 /* @import url(vs.css); */
 
-
 /*******************************************************************************
 MeyerWeb Reset
 *******************************************************************************/
@@ -397,6 +396,7 @@ ul.related li span.title {
 ul.related li span.date { 
     color: #55bb55; 
 }
+
 
 /*******************************************************************************
 Full-Width Styles
