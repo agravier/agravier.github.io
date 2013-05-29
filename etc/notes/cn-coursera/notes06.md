@@ -129,7 +129,7 @@ For multiple synapses with individual weights \\(w\_1 \ldots w\_N\\) and spike t
 I\_s(t) = \sum\_{b=1}^ N w\_b\int\_{-\infty}^tK(t-\tau)\rho\_b(\tau)\textrm{d}
 \\]
 
-By approximating the instantaneous firing rate \\(u\_b(t)\\) using the spike train \rho\_b(t), we get a new expression of the input current in function of the firing rates of input neurons:
+By approximating the instantaneous firing rate \\(u\_b(t)\\) using the spike train \\(\rho\_b(t)\\), we get a new expression of the input current in function of the firing rates of input neurons:
 
 \\[
 I\_s(t) = \sum\_{b=1}^ N w\_b\int\_{-\infty}^tK(t-\tau)u\_b(\tau)\textrm{d}
@@ -234,7 +234,7 @@ M=[0 −0.5; −0.5 0]
 
 Explanation: Suppose that v contains outputs for the fight impulse in the first element and flight in the second element. When we multiply M by v, we see that higher outputs of the fight response will lead to lower outputs of the flight response, and vice versa. Note: this is not a statement about fight and flight responses in nature in general!
 
-### Linear feedforward network
+### Linear feedforward network (performing numerical differentiation)
 
 Given the network model
 
@@ -308,5 +308,241 @@ W = \begin{bmatrix}
 \\]
 
 ### Recurrent networks
+
+
+
+#### Linear recurrent network
+
+\\[
+\tau\frac{\textrm{d}\textbf{v}}{\textrm{d}t} = -\textbf{v} + W\textbf{u} + M\textbf{v}
+\\]
+
+let \\(\textbf{h} = W\textbf{u}\\) the weighted \\(N\times 1\\) feedforward input vector. 
+
+How does \\(M\\) affect \\(v(t)\\)?
+
+##### Using eigenvectors to solve the network equation
+
+\\[
+\tau\frac{\textrm{d}\textbf{v}}{\textrm{d}t} = -\textbf{v} + \textbf{h} + M\textbf{v}
+\\]
+
+If M is symmetric, it has N **orthogonal eigenvectors** \\(\textbf{e}\_i\\) and eigenvalues \\(\lambda\_i\\) which satisfy
+
+\\[
+M\textbf{e}\_i = \lambda\_i\textbf{e}\_i
+\\]
+
+As they are orthogonal, \\(\textbf{e}\_i\cdot\textbf{e}\_j=0, i\neq j\\).
+
+Normalizing the eigenvectors, they are now orthonormal, \\(\textbf{e}\_i\cdot\textbf{e}\_i=1\\), and all vectors can be easily expressed in the eigenbasis as a linear combination of the eigenvectors. For the vector ov membrane voltages,
+
+\\[
+ \textbf{v}(t) = \sum\_{j=1}^ Nc_j(t)\textbf{e}\_j
+\\]
+
+We substitute it in \\(\tau\frac{\textrm{d}\textbf{v}}{\textrm{d}t} = -\textbf{v} + W\textbf{u} + M\textbf{v}\\), and replace \\(M\textbf{e}\_j\\) by \\(\lambda\_j\textbf{e}\_j\\):
+
+\\[
+\tau\sum\_{j=1}^ N\frac{\textrm{d}\textbf{c}\_j}{\textrm{d}t}\textbf{e}\_j = -\sum\_{j=1}^ Nc\_j(\textbf{e}\_j-\lambda\_j\textbf{e}\_j) + \textbf{h}
+\\]
+
+The sums disappear if one takes the dot product of each side with any arbitrary \\(\textbf{e}\_i\\), because all \\(\textbf{e}\_j\\) are orthogonal:
+
+\\[
+\tau\frac{\textrm{d}\textbf{c}\_i}{\textrm{d}t}\textbf{e}\_j = -c\_i(1-\lambda\_i) + \textbf{h}\cdot\textbf{e}\_i
+\\]
+
+Solving the above gives:
+
+\\[
+c\_i(t) = \frac{\textbf{h}\cdot\textbf{e}\_i}{1-\lambda\_i}\left(1-e^ {\frac{-t(1-\lambda\_i)}{\tau}}+c\_i(0)e^ {\frac{-t(1-\lambda\_i)}{\tau}}\right)
+\\] 
+
+With that, we can get the expression of \\(\textbf{v}(t)\\).
+
+##### Using eigenvalues to determine network stability
+
+If \\(\exists i: \lambda\_i > 1\\), the first exponential term in \\(c\_i\\) will grow indefinitely with time, so the network is unstable.
+
+If \\(\forall i: \lambda\_i < 1\\), the network is stable, it converges to \\(\textbf{v}\_{ss} = \sum\_i \frac{\textbf{h}\cdot\textbf{e}\_i}{1-\lambda_i}e\_i\\)
+
+Q: We have used the term "steady state" several times now over the past few weeks. What do we mean by "steady state value" here?
+
+- The value of v, given our weight matrices W and M, such that it changes at a constant (steady) rate over time.
+- The value of v, given our weight matrices W and M, such that it changes as the exponential of a constant rate over time - it follows a perfect exponential curve.
+- **The value of v, given our weight matrices W and M, such that v does not change further over time.**
+- None of these
+
+##### Amplification of inputs in a recurrent network
+
+If all \\(\lambda\_i\\) < 1\\) and \\(\lambda\_1\\) is close to 1,  and \\(\forall j\neq 1, \lambda\_j \ll 1\\), then
+
+\\[
+\textbf{v}\_{ss} = \frac{\textbf{h}\cdot\textbf{e}\_1}{1-\lambda_1}e\_1
+\\]
+
+And the network is amplifying the projection of the input on eigenvector \\(\textbf{e}\_1\\) by a factor of \\(\frac{1}{1-\lambda\_1}\\).
+
+###### Example: the angles network.
+
+The 5 output units of a linear network are labeled -180, -90, 0, 90, 180, for the angles that they represent. 
+
+the matrix \\(M\\) is defined by the cosine of the relative angle between the units' labels, ported to \\(\left[0,1\right]\\).
+
+Q: Do you think this matrix M is symmetric?
+
+- **Yes**
+
+The connectivity matrix is such that close neighbors are amplified, and remote ones are inhibited, a pattern often encountered in the brain.
+
+With that network, if all eigenvalues are 0 except \\(\lambda\_1 = 0.9\\), we observe the amplification \\(\textbf{v}\_{ss} = 10 (\textbf{h}\cdot\textbf{e}\_1)e\_1\\) of the input around the neuron's preferred angle.
+
+##### Network memory with an eigenvalue of one (performing numerical integration)
+
+If \\(\lambda\_1 = 1\\), and all other \\(\lambda\_i\\) < 1\\), then:
+
+\\[
+\tau\frac{\textrm{d}c\_1}{\textrm{d}t} = \textbf{h}\cdot\textbf{e}\_1
+\\]
+
+Solving for \\(c\_1\\), 
+
+\\[
+c\_1(t) = c\_1(0) + \frac{1}{\tau}\int\_0^ t \textbf{h}(t')\cdot\textbf{e}\_1\textrm{d}t' \tau
+\\]
+
+in \\(\textbf{v}(t) \approx c\_1\textbf{e}\_1 \\), assuming \\(c\_1(0)=0\\),
+
+\\[
+\textbf{v}(t) \approx \frac{\textbf{e}\_1}{\tau}\int\_0^ t\textbf{h}(t')\cdot\textbf{e}\_1\textrm{d}t'
+\\]
+
+indicating that the firing rate depends on the integral of the past input, even if the current input is 0. 
+
+This type of integrator neurons is present in the medial vestibular nucleus, maintaining a memory of eye position by integrating bursts from on-direction and off-direction movement neurons.
+
+#### Nonlinear recurrent networks
+
+We now apply a nonlinear function F to the input and recurrent feedback:
+
+\\[
+\tau\frac{\textrm{d}\textbf{v}}{\textrm{d}t} = -\textbf{v} + F\left(\textbf{h} + M\textbf{v}\right)
+\\]
+
+Let's pick the rectification nonlinearity for \\(F\\):
+
+\\[
+F(x) = [x]^ + = x \text{ if } x \gt 0, \text{ and } 0 \text{ otherwise}
+\\]
+
+It guarantees that the firing rate remains positive.
+
+###### Stability even with large \\(\lambda_i\\)
+
+If we again take our example of the angles network with the cosines in \\(M\\) and all eigenvalues 0 except \\(\lambda\_1\\), but this time \\(\lambda\_1 = 1.9\\), and we use \\(F\\) as above, we observe the amplification of the firing rate around the preferred value, and the network remains stable thanks to \\(F\\).
+
+###### Winner-takes-all
+
+The same type network can select one peak in the input over the other thanks to lateral inhibition.
+
+###### Gain modulation
+
+An increase in the input value is multiplicatively amplified in the output.
+
+###### Memory
+
+Like in the linear case, network memory (integration of past input) can take place, in combination with the gain modulation, etc...
+
+
+#### Non-symmetric recurrent networks
+
+If there are excitatory and inhibitory neurons, connections can't be symmetric. 
+
+For excitatory neurons:
+
+\\[
+\tau\_E\frac{\textrm{d}\textbf{v}\_E}{\textrm{d}t} = -\textbf{v}\_E + \left[M\_{EE}\textbf{v}\_E + M\_{EI}\textbf{v}\_I - \gamma\_E\right]^ +
+\\]
+
+For inhibitory neurons:
+
+\\[
+\tau\_I\frac{\textrm{d}\textbf{v}\_I}{\textrm{d}t} = -\textbf{v}\_I + \left[M\_{II}\textbf{v}\_I + M\_{IE}\textbf{v}\_I - \gamma\_I\right]^ +
+\\]
+
+
+##### Linear stability analysis
+
+The idea is to look at the stability of the network near fixed points (where \\(\frac{\textrm{d}\textbf{v}\_E}{\textrm{d}t} = 0\\) and \\(\frac{\textrm{d}\textbf{v}\_I}{\textrm{d}t} = 0\\).
+
+We take the derivative of the kinetic expression w.r.t. \\(v\_e\\) and \\(v\_I\\). The result in Jacobian matrix is a stability matrix:
+
+\\[
+J = \begin{bmatrix}
+ \frac{M\_{EE}-1}{\tau\_E} & \frac{M\_{EI}}{\tau\_E} \\\\
+ \frac{M\_{IE}}{\tau\_I} & \frac{M\_{II}-1}{\tau\_I}
+\end{bmatrix}
+\\]
+
+The two eigenvalues obtained by solving \\(\left|J-\lambda I\right| = 0\\) determine the dynamics of the network near the fixed point. The solutions can have imaginary components. The imaginary component determine the oscillation frequency of the corresponding neurons, and the real part determines the stability of the fixed point: stable if negative.
+
+\\[
+\begin{cases}
+\lambda\_1 = \frac{1}{2}\left( \frac{M\_{EE}-1}{\tau\_E} + \frac{M\_{II}-1}{\tau\_I} + \sqrt{\left(\frac{M\_{EE}-1}{\tau\_E}-\frac{M\_{II}-1}{\tau\_I}\right)^ 2 + 4\frac{M\_{EI}M\_{IE}}{\tau\_E\tau\_I}} \right)\\\\
+\lambda\_2 = \frac{1}{2}\left( \frac{M\_{EE}-1}{\tau\_E} + \frac{M\_{II}-1}{\tau\_I} - \sqrt{\left(\frac{M\_{EE}-1}{\tau\_E}-\frac{M\_{II}-1}{\tau\_I}\right)^ 2 + 4\frac{M\_{EI}M\_{IE}}{\tau\_E\tau\_I}} \right)
+\end{cases}
+\\]
+
+###### Example: 1 inhibitory and 1 excitatory neuron:
+
+The excitatory neuron is:
+
+\\[
+0.01\frac{\textrm{d}\textbf{v}\_E}{\textrm{d}t} = -\textbf{v}\_E + \left[1.25\textbf{v}\_E - 1\textbf{v}\_I + 10\right]^ +
+\\]
+
+For the inhibitory neuron, \\(\tau\_I\\) is a parameter that we will vary:
+
+\\[
+\tau\_I\frac{\textrm{d}\textbf{v}\_I}{\textrm{d}t} = -\textbf{v}\_I + \left[0\textbf{v}\_I + 1\textbf{v}\_I - 10\right]^ +
+\\]
+
+The Jacobian:
+
+\\[
+J = \begin{bmatrix}
+ \frac{1.25-1}{0.01} & \frac{-1}{0.01} \\\\
+ \frac{1}{\tau\_I} & \frac{0-1}{\tau\_I}
+\end{bmatrix} = \begin{bmatrix}
+ 25 & -100 \\\\
+ \tau\_I^ {-1} & -\tau\_I^ {-1}
+\end{bmatrix}
+\\]
+
+Solving
+
+\\[
+\left|J-\lambda I\right| = 0
+\\]
+
+gives
+
+\\[
+\begin{cases}
+\lambda\_1 = \frac{1}{2}\left( \frac{1.25-1}{0.01} + \frac{0-1}{\tau\_I} + \sqrt{\left(\frac{1.25-1}{0.01}-\frac{0-1}{\tau\_I}\right)^ 2 + 4\frac{-1}{0.01\tau\_I}} \right)\\\\
+\lambda\_2 = \frac{1}{2}\left( \frac{1.25-1}{0.01} + \frac{0-1}{\tau\_I} - \sqrt{\left(\frac{1.25-1}{0.01}-\frac{0-1}{\tau\_I}\right)^ 2 + 4\frac{-1}{0.01\tau\_I}} \right)
+\end{cases}
+\\]
+
+Varying \\(\tau\_I\\): 
+
+\\(\tau\_I = 30 \text{ ms}\\) makes the real part or the eigenvalues negative. I consequence, the system spirals down to a stable fixed point in the phase plane \\(\langle v\_I, v\_E \rangle\\). 
+
+The convergence to the fixed point corresponds to damped oscillations of \\(v\_I\\) and \\(v\_E\\).
+
+\\(\tau\_I = 50 \text{ ms}\\) makes the real part or the eigenvalues positive, resulting in an unstable network. On the phase plane, the network diverges from the fixed point. However, thanks to \\(F\\), the network loops on a limit cycle.
+
+The transition from stable to unstable system corresponds to a **Hopf bifurcation**.
 
 
