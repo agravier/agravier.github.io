@@ -347,7 +347,7 @@ We substitute it in \\(\tau\frac{\textrm{d}\textbf{v}}{\textrm{d}t} = -\textbf{v
 The sums disappear if one takes the dot product of each side with any arbitrary \\(\textbf{e}\_i\\), because all \\(\textbf{e}\_j\\) are orthogonal:
 
 \\[
-\tau\frac{\textrm{d}\textbf{c}\_i}{\textrm{d}t}\textbf{e}\_j = -c\_i(1-\lambda\_i) + \textbf{h}\cdot\textbf{e}\_i
+\tau\frac{\textrm{d}\textbf{c}\_i}{\textrm{d}t} = -c\_i(1-\lambda\_i) + \textbf{h}\cdot\textbf{e}\_i
 \\]
 
 Solving the above gives:
