@@ -3,13 +3,9 @@ layout: post
 title: 'NAO Linux C++ development cheat sheet / tutorial, Part 3: The Apprentice NAOmancer'
 ---
 
-I originally [posted this text](http://janebotics.blogspot.com/2013/02/the-apprentice-naomancer-nao-tutorial.html "Permalink to The Apprentice NAOmancer (NAO tutorial part 3)") on another blog. I have copied it here in an effort to gather some of my past writings on this website. 
-
----
-
 ##NAO Linux C++ development cheat sheet / tutorial, Part 3
 
-In <a href="http://janebotics.blogspot.com/2013/02/welcome-to-matrix-nao-nao-tutorial-part.html" target="_blank">Part 2</a>, we made our own simple application that runs on your computer, connects to NAO and displays every second on the filtered torso angle with respect to the world.
+In <a href="http://noelusion.com/2013/NAO-C++-tutorial-part-2:-Welcome-to-the-Matrix,-NAO/" target="_blank">Part 2</a>, we made our own simple application that runs on your computer, connects to NAO and displays every second on the filtered torso angle with respect to the world.
 
 In this part, we transform this app into a module that can run on the robot and record torso angles in a file.
 

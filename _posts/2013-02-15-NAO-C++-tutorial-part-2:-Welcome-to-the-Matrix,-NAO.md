@@ -3,14 +3,10 @@ layout: post
 title: 'NAO Linux C++ development cheat sheet / tutorial, Part 2: Welcome to the Matrix, NAO'
 ---
 
-I originally [posted this text](http://janebotics.blogspot.com/2013/02/welcome-to-matrix-nao-nao-tutorial-part.html "Permalink to Welcome to the Matrix, NAO (NAO tutorial part 2)") on another blog. I have copied it here in an effort to gather some of my past writings on this website. 
-
----
-
 <h2>
 <span style="font-family: Verdana, sans-serif;">
 NAO Linux C++ development cheat sheet / tutorial, Part 2</span></h2>
-Following <a href="http://janebotics.blogspot.com/2012/12/better-nao-than-never-nao-tutorial-part.html" target="_blank">Part 1</a>, we&nbsp;have a workspace in ~/nao/workspace, at least one toolchain set up for one of the two possible processors of NAO (<span style="font-family: Courier New, Courier, monospace;">qitoolchain list</span>), and the C++ SDK folder extracted in ~/nao/devtools.<br />
+Following <a href="http://noelusion.com/2012/NAO-C++-tutorial-part-1:-Better-NAO-than-never/" target="_blank">Part 1</a>, we&nbsp;have a workspace in ~/nao/workspace, at least one toolchain set up for one of the two possible processors of NAO (<span style="font-family: Courier New, Courier, monospace;">qitoolchain list</span>), and the C++ SDK folder extracted in ~/nao/devtools.<br />
 <span style="font-family: inherit;"><br /></span><span style="font-family: inherit;">We will now make our own NAO&nbsp;</span>C++<span style="font-family: inherit;">&nbsp;project, configure it, build it, and run it. We'll maybe have some fast review of some C++ at the same time.</span><br />
 <span style="font-family: inherit;"><br /></span>
 <span style="font-family: inherit;">Before doing that, let's have a look at what's in a qibuild project.</span><br />
@@ -38,9 +34,11 @@ This file contains the name of the project, and can be used to list dependencies
 CMake file:&nbsp;<i>CMakeLists.txt</i></h3>
 This file is a script of the build process. As the project is both meta-built (i.e. configured) and then built with the command <span style="font-family: Courier New, Courier, monospace;">qibuild</span>, you must wonder why a CMake file is used here rather than, say, another XML file like qiproject.xml. The reason is that CMake and qibuild&nbsp;cooperate, and&nbsp;the command&nbsp;<span style="font-family: Courier New, Courier, monospace;">qibuild configure</span>&nbsp;in fact calls cmake. qiBuild is in part a CMake code generator and a (fairly complex) CMake module, which is why the build file remains a CMake script (CMakeLists.txt), but has to start with the following statements:<br />
 
-<span style="font-family: Courier New, Courier, monospace;">cmake_minimum_required(VERSION 2.8)</span><br />
-<span style="font-family: Courier New, Courier, monospace;">project(project)</span><br />
-<span style="font-family: 'Courier New', Courier, monospace;">find_package(qibuild)</span><br />
+{% highlight cmake %}
+cmake_minimum_required(VERSION 2.8)
+project(project)
+find_package(qibuild)
+{% endhighlight %}
 
 The first statement indicates that CMake version 2.8 or higher is required. The qiBuild library is written for this version of Cmake.&nbsp;The second (project(...)) statement informs CMake of the project name.<br />
 
@@ -54,12 +52,14 @@ Those two files seem pretty simple, as the default main.cpp is a "hello, world",
 
 Let's look at the rest of the&nbsp;CMakeLists.txt file:
 
-<div class="highlight"><pre><code># Create a executable named "project" with the source file: main.cpp
+{% highlight cmake %}
+# Create a executable named "project" with the source file: main.cpp
 qi_create_bin(project "main.cpp")
 
 # Add a simple test:
 enable_testing()
-qi_create_test(test_project "test.cpp")</code></pre></div>
+qi_create_test(test_project "test.cpp")
+{% endhighlight %}
 
 
 The&nbsp;<span style="font-family: 'Courier New', Courier, monospace;">qi_create_bin(project main.cpp)</span>&nbsp;command instructs CMake that the file main.cpp should be used to create an executable named "project".
@@ -309,5 +309,5 @@ You can stop it with Ctrl-C.
 
 Note the change in Y value in the middle of that list. In general, we note also that the values are not very stable. Here, I'm sitting on a bed with NAO next to me, so the inertial sensor values vary more, but even on a flat and stable ground, they might vary a bit when NAO is immobile.
 
-In the next part, we will transform that program into a module that runs directly on NAO.
+In [the next part](http://noelusion.com/2013/NAO-C++-tutorial-part-3:The-Apprentice-NAOmancer/), we will transform that program into a module that runs directly on NAO.
 

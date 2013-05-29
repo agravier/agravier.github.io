@@ -3,10 +3,6 @@ layout: post
 title: "Unit testing in clojure: mocking and lazy evaluation, atticus.mock and overloaded functions"
 ---
 
-I originally [posted this text](http://agravier.blogspot.com/2010/11/unit-testing-in-clojure-mocking-and.html "Permalink to the original post of Unit testing in clojure: mocking and lazy evaluation, atticus.mock and overloaded functions") on my previous blog. I have copied it here in an effort to gather some of my past writings on this website. 
-
----
-
 As I am learning Clojure by practicing on the [Google AI Challenge][1], I want to unit test all of my code. The [clojure.test][2] namespace contains useful macros and functions to define tests and express assertion but lacks mocking facilities.
 I need to count how many times the mocked function is called by the function under test. The [atticus][3] package serves this purpose, and I've been happy using it on the first few functions I made ([e.g.][4]).
 
