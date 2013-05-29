@@ -68,7 +68,7 @@ Q: What is the value of Ps at equilibrium? That is, what is the value of Ps such
 - αs(1−Ps)/βs
 - None of these
 
-In recorded data, \\(\frac{P\_s}{P\_max}\\) as a function of time after a spike is reasonably modeled by:
+In recorded data, \\(\frac{P\_s}{P\_\textrm{max}}\\) as a function of time after a spike is reasonably modeled by:
 
 - an exponential function for GABA(A) and AMPA synapses: \\(K(t) = e^ {-\frac{t}{\tau\_s}}\\),
 - an alpha function for NMDA synapses: \\(\alpha(t) = \frac{t}{\tau\_\textrm{peak}}e^ {1-\frac{t}{\tau\_peak}}\\)
@@ -110,10 +110,203 @@ with \\(E\_L=-70\textrm{ mV}\\), \\(V\_\textrm{threshold}=-54\textrm{ mV}\\),  \
 
 When \\(E\_s=0\textrm{ mV}\\) (excitatory synapses), the neurons fire in alternation.
 
-When \\(E\_s=0\textrm{ mV}\\) (excitatory synapses), the neurons fire in synchrony.
+When \\(E\_s=-80\textrm{ mV}\\) (inhibitory synapses), the neurons fire in synchrony.
 
 ### From spiking networks to rate-coded networks
 
 
-## TBC...
+
+
+Simulations with spiking neurons can reveal synchrony and correlation, and spike timing effects. However, the computational costs are high.
+
+The option of simulating neurons that use firing-rate outputs lets us scale to larger networks. However, any phenomenon related to spike timing is lost.
+
+The linear filter model of synapses with an input spike train \\( \rho\_b(t) = \sum\_{i=0}^ n\delta(t-t\_i) \\) linearly filtered by \\(K(t) \simeq \frac{P\_s}{P\_{\textrm{max}}}\\) gives a continuous real-valued synaptic conductance  \\(g\_b(t) = \overline{g}\_b\int\_{-\infty}^tK(t-\tau)\rho_b(\tau)\textrm{d}t\\).
+
+For multiple synapses with individual weights \\(w\_1 \ldots w\_N\\) and spike trains \\(\rho\_1 \ldots \rho\_N\\), the total synaptic current of the receiving cell is the sum of individual currents, \\(I\_s(t) = \sum\_{b=1}^ NI\_b(t)\\), so
+
+\\[
+I\_s(t) = \sum\_{b=1}^ N w\_b\int\_{-\infty}^tK(t-\tau)\rho\_b(\tau)\textrm{d}
+\\]
+
+By approximating the instantaneous firing rate \\(u\_b(t)\\) using the spike train \rho\_b(t), we get a new expression of the input current in function of the firing rates of input neurons:
+
+\\[
+I\_s(t) = \sum\_{b=1}^ N w\_b\int\_{-\infty}^tK(t-\tau)u\_b(\tau)\textrm{d}
+\\]
+
+Problems:
+
+- synchrony of spike trains
+- correlation between \\(u\\)
+
+These problems will most often not sufficiently affect the results, and we ignore them.
+
+### Integrating input current equation to arrive at the kinetic expression of the firing-rate base network model
+
+With an exponential synaptic filter \\(K(t) = e^ {-\frac{t}{\tau\_s}}\\), the differential of the input current equation in time is
+
+\\[
+\tau\_s\frac{\textrm{d}I\_s}{\textrm{d}t} = -I\_s+\sum\_bw\_bu\_b
+\\]
+
+This gives the following expression of the network dynamics (input current change in vector form and output firing rate change):
+:
+
+#### General form of the firing rate based network model 
+
+\\[
+\begin{cases}
+\tau\_s\frac{\textrm{d}I\_s}{\textrm{d}t} = -I\_s+\textbf{w}\cdot\textbf{u}\\\\
+\tau\_r\frac{\textrm{d}v}{\textrm{d}t} = -v + F\left(I\_s(t)\right)
+\end{cases}
+\\]
+
+The function \\(F\\) is an ad-hoc transformation.
+
+#### The firing rate based network model, neglecting synapse dynamics
+
+If \\(\tau\_s \ll \tau\_r\\), the synaptic input converges quickly, and \\(I\_s=\textbf{w}\cdot\textbf{u}\\), and the network is entirely determined by
+
+\\[
+\tau\_r\frac{\textrm{d}v}{\textrm{d}t} = -v + F\left(\textbf{w}\cdot\textbf{u}\right)
+\\]
+
+#### The firing rate based network model, neglecting output dynamics
+
+If \\(\tau\_s \gg \tau\_r\\), the output dynamics is negligible compared to the output current, and \\(v = F\left(I\_s(t)\right)\\), and the network is determined by:
+
+\\[
+\begin{cases}
+ v = F\left(I\_s(t)\right)\\\\
+ \tau\_s\frac{\textrm{d}I\_s}{\textrm{d}t} = -I\_s+\textbf{w}\cdot\textbf{u}
+\end{cases}
+\\]
+
+#### The firing rate based network model with static input (typical ANN case)
+
+If the input is static or approximately so for a long period of time, we can look at the steady state: \\( \frac{\textrm{d}v}{\textrm{d}t} = 0 \\) and \\( \frac{\textrm{d}I\_s}{\textrm{d}t} = 0 \\) giving
+
+\\[
+v\_{ss} = F(\textbf{w}\cdot\textbf{u})
+\\]
+
+That's how unit output is computed in ANN. \\(F\\) is often a sigmoidal threshold function.
+
+
+### Multiple output neurons in a feedforward network
+
+We assume that the synapses are sufficiently fast to neglect their dynamics, and use \\(\tau\_r\frac{\textrm{d}v}{\textrm{d}t} = -v + F\left(\textbf{w}\cdot\textbf{u}\right)\\) as equation for a single output.
+
+For multiple output neurons, with \\(W\\) the matrix of all weight vectors so as \\(W\_{ij}\\) is the synaptic weight from unit \\(j\\) to unit \\(i\\) and \\(\textbf{v}\\) the vector of combined outputs of all units, the network equation is:
+
+\\[
+\tau\frac{\textrm{d}\textbf{v}}{\textrm{d}t} = -\textbf{v} + F\left(W\textbf{u}\right)
+\\]
+
+Q: We have officially moved to a higher level of abstraction! When we talked about biophysics last week, we looked at some detailed models of individual neurons. Now we have abstracted away some of those detailed dynamics as we move towards modelling whole networks of neurons. This is a common investigative strategy in the sciences. Why don't we keep all the low-level details when we build large scale models?
+
+- The math may become a lot harder or complicated, making progress difficult. 
+- Computational resources limit our ability to fully implement all the low-level details when building a larger system.
+- Ease of use - we do not necessarily need all of the low-level details in order to explore the dynamics of higher-level systems such as whole networks.
+- **All of these**
+
+### Recurrent networks
+
+In a more general formulation where output unit \\(i\\) can be connected to output unit \\(j\\) with weight \\(m\_{ij}\\),
+
+\\[
+\tau\frac{\textrm{d}\textbf{v}}{\textrm{d}t} = -\textbf{v} + F\left(W\textbf{u} + M\textbf{v}\right)
+\\]
+
+In English: the rate of change of the output \\(\tau\frac{\textrm{d}\textbf{v}}{\textrm{d}t}\\) is a function \\(F()\\) of the weighted input from the previous layer \\(W\textbf{u}\\) and the weighted intra-layer feedback \\(M\textbf{v}\\), minus the decay \\(-\textbf{v}\\).
+
+In the special case of feedforward networks, \\(M\\) is the null matrix.
+
+Q: Consider a simple recurrent network with 2 output neurons. Maybe one of them represents the 'fight' impulse, and the other one the 'flight' impulse. The input neurons represent various inputs from the environment. Given the following recurrent weight matrix M, what can we say about the relationship between the fight and flight responses in this particular animal? 
+
+M=[0 −0.5; −0.5 0]
+
+- They tend to balance each other - if one is likely, the other is going to be likely too, leading to "cognitive dissonance." 
+- They are disconnected responses from each other - they do not really affect each other; this more resembles a feedforward network.
+- **They tend to inhibit each other - as one becomes the more likely response, it suppresses the likelihood of the other.**
+- None of the above.
+
+Explanation: Suppose that v contains outputs for the fight impulse in the first element and flight in the second element. When we multiply M by v, we see that higher outputs of the fight response will lead to lower outputs of the flight response, and vice versa. Note: this is not a statement about fight and flight responses in nature in general!
+
+### Linear feedforward network
+
+Given the network model
+
+\\[
+\begin{cases}
+\textrm{Dynamics: }&\tau\frac{\textrm{d}\textbf{v}}{\textrm{d}t} = -\textbf{v} + W\textbf{u}\\\\
+\textrm{Steady state: }&\textbf{v}\_{ss} = W\textbf{u}
+\end{cases}
+\\]
+
+the weight matrix
+
+\\[
+W = \begin{bmatrix}
+ 1 & 0 & 0 & 0 & -1 \\\\
+ -1 & 1 & 0 & 0 & 0 \\\\
+ 0 & -1 & 1 & 0 & 0 \\\\
+ 0 & 0 & -1 & 1 & 0 \\\\
+ 0 & 0 & 0 & -1 & 1 \\\\
+ 1 & 0 & 0 & 0 & -1
+\end{bmatrix}
+\\]
+
+and the static input vector
+
+\\[
+\textbf{u} = \begin{bmatrix}
+ 1 \\\\
+ 2 \\\\
+ 2 \\\\
+ 2 \\\\
+ 1 
+\end{bmatrix}
+\\]
+
+Q: What is \\(\textbf{v}\_{ss}\\)?
+
+\\[
+\textbf{v}\_{ss} = \begin{bmatrix}
+ 0 \\\\
+ 1 \\\\
+ 0 \\\\
+ 0 \\\\
+ -1 \\\\
+ 0
+\end{bmatrix}
+\\]
+
+Q: What is this network doing?
+
+- **Calculating some sort of derivative or difference, like looking for edges in a picture.**
+- Looking for sequences of repeats or similarity, like finding spots of homogenous color in a picture. 
+- Suppressing inputs - similar to turning the volume down or darkening an image. 
+- None of the above.
+
+Indeed, considering the weight matrix as a set of filters, each of its row calculates the difference between two adjacent input units.
+
+The parallel should be made with the V1 oriented receptive fields (+|-), which perform first-order differentiation: the definition of the derivative of a single-valued real function \\(f\\) of a real scalar \\(\frac{\textrm{d}f}{\textrm{d}x} = \lim\_{h\to 0}\frac{f(x+h)-f(x)}{h}\\) is approximated in the discrete case by the difference \\(f(x+1)-f(x)\\). In our case, \\(W\\) performs that exact operation on \\(\textbf{u}\\). 
+
+It should also be noted that the V1 oriented center-surround receptive fields (+|-|+) perform second-order derivation: \\(\frac{\textrm{d}^ 2f}{\textrm{d}x^ 2} = \lim\_{h\to 0}\frac{f'(x+h)-f'(x)}{h}\\), and the discrete approximation for that, \\(f(x+1)-f(x) - (f(x)-f(x-1)) = f(x+1)-2f(x)+f(x-1)\\), is approximated by the coefficients in the following matrix W:
+
+\\[
+W = \begin{bmatrix}
+ 1 & 0 & 0 & 1 & -2 \\\\
+ -2 & 1 & 0 & 0 & 1 \\\\
+ 1 & -2 & 1 & 0 & 0 \\\\
+ 0 & 1 & -2 & 1 & 0 \\\\
+ 0 & 0 & 1 & -2 & 1 \\\\
+ 1 & 0 & 0 & 1 & -2
+\end{bmatrix}
+\\]
+
+### Recurrent networks
+
 
