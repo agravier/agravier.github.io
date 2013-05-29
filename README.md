@@ -18,5 +18,5 @@ alias of python2.
 I generated all styles with
 
 ```bash
-echo 'python -c "from pygments.styles import get_all_styles; print list(get_all_styles())" | tr -cd [:alnum:][:blank:] | xargs -d" " -I {} sh -c 'pygmentize -S "$1" -f html > "stylesheets/$1.css"' -- {} \;'
+python -c "from pygments.styles import get_all_styles; print list(get_all_styles())" | tr -cd [:alnum:][:blank:] | xargs -d" " -I {} sh -c 'pygmentize -S "$1" -f html > "stylesheets/$1.css"' -- {} \;
 ```
