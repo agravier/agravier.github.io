@@ -114,25 +114,22 @@ When \\(E\_s=-80\textrm{ mV}\\) (inhibitory synapses), the neurons fire in synch
 
 ### From spiking networks to rate-coded networks
 
-
-
-
 Simulations with spiking neurons can reveal synchrony and correlation, and spike timing effects. However, the computational costs are high.
 
 The option of simulating neurons that use firing-rate outputs lets us scale to larger networks. However, any phenomenon related to spike timing is lost.
 
-The linear filter model of synapses with an input spike train \\( \rho\_b(t) = \sum\_{i=0}^ n\delta(t-t\_i) \\) linearly filtered by \\(K(t) \simeq \frac{P\_s}{P\_{\textrm{max}}}\\) gives a continuous real-valued synaptic conductance  \\(g\_b(t) = \overline{g}\_b\int\_{-\infty}^tK(t-\tau)\rho_b(\tau)\textrm{d}t\\).
+The linear filter model of synapses with an input spike train \\(\rho\_b(t) = \sum\_{i=0}^ n\delta(t-t\_i) \\) linearly filtered by \\(K(t) \approx \frac{P\_s}{P\_{\textrm{max}}}\\) gives a continuous real-valued synaptic conductance \\(g\_b(t) = \overline{g}\_b\int\_{-\infty}^ tK(t-\tau)\rho_b(\tau)\textrm{d}t\\).
 
 For multiple synapses with individual weights \\(w\_1 \ldots w\_N\\) and spike trains \\(\rho\_1 \ldots \rho\_N\\), the total synaptic current of the receiving cell is the sum of individual currents, \\(I\_s(t) = \sum\_{b=1}^ NI\_b(t)\\), so
 
 \\[
-I\_s(t) = \sum\_{b=1}^ N w\_b\int\_{-\infty}^tK(t-\tau)\rho\_b(\tau)\textrm{d}
+I\_s(t) = \sum\_{b=1}^ N w\_b\int\_{-\infty}^ tK(t-\tau)\rho\_b(\tau)\textrm{d}
 \\]
 
 By approximating the instantaneous firing rate \\(u\_b(t)\\) using the spike train \\(\rho\_b(t)\\), we get a new expression of the input current in function of the firing rates of input neurons:
 
 \\[
-I\_s(t) = \sum\_{b=1}^ N w\_b\int\_{-\infty}^tK(t-\tau)u\_b(\tau)\textrm{d}
+I\_s(t) = \sum\_{b=1}^ N w\_b\int\_{-\infty}^ tK(t-\tau)u\_b(\tau)\textrm{d}
 \\]
 
 Problems:
@@ -400,7 +397,7 @@ With that network, if all eigenvalues are 0 except \\(\lambda\_1 = 0.9\\), we ob
 
 ##### Network memory with an eigenvalue of one (performing numerical integration)
 
-If \\(\lambda\_1 = 1\\), and all other \\(\lambda\_i\\) < 1\\), then:
+If \\(\lambda\_1 = 1\\), and all other \\(\lambda\_i < 1\\), then:
 
 \\[
 \tau\frac{\textrm{d}c\_1}{\textrm{d}t} = \textbf{h}\cdot\textbf{e}\_1
