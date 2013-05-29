@@ -373,7 +373,7 @@ Q: We have used the term "steady state" several times now over the past few week
 
 ##### Amplification of inputs in a recurrent network
 
-If all \\(\lambda\_i\\) < 1\\) and \\(\lambda\_1\\) is close to 1,  and \\(\forall j\neq 1, \lambda\_j \ll 1\\), then
+If all \\(\lambda\_i < 1\\) and \\(\lambda\_1\\) is close to 1,  and \\(\forall j\neq 1, \lambda\_j \ll 1\\), then
 
 \\[
 \textbf{v}\_{ss} = \frac{\textbf{h}\cdot\textbf{e}\_1}{1-\lambda_1}e\_1
