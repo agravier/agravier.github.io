@@ -98,9 +98,9 @@ The cell membrane is a lipid bilayer that is impermeable to charged ions.
 
 Resting membrane potential of -70mV thanks to difference in relative ionic concentrations:
 
-- outside: more Na\\(^+\\), more Cl\\(^-\\)
+- outside: more Na\\(^ +\\), more Cl\\(^ -\\)
 - inside: more K+, more organic anions (conjugate bases of organic acids)
-- active ionic pumps on the cell membrane expel Na\\(^+\\) and let K\\(^+\\) in.
+- active ionic pumps on the cell membrane expel Na\\(^ +\\) and let K\\(^ +\\) in.
 - diffusion forces around open passive channels let ions flow.
 
 Excitatory (depolarizing) post-synaptic electrical potential -> local summation of those EPSP -> AP threshold of ~-65mV -> output spike
@@ -113,7 +113,7 @@ The local depolarization and repolarization of the membrane happens thanks to io
 
 #### AP propagation
 
-The local depolarization of the membrane causes the opening of voltage-gated Na\\(^+\\) channels, in turn causing the opening of more V-G Na\\(^+\\) channels (positive feedback loop), typically raising the potential difference from -70mV to +30mV. Once most V-G Na\\(^+\\) channels have opened, they will close, and potassium channels will open, letting potassium cations out. That repolarizes the membrane, and slightly hyper-polarizes it (refractionary period). K\\(^+\\) channels then close. The whole sequence of events (Na\\(^+\\) channels "chain reaction", K\\(^+\\) channels opening) constitutes an action potential. In myelinated neurons, the AP propagates from one node of Ranvier to the next. As this _saltatory conduction_ is an active mechanism, the signal is propagation is lossless. Spikes propagate faster, and on a longer range.
+The local depolarization of the membrane causes the opening of voltage-gated Na\\(^ +\\) channels, in turn causing the opening of more V-G Na\\(^ +\\) channels (positive feedback loop), typically raising the potential difference from -70mV to +30mV. Once most V-G Na\\(^ +\\) channels have opened, they will close, and potassium channels will open, letting potassium cations out. That repolarizes the membrane, and slightly hyper-polarizes it (refractionary period). K\\(^ +\\) channels then close. The whole sequence of events (Na\\(^ +\\) channels "chain reaction", K\\(^ +\\) channels opening) constitutes an action potential. In myelinated neurons, the AP propagates from one node of Ranvier to the next. As this _saltatory conduction_ is an active mechanism, the signal is propagation is lossless. Spikes propagate faster, and on a longer range.
 
 Multiple sclerosis leads to the loss of myelin on axons. (oligodendrocytes are true cells producing myelin)
 
@@ -126,7 +126,7 @@ Two kinds of synapses:
 
 Electrical synapses directly propagate the electrical activity from one neuron to the other: gap junctions are ion channels through the membranes of both cells at once. As a result, ionic concentrations imbalanced can be directly propagated to the postsynaptic neuron, resulting in fast synchronization of the neurons. They are found in the SK reflex loop of the crayfish, f.e.
 
-Chemical synapses: the AP triggers the release of neurotransmitters in the synaptic cleft (vesicles containing the NT fuse with the membrane). The NT then bind with the chemically-gated ion channels on the other side, and the channels open. For instance, channels that let Na\\(^+\\) in, resulting in increasnig the membrane potential.
+Chemical synapses: the AP triggers the release of neurotransmitters in the synaptic cleft (vesicles containing the NT fuse with the membrane). The NT then bind with the chemically-gated ion channels on the other side, and the channels open. For instance, channels that let Na\\(^ +\\) in, resulting in increasnig the membrane potential.
 
 Evolutionary perspective: what justifies chemical synapses? Possible answer: synapse strength more adjustable (density of inning channels) -> chemical synapses as the basis of learning.
 
@@ -137,11 +137,11 @@ Inhibitory synapse: decrease the post-synaptic membrane potential
 
 An example of transmission at an excitatory synapse:
 
-input spike -> release of NT (e.g. *glutamate*) -> NT binds to ion channel receptors -> ion channels open -> Na\\(^+\\) influx -> depolarization -> excitatory post-synaptic potential (EPSP)
+input spike -> release of NT (e.g. *glutamate*) -> NT binds to ion channel receptors -> ion channels open -> Na\\(^ +\\) influx -> depolarization -> excitatory post-synaptic potential (EPSP)
 
 An example of transmission at an inhibitory synapse: 
 
-input spike -> release of NT (e.g. *GABA*) -> NT binds to ion channel receptors -> ion channels open -> K\\(^+\\) outflux -> hyperpolarization -> inhibitory post-synaptic potential (IPSP)
+input spike -> release of NT (e.g. *GABA*) -> NT binds to ion channel receptors -> ion channels open -> K\\(^ +\\) outflux -> hyperpolarization -> inhibitory post-synaptic potential (IPSP)
 
 Synapse doctrine:
 

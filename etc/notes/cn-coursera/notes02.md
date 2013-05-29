@@ -31,7 +31,7 @@ Very high spatial resolution, very high temporal resolution, limited area. Invas
 
 #### Calcium imaging
 
-Inject a fluorescent calcium indicator that emits more light when bound to calcium. Ca^+ enters the cell during AP generation and decays fast, so spikes are highlighted.
+Inject a fluorescent calcium indicator that emits more light when bound to calcium. Ca\\(^ +\\) enters the cell during AP generation and decays fast, so spikes are highlighted.
 
 Very high spatial resolution (individual neurons), good temporal resolution. Invasive. Surgical settings only. Limited area.
 
