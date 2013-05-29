@@ -15,6 +15,9 @@ We again use our model of spiking as repeated Bernoulli trials: time bins each w
 
 \\[
 P(1) = p
+\\]
+
+\\[
 P(0) = 1-p
 \\]
 
