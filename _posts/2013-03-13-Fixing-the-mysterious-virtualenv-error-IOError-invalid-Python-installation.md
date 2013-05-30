@@ -3,11 +3,6 @@ layout: post
 title: 'Fixing the mysterious virtualenv error "IOError: invalid Python installation" due to a missing "local" subdirectory (that should already be fixed but is not (for me))'
 ---
 
-I originally [posted this text](http://agravier.blogspot.com/2013/03/fixing-mysterious-virtualenv-error.html 'Permalink to invalid Python installation" due to a missing "local" subdirectory (that should already be fixed but is not (for me))') on my previous blog. I have copied it here in an effort to gather some of my past writings on this website. 
-
----
-
-
 On some debian-based systems, the  posix_local install scheme is used. That means that an additional "local" directory is expected on the path of some things, including the path of python headers inside a virtualenv.
 That issue was [solved][1] a while ago. Except that for me, the error still pops up. I have a relatively complex python setup,  with home-local virtualenv, virtualenvwrapper, and distribute, and many symlinked locations. Let's not enter into details.
 
