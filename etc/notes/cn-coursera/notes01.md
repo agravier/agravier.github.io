@@ -3,21 +3,21 @@ layout: default
 title: Lecture notes in Computational Neuroscience (Week 1)
 ---
 
+# Week 1: Basic neurobiology and basic Octave
 
-## Week 1
-
-### Types of brain models:
+## Types of brain models:
 
 - descriptive: neural encoding of stimuli and decoding of stored information
 - mechanistic: simulation of single neuron, simulation of network of neurons
 - normative/interpretive: abstract computational principles of operation of NN.
 
 Computational neuroscience aims at explaining formally how brains generate behaviors (Sejnowski) by providing tools and methods for
-- characterizing _what_ nervous systems do ( => descriptive models )
-- determining _how_ they function ( => mechanistic models )
-- understanding _why_ they operate in the way they do ( => interpretive models )
 
-### The concept of receptive field
+- characterizing _what_ nervous systems do ( \\(\rightarrow\\) descriptive models )
+- determining _how_ they function ( \\(\rightarrow\\) mechanistic models )
+- understanding _why_ they operate in the way they do ( \\(\rightarrow\\) interpretive models )
+
+## The concept of receptive field
 
 Visual system of the cat study by Hubel and Wiesel. Electrical field recording of the occipital area of a cat. Visual stimuli. Moving oriented bars of lights. Conversion of electrical recording of one electrode (one cell) into tick sounds. The response if strong with 75deg bar of light in specific place. Also responds to 45 deg edge of light area in the same place
 
@@ -27,9 +27,9 @@ A: Frequency of spikes = f(Light bar's orientation)
 
 Definition of a receptive field: Minimal properties of a sensory stimulus that generate a strong response from a cell. (example: stimulus location on retina + orientation + color) 
 
-### A closer look at the 3 types of models: the example of receptor fields
+## A closer look at the 3 types of models: the example of receptor fields
 
-#### Building a descriptive model of receptor fields
+### Building a descriptive model of receptor fields
 
 Retina: tissue of receptors at the back of the eye. Retinal ganglion cells convey information to the lateral geniculate nucleus (LGN). 
 
@@ -43,7 +43,7 @@ A: Causing activation with stimuli concentrated on the center of the visual fiel
 
 The LGN transmits visual information to the primary visual cortex (V1). In V1, some of the cells have oriented center-surround receptive fields that best respond to bars of brighter light of the right size and orientation surrounded by darker areas. There are other types of receptive fields varying in orientation, or having off-center on-surround RFs so responding to dark bars. Reverse correlation can be used to quantify the RF type and orientation.
 
-#### Mechanistic model of RF
+### Mechanistic model of RF
 
 Answers the question: _how_ are oriented receptive fields built from center-surround receptive fields, using neural circuitry?
 
@@ -53,7 +53,7 @@ Retina -> optic nerve -> LGN -> V1
 
 In LGN, RFs are circular center surround, but in V1, they are elongated. How is the transformation done? The anatomy gives us an important clue: several LGN cells converge to each V1 cell. Model proposed by Hubel & Wiesel: several LGN cells whose combined RFs form an elongated RFs forward their output to one V1 cell. This model is controversial as it does not take into account recurrent (intra-layer) V1 connections.
 
-#### Interpretive model of RF
+### Interpretive model of RF
 
 Answers the question: _why_ are V1 RF shaped by orientation? What are the computational advantages of elongated center-surround RF?
 
@@ -76,9 +76,9 @@ Observation: receptive fields covering contemporary have emerged from the learni
 
 The same computational experiment has been successfully applied to other sensory cortices.
 
-### Neurobiology 101
+## Neurobiology 101
 
-#### Neurons
+### Neurons
 
 Various types and shapes of neurons. Examples:
 
@@ -111,13 +111,13 @@ The local depolarization and repolarization of the membrane happens thanks to io
 - chemically-gated (binding to a molecule causes opening)
 - mechanically-gated (pressure or stretch)
 
-#### AP propagation
+### AP propagation
 
 The local depolarization of the membrane causes the opening of voltage-gated Na\\(^ +\\) channels, in turn causing the opening of more V-G Na\\(^ +\\) channels (positive feedback loop), typically raising the potential difference from -70mV to +30mV. Once most V-G Na\\(^ +\\) channels have opened, they will close, and potassium channels will open, letting potassium cations out. That repolarizes the membrane, and slightly hyper-polarizes it (refractionary period). K\\(^ +\\) channels then close. The whole sequence of events (Na\\(^ +\\) channels "chain reaction", K\\(^ +\\) channels opening) constitutes an action potential. In myelinated neurons, the AP propagates from one node of Ranvier to the next. As this _saltatory conduction_ is an active mechanism, the signal is propagation is lossless. Spikes propagate faster, and on a longer range.
 
 Multiple sclerosis leads to the loss of myelin on axons. (oligodendrocytes are true cells producing myelin)
 
-#### The synapse
+### The synapse
 
 Two kinds of synapses: 
 
@@ -147,7 +147,7 @@ Synapse doctrine:
 
 Synapses are the basis for memory and learning.
 
-#### Learning
+### Learning
 
 Synaptic plasticity allows for learning. 
 
@@ -161,9 +161,9 @@ Long Term Depression is the equivalent decrease.
 
 The direction of synaptic plasticity (LDP or LTD) depends on the relative timing of input and output spikes. If the input spike occurs before the output spike (corresponding to a causal ordering), we have LTP. In the contrary, we have LTD. The closer the input and output spikes, the stronger the change in synaptic strength. 
 
-#### The Nervous System
+### The Nervous System
 
-##### peripheral NS (PNS): somatic NS + autonomic NS
+#### peripheral NS (PNS): somatic NS + autonomic NS
 
 nerve = bundle of axons
 
@@ -171,7 +171,7 @@ somatic NS: nerves connecting to _voluntary_ skeletal muscles (efferent nerves: 
 
 Autonomic NS: nerves that connect to the heart, blood vessels, smooth muscles and glands. Mostly unconscious, many vital functions
 
-##### Central NS (CNS): brain + spinal cord 
+#### Central NS (CNS): brain + spinal cord 
 
 Spinal cord: reflex arcs (local feedback looks), descending motor control signals activating spinal motor neurons, ascending sensory signals
 
@@ -191,7 +191,7 @@ Brain:
   - amygdala
   - basal ganglia
   - hippocampus
-  - cerebral cortex: layered sheet of neurons ~= 14 inch pizza stuffed in a too small box. 14 billion neurons, so like 300 trillion synapses. 6 layers of neurons, quite uniform across the cortex (=> common computational principle?). Input arrive in layer 4 (middle), output to thalamus to layer 6, output to other subcortical regions from layer 5, output to higher cortical areas from layers 2 and 3, input from other layers in layer 1 (and also in other layers).
+  - cerebral cortex: layered sheet of neurons ~= 14 inch pizza stuffed in a too small box. 14 billion neurons, so like 300 trillion synapses. 6 layers of neurons, quite uniform across the cortex (\\(\rightarrow\\) common computational principle?). Input arrive in layer 4 (middle), output to thalamus to layer 6, output to other subcortical regions from layer 5, output to higher cortical areas from layers 2 and 3, input from other layers in layer 1 (and also in other layers).
 
 How do brain regions interact? Discovery using lesion studies, electrophysiology, optical and functional imaging, molecular studies, anatomy, connectomic, etc…
 
@@ -201,18 +201,18 @@ Computing comparison:
 - brain: 100 microseconds temporal resolution at best; digital circuits: 100picoseconds for a 10GHz computer
 - computing paradigm: brain: massive parallelism, adaptive connectivity; digital computers: mostly sequential, fixed connectivity. -> capabilities: brains can solve ill-posed problems, digital computers are good at numerical computation and symbol processing.
 
-#### Conclusions
+### Conclusions
 
 - Information storage in the brain is in the *structure* (physical and chemical), down to the synaptic level.
 - Electrochemical information signaling
 - Unknown computational basis of the brain. We can try to understand it using descriptive, mechanistic and interpretive models.
 
 
-### Sidetrack: Octave and programming musings
+## Sidetrack: Octave and programming musings
 
 Notes from [opencourseonline](http://opencourseonline.com/334/coursera-open-course-stanford-university-machine-learning-video-playlist-5-octave-tutorial)
 
-#### basics
+### basics
 
 `help something` : doc about something  
 `lookfor something` : search something in the documentation
@@ -245,7 +245,7 @@ Notes from [opencourseonline](http://opencourseonline.com/334/coursera-open-cour
 `eye(4)` : 4x4 identity matrix
 
 
-#### data processing
+### data processing
 
 `A * C` : matrix mult  
 `A .* B` : element wise matrix multi  
@@ -273,7 +273,7 @@ Notes from [opencourseonline](http://opencourseonline.com/334/coursera-open-cour
 `pinv(A)` : pseudo inverse
 
 
-#### functions and control statements
+### functions and control statements
 
 {% highlight matlab %}
 v = zeros(10,1);
@@ -350,7 +350,7 @@ corresponding call:
 {% endhighlight %}
 
 
-#### loading and manipulating data
+### loading and manipulating data
 
 `size(A)` : returns the size of A in each dimension
 
@@ -358,7 +358,7 @@ corresponding call:
 
 `length` : size of the longest dimension, mostly for vectors
 
-`load file.dat` or `load('file.dat')` : load data file => creates 'file' variable
+`load file.dat` or `load('file.dat')` : load data file \\(\rightarrow\\) creates 'file' variable
 
 `who` : list variables available
 
@@ -376,7 +376,7 @@ corresponding call:
 
 `save hello.mat v -ascii` : human-readable
 
-`load hello.mat` : => creates variable v
+`load hello.mat` : \\(\rightarrow\\) creates variable v
 
 `A(3,2)` : A_{3,2}
 
@@ -395,7 +395,7 @@ corresponding call:
 `C = [A;B]` : concatenates A and B vertically
 
 
-#### Vectorization
+### Vectorization
 
 It often results in performance improvements, taking advantage of Octave's library optimizations.
 

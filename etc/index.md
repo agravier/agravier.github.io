@@ -3,7 +3,7 @@ layout: default
 title: Stuff like reading notes, ideas, etc...
 ---
 
-#### Lecture notes for the introductory course on Computational Neuroscience by Dr Adrienne Fairhall and Dr Rajesh Rao
+### Lecture notes for the introductory course on Computational Neuroscience by Dr Adrienne Fairhall and Dr Rajesh Rao
 
 [Lecture notes for week 1](notes/cn-coursera/notes01.html)  
 [Lecture notes for week 2](notes/cn-coursera/notes02.html)  

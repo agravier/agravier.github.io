@@ -3,8 +3,6 @@ layout: post
 title: 'NAO Linux C++ development cheat sheet / tutorial, Part 1: better NAO than never'
 ---
 
-## Better NAO than never (NAO tutorial part 1)
-
 <h3>Preamble to this whole series of tutorial posts</h3>
 
 I'd like to thank <b>Jane Sun</b> and <b>Dimitri Merejkowsky</b> for help and feedback.<br />

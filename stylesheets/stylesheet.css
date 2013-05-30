@@ -87,22 +87,27 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
     margin: 10px 0;
-    font-weight: 700;
+/*    font-weight: 700;*/
+/*    color: #FEF587;*/
+/*    color: #f2eec2;*/
     color: #f0f0f0;
-    font-family: 'Lucida Grande', 'Calibri', Helvetica, Arial, sans-serif;
+    font-family: 'Ubuntu', sans-serif;
+/*    font-family: 'Lucida Grande', 'Calibri', Helvetica, Arial, sans-serif;*/
     letter-spacing: -1px;
 }
 
 h1 {
     font-size: 28px;
+/*    color: #ff6600;*/
     color: #feeaaa;
-    font-weight: 700;
+/*    font-weight: 700;*/
     padding-bottom: 20px;
     background: url('../images/bg_hr.png') repeat-x bottom;
 }
 
 h2 {
-    font-size: 25px;
+    font-size: 28px;
+/*    color: #f2eec2;*/
 }
 
 h3 {
@@ -110,15 +115,18 @@ h3 {
 }
 
 h4 {
-    font-size: 19px;
+    font-size: 18px;
 }
 
 h5 {
-    font-size: 16px;
+    font-size: 14px;
+    color: white;
 }
 
 h6 {
-    font-size: 14px;
+    font-size: 12px;
+    color: white;
+/*    font-weight: 700;*/
 }
 
 p {
@@ -160,6 +168,7 @@ a {
 }
 
 #header_wrap h1 {
+    font-family: 'Lucida Grande', 'Calibri', Helvetica, Arial, sans-serif;
     display: inline;
     font-size: 36px;
     color: white;

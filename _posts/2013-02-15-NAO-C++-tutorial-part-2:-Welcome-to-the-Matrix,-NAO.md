@@ -3,9 +3,6 @@ layout: post
 title: 'NAO Linux C++ development cheat sheet / tutorial, Part 2: Welcome to the Matrix, NAO'
 ---
 
-<h2>
-<span style="font-family: Verdana, sans-serif;">
-NAO Linux C++ development cheat sheet / tutorial, Part 2</span></h2>
 Following <a href="http://noelusion.com/2012/NAO-C++-tutorial-part-1:-Better-NAO-than-never/" target="_blank">Part 1</a>, we&nbsp;have a workspace in ~/nao/workspace, at least one toolchain set up for one of the two possible processors of NAO (<span style="font-family: Courier New, Courier, monospace;">qitoolchain list</span>), and the C++ SDK folder extracted in ~/nao/devtools.<br />
 <span style="font-family: inherit;"><br /></span><span style="font-family: inherit;">We will now make our own NAO&nbsp;</span>C++<span style="font-family: inherit;">&nbsp;project, configure it, build it, and run it. We'll maybe have some fast review of some C++ at the same time.</span><br />
 <span style="font-family: inherit;"><br /></span>

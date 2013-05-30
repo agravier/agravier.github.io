@@ -3,11 +3,11 @@ layout: default
 title: Lecture notes in Computational Neuroscience (Week 6)
 ---
 
-## Networks of neurons
+# Networks of neurons
 
-### Modeling synapses
+## Modeling synapses
 
-#### Modifying the HH model
+### Modifying the HH model
 
 We want to model the effect of a chemical synapse on the membrane potential.
 
@@ -59,7 +59,7 @@ Assuming  \\(P\_\textrm{rel} = 1\\), the effect of a spike on \\(P\_s\\) is mode
 
 In English: the fraction of channels open equals the opening rate times the fraction of channels closed minus the closing rate times the fraction of channels open.
 
-#### The effect of one spike on synaptic conductance
+### The effect of one spike on synaptic conductance
 
 Q: What is the value of Ps at equilibrium? That is, what is the value of Ps such that dPs/dt is 0?
 
@@ -74,7 +74,7 @@ In recorded data, \\(\frac{P\_s}{P\_\textrm{max}}\\) as a function of time after
 - an alpha function for NMDA synapses: \\(\alpha(t) = \frac{t}{\tau\_\textrm{peak}}e^ {1-\frac{t}{\tau\_peak}}\\)
 
 
-#### The effect of several spike on synaptic conductance: the linear filter model of a synapse
+### The effect of several spike on synaptic conductance: the linear filter model of a synapse
 
 Modeling the input spike train to synapse b as a sum of Dirac delta functions: \\( \rho\_b(t) = \sum\_{i=0}^ {n}\delta(t-t\_i) \\)
 
@@ -92,7 +92,7 @@ g\_b(t) = \overline{g}\_b\int\_{-\infty}^ tK(t-\tau)\rho\_b(\tau)\textrm{d}t
 
 Graphically, it looks like we are stacking the graph of K each time a spike arrives.
 
-#### Synapses in action in a minimal network model of two IaF neurons
+### Synapses in action in a minimal network model of two IaF neurons
 
 Each neuron is connected to the other via a synapse s, and receives a constant input current \\(I\_e\\). Each neuron's equation is:
 
@@ -112,7 +112,7 @@ When \\(E\_s=0\textrm{ mV}\\) (excitatory synapses), the neurons fire in alterna
 
 When \\(E\_s=-80\textrm{ mV}\\) (inhibitory synapses), the neurons fire in synchrony.
 
-### From spiking networks to rate-coded networks
+## From spiking networks to rate-coded networks
 
 Simulations with spiking neurons can reveal synchrony and correlation, and spike timing effects. However, the computational costs are high.
 
@@ -139,7 +139,7 @@ Problems:
 
 These problems will most often not sufficiently affect the results, and we ignore them.
 
-### Integrating input current equation to arrive at the kinetic expression of the firing-rate base network model
+## Integrating input current equation to arrive at the kinetic expression of the firing-rate base network model
 
 With an exponential synaptic filter \\(K(t) = e^ {-\frac{t}{\tau\_s}}\\), the differential of the input current equation in time is
 
@@ -150,7 +150,7 @@ With an exponential synaptic filter \\(K(t) = e^ {-\frac{t}{\tau\_s}}\\), the di
 This gives the following expression of the network dynamics (input current change in vector form and output firing rate change):
 :
 
-#### General form of the firing rate based network model 
+### General form of the firing rate based network model 
 
 \\[
 \begin{cases}
@@ -161,7 +161,7 @@ This gives the following expression of the network dynamics (input current chang
 
 The function \\(F\\) is an ad-hoc transformation.
 
-#### The firing rate based network model, neglecting synapse dynamics
+### The firing rate based network model, neglecting synapse dynamics
 
 If \\(\tau\_s \ll \tau\_r\\), the synaptic input converges quickly, and \\(I\_s=\textbf{w}\cdot\textbf{u}\\), and the network is entirely determined by
 
@@ -169,7 +169,7 @@ If \\(\tau\_s \ll \tau\_r\\), the synaptic input converges quickly, and \\(I\_s=
 \tau\_r\frac{\textrm{d}v}{\textrm{d}t} = -v + F\left(\textbf{w}\cdot\textbf{u}\right)
 \\]
 
-#### The firing rate based network model, neglecting output dynamics
+### The firing rate based network model, neglecting output dynamics
 
 If \\(\tau\_s \gg \tau\_r\\), the output dynamics is negligible compared to the output current, and \\(v = F\left(I\_s(t)\right)\\), and the network is determined by:
 
@@ -180,7 +180,7 @@ If \\(\tau\_s \gg \tau\_r\\), the output dynamics is negligible compared to the 
 \end{cases}
 \\]
 
-#### The firing rate based network model with static input (typical ANN case)
+### The firing rate based network model with static input (typical ANN case)
 
 If the input is static or approximately so for a long period of time, we can look at the steady state: \\( \frac{\textrm{d}v}{\textrm{d}t} = 0 \\) and \\( \frac{\textrm{d}I\_s}{\textrm{d}t} = 0 \\) giving
 
@@ -191,7 +191,7 @@ v\_{ss} = F(\textbf{w}\cdot\textbf{u})
 That's how unit output is computed in ANN. \\(F\\) is often a sigmoidal threshold function.
 
 
-### Multiple output neurons in a feedforward network
+## Multiple output neurons in a feedforward network
 
 We assume that the synapses are sufficiently fast to neglect their dynamics, and use \\(\tau\_r\frac{\textrm{d}v}{\textrm{d}t} = -v + F\left(\textbf{w}\cdot\textbf{u}\right)\\) as equation for a single output.
 
@@ -208,7 +208,7 @@ Q: We have officially moved to a higher level of abstraction! When we talked abo
 - Ease of use - we do not necessarily need all of the low-level details in order to explore the dynamics of higher-level systems such as whole networks.
 - **All of these**
 
-### Recurrent networks
+## Recurrent networks
 
 In a more general formulation where output unit \\(i\\) can be connected to output unit \\(j\\) with weight \\(m\_{ij}\\),
 
@@ -231,7 +231,7 @@ M=[0 −0.5; −0.5 0]
 
 Explanation: Suppose that v contains outputs for the fight impulse in the first element and flight in the second element. When we multiply M by v, we see that higher outputs of the fight response will lead to lower outputs of the flight response, and vice versa. Note: this is not a statement about fight and flight responses in nature in general!
 
-### Linear feedforward network (performing numerical differentiation)
+## Linear feedforward network (performing numerical differentiation)
 
 Given the network model
 
@@ -304,11 +304,11 @@ W = \begin{bmatrix}
 \end{bmatrix}
 \\]
 
-### Recurrent networks
+## Recurrent networks
 
 
 
-#### Linear recurrent network
+### Linear recurrent network
 
 \\[
 \tau\frac{\textrm{d}\textbf{v}}{\textrm{d}t} = -\textbf{v} + W\textbf{u} + M\textbf{v}
@@ -318,7 +318,7 @@ let \\(\textbf{h} = W\textbf{u}\\) the weighted \\(N\times 1\\) feedforward inpu
 
 How does \\(M\\) affect \\(v(t)\\)?
 
-##### Using eigenvectors to solve the network equation
+#### Using eigenvectors to solve the network equation
 
 \\[
 \tau\frac{\textrm{d}\textbf{v}}{\textrm{d}t} = -\textbf{v} + \textbf{h} + M\textbf{v}
@@ -358,7 +358,7 @@ c\_i(t) = \frac{\textbf{h}\cdot\textbf{e}\_i}{1-\lambda\_i}\left(1-e^ {\frac{-t(
 
 With that, we can get the expression of \\(\textbf{v}(t)\\).
 
-##### Using eigenvalues to determine network stability
+#### Using eigenvalues to determine network stability
 
 If \\(\exists i: \lambda\_i > 1\\), the first exponential term in \\(c\_i\\) will grow indefinitely with time, so the network is unstable.
 
@@ -371,7 +371,7 @@ Q: We have used the term "steady state" several times now over the past few week
 - **The value of v, given our weight matrices W and M, such that v does not change further over time.**
 - None of these
 
-##### Amplification of inputs in a recurrent network
+#### Amplification of inputs in a recurrent network
 
 If all \\(\lambda\_i < 1\\) and \\(\lambda\_1\\) is close to 1,  and \\(\forall j\neq 1, \lambda\_j \ll 1\\), then
 
@@ -381,7 +381,7 @@ If all \\(\lambda\_i < 1\\) and \\(\lambda\_1\\) is close to 1,  and \\(\forall 
 
 And the network is amplifying the projection of the input on eigenvector \\(\textbf{e}\_1\\) by a factor of \\(\frac{1}{1-\lambda\_1}\\).
 
-###### Example: the angles network.
+##### Example: the angles network.
 
 The 5 output units of a linear network are labeled -180, -90, 0, 90, 180, for the angles that they represent. 
 
@@ -395,7 +395,7 @@ The connectivity matrix is such that close neighbors are amplified, and remote o
 
 With that network, if all eigenvalues are 0 except \\(\lambda\_1 = 0.9\\), we observe the amplification \\(\textbf{v}\_{ss} = 10 (\textbf{h}\cdot\textbf{e}\_1)e\_1\\) of the input around the neuron's preferred angle.
 
-##### Network memory with an eigenvalue of one (performing numerical integration)
+#### Network memory with an eigenvalue of one (performing numerical integration)
 
 If \\(\lambda\_1 = 1\\), and all other \\(\lambda\_i < 1\\), then:
 
@@ -419,7 +419,7 @@ indicating that the firing rate depends on the integral of the past input, even 
 
 This type of integrator neurons is present in the medial vestibular nucleus, maintaining a memory of eye position by integrating bursts from on-direction and off-direction movement neurons.
 
-#### Nonlinear recurrent networks
+### Nonlinear recurrent networks
 
 We now apply a nonlinear function F to the input and recurrent feedback:
 
@@ -435,24 +435,24 @@ F(x) = [x]^ + = x \text{ if } x \gt 0, \text{ and } 0 \text{ otherwise}
 
 It guarantees that the firing rate remains positive.
 
-###### Stability even with large \\(\lambda_i\\)
+##### Stability even with large \\(\lambda_i\\)
 
 If we again take our example of the angles network with the cosines in \\(M\\) and all eigenvalues 0 except \\(\lambda\_1\\), but this time \\(\lambda\_1 = 1.9\\), and we use \\(F\\) as above, we observe the amplification of the firing rate around the preferred value, and the network remains stable thanks to \\(F\\).
 
-###### Winner-takes-all
+##### Winner-takes-all
 
 The same type network can select one peak in the input over the other thanks to lateral inhibition.
 
-###### Gain modulation
+##### Gain modulation
 
 An increase in the input value is multiplicatively amplified in the output.
 
-###### Memory
+##### Memory
 
 Like in the linear case, network memory (integration of past input) can take place, in combination with the gain modulation, etc...
 
 
-#### Non-symmetric recurrent networks
+### Non-symmetric recurrent networks
 
 If there are excitatory and inhibitory neurons, connections can't be symmetric. 
 
@@ -469,7 +469,7 @@ For inhibitory neurons:
 \\]
 
 
-##### Linear stability analysis
+#### Linear stability analysis
 
 The idea is to look at the stability of the network near fixed points (where \\(\frac{\textrm{d}\textbf{v}\_E}{\textrm{d}t} = 0\\) and \\(\frac{\textrm{d}\textbf{v}\_I}{\textrm{d}t} = 0\\).
 
@@ -491,7 +491,7 @@ The two eigenvalues obtained by solving \\(\left|J-\lambda I\right| = 0\\) deter
 \end{cases}
 \\]
 
-###### Example: 1 inhibitory and 1 excitatory neuron:
+##### Example: 1 inhibitory and 1 excitatory neuron:
 
 The excitatory neuron is:
 

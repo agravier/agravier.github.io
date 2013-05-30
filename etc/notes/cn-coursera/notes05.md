@@ -3,11 +3,11 @@ layout: default
 title: Lecture notes in Computational Neuroscience (Week 5)
 ---
 
-## Modeling neurons
+# Modeling neurons
 
-### From equivalent circuit models to the Hodgkin-Huxley model
+## From equivalent circuit models to the Hodgkin-Huxley model
 
-#### Simple electrical circuits
+### Simple electrical circuits
 
 - Capacitor C: insulator that accumulates charge on either side
 - Resistor R: resists the flow of current
@@ -21,9 +21,9 @@ Ohm's law: V = IR (resistance version) or I = Vg (conductance version)
 
 Capacitance definition: C = Q/V : charge divided by voltage
 
-#### Modeling a patch of membrane
+### Modeling a patch of membrane
 
-##### Membrane alone
+#### Membrane alone
 
 The membrane is slightly permeable.
 
@@ -50,7 +50,7 @@ C\frac{dV}{dt} = -\frac{V}{R} + I\_\textrm{ext}
 
 A first-order linear differential equation.
 
-##### Membrane with ion pumps
+#### Membrane with ion pumps
 
 - higher K+ inside
 - higher Na+, Cl-, Ca2+ outside
@@ -110,7 +110,7 @@ V(t) =
 \\]
 
 
-##### With voltage-sensitive ion channels
+#### With voltage-sensitive ion channels
 
 One ion channel's current is determined by Ohm's law. So, the current flowing through one ion channel is determined by the voltage across the membrane and the conductance of the channel: \\(I=Vg\\). Each ion channel has its own conductance. The higher the conductance for one ion, the more the membrane potential is pulled towards the equilibrium potential of that ion, as defined by the Nernst potential.
 
@@ -138,7 +138,7 @@ Q: Let's review our circuit diagram from earlier in the lecture. The resistor, c
 - lipid bilayer, ion channels, ion gradient
 - lipid bilayer, ion gradient, ion channels
 
-##### Computing power at the ionic level: channel nonlinearity
+#### Computing power at the ionic level: channel nonlinearity
 
 We can trace some of the non-linearity that give the neurons their computing power down to the measurements and simulations done at ionic level. As one varies the input current between up to a certain point, the response of the membrane voltage scales linearly; however, past a certain intensity, the system shows its excitability, and the membrane depolarizes disproportionately.
 
@@ -159,7 +159,7 @@ L stands for "leak", it is a non-specific, passive channel.
 
 This circuit is now active, in that the conductance of the Na and K channels is now variable. gNa and gK depend on the voltage.
 
-###### Potassium VG channels
+##### Potassium VG channels
 
 There is a molecular "gate" with a probability to be open that increases with depolarisation (for K channels) or polarisation (for Na channels). In K channels, this probability \\(P\_K\\) depends on the configuration of four sub-units of the channel;  \\(P\_K = n^ 4\\) 
 
@@ -207,7 +207,7 @@ and
 n\_\infty(V) = \frac{\alpha\_n(V)}{\alpha\_n(V)+\beta\_n(V)}
 \\]
 
-###### Sodium VG channels
+##### Sodium VG channels
 
 The Na+ channel has 3 subunit. It also has an additional second gating mechanism that has to be de-inactivated.
 
@@ -215,7 +215,7 @@ Let m the probability of the Na gate subunits to be open, and h that of the addi
 
 Voltage increases m (making it an **activation variable**), but decreases h (**inactivation variable**). As a result, sodium flows are transient and self-limiting.
 
-###### Putting it together into the Hodgkin-Huxley model
+##### Putting it together into the Hodgkin-Huxley model
 
 \\[
 \begin{cases}
@@ -282,7 +282,7 @@ Finally, it is useful to take note on the graphs of the resting potential of eac
 
 With those, one can reconstruct the whole story qualitatively.
 
-### From HH to simplified models
+## From HH to simplified models
 
 Incentives to simplify the HH model:
 
@@ -293,7 +293,7 @@ Observing the firing patterns of different biological neurons, or even of the sa
 
 In real data, there isn't always a clear rate-coded response, and the spike timing can be confusing.
 
-#### Engineering a model that can present spiking and bursting modes: the Integrate-and-Fire model
+### Engineering a model that can present spiking and bursting modes: the Integrate-and-Fire model
 
 Which function \\(f(V)\\) will make the following simple differential equation best describe a neuron's membrane potential response?
 
@@ -326,7 +326,7 @@ How to introduce the non-linear spiking behavior? With ad-hoc rules! Here is the
 
 This works, but it is not nice to look at it.
 
-#### A more less clunky model: Exponential IaF
+### A more less clunky model: Exponential IaF
 
 If we add a second piece of curve on the right of \\(V\_0\\), after \\(V\_{th}\\), so as \\(f(V)\\) crosses zero again...
 
@@ -350,7 +350,7 @@ f(V) = -a(V-V\_0) + e^ {\frac{V-V\_\textrm{th}}{\Delta}}
 
 We still need a ad-hoc reset of the voltage when it reaches \\(V\_\textrm{max}\\).
 
-#### An elegant model: the theta neuron
+### An elegant model: the theta neuron
 
 The theta neuron is a one-dimensional model on the unit circle:
 
@@ -366,7 +366,7 @@ This model is equivalent to a IaF model with quadratic non-linearity.
 
 However, it's notable that the model fires regularly when \\(I(t) = 0\\), so it's a useful model of periodically firing neurons.
 
-#### An extra dimension
+### An extra dimension
 
 The problem of the IaF model is that it's one-dimensional, so there is no other solution than working in a Lie group or patching the dynamics. We need a second variable \\(u\\) to take care of inactivation:
 
@@ -377,7 +377,7 @@ The problem of the IaF model is that it's one-dimensional, so there is no other 
 \end{cases}
 \\]
 
-##### The phase plane diagram
+#### The phase plane diagram
 
 On the <u,V> plane, the points where \\(\frac{\textrm{d}V}{\textrm{d}t} = 0\\) and those where \\(\frac{\textrm{d}u}{\textrm{d}t} = 0\\) define the **nullclines** of V and u.
 
@@ -395,7 +395,7 @@ At any point \\(\langle V, u\rangle\\) in the phase plane, the trajectory is det
 
 Explanation: These concepts can be difficult if you have not encountered them before. Let's recap, if you like. Earlier in the lecture we saw a system with only one dimension (voltage), and we represented the system as movement (or flow) along a line. The direction and speed of flow was determined by the dV/dt function that we plotted. The system was attracted to stable fixed points and repelled away from unstable fixed points. Now we have a system with two dimensions, V and u, and correspondingly we represent the system as flow in a 2-dimensional plane (the phase plane). Both dV/dt and du/dt are defined at every point in the plane, although we cannot show the curves for these derivatives like we could when we only had one dimension. Instead, we plot the curves that show where the derivatives are 0 (these are the nullclines) to give a sense of the system's structure. Similar to our one-dimensional case, our two-dimensional system flows toward the fixed point. But, as you will see, sometimes the system travels through the phase plane in interesting ways.
 
-#### The Simple Model
+### The Simple Model
 
 It's a "zoomed" version of the 2D model above:
 
@@ -414,7 +414,7 @@ c and d determine the resets of V and u.
 
 These parameters can be used to mimic many phenomena, including sub-threshold resonance (which requires 2 variable).
 
-### From HH to more realistic models: taking dendritic structure into consideration
+## From HH to more realistic models: taking dendritic structure into consideration
 
 How does the dendritic tree affect the information processing?
 
@@ -424,7 +424,7 @@ Experiment: inject current in the soma, measure membrane voltage on the dendrite
 
 Experiment: inject current in the dendrite, measure membrane voltage on the soma. Result: delayed, broader, very damped increase in voltage. Observation: the thinner the dendrite, the larger the voltage change. The further from the soma, the more attenuation.
 
-#### Cable theory
+### Cable theory
 
 Cable theory is used to understand voltage propagation in dendrites. V is now a function of position x and time t, resulting in partial differential equations.
 
@@ -478,11 +478,11 @@ v(x,t) \propto \sqrt{\frac{\tau}{4\pi\lambda^ 2t}} e^ {-\frac{t}{\tau}-\frac{\ta
 
 This expression filters the input pulses, much like a convolution filter.
 
-#### Compartmental models
+### Compartmental models
 
 A dendritic tree is not a passive cable. It's a tree, and it has ion channels along.
 
-##### Simplifying the tree structure
+#### Simplifying the tree structure
 
 We divide the dendrites into pieces of cable, or compartments, that are each assumed to have a constant density of ion channels, constant diameter, etc...
 
@@ -492,7 +492,7 @@ The dendritic branching of compartment of diameter d1 into children with diamete
 
 This property is often approximately satisfied by biological dendrites, so it's a common simplification.
 
-##### Addressing the problem of ion channels
+#### Addressing the problem of ion channels
 
 The compartmentalization and simplification of the dendritic tree doesn't address the problem of its active properties that are not modeled by the passive cable model.
 
@@ -504,7 +504,7 @@ The connection between compartment 1 and its children 2 and 3 is regulated by fo
 
 Yale's [ModelDB](http://senselab.med.yale.edu/modeldb/) website regroups many such models.
 
-#### What dendrites add to information processing in neurons?
+### What dendrites add to information processing in neurons?
 
 Some possible ways by which dendritic trees can support neuronal computation:
 
@@ -518,7 +518,7 @@ Dendrites can generate calcium spikes! Together with the backprop of AP from the
 
 Models using some computational properties of dendrites (not fully backed by in observation): sound localization and direction selectivity
 
-##### Delay lines in sound localization (Jeffress model)
+#### Delay lines in sound localization (Jeffress model)
 
 There are nuclei in the brain stem responsible for sound localization. There is a timing different between the arrival of a sound the left ear as compared to the right.
 
@@ -537,7 +537,7 @@ Q: We can call the neurons that receive coincident inputs from both ears "coinci
 
 Explanation: A sound that comes from your left enters your left ear first. The signal from your left ear then has more time to travel down the delay line leading to your coincidence detecting neurons. This signal gets further along the delay line before it meets the signal from your right ear, which began slightly after the signal from your left ear. Thus, the two signals meet at a coincidence detecting neuron that is closer to the right ear, and your brain infers that the sound came from your left.
 
-##### Direction selectivity
+#### Direction selectivity
 
 In the retina, neurons may respond to a stimulus moving one way and be inhibited by the same stimulus moving in the other direction (direction cell activity). 
 
@@ -546,15 +546,15 @@ A single neuron can have the computational power to be responsible for that prop
 - spatial input is distributed along one dendrite, with the sequence of spatial inputs corresponding to the movement direction aligned in the direction of the soma.
 - the sequence of inputs along the dendrite influences the firing probability of the neuron thanks to the summation of depolarizations in the direction of signal propagation.
 
-### Correlations and synchrony in neural populations (Guest lecture by Eric Shea-Brown)
+## Correlations and synchrony in neural populations (Guest lecture by Eric Shea-Brown)
 
-#### Considering an individual neuron:
+### Considering an individual neuron:
 
 The first and simplest statistic that matters in terms of how cells responds to varying stimulus: the mean firing rate. The rate code is typically represented by tuning curves.
 
 Other interesting statistics that may give clues about the way neurons represent information, including the variance of the firing rate - the error bar on the tuning curve.
 
-#### Considering a population:
+### Considering a population:
 
 - we can plot the individual tuning curves of several neurons and their variance. 
 - we can study the paired response of cells: considering two of the cells of the population at a time, measure their Pearson's correlation coefficient:
@@ -571,7 +571,7 @@ So, correlation decreases information in homogeneous populations, but increases 
 
 Also, the presence of correlated response could be itself in some cases indicative of something about the input. 
 
-#### Pairwise, triplet, ... n-tuplet spike patterns
+### Pairwise, triplet, ... n-tuplet spike patterns
 
 Array recording techniques pose a challenge: how to represent those data? Enumeration of correlations is astronomical: for a 100 cells, that makes 10000 pairwise statistics, \\(100^ 3\\) triplet, etc...
 

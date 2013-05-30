@@ -3,17 +3,17 @@ layout: default
 title: Lecture notes in Computational Neuroscience (Week 2)
 ---
 
-## Week 2: Neural code
+# Week 2: Neural code
 
-### Tools
+## Tools
 
-#### fMRI 
+### fMRI 
 
 Brain placed in a magnetic field. Measures magnetic field variations and interprets them as changes in blood oxygenation of brain areas. 
 
 Average activity of many neurons -> rather low spatial resolution. Slow response (seconds), low temporal resolution.
 
-#### EEG
+### EEG
 
 Measures electrical field variations at the surface of the scalp, that correspond to the transmission of electrical signals along the axons of neurons (that match certain orientation criteria).
 
@@ -23,19 +23,19 @@ Q: Though fMRI and EEG are useful techniques in that they can record neural acti
 
 A: Neither gives as clean a signal as we would like with respect to temporal and spatial resolution.
 
-#### Electrode arrays
+### Electrode arrays
 
 Directly measures electrical field variations in the close proximity of neurons. Can be placed on the surface of neural tissues, or can penetrate (~2mm) into the surface of the cerebrum. 
 
 Very high spatial resolution, very high temporal resolution, limited area. Invasive. Surgical settings only.
 
-#### Calcium imaging
+### Calcium imaging
 
 Inject a fluorescent calcium indicator that emits more light when bound to calcium. Ca\\(^ +\\) enters the cell during AP generation and decays fast, so spikes are highlighted.
 
 Very high spatial resolution (individual neurons), good temporal resolution. Invasive. Surgical settings only. Limited area.
 
-#### Patch clamp electrodes
+### Patch clamp electrodes
 
 Clamp a micropipette on the cell membrane, and insert an electrode inside the cell.
 
@@ -45,9 +45,9 @@ Q: Preforming the patch clamp technique is difficult and requires quite a bit of
 
 A: Action potentials (and other activity) recorded internally have higher recorded amplitudes as a result of the proximity to the changes in voltage. Activity recorded externally is of lesser amplitude and requires much amplification because voltage changes decay quickly over short distances. Also, when patched onto a small portion of the plasma membrane of a neuron, a researcher has the ability to discern the properties of single ion channels, as seen in the diagram. Additionally, some internal recording techniques allow for the injection of certain chemicals and ions to which the researcher can record a change in internal activity of the patched cell.
 
-### Models of neural encoding: Characterized input-output relationships in various neuron systems
+## Models of neural encoding: Characterized input-output relationships in various neuron systems
 
-#### The neural code
+### The neural code
 
 Retina: Rods and cones are photoreceptors that capture light. Their output is transmitted and processed by successive layers of neurons until the retinal ganglions. The axons of retinal ganglions form the optic tract.
 
@@ -80,11 +80,11 @@ In a single cell:
 - stimulus = unknown, so we need to determine to what feature of a stimulus a neuron responds -> dimensionality reduction techniques
 - what is the relationship between spike and stimulus, simply modeled as P(spike | stimulus feature) and P(stimulus feature | spike). The probabilistic model is justified by the non-determinism observed in the raster plot. Also, the input features that we model are not complete, and neglected features and sensitivities are modeled as noise -> stochastic model
 
-#### Neural tuning curves
+### Neural tuning curves
 
 Tuning curves can be used to represent the way that neural systems respond to their inputs.
 
-##### Stimulus representation in the visual system
+#### Stimulus representation in the visual system
 
 A well-known example of tuning curve represents the relationship between the response (nb of spikes) of a V1 neuron and the orientation of a bar of light moving across the visual field. The relationship is approximately Gaussian.
 
@@ -108,7 +108,7 @@ A: Differential firing rates of these cells responding to particular, but simple
 
 The neural tuning curves of high-area neurons responding to complex features like faces is mapped by a showing discrete samples of the input signal and recording the number of spikes. The tuning curve is then just an histogram without predefined order, and one has to look at the response to try to find an underlying common feature (e.g. pictures of brad pitt and aniston together only, pamela anderson pictures and name written out). Those neurons can even respond to processed auditory signal -> "concept neurons".
 
-##### Building up complexity
+#### Building up complexity
 
 How the processing stream builds up from geometric features selectivity to semantic response?
 
@@ -116,7 +116,7 @@ The stream is not a linear chain of processing, there is a lot of interconnectio
 
 -> reasons to believe that these higher-order representations can, through feedback mechanisms, influence what is being selected at lower level from the stimulus. There is evidence that semantics can influence the representation of an image in V1 and V4. (expectations, learning: what you think you're looking at can shape what you see).
 
-### Constructing simple response models
+## Constructing simple response models
 
 In general, the experimenter does not know what stimulus feature may be the one for which the unit is selective. He also does not know what function links stimulus to response.
 
@@ -165,7 +165,7 @@ Introducing a static non-linearity solves that problems and adds flexibility. Th
 
 g could be a sigmoidal function that introduces a saturating non-linearity and guarantees the bounding of the firing rate.
 
-#### Reverse correlation to identify the feature to which a neuron responds
+### Reverse correlation to identify the feature to which a neuron responds
 
 Reverse correlation:
 
@@ -177,7 +177,7 @@ Q: What would increase the accuracy (with respect to the true representation of 
 
 A: Using the reverse correlation technique to sum over many more iterations of the random stimulus.
 
-#### Determining the non-linear filter g from data
+### Determining the non-linear filter g from data
 
 Given the i/o function P(spike | stimulus),  we can use Bayes' rule to figure out g:
 
@@ -205,7 +205,7 @@ A: The positons along the stimulus curve that resemble the feature (filter) f wi
 
 Explanation: S1 is a representation of the stimulus curve after it has been continuously filtered through the filter, f(t), over the entire time course of the stimulus at each point in time. That is, each point along the curve S1 represents the scalar value of the stimulus values discretized by some value, τ, weighted by the filter, f(t), at each discretized time point such that S1 = stim {s(t), s(t - τ), s(t - 2τ) . . . } * f(t).
 
-### Feature selection
+## Feature selection
 
 Neural systems don't only respond to one feature. -> How to introduce more features in our LN models?
 
@@ -234,7 +234,7 @@ Now, but projecting the sample sequence point on the feature vector f in this hi
 We are not limited to time and Fourier transforms, any set of features vector \\((f\_1, f\_2, f\_3, \ldots)\\) may represent the input sequence. The issue is to choose the features \\(f\_i\\) that best capture interesting aspects of the stimulus wrt AP firing.
 
 
-#### Determining multiple features from white noise.
+### Determining multiple features from white noise.
 
 Let a Gaussian white noise stimulus (random with Gaussian distribution(0, \sigma)): \\( P(s(t)) = \mathcal{N}(0,sigma^2) \\)
 
@@ -274,7 +274,7 @@ Illustration: Eigenfaces
 
 Given the common structure of faces, PCA lets us select about 8 principal components (eigenfaaces), and most id. photos can be expressed as a linear combinations of eigenfaces.
 
-##### Spike sorting
+#### Spike sorting
 
 PCA can also be used to separate waveforms from different neurons that were recorded on the same electrode:
 
@@ -282,7 +282,7 @@ PCA can also be used to separate waveforms from different neurons that were reco
 - project, cluster
 - transform back the clustered projected points into the original series
 
-##### Characterizing spike-triggering dimensions
+#### Characterizing spike-triggering dimensions
 
 We are looking for PCA dimensions with variances that are different from the prior distribution.
 
@@ -301,7 +301,7 @@ Example: vibration-sensitive neuron that is sensitive to the frequency but not t
 
 Example: Complex cells in V1 that respond to grating frequencies  but are insensitive to the spatial phase of the grating (it can be shifted) make that the spike-triggered average is just a blur. Only higher-order analysis can reveal it.
 
-#### Evaluating features
+### Evaluating features
 
 As we are trying features to describe the unit's sensitivity, we try to obtain an interesting tuning curve. That means a tuning curve P(spike | s) = P(s | spike) \frac{P(spike)}{P(s)} where the ratio \frac{P(s | spike)}{P(s)} varies most. 
 
@@ -331,11 +331,11 @@ A: It does not require a specific structure for the distributions, such as Gauss
 
 A: You sound super-smart when you mention it at a party.
 
-### Less basic coding models
+## Less basic coding models
 
 Spiking history affects unit activity. How to introduce that dependence in the models?
 
-#### The generalized linear model (GLM)
+### The generalized linear model (GLM)
 
 It's the same as the linear/non-linear model (signal->feature filter->static non-linearity (exponential)), with an additional nonlinear feedback filter that is convoluted with the output spike train and incorporated in the input to the static non-linearity. The shape of the additional non-linear feedback filter determines the if the feedback is positive of negative, and on which timescale.
 
@@ -352,11 +352,11 @@ A: You find the model parameters which maximize the probability of the output yo
 
 To generalize this model to the case of multiple neurons, where a some neurons' outputs affect other neurons, coupling filters are added: they are like the non-linear post-spike feedback filters, but they feedback into the convoluted signal of the _other neuron_. This is useful to incorporate into the model correlation due to direct (synaptic) or indirect (network) coupling between neurons.
 
-#### Modeling noise
+### Modeling noise
 
 Until now, we had a model that produces an instantaneous average firing rate at time t \\( r(t) \\), but no actual spikes. -> we need an explicit model of spiking. How to generate the spike train from a firing rate? -> stochastic generators (the Poisson generator)
 
-##### Bernoulli trials
+#### Bernoulli trials
 
 Coin flip:
 
@@ -373,7 +373,7 @@ To simplify out analysis, let's first assume that the firing rate is constant: \
 
 What is the distribution of the number of spikes? Time being equally partitioned, the probability that the n bins contain in total k spikes is \\( P\_n[k] = \binom{n}{k} p^ k (1-p)^ {n-k} \\). The mean number of spikes (expected value) is \\( \mathrm{E}(x) = np \\). The variance is \\( \mathrm{Var}(x) = np (1-p) \\).
 
-##### Poisson
+#### Poisson
 
 Bringing the bin size to the limit, for a duration of T time units, we have the Poisson distribution:
 

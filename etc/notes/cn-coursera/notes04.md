@@ -3,13 +3,13 @@ layout: default
 title: Lecture notes in Computational Neuroscience (Week 4)
 ---
 
-## Week 4: Information Theory and Neural Coding
+# Week 4: Information Theory and Neural Coding
 
-### Information theory and coding principles
+## Information theory and coding principles
 
 If spikes are binary info, how well do they represent information?
 
-#### Entropy and information
+### Entropy and information
 
 We again use our model of spiking as repeated Bernoulli trials: time bins each with a probability \\(p\\) of seeing a spike (a "1"):
 
@@ -31,12 +31,12 @@ Then we have
 \textrm{information}(0) = -\textrm{log}\_2(1-p)
 \\]
 
-##### Intuitive explanation of information
+#### Intuitive explanation of information
 
 Imagine a game where your opponent throws a ball in a court. You have to best guess where it will land. There is a \\(\frac{1}{2}\\) prior probability that it will land in the left half, and \\(\frac{1}{2}\\) that it will land in the right half. If you can get information that eliminates the let half, that piece of data contains \\(-\textrm{log}\_2\frac{1}{2} = 1\\) bit of information. If we have data that tells both in which vertical half and in which horizontal half (so in which quarter) of the court the ball will land, we are getting information about an event that had a prior probability of \\(\frac{1}{2}\frac{1}{2} = \frac{1}{4}\\), so the information carried is \\(\textrm{log}\_2\left(\frac{1}{2}\frac{1}{2}\right) = \textrm{log}\_2\frac{1}{2}+\textrm{log}\_2\frac{1}{2} = 2 \textrm{bit}\\).
 
 
-##### Entropy
+#### Entropy
 
 Entropy is the average information of a random variable. It's the sum of the surprisal (self-information) values of all possible values of the RV. It's dimensionless but conventionally called bits.
 
@@ -100,7 +100,7 @@ Q: If p(r|s) = p(r), what value must MI take?
 - **0** 
 - More information is needed.
 
-##### Kullback–Leibler divergence
+#### Kullback–Leibler divergence
 
 As seen in week 2, the **Kullback–Leibler divergence from** distribution P **to** distribution Q \\(D\_\textrm{KL}(P||Q)\\), also called the information gain or relative entropy, measures the  the information lost when Q is used to approximate P. We can make the link with mutual information: the mutual information of the stimulus distribution S and of the response distribution R is the Kullback–Leibler divergence from their joint probability distribution P(R,S) to their marginal probability distribution (which is their joint probability distribution if they were independent) P(R)P(S):
 
@@ -122,11 +122,11 @@ Q: What does the fact that \\(H[R] - \sum\_s P(s) H[R|s] = H[S] - \sum\_r P(r) H
 - None of these.
 
 
-#### Computing information for neural spike trains
+### Computing information for neural spike trains
 
 Until now, we've dealt with single spikes and firing rates, but not with spike patterns.
 
-##### Computing information for spike patterns
+#### Computing information for spike patterns
 
 The idea is to discretize the cell response in bins of width \\(\Delta t\\) and chunk it in binary words to length \\(L\\).
 
@@ -157,7 +157,7 @@ For the bin width, a limit appears below which shorter bins have almost no effec
 
 There is a large body of literature to deal with the limited amount of data available and still get information theoretic quantities.
 
-##### Computing information for a single spike
+#### Computing information for a single spike
 
 How much does the observation of one spike tell us about the stimulus, assuming that we don't know what feature of the stimulus triggered it?
 
@@ -183,4 +183,4 @@ Q: Can you recall how to compute the entropy of the response?
 
 
 
-#### What can information tell us about coding?
+### What can information tell us about coding?

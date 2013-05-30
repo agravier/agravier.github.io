@@ -3,9 +3,9 @@ layout: default
 title: Lecture notes in Computational Neuroscience (Week 3)
 ---
 
-## Week 3: Decoding neural responses
+# Week 3: Decoding neural responses
 
-### Two stimulus values and one neuron: binary choice
+## Two stimulus values and one neuron: binary choice
 
 You hear a rustle in the forest. Is it indicative of danger?
 
@@ -110,7 +110,7 @@ So, when \\( \textrm{Loss}\_+ < \textrm{Loss}\_- \\), the loss minimizing strate
 
 The loss-minimizing strategy is to decide to decode a + when the likelihood ratio is greater than the ration of expected losses: \\( \frac{p(r|+)}{p(r|-)} > \frac{L\_+ p(+)}{L\_- p(-)} \\).
 
-#### Vision and starlight (Fred Rieke)
+### Vision and starlight (Fred Rieke)
 
 Retina:
 
@@ -136,9 +136,9 @@ The rod bipolar cell is already receiving aggregate input from several rods, so 
 Recording rod bipolar cells reveals the thresholding on-linearity. Using the measured distribution of rod signal and noise, we look for the non-linearity shape that predicts the measured bipolar response. This thresholding NL is way into the signal distribution. This can be understood theoretically by scaling the conditional distribution of signal response by the prior probability of receiving a photon in low light.
 
 
-### Many values and many neurons: decoding algorithms for population codes.
+## Many values and many neurons: decoding algorithms for population codes.
 
-#### Cricket cereal system: population vector with 4 cardinal neurons
+### Cricket cereal system: population vector with 4 cardinal neurons
 
 Cricket cereal system: 2 hind organs that sense air movement. Each  is covered in hairs connected to mechanoreceptors that transmit AP to a bunch of interneurons. 4 of these interneurons respond to 4 cardinal wind directions for low wind speeds.
 
@@ -159,7 +159,7 @@ Q: Which of these options presents a plausible explanation for the presence of n
 
 Explanation: This has to do with negation and how it relates to the physical world. On the real number line, we of course has negative numbers. But in physical terms, we cannot, for instance, have a negative firing rate. Also, sensory neurons are meant to respond to positive stimuli. As a result, we need these pairs of vectors that face in opposite directions in order to ensure the possibility of a positive response in all cases.
 
-#### M1 neurons: population vector with many neurons
+### M1 neurons: population vector with many neurons
 
 Again, neurons responding to angle (this time arm movement) by cosine. With a base firing rate of \\(r\_0\\), the firing rate of a neuron with preference \\(\overrightarrow{c}\_a\\) is
 
@@ -182,11 +182,11 @@ Q: In this equation, we normalize the contribution of each neuron to the populat
 
 Explanation: When combining the effects of several neurons, we want to take into account that the neurons have differences regardless of the stimuli. For instance, if a neuron's maximum firing rate is 10Hz, and we observe an average of 9Hz in the presence of a particular stimulus, this is more interesting to us than if we observed a 9Hz average rate for a neuron whose maximum firing rate is 100Hz.
 
-#### More general population decoding
+### More general population decoding
 
 Not all responses are cosines, and not all population responses are the weighted average of neurons, and an optimal population decoding technique should also make use of knowledge of the stimulus and response distributions.
 
-##### Bayesian inference
+#### Bayesian inference
 
 Vocabulary: in \\(p[s|r] = \frac{p[r|s] p[s]}{p[r]}\\),
 
@@ -215,7 +215,7 @@ What is the standard deviation of a poisson neuron with an average firing rate o
 
 Explanation: The variance of a poisson distribution is equal to the mean and the standard deviation is the square root of the variance. Therefore, if the mean firing rate is r, the variance is equal to \\(\sqrt{r}\\}.
 
-###### Maximum likelihood
+##### Maximum likelihood
 
 The probability of the population response vector \\(r\\) given stimulus s is the product (indep.) of the probabilities \\(P[r\_a|s]\\). As we are assuming a Poisson distribution, we have
 
@@ -255,7 +255,7 @@ If variances are all equal, we find an expression of the population vector.
 If not, the **informativeness** of each neuron is taken into account in the expression of \\(s^ *\\), as the inverse of the spread is used to weight its contribution!
 
 
-###### Maximum a posteriori
+##### Maximum a posteriori
 
 If the likelihood distribution is P(A|B), what is the a posteriori distribution?
 
@@ -281,13 +281,13 @@ s^ * = \frac{T\sum\_{a=1}^ N\frac{r\_as\_a}{\sigma\_a^ 2} + \frac{s\_\textrm{pri
 
 Now, compared to the ML case, information about the prior is taken into account, and here in the case of a gaussian prior distribution, the smaller its spread, the more influence \\(s\_\textrm{prior}\\) has.
 
-#### Limitations of population vector, ML ad MAP
+### Limitations of population vector, ML ad MAP
 
 - Can't take more temporal information than mean firing rate
 - Tuning curves only
 - Assumes independent neurons in the population.
 
-### Complex, time-varying stimulus reconstruction
+## Complex, time-varying stimulus reconstruction
 
 Extend Bayesian decoding to continuous time-varying stimuli (and responses).
 
@@ -307,7 +307,7 @@ We can choose L() = MSE, and as usual, try to find \\(s\_\textrm{Bayes}\\) so as
 
 ... which is no more than the continuous expression of the STA.
 
-#### Spike train decoding? (from 3:56 in week 3, lecture 3, I don't follow)
+### Spike train decoding? (from 3:56 in week 3, lecture 3, I don't follow)
 
 ...
 
