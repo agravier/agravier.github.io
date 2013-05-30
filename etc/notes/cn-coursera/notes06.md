@@ -3,7 +3,7 @@ layout: default
 title: Lecture notes in Computational Neuroscience (Week 6)
 ---
 
-# Networks of neurons
+# Week 6: Networks of neurons
 
 ## Modeling synapses
 

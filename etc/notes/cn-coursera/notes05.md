@@ -3,7 +3,7 @@ layout: default
 title: Lecture notes in Computational Neuroscience (Week 5)
 ---
 
-# Modeling neurons
+# Week 5: Modeling neurons
 
 ## From equivalent circuit models to the Hodgkin-Huxley model
 
