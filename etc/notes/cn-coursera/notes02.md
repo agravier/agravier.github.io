@@ -11,13 +11,13 @@ title: Lecture notes in Computational Neuroscience (Week 2)
 
 Brain placed in a magnetic field. Measures magnetic field variations and interprets them as changes in blood oxygenation of brain areas. 
 
-Average activity of many neurons -> rather low spatial resolution. Slow response (seconds), low temporal resolution.
+Average activity of many neurons \\(\rightarrow\\) rather low spatial resolution. Slow response (seconds), low temporal resolution.
 
 ### EEG
 
 Measures electrical field variations at the surface of the scalp, that correspond to the transmission of electrical signals along the axons of neurons (that match certain orientation criteria).
 
-Fast response -> higher temporal resolution. Non invasive
+Fast response \\(\rightarrow\\) higher temporal resolution. Non invasive
 
 Q: Though fMRI and EEG are useful techniques in that they can record neural activity in awake and behaving humans, what is the downside to their function?
 
@@ -63,11 +63,11 @@ A: The cell fires very reliably (upon every iteration of the stimulus) at that p
 
 How to determine the meaning of these responses? Is it a complex population code? Are individual responses understandable independently form other neurons's responses?
 
--> 2 problems: encoding and decoding
+\\(\rightarrow\\) 2 problems: encoding and decoding
 
 Encoding: from stimulus to response. From descriptive models to mechanistic models.
 
-Decoding: What do the responses tell about the stimulus if all we have access to are the responses? -> decoding algorithm: how to evaluate how accurate it is?
+Decoding: What do the responses tell about the stimulus if all we have access to are the responses? \\(\rightarrow\\) decoding algorithm: how to evaluate how accurate it is?
 
 Probabilistic response models: 
 
@@ -77,8 +77,8 @@ Probabilistic response models:
 In a single cell:
 
 - response = spike
-- stimulus = unknown, so we need to determine to what feature of a stimulus a neuron responds -> dimensionality reduction techniques
-- what is the relationship between spike and stimulus, simply modeled as P(spike | stimulus feature) and P(stimulus feature | spike). The probabilistic model is justified by the non-determinism observed in the raster plot. Also, the input features that we model are not complete, and neglected features and sensitivities are modeled as noise -> stochastic model
+- stimulus = unknown, so we need to determine to what feature of a stimulus a neuron responds \\(\rightarrow\\) dimensionality reduction techniques
+- what is the relationship between spike and stimulus, simply modeled as P(spike | stimulus feature) and P(stimulus feature | spike). The probabilistic model is justified by the non-determinism observed in the raster plot. Also, the input features that we model are not complete, and neglected features and sensitivities are modeled as noise \\(\rightarrow\\) stochastic model
 
 ### Neural tuning curves
 
@@ -106,7 +106,7 @@ Q: In order for higher order feature detection to occur, what must be happening 
 
 A: Differential firing rates of these cells responding to particular, but simple (bars of light), features that are brought together to produce complex shapes and concepts.
 
-The neural tuning curves of high-area neurons responding to complex features like faces is mapped by a showing discrete samples of the input signal and recording the number of spikes. The tuning curve is then just an histogram without predefined order, and one has to look at the response to try to find an underlying common feature (e.g. pictures of brad pitt and aniston together only, pamela anderson pictures and name written out). Those neurons can even respond to processed auditory signal -> "concept neurons".
+The neural tuning curves of high-area neurons responding to complex features like faces is mapped by a showing discrete samples of the input signal and recording the number of spikes. The tuning curve is then just an histogram without predefined order, and one has to look at the response to try to find an underlying common feature (e.g. pictures of brad pitt and aniston together only, pamela anderson pictures and name written out). Those neurons can even respond to processed auditory signal \\(\rightarrow\\) "concept neurons".
 
 #### Building up complexity
 
@@ -114,7 +114,7 @@ How the processing stream builds up from geometric features selectivity to seman
 
 The stream is not a linear chain of processing, there is a lot of interconnection. For instance, the thalamus relays info to cortical areas but also receives a lot of feedback from them.
 
--> reasons to believe that these higher-order representations can, through feedback mechanisms, influence what is being selected at lower level from the stimulus. There is evidence that semantics can influence the representation of an image in V1 and V4. (expectations, learning: what you think you're looking at can shape what you see).
+\\(\rightarrow\\) reasons to believe that these higher-order representations can, through feedback mechanisms, influence what is being selected at lower level from the stimulus. There is evidence that semantics can influence the representation of an image in V1 and V4. (expectations, learning: what you think you're looking at can shape what you see).
 
 ## Constructing simple response models
 
@@ -187,7 +187,7 @@ P(spike | stimulus) = \frac{P(stimulus | spike) P(spike)}{P(stimulus)}
 
 But stimulus is not just the value of the stimulus at t, but also the value at preceding times, as per temporal filtering. Even discretized, that makes an unconveniently large probability table.
 
--> Instead, we use the the convolution of the temporal filter with the stimulus over the past timeframe: \\( s\_1 = \int f(\tau) s(t-\tau) \mathrm{d}\tau \\). It's a scalar
+\\(\rightarrow\\) Instead, we use the the convolution of the temporal filter with the stimulus over the past timeframe: \\( s\_1 = \int f(\tau) s(t-\tau) \mathrm{d}\tau \\). It's a scalar
 
 Now, we can use: 
 
@@ -207,7 +207,7 @@ Explanation: S1 is a representation of the stimulus curve after it has been cont
 
 ## Feature selection
 
-Neural systems don't only respond to one feature. -> How to introduce more features in our LN models?
+Neural systems don't only respond to one feature. \\(\rightarrow\\) How to introduce more features in our LN models?
 
 To add the possibility to respond to multiple features, we now have one scalar-valued spatiotemporal filter function \\(f\_i\\) per feature, and we use a multi-dimensional i/o function (for instance, a 2 dimensional sigmoid).
 
@@ -236,13 +236,13 @@ We are not limited to time and Fourier transforms, any set of features vector \\
 
 ### Determining multiple features from white noise.
 
-Let a Gaussian white noise stimulus (random with Gaussian distribution(0, \sigma)): \\( P(s(t)) = \mathcal{N}(0,sigma^2) \\)
+Let a Gaussian white noise stimulus: \\( P(s(t)) = \mathcal{N}(0,sigma^ 2) \\)
 
 If we look a the (square of) the amplitude of the stimulus in function of the frequency component, we notice that it has equal power at all frequencies, until the limit sampling resolution, meaning until the frequencies at which the signal resolution is lost and the signal becomes smooth. The point at which the power spectrum starts to dwindle is about the inverse of the correlation time of the stimulus.
 
 Such a normal stimulus has the property that it will fill out a gaussian N-sphere in any transformed N-dimensional space. So, alone any feature, it will have a Gaussian distribution.
 
--> always spherically symmetric with respect to our choice of representation.
+\\(\rightarrow\\) always spherically symmetric with respect to our choice of representation.
 
 Feeding the unit with many such Gaussian noise input sequences, some will end up triggering spikes. 
 
@@ -297,13 +297,13 @@ Q: Mark 'true' if: covariance analysis allows us to find spike-conditioned featu
 
 A: Check for 'true'
 
-Example: vibration-sensitive neuron that is sensitive to the frequency but not to the phase of the signal -> complex project shape 
+Example: vibration-sensitive neuron that is sensitive to the frequency but not to the phase of the signal \\(\rightarrow\\) complex project shape 
 
 Example: Complex cells in V1 that respond to grating frequencies  but are insensitive to the spatial phase of the grating (it can be shifted) make that the spike-triggered average is just a blur. Only higher-order analysis can reveal it.
 
 ### Evaluating features
 
-As we are trying features to describe the unit's sensitivity, we try to obtain an interesting tuning curve. That means a tuning curve P(spike | s) = P(s | spike) \frac{P(spike)}{P(s)} where the ratio \frac{P(s | spike)}{P(s)} varies most. 
+As we are trying features to describe the unit's sensitivity, we try to obtain an interesting tuning curve. That means a tuning curve \\(P(spike | s) = P(s | spike) \frac{P(spike)}{P(s)}\\) where the ratio \\(\frac{P(s | spike)}{P(s)}\\) varies most. 
 
 Q: In other words, we prefer tuning curves which:
 
@@ -311,7 +311,7 @@ A: Make our prior and spike-conditioned distributions look much different for a 
 
 Expl: We do not particularly care if our spike-conditioned distributions have multiple modes (peaks) or have large responses (high peaks), since they can still look exactly like the prior and therefore would not be very useful to us! What we want is to be able to tell the difference between a spike-conditioned stimulus and a random stimulus. That means our model can provide us with a useful probability of whether a spike will occur (referred to here as p(spike|s), aka the tuning curve).
 
-So, we can me sure the discrepancy between the two distributions to estimate the value of the chosen feature. For instance, using the Kullback-Leibler divergence of P(s) from P(s | spike) 
+So, we can me sure the discrepancy between the two distributions to estimate the value of the chosen feature. For instance, using the Kullback-Leibler divergence of \\(P(s)\\) from \\(P(s | spike) \\).
 
 [Wikipedia](http://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence): the Kullback–Leibler divergence of Q from P, denoted \\(D_\textrm{KL}(P||Q)\\), is a measure of the information lost when Q is used to approximate P: KL measures the expected number of extra bits required to code samples from P when using a code based on Q, rather than using a code based on P. Typically P represents the "true" distribution of data, observations, or a precisely calculated theoretical distribution. The measure Q typically represents a theory, model, description, or approximation of P.
 
@@ -337,7 +337,7 @@ Spiking history affects unit activity. How to introduce that dependence in the m
 
 ### The generalized linear model (GLM)
 
-It's the same as the linear/non-linear model (signal->feature filter->static non-linearity (exponential)), with an additional nonlinear feedback filter that is convoluted with the output spike train and incorporated in the input to the static non-linearity. The shape of the additional non-linear feedback filter determines the if the feedback is positive of negative, and on which timescale.
+It's the same as the linear/non-linear model (signal\\(\rightarrow\\)feature filter\\(\rightarrow\\)static non-linearity (exponential)), with an additional nonlinear feedback filter that is convoluted with the output spike train and incorporated in the input to the static non-linearity. The shape of the additional non-linear feedback filter determines the if the feedback is positive of negative, and on which timescale.
 
 The maximum likelihood method is used to fit GLM. The choice of an exponential static non-linearity makes the application of the maximum likelihood method easier.
 
@@ -354,7 +354,7 @@ To generalize this model to the case of multiple neurons, where a some neurons' 
 
 ### Modeling noise
 
-Until now, we had a model that produces an instantaneous average firing rate at time t \\( r(t) \\), but no actual spikes. -> we need an explicit model of spiking. How to generate the spike train from a firing rate? -> stochastic generators (the Poisson generator)
+Until now, we had a model that produces an instantaneous average firing rate at time t \\( r(t) \\), but no actual spikes. \\(\rightarrow\\) we need an explicit model of spiking. How to generate the spike train from a firing rate? \\(\rightarrow\\) stochastic generators (the Poisson generator)
 
 #### Bernoulli trials
 

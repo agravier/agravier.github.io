@@ -35,7 +35,7 @@ Retina: tissue of receptors at the back of the eye. Retinal ganglion cells conve
 
 Experiments to understand the RF of cells in the retina:
 
-Flash circular spots of light on different locations on the retina. Each cell responds to a spot of light in one particular location. Spot of light in the surrounding area inhibits response -> concept of center-surround RF in the retina (on-center, off-surround or off-center, on-surrond)
+Flash circular spots of light on different locations on the retina. Each cell responds to a spot of light in one particular location. Spot of light in the surrounding area inhibits response \\(\rightarrow\\) concept of center-surround RF in the retina (on-center, off-surround or off-center, on-surrond)
 
 Q: The On-Center / Off-Surround receptive field can be thought of as a filter. This filter results in more activation due to certain stimuli, and a depression in activation due to other stimuli. What is this particular filter doing?
 
@@ -49,7 +49,7 @@ Answers the question: _how_ are oriented receptive fields built from center-surr
 
 We need to look at the neuroanatomy of the visual system.
 
-Retina -> optic nerve -> LGN -> V1
+Retina \\(\rightarrow\\) optic nerve \\(\rightarrow\\) LGN \\(\rightarrow\\) V1
 
 In LGN, RFs are circular center surround, but in V1, they are elongated. How is the transformation done? The anatomy gives us an important clue: several LGN cells converge to each V1 cell. Model proposed by Hubel & Wiesel: several LGN cells whose combined RFs form an elongated RFs forward their output to one V1 cell. This model is controversial as it does not take into account recurrent (intra-layer) V1 connections.
 
@@ -103,7 +103,7 @@ Resting membrane potential of -70mV thanks to difference in relative ionic conce
 - active ionic pumps on the cell membrane expel Na\\(^ +\\) and let K\\(^ +\\) in.
 - diffusion forces around open passive channels let ions flow.
 
-Excitatory (depolarizing) post-synaptic electrical potential -> local summation of those EPSP -> AP threshold of ~-65mV -> output spike
+Excitatory (depolarizing) post-synaptic electrical potential \\(\rightarrow\\) local summation of those EPSP \\(\rightarrow\\) AP threshold of ~-65mV \\(\rightarrow\\) output spike
 
 The local depolarization and repolarization of the membrane happens thanks to ion-selective membrane channels (proteins), that can be:
 
@@ -128,7 +128,7 @@ Electrical synapses directly propagate the electrical activity from one neuron t
 
 Chemical synapses: the AP triggers the release of neurotransmitters in the synaptic cleft (vesicles containing the NT fuse with the membrane). The NT then bind with the chemically-gated ion channels on the other side, and the channels open. For instance, channels that let Na\\(^ +\\) in, resulting in increasnig the membrane potential.
 
-Evolutionary perspective: what justifies chemical synapses? Possible answer: synapse strength more adjustable (density of inning channels) -> chemical synapses as the basis of learning.
+Evolutionary perspective: what justifies chemical synapses? Possible answer: synapse strength more adjustable (density of inning channels) \\(\rightarrow\\) chemical synapses as the basis of learning.
 
 1 cortical neuron ~ 10k synapses.
 
@@ -137,11 +137,11 @@ Inhibitory synapse: decrease the post-synaptic membrane potential
 
 An example of transmission at an excitatory synapse:
 
-input spike -> release of NT (e.g. *glutamate*) -> NT binds to ion channel receptors -> ion channels open -> Na\\(^ +\\) influx -> depolarization -> excitatory post-synaptic potential (EPSP)
+input spike \\(\rightarrow\\) release of NT (e.g. *glutamate*) \\(\rightarrow\\) NT binds to ion channel receptors \\(\rightarrow\\) ion channels open \\(\rightarrow\\) Na\\(^ +\\) influx \\(\rightarrow\\) depolarization \\(\rightarrow\\) excitatory post-synaptic potential (EPSP)
 
 An example of transmission at an inhibitory synapse: 
 
-input spike -> release of NT (e.g. *GABA*) -> NT binds to ion channel receptors -> ion channels open -> K\\(^ +\\) outflux -> hyperpolarization -> inhibitory post-synaptic potential (IPSP)
+input spike \\(\rightarrow\\) release of NT (e.g. *GABA*) \\(\rightarrow\\) NT binds to ion channel receptors \\(\rightarrow\\) ion channels open \\(\rightarrow\\) K\\(^ +\\) outflux \\(\rightarrow\\) hyperpolarization \\(\rightarrow\\) inhibitory post-synaptic potential (IPSP)
 
 Synapse doctrine:
 
@@ -167,7 +167,7 @@ The direction of synaptic plasticity (LDP or LTD) depends on the relative timing
 
 nerve = bundle of axons
 
-somatic NS: nerves connecting to _voluntary_ skeletal muscles (efferent nerves: infer goes CNS -> periphery) and sensory receptors (afferent). 
+somatic NS: nerves connecting to _voluntary_ skeletal muscles (efferent nerves: infer goes CNS \\(\rightarrow\\) periphery) and sensory receptors (afferent). 
 
 Autonomic NS: nerves that connect to the heart, blood vessels, smooth muscles and glands. Mostly unconscious, many vital functions
 
@@ -199,7 +199,7 @@ Computing comparison:
 
 - transistors in microprocessors are much more sparsely connected than brain neurons
 - brain: 100 microseconds temporal resolution at best; digital circuits: 100picoseconds for a 10GHz computer
-- computing paradigm: brain: massive parallelism, adaptive connectivity; digital computers: mostly sequential, fixed connectivity. -> capabilities: brains can solve ill-posed problems, digital computers are good at numerical computation and symbol processing.
+- computing paradigm: brain: massive parallelism, adaptive connectivity; digital computers: mostly sequential, fixed connectivity. \\(\rightarrow\\) capabilities: brains can solve ill-posed problems, digital computers are good at numerical computation and symbol processing.
 
 ### Conclusions
 
@@ -230,11 +230,11 @@ Notes from [opencourseonline](http://opencourseonline.com/334/coursera-open-cour
 `[1 2; 3 4; 5 6]` : matrix row by row  
 `[1 2 3]` : row vector
 
-`v = 1:0.1:2 -> [1 1.1 1.2 … 2]`  
-`1:4 [1 2 3 4]`
+`v = 1:0.1:2` \\(\rightarrow\\) `[1 1.1 1.2 … 2]`  
+`1:4` \\(\rightarrow\\)  `[1 2 3 4]`
 
 `zeros(1,3)`  
-`2 * ones(2,3) -> [2 2 2; 2 2 2]`  
+`2 * ones(2,3)` \\(\rightarrow\\) `[2 2 2; 2 2 2]`  
 `rand(4,4)` : uniform  
 `randn` : unit gaussian
 

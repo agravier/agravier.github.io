@@ -180,7 +180,7 @@ Each of the channel's subunits fluctuates between open (probability n) and close
 
 That is the rate at which the open probability for a subunit gate changes. \\((1-n)\alpha\_n(V)\\) : opening rate times probability of finding the gate closed. \\(n\beta\_n(V)\\): closing rate times probability of finding the gate open.
 
-Q: Can you speculate on the effect that voltage dependence has on these rates (C --> O & O --> C)?
+Q: Can you speculate on the effect that voltage dependence has on these rates (C \\(\rightarrow\\) O & O \\(\rightarrow\\) C)?
 
 - It produces linear rates of change. 
 - **It allows for a positive feedback loop.**

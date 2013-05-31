@@ -29,8 +29,8 @@ Given **one** neural response from one trial of the experiment, how can one use 
 Plotting the the neuron's success rate in function of the coherence requires a decoding step. 
 
 - Plot the distribution of responses:
- - Probability of a number r of spikes given that the stimulus moved in one direction p(r|-) -> normal centered on <r->
- - Probability of a number r of spikes given that the stimulus moved in the other direction p(r|+) -> normal centered on <r+>
+ - Probability of a number r of spikes given that the stimulus moved in one direction p(r|-) \\(\rightarrow\\) normal centered on <r\\(\rightarrow\\)
+ - Probability of a number r of spikes given that the stimulus moved in the other direction p(r|+) \\(\rightarrow\\) normal centered on <r+>
 - Map a a range of the abscissa (r) to a direction by defining a threshold below which we choose none direction, and above which we choose the other.
 
 Q: Where would you put the threshold value?
@@ -129,7 +129,7 @@ One advantage of studying the retina is that we have theoretical data about the 
 
 A second advantage is that we have anatomical data hinting at where such thresholding non-linearity may take place.
 
-several rods -> one rod bipolar cell -> AII amacrine cell -> ...
+several rods \\(\rightarrow\\) one rod bipolar cell \\(\rightarrow\\) AII amacrine cell \\(\rightarrow\\) ...
 
 The rod bipolar cell is already receiving aggregate input from several rods, so the last opportunity to apply the filtering non-linearity is at the synapse between rod and bipolar cell.
 
@@ -213,7 +213,7 @@ What is the standard deviation of a poisson neuron with an average firing rate o
 - λ 
 - None of these.
 
-Explanation: The variance of a poisson distribution is equal to the mean and the standard deviation is the square root of the variance. Therefore, if the mean firing rate is r, the variance is equal to \\(\sqrt{r}\\}.
+Explanation: The variance of a poisson distribution is equal to the mean and the standard deviation is the square root of the variance. Therefore, if the mean firing rate is r, the variance is equal to \\(\sqrt{r}\\).
 
 ##### Maximum likelihood
 
