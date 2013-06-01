@@ -5,7 +5,7 @@ title: 'NAO Linux C++ development cheat sheet / tutorial, Part 1: better NAO tha
 
 <h3>Preamble to this whole series of tutorial posts</h3>
 
-I'd like to thank <b>Jane Sun</b> and <b>Dimitri Merejkowsky</b> for help and feedback.<br />
+I'd like to thank <b>Jane Sun</b> and <b>Dimitri Merejkowsky</b> for their kind help and feedback.<br />
 
 These posts start slow, but they get more technical later. The first part (which you've started reading) explains how to set up the C++ development environment for NAO under GNU/Linux. The <a href="http://noelusion.com/2013/NAO-C++-tutorial-part-2:-Welcome-to-the-Matrix,-NAO/" target="_blank">second post</a> gently introduces the build tools and a simple module. Starting from the <a href="http://noelusion.com/2013/NAO-C++-tutorial-part-3:The-Apprentice-NAOmancer/" target="_blank">third post</a>, I discuss some more detailed aspects of C++ programming, and the code gets too large to be entirely pasted and explained in a blog post, and needs to be hosted <a href="https://bitbucket.org/agravier/inmon" target="_blank">elsewhere</a>. Post 4 is still being written, but I will naturally need to make an even more drastic selection of what to explain and what to leave as an exploratory exercise for you, adventurous reader. Generally, I advise side-reading a lot of documentation(Aldebaran doc, Boost doc, C++ FAQ Lite, etc), other tutorials, and experimenting by yourself.<br />
 
