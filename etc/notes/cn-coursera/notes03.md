@@ -9,13 +9,13 @@ title: Lecture notes in Computational Neuroscience (Week 3)
 
 You hear a rustle in the forest. Is it indicative of danger?
 
-We assume that we can order rustling sounds on an axis. On the left, the sounds are clearly the breeze. On the right, they are clearly produced by a danger\leqous animal.
+We assume that we can order rustling sounds on an axis. On the left, the sounds are clearly the breeze. On the right, they are clearly produced by a dangerous animal.
 
 How can we classify that based on the output of one/a few neuron?
 
 Experiment: Monkey looks at center of screen across which random dots move with a coherence varying from 0% (totally random) to 100% (all dots move in the same direction). Monkey is trained to saccade to a location in the direction of the dots movements.
 
-Recordings from a neuron in the MT area. Repeated experiments for the same coherence value. Histogram of the number of trials per number of spikes produced, clustered by direction saccade: in 0 trial did the neuron produce 0 spike and the saccade was downward, and 0 incorrect trial resulted in 0 spike and the saccade was upward; in 3 trials did the neuron produce 1 spike and the saccade was upward, and 0 trial for 1 spike, downward saccade, … Wit a 12.5% coherence, the 2 distributions look like separate gaussians, with more trials with more spikes for the downwards direction, and more trials with less spikes for the upwards directions.
+Recordings from a neuron in the MT area. Repeated experiments for the same coherence value. Histogram of the number of trials per number of spikes produced, clustered by direction saccade: in 0 trial did the neuron produce 0 spike and the saccade was downward, and 0 incorrect trial resulted in 0 spike and the saccade was upward; in 3 trials did the neuron produce 1 spike and the saccade was upward, and 0 trial for 1 spike, downward saccade, … With a 12.5% coherence, the 2 distributions look like separate gaussians, with more trials with more spikes for the downwards direction, and more trials with less spikes for the upwards directions.
 
 Q: Can you speculate what might happen to these 2 distributions as the coherence decreases?
 
@@ -29,7 +29,7 @@ Given **one** neural response from one trial of the experiment, how can one use 
 Plotting the the neuron's success rate in function of the coherence requires a decoding step. 
 
 - Plot the distribution of responses:
- - Probability of a number r of spikes given that the stimulus moved in one direction p(r|-) \\(\rightarrow\\) normal centered on <r\\(\rightarrow\\)
+ - Probability of a number r of spikes given that the stimulus moved in one direction p(r|-) \\(\rightarrow\\) normal centered on <r->
  - Probability of a number r of spikes given that the stimulus moved in the other direction p(r|+) \\(\rightarrow\\) normal centered on <r+>
 - Map a a range of the abscissa (r) to a direction by defining a threshold below which we choose none direction, and above which we choose the other.
 
@@ -147,7 +147,7 @@ And it happens that the response of one neuron is \\( \left(\frac{f(s)}{r\_{\tex
 The population vector for those four neurons is the sum of their \\(\overrightarrow{c}\_a\\), weighted by their firing rate:
 
 \\[
-\overrightarrow{v}\_\textrm{pop} = \sum\_{a=1}^4 \left(\frac{r}{r\_\textrm{max}}\right)\_a \overrightarrow{c}\_a
+\overrightarrow{v}\_\textrm{pop} = \sum\_{a=1}^ 4 \left(\frac{r}{r\_\textrm{max}}\right)\_a \overrightarrow{c}\_a
 \\]
 
 Q: Which of these options presents a plausible explanation for the presence of neurons that encode for motion in 4 different directions in a 2-dimensional plane?
@@ -170,7 +170,7 @@ Again, neurons responding to angle (this time arm movement) by cosine. With a ba
 The population vector for \\(N\\) such neurons is the sum of their \\(\overrightarrow{c}\_a\\), weighted by their firing rate:
 
 \\[
-\overrightarrow{v}\_\textrm{pop} = \sum\_{a=1}^N \left(\frac{r-r\_0}{r\_\textrm{max}}\right) \overrightarrow{c}\_a = \sum\_{a=1}^N\left(\overrightarrow{v}\cdot\overrightarrow{c}\_a\right) \overrightarrow{c}\_a
+\overrightarrow{v}\_\textrm{pop} = \sum\_{a=1}^ N \left(\frac{r-r\_0}{r\_\textrm{max}}\right) \overrightarrow{c}\_a = \sum\_{a=1}^ N\left(\overrightarrow{v}\cdot\overrightarrow{c}\_a\right) \overrightarrow{c}\_a
 \\]
 
 Q: In this equation, we normalize the contribution of each neuron to the population vector by its maximum firing rate. Why do we do this?
@@ -220,13 +220,13 @@ Explanation: The variance of a poisson distribution is equal to the mean and the
 The probability of the population response vector \\(r\\) given stimulus s is the product (indep.) of the probabilities \\(P[r\_a|s]\\). As we are assuming a Poisson distribution, we have
 
 \\[
-P[r\_a|s] = \frac{(f\_a(s)T)^{r\_aT}}{(r\_aT)!}\mathrm{exp}(-f\_a(s)T)
+P[r\_a|s] = \frac{(f\_a(s)T)^ {r\_aT}}{(r\_aT)!}\mathrm{exp}(-f\_a(s)T)
 \\]
 
 so 
 
 \\[
-P[r|s] = \prod\_{a=1}^N \frac{(f\_a(s)T)^{r\_aT}}{(r\_aT)!}\mathrm{exp}(-f\_a(s)T)
+P[r|s] = \prod\_{a=1}^ N \frac{(f\_a(s)T)^ {r\_aT}}{(r\_aT)!}\mathrm{exp}(-f\_a(s)T)
 \\]
 
 Q: log(ab/c)=?
@@ -241,10 +241,10 @@ We want to maximize this expression of \\(P[r|s]\\) in function of s. For that, 
 As maximization technique, we can set the gradient to 0. The derivative of the log-linearized expression of \\(P[r|s]\\) is simplified a lot by various constants:
 
 \\[
-\ln(P[r|s]) = \sum\_{a=1}^N r\_a \frac{f'(s)}{f(s)} = 0
+\ln(P[r|s]) = \sum\_{a=1}^ N r\_a \frac{f'(s)}{f(s)} = 0
 \\]
 
-where \\(f\_a = A e^{-\frac{1}{2\sigma\_a^ 2}(s-s\_a)^ 2}\\) in our case, which makes that the solution is 
+where \\(f\_a = A e^ {-\frac{1}{2\sigma\_a^ 2}(s-s\_a)^ 2}\\) in our case, which makes that the solution is 
 
 \\[
 s^ * = \frac{\sum\_{a=1}^ N\frac{r\_as\_a}{\sigma\_a^ 2}}{\frac{r\_a}{\sigma\_a^ 2}}

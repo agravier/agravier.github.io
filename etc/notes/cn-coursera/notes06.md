@@ -332,7 +332,7 @@ M\textbf{e}\_i = \lambda\_i\textbf{e}\_i
 
 As they are orthogonal, \\(\textbf{e}\_i\cdot\textbf{e}\_j=0, i\neq j\\).
 
-Normalizing the eigenvectors, they are now orthonormal, \\(\textbf{e}\_i\cdot\textbf{e}\_i=1\\), and all vectors can be easily expressed in the eigenbasis as a linear combination of the eigenvectors. For the vector ov membrane voltages,
+Normalizing the eigenvectors, they are now orthonormal, \\(\textbf{e}\_i\cdot\textbf{e}\_i=1\\), and all vectors can be easily expressed in the eigenbasis as a linear combination of the eigenvectors. For the vector of membrane voltages,
 
 \\[
  \textbf{v}(t) = \sum\_{j=1}^ Nc_j(t)\textbf{e}\_j

@@ -403,7 +403,7 @@ It's a "zoomed" version of the 2D model above:
 \begin{cases}
 \frac{\textrm{d}V}{\textrm{d}t} = -\alpha V + \beta V^ 2 + \gamma + I(t)\\\\
 \frac{\textrm{d}u}{\textrm{d}t} = a(bV-u)\\\\
-\textrm{if } V\geq V\_\textrm{th},& \textrm{ then }V\from c, u\from u+d
+\textrm{if } V\geq V\_\textrm{th},& \textrm{ then }V\gets c, u\gets u+d
 \end{cases}
 \\]
 

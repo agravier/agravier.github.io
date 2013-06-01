@@ -123,17 +123,17 @@ In general, the experimenter does not know what stimulus feature may be the one 
 We first consider the response function as a probability of firing. The simplest function imaginable is a linear relationship: response = factor * stimulus. For instance:
 
 - retinotopic c-s RF: the RF looks like a difference of Gaussians (mexican hat, cf. "Difference of Gaussians" filter in GIMP). Let's assume that the response is proportional: r = f s
-  - on the continuous retinal map, let (x, y) the coordinates of the center of a c-s RF of interest. for each (x', y') in the proximity of (x, y), we multiply the luminous power of that pixel by the value of the RF of unit (x, y) at (x', y'). We sum (as se are on a continuous retinal map, we integrate) those values over the whole map:
+  - on the continuous retinal map, let \\((x, y)\\) the coordinates of the center of a c-s RF of interest. for each \\((x', y')\\) in the proximity of (x, y), we multiply the luminous power of that pixel by the value of the RF of unit \\((x, y)\\) at \\((x', y')\\). We sum (as we are on a continuous retinal map, we integrate) those values over the whole map:
 
 \\[ \int \int f(x',y') s(x-x', y-y', t) \mathrm{d}x' \mathrm{d}y' \\]
 
-where f(x,y) denotes the luminous power at (x,y), and \\(s(tr\_x, tr\_y, t)\\) represents the weight of the receptive field function at the point located at the offset \\(tr\_x, tr\_y\\) from (x, y).
+where \\(f(x,y)\\) denotes the luminous power at \\((x,y)\\), and \\(s(tr\_x, tr\_y, t)\\) represents the weight of the receptive field function at the point located at the offset \\(tr\_x, tr\_y\\) from \\((x, y)\\).
 
-The relationship is still linear as in \\(r = f s\\), where the filter f is the DoG weighting, and the stimulus s is the image.
+The relationship is still linear as in \\(r = f s\\), where the filter \\(f\\) is the difference of Gaussians weighting, and the stimulus \\(s\\) is the image.
 
-  - We can now add more details to this model: we introduce a time lag, where the neuron responds to a a stimulus that happened \tau units of time ago: \\(r(t) = f s(t-\tau)\\)
+  - We can now add more details to this model: we introduce a time lag, where the neuron responds to a a stimulus that happened \\(\tau\\) units of time ago: \\(r(t) = f s(t-\tau)\\)
 
-  - in general, the response at time t to a stimulus s will depend on the stimulus values on a past range of time: \\(r(t) = \int f(\tau) s(t-\tau) \mathrm{d}\tau \\), where f(t) is a time filter that weights the stimulus depending on its time offset. For instance, using the simple moving average of the stimulus in the considered timeframe, 
+  - in general, the response at time t to a stimulus s will depend on the stimulus values on a past range of time: \\(r(t) = \int f(\tau) s(t-\tau) \mathrm{d}\tau \\), where \\(f(t)\\) is a time filter that weights the stimulus depending on its time offset. For instance, using the simple moving average of the stimulus in the considered timeframe, 
 
 
 \\[
@@ -147,14 +147,14 @@ The relationship is still linear as in \\(r = f s\\), where the filter f is the 
   - A more plausible time filter function is one where closer times have higher weights:
 
 \\[
- f(\tau) = e^{-\tau/c} \text{ for } \tau \lt a
+ f(\tau) = e^ {-\frac{\tau}{c}} \text{ for } \tau \lt a
 \\]
 
 - This leads to an overall picture of spatiotemporal filtering:
 
 \\[ \int \int f(x', y', \tau) s(x-x', y-y', t-\tau) \mathrm{d}x' \mathrm{d}y' \mathrm{d}\tau \\]
 
-f(x', y', \tau) can be visualized as "frames of receptive field".
+\\(f(x', y', \tau)\\) can be visualized as "frames of receptive field".
 
 
 Back to \\(r(t) = \int f(\tau) s(t-\tau) \mathrm{d}\tau \\), the formulation has a big shortcoming: unbounded rate, including the possibility of negative rates.
@@ -259,8 +259,8 @@ Reminder:
 - \\(Var(x) = <(\bar{x} - x)^ 2>\\) where <> denotes the avearage.
 - \\(Cov(v) = <(v - \bar{v}) (v - \bar{v})^ T>\\) where \\(v\\) is a column vector. So component \\(C\_{i,j}\\) of the covariance matrix is \\(<(x\_i-\bar{x}\_i)(x\_j-\bar{x}\_j)>\\)
 - We perform the Eigenvector decomposition: \\(C = V \Sigma V^ T\\), where
-  - V is a matrix of Eigenvectors,
-  - \Sigma is a diagonal matrix of Eigenvalues \\(\sigma\_i^ 2\\)
+  - \\(V\\) is a matrix of Eigenvectors,
+  - \\(\Sigma\\) is a diagonal matrix of Eigenvalues \\(\sigma\_i^ 2\\)
 
 The Eigenvectors of the decomposition of the covariance matrix make a new coordinate system in which to represent the data. Each Eigenvector has a corresponding Eigenvalue that is the squared variance of the data along that axis in that new coordinate system. We select the Eigenvectors with the highest Eigenvalues, and call those principal components of the spike-conditional distribution.
 
@@ -286,7 +286,7 @@ PCA can also be used to separate waveforms from different neurons that were reco
 
 We are looking for PCA dimensions with variances that are different from the prior distribution.
 
-For that, we take the variances from the diagonal of the \Sigma matrix of Eigenvalues. All eigenvalues that are equal to the variance of the prior are unlikely to correspond to interesting dimensions (recall that we are looking for dimensions that have relevant to spike firing). However, there will be eigenvalues where the variance is wither increased or increased compared to the prior.
+For that, we take the variances from the diagonal of the \\(\Sigma\\) matrix of Eigenvalues. All eigenvalues that are equal to the variance of the prior are unlikely to correspond to interesting dimensions (recall that we are looking for dimensions that have relevant to spike firing). However, there will be eigenvalues where the variance is wither increased or increased compared to the prior.
 
 Plotting the density of samples projected on the corresponding Eigenvector against the background prior (which, projected in anyway, remains white noise), they will:
 - often be shifted
