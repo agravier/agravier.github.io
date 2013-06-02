@@ -357,3 +357,176 @@ In comparison, competitive learning adapted the mean, but not the variance or pr
 The EM algorithm assumes that all datapoints are available at the time of learning (batch learning), whereas real-time learning is possible in competitive learning (online learning). 
 
 
+
+
+## Sparse Coding and Predictive Coding
+
+### PCA
+
+Even on large input spaces, the eigenvectors of the input covariance matrix can be linearly combined to approximate input exemplars.
+
+For instance, given a set of b&w pictures of faces of N pixels, Turk and Pentland (1991) computed the eigenvectors of the input covariance matrix, and subsequently expressed each face as a linear combination of these "eigenfaces": \\(\textbf{u} = \sum\_{i=1}^ N\textbf{e}\_iv\_i\\)
+
+If we restrict the reconstruction to the use of the first \\(M \lt N\\) principal eigenvectors (associated with the \\(M\\)) largest eigenvalues of the covariance matrix, then a face is 
+
+\\[\textbf{u} = \sum\_{i=1}^ M\textbf{e}\_iv\_i + \textbf{noise}\\]
+
+This model can be used for lossy image compression.
+
+However, an eigenvector analysis (or, equivalently, a PCA) is not good for local components extraction (edges, parts, etc...).
+
+### Linear model of natural images
+
+We now split up the input sample (natural image of \\(N\\) pixels for instance) in a number of weighted basis features (f.e. localized oriented edges). The image is the weighted sum of \\(M\\) (this time possibly larger than \\(N\\)) basis vectors, plus noise:
+
+\\[
+\begin{align}
+\textbf{u} &= \sum\_{i=1}^ M\textbf{g}\_iv\_i + \textbf{noise}\\\\
+&= G\textbf{v} + \textbf{noise}
+\end{align}
+\\]
+
+where \\(G\\) is the \\(M\times N\\) matrix of column basis vectors \\(\textbf{g}\_i\\), and \\(\textbf{v}\\) is the row vector of coefficients \\(v\_i\\) (\\(M\\) elements).
+
+We need to learn \\(G\\) and \\(\textbf{v}\\).
+
+### Generative model of natural images
+
+To specify a generative model for natural images, we need to specify a prior probability distribution for natural images \\(p[\textbf{v}]\\), and a likelihood function \\(p[\textbf{u}|\textbf{v},G]\\). 
+
+#### Likelihood function for the generative model of natural images, assuming white noise
+
+In our linear model \\(\textbf{u} = G\textbf{v} + \textbf{noise}\\), if the noise vector is assumed to be a Gaussian (\\(\to\\) no correlation across the components of the noise vector) with zero mean, then the likelihood function is also Gaussian, with a mean \\(G\textbf{v}\\) and an identity covariance:
+
+\\[
+p[\textbf{u}|\textbf{v};G] = \mathcal{N}(\textbf{u};G\textbf{v}, I) \propto e^ {-\frac{1}{2}\|\textbf{u}-G\textbf{v}\|^ 2}
+\\]
+
+The proportionality to the exponential above makes that the log likelihood is 
+
+\\[
+\log p[\textbf{u}|\textbf{v};G] = -\frac{1}{2}\|\textbf{u}-G\textbf{v}\|^ 2 + C
+\\]
+
+where, in the quadratic term, \\(|\textbf{u}-G\textbf{v}\|\\) can be identified as the difference between the input image and its reconstruction.
+
+Q: Based on the equation log p[u|v;G] = -(1/2) ||u-Gv||^2 + C, can you see what effect minimizing the squared reconstruction error has on the likelihood function?
+
+- Minimizes it.
+- **Maximizes it.**
+- Stabilizes it.
+- None of these.
+
+#### Prior distribution for the generative model of natural images, assuming that causes \\(v_i\\) are independent
+
+If we can assume that the causes \\(v_i\\) are independent (we typically can't for natural images, but let's start like that), then the prior probability for \\(\textbf{v}\\) is equal to the product of the individual prior probabilities of its components: 
+
+\\[p[\textbf{v}] = \prod\_ip[v\_i]\\]
+
+In log terms:
+
+\\[\log p[\textbf{v}] = \sum\_i\log p[v\_i; G]\\]
+
+How to find the individual priors \\(p[v\_i; G]\\)?
+
+As we assume that these \\(v\_i\\) represent very specific components of the image (matching the sparseness of biological neural representations), then for any input, we only want a few \\(v\_i\\) to be active. In consequence, we expect \\(p[v\_i]\\) to have a leptokurtic (super Gaussian) distribution (peak at 0, long tail, e.g. exponential \\(p[v\_i]=e^ {-v\_i}\\), Cauchy \\(p[v\_i]=\frac{1}{\pi \left(1+v\_i^ 2\right)}\\), ...).
+
+We represent each \\(p[v\_i]\\) in the form of an exponential: \\(p[v\_i] = e^ {g(v\_i)}\\). For instance, \\(g(v\_i) = -|v\_i|\\) in an exponential, \\(g(v\_i) = -\pi\log(1+v\_i^ 2)\\) for a Chauchy pdf, etc...
+
+Then, we have 
+
+\\[
+\begin{align}
+ & p[\textbf{v}] = c \prod\_i e^ {g(v\_i)} \\\\
+\Rightarrow & \log p[\textbf{v}] = \sum\_i g(v\_i) + c
+\end{align}
+\\]
+
+#### Bayesian approach to finding \\(\textbf{v}\\) and learning \\(G\\) in the generative model of natural stimuli
+
+Bayesian = maximize the posterior probability of causes:
+
+\\[
+p[\textbf{v} | \textbf{u}; G] = k p[\textbf{u} | \textbf{v}; G] p[\textbf{v}; G]
+\\]
+
+This is equivalent to maximizing the log-posterior probability of causes:
+
+\\[
+\begin{align}
+F(\textbf{v}; G) &= \log p[\textbf{u} | \textbf{v}; G] + \log p[\textbf{v}; G] + \log k\\\\
+&= -\frac{1}{2}\|\textbf{u}-G\textbf{v}\|^ 2 + \sum\_i g(v\_i) + K
+\end{align}
+\\]
+
+We note that \\(-\frac{1}{2}\|\textbf{u}-G\textbf{v}\|^ 2\\) represents the reconstruction error, which we want to minimize, and \\(\sum\_i g(v\_i)\\) is the sparseness constraint, that we try to maximize. 
+
+##### Maximization algorithm
+
+We note the similarity with the EM algorithm.
+
+Repeat those two steps:
+
+- Maximize \\(F\\) w.r.t. \\(\textbf{v}\\) (keep \\(G\\) fixed) (lie the E step in EM)
+- Maximize \\(F\\) w.r.t. \\(G\\) (keep \\(\textbf{v}\\) fixed to the value found in the previous step) (like the M step in EM)
+
+###### Maximizing \\(F\\) w.r.t. \\(\textbf{v}\\) with gradient ascent
+
+To maximize \\(F\\) w.r.t. \\(\textbf{v}\\), we look at \\(\frac{\textrm{d}F}{\textrm{d}\textbf{v}}\\). We change \\(\textbf{v}\\) proportionately to the slope \\(\frac{\textrm{d}F}{\textrm{d}\textbf{v}}\\). Here, 
+
+\\[
+\begin{align}
+\frac{\textrm{d}\textbf{v}}{\textrm{d}t} &\propto \frac{\textrm{d}F}{\textrm{d}\textbf{v}} \\\\
+\iff \quad \tau\_v \frac{\textrm{d}\textbf{v}}{\textrm{d}t} &= G^ T \left(\textbf{u}-G\textbf{v}\right) + g'(\textbf{v})
+\end{align}
+\\]
+
+where \\(\tau\_v\\) is a time constant \\(\left(\textbf{u}-G\textbf{v}\right)\\) is \\(\textbf{u}\\) minus its reconstruction, so it's the error, and \\(g'(\textbf{v})\\) is the sparseness constraint.
+
+This equation \\(\tau\_v \frac{\textrm{d}\textbf{v}}{\textrm{d}t} = G^ T \left(\textbf{u}-G\textbf{v}\right) + g'(\textbf{v})\\) has the form of a recurrent network's firing rate kinetic equation!
+
+###### Recurrent network implementation of sparse coding
+
+In \\(\tau\_v \frac{\textrm{d}\textbf{v}}{\textrm{d}t} = G^ T \left(\textbf{u}-G\textbf{v}\right) + g'(\textbf{v})\\), 
+
+- \\(G^ T \textbf{u}\\) is the total input to the output layer \\(\textbf{v}\\): it is the input \\(\textbf{u}\\) after weighting through the feedforward weight matrix \\(G^ T\\)
+- \\(-G^ T G\textbf{v}\\) is the recurrent (intra-layer) input, with \\(-G^ T G\\) the recurrent weights
+- There is a feedback connection from \\(\textbf{v}\\) to \\(\textbf{u}\\) with weights \\(G\\). It computes \\(G\textbf{v}\\), which is the mean of the generative distribution, and the prediction.
+- Hence, \\(\textbf{u}-G\textbf{v}\\), the error, is further computed at the input layer and propagated to the output layer through the feedforward weights \\(G^ T\\). With that, the output layer corrects its estimate \\(\textbf{v}\\).
+- This prediction-correction cycle is iterated until convergence is achieved (\\(\textbf{v}\\) stable for any given \\(\textbf{u}\\))
+
+
+###### Learning \\(G\\) with gradient ascent
+
+Like for \\(\textbf{v}\\), we maximize \\(F\\) w.r.t. \\(G\\) by changing \\((G\\) proportionately to the slope \\(\frac{\textrm{d}F}{\textrm{d}G}\\):
+
+\\[
+\begin{align}
+\frac{\textrm{d}G}{\textrm{d}t} &\propto \frac{\textrm{d}F}{\textrm{d}G} \\\\
+\iff \quad \tau\_G \frac{\textrm{d}G}{\textrm{d}t} &=  \left(\textbf{u}-G\textbf{v}\right) \textbf{v}^ T
+\end{align}
+\\]
+
+Taking \\(\tau\_G \gt \tau\_\textbf{v}\\) guatantees that \\(\textbf{v}\\) converges faster than \\(G\\), making it possible to use \\(\textbf{v}\\) to update \\(G\\).
+
+This learning rule, \\(\tau\_G \frac{\textrm{d}G}{\textrm{d}t} =  \left(\textbf{u}-G\textbf{v}\right) \textbf{v}^ T\\), is very similar to Oja's learning rule. However, it's not learning the eigenvectors thanks to the sparseness criterion.
+
+Take a guess just for fun. Based on what we have discussed regarding the visual system so far, especially our characterization of receptive field structure in early visual processing, what kind of basis vectors would you predict are learned for natural image patches?
+
+- Eigenvectors of natural image patches 
+- Objects in the environment
+- Complex shapes
+- **Oriented bars**
+
+
+Feeding the network with patches from natural images, the basis vectors (columns \\(\textbf{g}\_i\\) of \\(G\\)) learnt resemble the oriented receptor fields of V1. As an interpretive model, this indicates that the brain creates an efficient sparse representation of natural images through these RF.
+
+### Predictive coding networks
+
+The sparse coding network is an instance of **predictive coding** network that uses feedback connections to transmit predictions about the input, and feedforward connections to convey a prediction error signal. The predictive estimator (output layer) maintains an estimate of the (hidden) causes of the input (vector \\(\textbf{v}\\)).
+
+Predictive coding models can have, in addition to feedforward and feedback weights, a set of recurrent weights that learn time-varying input correlations, for instance in moving images. The internal representation (recurrent weights) is allowed to vary over time to model the dynamics of the inputs. Another possible component of predictive coding networks is a sensory error gain on the input layer, allowing to model such effects as visual attention.
+
+The visual cortices present a puzzle: the connections between cortical areas in the visual streams are almost always bidirectional. Why the feedback connections?
+
+Predictive coding networks models of the visual cortex give an explanation. They suggest that the feedback connections convey predictions of activity from higher to lower cortical areas, and that feedforward connections convey the error signals (activity minus prediction). Contextual effects, surround suppression, etc can be explained by hierarchical predictive coding models trained on natural images.
