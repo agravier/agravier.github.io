@@ -302,7 +302,7 @@ Back to our example of 2 clusters of points A and B in a 2d plane.
 We assume a model of two gaussian generators \\(\langle\mu\_A, \sigma\_A\rangle\\) and \\(\langle\mu\_B, \sigma\_B\rangle\\). It's a **mixture of Gaussians** model:
 
 \\[
-p[\textbf{u}; G] = \sum\_v p[\textbf{u}|v;G]p[v;G], \quad v\in {A,B}, G=\langle\mu\_v, \sigma\_v, \gamma\_v\rangle
+p[\textbf{u}; G] = \sum\_v p[\textbf{u}|v;G]p[v;G], \quad v\in \left\\{A,B\right\\}, G=\langle\mu\_v, \sigma\_v, \gamma\_v\rangle
 \\]
 
 where \\(\gamma\_v\\) is the prior probability \\(p[v;G]\\).
