@@ -187,7 +187,7 @@ Similarly, for Oja's rule, \\(\lim_{t \to \infty}\textbf{w}(t) = \frac{\textbf{e
 
 This means that those rules are equivalent to Principal Component Analysis.
 
-#### PCA
+#### Principal Component Analysis
 
 For data with **zero mean**, the **Hebb rule** orients the weights vector in the **direction of the maximum variance** of the dataset (direction of the first eigenvector). If does not do that is the mean is not \\(\\textbf{0}\\).
 
@@ -361,7 +361,7 @@ The EM algorithm assumes that all datapoints are available at the time of learni
 
 ## Sparse Coding and Predictive Coding
 
-### PCA
+### Principal Component Analysis
 
 Even on large input spaces, the eigenvectors of the input covariance matrix can be linearly combined to approximate input exemplars.
 
