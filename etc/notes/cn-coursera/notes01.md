@@ -238,7 +238,7 @@ Notes from [opencourseonline](http://opencourseonline.com/334/coursera-open-cour
 `rand(4,4)` : uniform  
 `randn` : unit gaussian
 
-`repmat(A, m[, n])` : make a matrix with the contents of A repeated on m rows and n columns (=m is not specified)  
+`repmat(A, m[, n])` : make a matrix with the contents of A repeated on m rows and n columns (=m if not specified)  
 
 `hist(v[, nbins])` prints an histogram
 
