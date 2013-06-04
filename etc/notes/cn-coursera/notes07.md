@@ -30,7 +30,7 @@ Donald Hebb suggested the Hebbian learning rule before the discovery of LTP/D:
 
 > If neuron A takes part in the firing of neuron B, then the synapse from A to B is strengthened.
 
-Let the input vector \\(\textbf{u}\\), connected to output unit (scalar) \\(v\\), through the weights vector \\(\ textbf{w}\\).
+Let the input vector \\(\textbf{u}\\), connected to output unit (scalar) \\(v\\), through the weights vector \\(\textbf{w}\\).
 
 Assume that the network dynamics is fast enough to be ignored. Then, the output is determined by the steady state output:
 
