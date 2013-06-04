@@ -90,7 +90,7 @@ LTD is modeled to happen when there is no or low ouput even though there is an i
 The covariance rule generalizes the Hebbian learning rule to also work for LTD. In the continuous expression of the Hebbian learning rule, \\(\tau\_w\frac{\textrm{d}\textbf{w}}{\textrm{d}t} = \textbf{u}v\\), we replace the output vector \\(v\\) by its variation from average \\(v-\langle v\rangle\\):
 
 \\[
-tau\_w\frac{\textrm{d}\textbf{w}}{\textrm{d}t} = \textbf{u}\left(v-\langle v\rangle\right)
+\tau\_w\frac{\textrm{d}\textbf{w}}{\textrm{d}t} = \textbf{u}\left(v-\langle v\rangle\right)
 \\]
 
 Q: If v (output of post-synaptic neuron) is large relative to the average of v over time in this equation, what does that imply about w?
