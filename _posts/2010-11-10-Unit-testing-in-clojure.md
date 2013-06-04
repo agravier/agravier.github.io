@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: post-nomath
 title: "Unit testing in clojure: mocking and lazy evaluation, atticus.mock and overloaded functions"
 ---
 

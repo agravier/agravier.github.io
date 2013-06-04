@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: post-nomath
 title: 'Fixing the mysterious virtualenv error "IOError: invalid Python installation" due to a missing "local" subdirectory (that should already be fixed but is not (for me))'
 ---
 

@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+
+<html>
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+    <meta name="author" content="Alexandre Gravier" />
+    <meta name="description" content="agravier : blog" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/stylesheet.css">
+    <title>[no]elusion: {{ page.title }}</title>
+  </head>
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+      <header class="inner">
+        <h1 id="project_title"><a href="/"><font color="white">no</font>elusion</a></h1><!--
+       --><nav id="header_menu"><!--
+         --><ul><!--
+         --><li><a href="{{ base.url }}/">blog</a></li><!--
+         --><li><a href="{{ base.url }}/projects/">projects</a></li><!--
+         --><li><a href="{{ base.url }}/etc/">etc</a></li>
+          </ul>
+        </nav>
+      </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <section>
+      <div id="main_content_wrap" class="outer">
+        <section id="main_content" class="inner">
+          {{ content }}
+        </section>
+      </div>
+    </section>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <a href="{{ base.url }}/about/">about</a> 
+        <a href="{{ base.url }}/sitemap/">sitemap</a>
+        <a href="{{ base.url }}/atom.xml">feed</a>
+      </footer>
+    </div>
+
+    <script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+      try {
+      var pageTracker = _gat._getTracker("UA-40459855-1");
+      pageTracker._trackPageview();
+      } catch(err) {}
+    </script>
+
+
+  </body>
+</html>

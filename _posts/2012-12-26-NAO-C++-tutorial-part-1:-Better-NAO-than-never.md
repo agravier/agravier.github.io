@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: post-nomath
 title: 'NAO Linux C++ development cheat sheet / tutorial, Part 1: better NAO than never'
 ---
 
