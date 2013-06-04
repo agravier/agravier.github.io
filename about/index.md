@@ -3,7 +3,7 @@ layout: default-nomath
 title: postface
 ---
 
-### About the website
+### The website
 
 This is a personal website. I've made it using Jekyll. It is
 graciously hosted by Github. Math formatting is done with MathJax.
@@ -14,7 +14,7 @@ reuse those stylesheets and the website layout if you want, but please
 remove all my contents before publishing. If you reuse my design, It
 would be cool to let me know, so as I can boast about it.
 
-### About the contents
+### The contents
 
 All the contents are my own creation if not said otherwise. If you
 think that I've misattributed or forgotten to source something, please
@@ -23,7 +23,7 @@ publish on this website, provided that you properly cite me. You may
 **not** reproduce any **non-textual content ("artwork")** without my
 explicit permission.
 
-### About the author
+### The author
 
 My name is Alexandre Gravier, and you can email me me at
 [al.gravier@gmail.com](mailto:al.gravier@gmail.com), or find me on on
