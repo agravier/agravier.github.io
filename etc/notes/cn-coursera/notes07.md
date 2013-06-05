@@ -44,7 +44,7 @@ Then, the continuous Hebbian learning rule can be expressed as the following rat
 \tau\_w\frac{\textrm{d}\textbf{w}}{\textrm{d}t} = \textbf{u}v
 \\]
 
-In english, the change in conniption strength is proportional to the product of input and output, which product will be low if either or both units don't fire, and will be high if and only if both units fire.
+In english, the change in connection strength is proportional to the product of input and output, which product will be low if either or both units don't fire, and will be high if and only if both units fire.
 
 The delta-time version Hebbian learning rule
 
@@ -189,7 +189,7 @@ This means that those rules are equivalent to Principal Component Analysis.
 
 #### Principal Component Analysis
 
-For data with **zero mean**, the **Hebb rule** orients the weights vector in the **direction of the maximum variance** of the dataset (direction of the first eigenvector). If does not do that is the mean is not \\(\\textbf{0}\\).
+For data with **zero mean**, the **Hebb rule** orients the weights vector in the **direction of the maximum variance** of the dataset (direction of the first eigenvector). If does not do that if the mean is not \\(\\textbf{0}\\).
 
 **Without constraint on the mean**, the **covariance learning rule**  will orient the weights vector in the **direction of the maximum variance**. 
 
@@ -251,7 +251,7 @@ So, in the code, the modification of the weights vector has to be
 \Delta\textbf{w}\_A = \epsilon\left(\textbf{u}\_t - \textbf{w}\_A\right)
 \\]
 
-where epsilon can be set as 1/t to compute the running average, or a small positive value.
+where \\(\epsilon\\) can be set as \\(\frac{1}{t}\\) to compute the running average, or a small positive value.
 
 Q: (1/t) may seem like a logical value for epsilon, but can you speculate why having a positive constant for epsilon might be more beneficial?
 
@@ -313,7 +313,7 @@ The second step of unsupervised learning is to update the parameters of \\(G\\),
 
 #### The EM algorithm for unsupervised learning
 
-The algorithm consists in iterating two steps unit convergence. 
+The algorithm consists in iterating two steps until convergence. 
 
 ##### The Expectation step
 
