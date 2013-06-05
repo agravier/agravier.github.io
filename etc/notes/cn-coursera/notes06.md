@@ -68,10 +68,10 @@ Q: What is the value of Ps at equilibrium? That is, what is the value of Ps such
 - αs(1−Ps)/βs
 - None of these
 
-In recorded data, \\(\frac{P\_s}{P\_\textrm{max}}\\) as a function of time after a spike is reasonably modeled by:
+In recorded data, \\(\frac{P\_s}{P\_\textrm{max}}\\) (so, \\(P\_s\\) normalized to have a maximum value of 1 by dividing it by it recorded maximum P\_\textrm{max}\\)) as a function of time after a spike is reasonably modeled by:
 
 - an exponential function for GABA(A) and AMPA synapses: \\(K(t) = e^ {-\frac{t}{\tau\_s}}\\),
-- an alpha function for NMDA synapses: \\(\alpha(t) = \frac{t}{\tau\_\textrm{peak}}e^ {1-\frac{t}{\tau\_peak}}\\)
+- an alpha function for NMDA synapses: \\(\alpha(t) = \frac{t}{\tau\_\textrm{peak}}e^ {1-\frac{t}{\tau\_\textrm{peak}}}\\)
 
 
 ### The effect of several spike on synaptic conductance: the linear filter model of a synapse
