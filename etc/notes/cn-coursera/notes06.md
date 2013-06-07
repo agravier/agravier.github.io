@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Lecture notes in Computational Neuroscience (Week 6)
+mathjax: true
 ---
 
 # Week 6: Networks of neurons

@@ -6,9 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
     <meta name="author" content="Alexandre Gravier" />
     <meta name="description" content="agravier : blog" />
+    {% if page.mathjax  %}
     <script type="text/javascript"
             src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
     </script>
+    {% endif %}
     <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/stylesheet.css">
     <title>[no]elusion: {{ page.title }}</title>
   </head>
@@ -36,6 +38,26 @@
         </section>
       </div>
     </section>
+
+    {% if page.disqus  %}
+    <!-- COMMENTS -->
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES * * */
+        var disqus_shortname = 'noelusion'; // required forum shortname
+        var disqus_identifier = '{{ page.url }}';
+        var disqus_title = '{{ page.title }}';
+        var disqus_url = '{{ base.url }}{{ page.url }}';
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Enable JavaScript to view the comments. It will load a Disqus frame.</noscript>
+    {% endif %}
 
     <!-- FOOTER  -->
     <div id="footer_wrap" class="outer">

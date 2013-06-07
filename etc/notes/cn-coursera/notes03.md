@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Lecture notes in Computational Neuroscience (Week 3)
+mathjax: true
 ---
 
 # Week 3: Decoding neural responses

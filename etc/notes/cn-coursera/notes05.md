@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Lecture notes in Computational Neuroscience (Week 5)
+mathjax: true
 ---
 
 # Week 5: Modeling neurons

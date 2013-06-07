@@ -1,5 +1,5 @@
 ---
-layout: default-nomath
+layout: default
 title: Stuff like reading notes, ideas, etc...
 ---
 

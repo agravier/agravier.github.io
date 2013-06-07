@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Lecture notes in Computational Neuroscience (Week 1)
+mathjax: true
 ---
 
 # Week 1: Basic neurobiology and basic Octave

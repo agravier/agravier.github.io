@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Lecture notes in Computational Neuroscience (Week 2)
+mathjax: true
 ---
 
 # Week 2: Neural code

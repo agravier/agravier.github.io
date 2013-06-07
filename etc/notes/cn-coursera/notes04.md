@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Lecture notes in Computational Neuroscience (Week 4)
+mathjax: true
 ---
 
 # Week 4: Information Theory and Neural Coding

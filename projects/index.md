@@ -1,5 +1,5 @@
 ---
-layout: default-nomath
+layout: default
 title: 'Too many projects to write about them'
 ---
 

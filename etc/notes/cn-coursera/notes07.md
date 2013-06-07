@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Lecture notes in Computational Neuroscience (Week 7)
+mathjax: true
 ---
 
 # Week 7: Learning

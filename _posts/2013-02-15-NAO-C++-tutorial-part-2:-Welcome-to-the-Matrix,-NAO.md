@@ -1,5 +1,5 @@
 ---
-layout: post-nomath
+layout: post
 title: 'NAO Linux C++ development cheat sheet / tutorial, Part 2: Welcome to the Matrix, NAO'
 ---
 
