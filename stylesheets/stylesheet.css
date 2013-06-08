@@ -416,7 +416,7 @@ Full-Width Styles
     width: 100%;
 }
 
-.inner {
+.inner, #disqus_thread {
     position: relative;
     max-width: 640px;
     padding: 20px 10px;
@@ -529,7 +529,7 @@ Small Device Styles
         display: none;
     }
 
-    .inner {
+    .inner, #disqus_thread {
         min-width: 320px;
         max-width: 480px;
     }
