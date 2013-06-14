@@ -12,6 +12,7 @@ title: Stuff like reading notes, ideas, etc...
 [Lecture notes for week 5](notes/cn-coursera/notes05.html)  
 [Lecture notes for week 6](notes/cn-coursera/notes06.html)  
 [Lecture notes for week 7](notes/cn-coursera/notes07.html)  
+[Lecture notes for week 8](notes/cn-coursera/notes08.html)  
 
   
 
