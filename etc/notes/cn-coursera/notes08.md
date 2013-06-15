@@ -54,7 +54,7 @@ If we want to upgrade from the discrete output of the Perceptron to a continuous
 
 \\[v = g\left(\textbf{w}^ T\textbf{u}\right)\\]
 
-The output is bounded and normalized as the function \\(g\\) is \\(\mathbb{R}\in\left]0,1\right[\\).
+The output is bounded and normalized as the function \\(g\\) is \\(\mathbb{R}\to\left]0,1\right[\\).
 
 ##### Learning Multilayer Sigmoid Networks
 
@@ -162,11 +162,11 @@ can now be minimized by gradient descent. This is the **Temporal Differences** l
 \Delta w(\tau) = \epsilon(r(t) + v(t+1) - v(t))u(t-\tau)
 \\]
 
-where \\(r(t) + v(t+1) - v(t) = \delta\\) is the error term, \\(\epsilon\\) is the learning rate, and \\(u(t-\tau)\\) is the input. Note that \\((t) + v(t+1)\\) is the expected future reward \\(v(t)\\) and v(t) is the prediction, so \\(\delta\\) is really computing a prediction error.
+where \\(r(t) + v(t+1) - v(t) = \delta\\) is the error term, \\(\epsilon\\) is the learning rate, and \\(u(t-\tau)\\) is the input. Note that \\(r(t) + v(t+1)\\) is the expected future reward and \\(v(t)\\) is the prediction, so \\(\delta\\) is really computing a prediction error.
 
 The term "temporal differences" comes from the expression \\(v(t+1) - v(t)\\) in the error term.
 
-Example: stimulus at \\(t=100\\) reward at \\(t=200\\). The error term propagates trial by trial, from 200 back to 100, and the output v, that was totally inactive at trial 1, becomes active from \\(t=100\\) to \\(t=200\\) once learning is done. Once the learning is finished, the prediction error peaks at \\(t=100\\), corresponding to r(100) + v(101) - v(100)
+Example: stimulus at \\(t=100\\) reward at \\(t=200\\). The error term propagates trial by trial, from 200 back to 100, and the output v, that was totally inactive at trial 1, becomes active from \\(t=100\\) to \\(t=200\\) once learning is done. Once the learning is finished, the prediction error peaks at \\(t=100\\), corresponding to \\(r(100) + v(101) - v(100)\\).
 
 There are recordings from dopaminergic neurons in the Ventral Tegmental Area of monkeys with an output similar to the \\(\delta \\) reward prediction error term: peak output around the time of the reward before training, peak output around the time of the stimulus after training.
 
