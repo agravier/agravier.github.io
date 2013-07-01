@@ -34,7 +34,7 @@ Without ion channels, the circuit model is a resistor (for insulation) and a cap
     *--+     +--*
        +--C--+
 
-What is the voltage access the membrane?
+What is the voltage across the membrane?
 
 Ohm's law \\(V = I\_RR\\) gives \\(I\_R\\)
 
