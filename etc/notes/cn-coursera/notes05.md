@@ -143,17 +143,17 @@ Q: Let's review our circuit diagram from earlier in the lecture. The resistor, c
 
 We can trace some of the non-linearity that give the neurons their computing power down to the measurements and simulations done at ionic level. As one varies the input current between up to a certain point, the response of the membrane voltage scales linearly; however, past a certain intensity, the system shows its excitability, and the membrane depolarizes disproportionately.
 
-            * inside
-            |
-    +----+--+--+----+
-    |    |     |    |
-    | -gNa->  -gK-> gL
-   Cm    |     |    |
-    |   ENa    Ek   EL
-    |    |     |    |
-    +----+--+--+----+
-           _|__
-           ////
+             * inside
+             |
+     +----+--+--+----+
+     |    |     |    |
+     | -gNa->  -gK-> gL
+    Cm    |     |    |
+     |   ENa    Ek   EL
+     |    |     |    |
+     +----+--+--+----+
+            _|__
+            ////
 
 
 L stands for "leak", it is a non-specific, passive channel.
