@@ -2,6 +2,14 @@
 layout: default
 title: Stuff like reading notes, ideas, etc...
 ---
+### Lecture notes for the introductory course on Computational Investing by Dr Tucker Balch
+
+[Lecture notes for week 1](notes/ci1-coursera/notes01.html)  
+
+
+[Link to the course](https://class.coursera.org/compinvesting1-003/)
+
+
 
 ### Lecture notes for the introductory course on Computational Neuroscience by Dr Adrienne Fairhall and Dr Rajesh Rao
 
