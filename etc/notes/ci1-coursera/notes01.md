@@ -8,12 +8,14 @@ disqus: true
 # Week 1: Introduction, hedge funds, and markets basics
 
 ## Introduction
+[(watch section)](https://class.coursera.org/compinvesting1-003/lecture/view?lecture_id=35)
 
 The course aims at understanding markets and their data. We will write visualisation and discovery software and create a market simulator.
 
-A good source of knowledge: [wiki.quantsoftware.org/](http://wiki.quan tsoftware.org/).
+A good source of knowledge: [wiki.quantsoftware.org/](http://wiki.quantsoftware.org/).
 
 ### Portfolio managers
+[(watch section)](https://class.coursera.org/compinvesting1-003/lecture/view?lecture_id=3)
 
 They do a data-driven, quantitative job.
 
@@ -36,9 +38,12 @@ The two and twenty incentivises increasing total yearly returns. The main goal o
 
 The track record is the first argument. Hedge funds are often started by past employees of other hedge funds. 
 
-You can also develop a compelling strategy (story), and performs simulations (*back tests*). It's a challenge to convince investors based on back tests.
+You can also develop a compelling strategy (story), and perform simulations (*back tests*). It's a challenge to convince investors based on back tests.
 
-Think about the psychology of investors: they like to fit their investments into pigeon holes, to label them. You need to convince the investors that you are in a certain pigeon hole.
+Think about the psychology of investors: they like to fit their
+investments into pigeon holes, to label them. You need to convince the
+investors that you are in a certain pigeon hole, that you've got that
+label covered.
 
 When deciding to invest in your fund, the investors look for:
 
@@ -54,6 +59,7 @@ Another compelling argument is *absolute return*: a steady positive return, mayb
 The evolution of the fund value is compared to the evolution of the value of an index. It's 2 graphs superimposed. We can visually compare trends, volatilities, and so on, but quantitative comparisons are more useful.
 
 ### Metrics
+[(watch section)](https://class.coursera.org/compinvesting1-003/lecture/view?lecture_id=9)
 
 * Daily return: \\(\frac{\text{value(day)}}{\text{value(previous day)}}-1\\)
 * Drawn-down: Take a high point's value \\(h\\),  take the next low point's value \\(l\\), the draw-dawn is \\(1-\frac{l}{h}\\)
@@ -76,6 +82,7 @@ Risk-adjusted performance metrics:
 * Jensen's alpha: average return on a portfolio over and above that predicted by the capital asset pricing model (CAPM), given the portfolio's beta and the average market return. 
 
 #### The Sharpe ratio
+[(watch section)](https://class.coursera.org/compinvesting1-003/lecture/view?lecture_id=11)
 
 Ubiquitous measure of asset performance, meant to tell us how well an assets perform given an amount of risk taken. A higher Sharpe ratio is better: for two assets with the same return, the one with a higher Sharpe ratio would give more return for the same risk.
 
@@ -100,6 +107,8 @@ where ``d`` is the series of daily returns (``d[i]`` the daily return for day ``
 
 #### Practical basic data manipulation
 
+[(watch section)](https://class.coursera.org/compinvesting1-003/lecture/view?lecture_id=13)
+
 Yahoo Finance -> search a symbol -> Historical prices on the left -> Daily, Download spreadsheet
 
 The columns are
@@ -117,6 +126,7 @@ We need to look at adjusted close values to calculate daily returns (the first d
 ## The mechanics of the markets
 
 ### Order types on stock markets
+[(watch section)](https://class.coursera.org/compinvesting1-003/lecture/view?lecture_id=39)
 
 Orders are sent to brokers, because direct trading on major stock exchanges is not allowed. Brokers have a computer on the exchange that makes orders available.
 
@@ -132,6 +142,7 @@ An order needs 5 things:
 example: IBM, buy, market, 100, N/A
 
 ### Order books at exchanges
+[(watch section)](https://class.coursera.org/compinvesting1-003/lecture/view?lecture_id=41)
 
 The order book is a pair of price-ordered lists (there is one such pair for each symbol on the market) representing all limit orders. 
 
@@ -180,6 +191,7 @@ An important aspect of shorting stock is that the potential benefit is limited t
 ### How hedge funds work
 
 #### Order book observation
+[(watch section)](https://class.coursera.org/compinvesting1-003/lecture/view?lecture_id=43)
 
 Exploiting imbalance (very fast): when there are more people willing to sell than to buy, shorting a stock would make sense. Hedge funds co-locate rack-space right in the exchange to have the lowest delay, measured in nanoseconds. Speed is the key to exploiting such imbalances.
 
@@ -190,6 +202,7 @@ Hedge funds will also have computers right next to important information sources
 In all those cases of HFT, the hard limits are the speed of information transmission (speed of light in fibres), and the speed of information processing.
 
 #### The computing infrastructure at hedge funds
+[(watch section)](https://class.coursera.org/compinvesting1-003/lecture/view?lecture_id=45)
 
 Let's imagine a small, slow quant shop. They don't do HFT. They have a **target portfolio**, achievable from the **current (live) portfolio** by selling a number of some shares, and buying some others.
 
@@ -212,8 +225,11 @@ Low-frequency trading information feeds are **analysts estimates**. It's not unu
 Paul Jiganti is managing director for the market structure at TDAmeritrade. Used to be Market Maker.
 
 ### A client makes an order...
+[(watch section)](https://class.coursera.org/compinvesting1-003/lecture/view?lecture_id=133)
 
 A **trailing stop order** it an order to have a limit order that follows the stock price while it raises but remains a little below, and stops moving when the stock starts to decrease. When the stock crosses the (now fixed) order, it gets triggered. Then, the order is sent as a market order to a market maker, which will represent it from a coloc on the market. The MM tests the order against their pricing mechanism and decides the best price for that order. For instance, if the MM has an agreement that the market orders have to always trade even if the MM takes a loss at it, so they set it one cent below the lowest ask (they're not allowed to set it lower). Or they go to a dark pool, print (**printing an order to the tape** means publicly documenting its execution) it there at a slightly better price than the market's current lowest ask.
+
+[(watch section)](https://class.coursera.org/compinvesting1-003/lecture/view?lecture_id=135)
 
 A **dark pool** (alternative liquidity pool) allows the market maker to interact with an entire order. The MM operates the dark pool, does the orders matching internally, offers better prices than the market, and does some profit on the internal spread. The MM often generates its own orders to match the ones from brokers that do not have a pendant. They take a (very very calculated) risk in doing so. The cask majority of orders are filled within dark pools.
 
@@ -224,6 +240,7 @@ An order is tagged with a unique ID by the broker right when it's made. The uniq
 In an exchange, the MM has to have a **resting bit**. Not too much info about that.
 
 ## Something goes wrong
+[(watch section)](https://class.coursera.org/compinvesting1-003/lecture/view?lecture_id=137)
 
 In the morning, when a market opens, there is an **opening cross**: the initial price of stocks is sent to all participants. Before opening, there are standing limit and market orders. The matching engine does its job, and when it stops matching, the starting price has been determined. All executable orders are executed at that initial price.
 
