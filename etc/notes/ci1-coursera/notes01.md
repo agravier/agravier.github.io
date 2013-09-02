@@ -84,7 +84,7 @@ Risk-adjusted performance metrics:
 #### The Sharpe ratio
 [(watch section)](https://class.coursera.org/compinvesting1-003/lecture/view?lecture_id=11)
 
-Ubiquitous measure of asset performance, meant to tell us how well an assets perform given an amount of risk taken. A higher Sharpe ratio is better: for two assets with the same return, the one with a higher Sharpe ratio would give more return for the same risk.
+Ubiquitous measure of asset performance, meant to tell us how well an asset perform given an amount of risk taken. A higher Sharpe ratio is better: for two assets with the same return, the one with a higher Sharpe ratio would give more return for the same risk.
 
 It was invented to differentiate which portfolio is better in cases of similar return performance.  
 
@@ -121,7 +121,7 @@ The columns are
 * Volume: number of shares traded that day
 * Adj Close: Adjusted close (something about dividends)
 
-We need to look at adjusted close values to calculate daily returns (the first day's daily return is 0). From there, calculate the avgerage daily return, its stdev, and Sharpe ratio like above.
+We need to look at adjusted close values to calculate daily returns (the first day's daily return is 0). From there, calculate the avgrage daily return, its stdev, and Sharpe ratio like above.
 
 ## The mechanics of the markets
 
@@ -138,6 +138,7 @@ An order needs 5 things:
   * market order: take the best price currently available
   * limit order (preferable): maximum price for buying, minimum for selling
 * number of shares
+* price if limit order
 
 example: IBM, buy, market, 100, N/A
 
@@ -151,11 +152,11 @@ The order book is a pair of price-ordered lists (there is one such pair for each
 
 The **spread** is the gap between the lowest ask and the highest bid.
 
-**Crossing the spread** refers to increasing an bid price to meet an ask, or vice versa.
+**Crossing the spread** refers to increasing a bid price to meet an ask, or vice versa.
 
 ### Price movements
 
-If the lowest ask has, 1000 shares available at $10.00, with the next ask being at 10.05, and a bid comes for 1100 shares at that $10.00, then the buy order is executed *with all 1000 shares at $10, plus 100 shares at 10.05, making the effective aggregate buy price 10.0045455. On the order book, it results in an increased price, so lots of buying drives prices up by that mechanism
+If the lowest ask has 1000 shares available at $10.00, with the next ask being at 10.05, and a bid comes for 1100 shares at that $10.00, then the buy order is executed with all 1000 shares at $10, plus 100 shares at 10.05, making the effective aggregate buy price 10.0045455. On the order book, it results in an increased price, so lots of buying drives prices up by that mechanism
 
 The reverse happens symmetrically. Lots of selling drives prices down.
 
@@ -208,9 +209,9 @@ Let's imagine a small, slow quant shop. They don't do HFT. They have a **target 
 
 The **trading algorithm** is the central component of the infrastructure. It compares the target portfolio to the live portfolio, and sends orders to the broker to try to make the the live portfolio match the target one.
 
-(note: in "portfolio notation", AAPL -100 means that we are or ()for a target portfolio) want to *be short* of 100 Apple shares (so to have borrowed and sold 100 Apple shares, so as to buy them back later for cheaper), and GOOG 50 means that we are/want to *be long* Google 50, so be in possession of 50 Google shares)
+> *note*: in "portfolio notation", AAPL -100 means that we are or (for a target portfolio) want to *be short* of 100 Apple shares (so to have borrowed and sold 100 Apple shares, so as to buy them back later for cheaper), and GOOG 50 means that we are/want to *be long* Google 50, so be in possession of 50 Google shares)
 
-For a small portfolio, below $1m, the trading algorithm can just be "take the difference between the target and live, and send the corresponding orders." However, for a quant shop, the portfolio size and resulting magnitude of such orders would make the market move against the intended goals. So, the trading algorithm will split up the change in lots of small orders spaced out in time, to avoid strongly affecting the market. Trading a large value in a block instead of spaced out in chinks over several days is called **fat fingering** a trade.
+For a small portfolio, below $1m, the trading algorithm can just be "take the difference between the target and live, and send the corresponding orders." However, for a quant shop, the portfolio size and resulting magnitude of such orders would make the market move against the intended goals. So, the trading algorithm will split up the change in lots of small orders spaced out in time, to avoid strongly affecting the market. Trading a large value in a block instead of spaced out in chunks over several days is called **fat fingering** a trade.
 
 The target portfolio is calculated using a **forecast** (machine- or people-generated). The **portfolio optimiser** is an algorithm that combines the current portfolio, the forecast data, and **historical prices**, to come up with the target portfolio. The historical data is used to balance the portfolio and reduce volatility: typically, we want to acquire some stock that is counter-cyclical to those we are about to trade, and historical data reveals that. The portfolio optimiser also considers **risk constrains**.
 
@@ -222,7 +223,7 @@ Low-frequency trading information feeds are **analysts estimates**. It's not unu
 
 ## Interview with Paul Jiganti
 
-Paul Jiganti is managing director for the market structure at TDAmeritrade. Used to be Market Maker.
+Paul Jiganti is managing director for the market structure at TDAmeritrade. Used to be Market Maker. I didn't catch all what they mention.
 
 ### A client makes an order...
 [(watch section)](https://class.coursera.org/compinvesting1-003/lecture/view?lecture_id=133)
@@ -231,15 +232,15 @@ A **trailing stop order** it an order to have a limit order that follows the sto
 
 [(watch section)](https://class.coursera.org/compinvesting1-003/lecture/view?lecture_id=135)
 
-A **dark pool** (alternative liquidity pool) allows the market maker to interact with an entire order. The MM operates the dark pool, does the orders matching internally, offers better prices than the market, and does some profit on the internal spread. The MM often generates its own orders to match the ones from brokers that do not have a pendant. They take a (very very calculated) risk in doing so. The cask majority of orders are filled within dark pools.
+A **dark pool** (alternative liquidity pool) allows the market maker to interact with orders. The MM operates the dark pool, does the orders matching internally, offers better prices than the market, and does some profit on the internal spread. The MM often generates its own orders to match the ones from brokers that do not have a pendant. They take a (very very calculated) risk in doing so. The vast majority of orders are filled within dark pools.
 
 If the MM decides that it doesn't want to fulfil an order internally, it sends it to an exchange. There, a **matching engine** does the matching between the order and the **top of the book**.
 
 An order is tagged with a unique ID by the broker right when it's made. The unique ID is transmitted along with the order all the way to the exchange, and when the trade is executed, the ID returns to the initial broker via two paths (redundancy for better safety).
 
-In an exchange, the MM has to have a **resting bit**. Not too much info about that.
+In an exchange, the MM has to have a **resting bit** (bit? beat?). Not too much info about that. It's something unpleasant, apparently.
 
-## Something goes wrong
+### Something goes wrong
 [(watch section)](https://class.coursera.org/compinvesting1-003/lecture/view?lecture_id=137)
 
 In the morning, when a market opens, there is an **opening cross**: the initial price of stocks is sent to all participants. Before opening, there are standing limit and market orders. The matching engine does its job, and when it stops matching, the starting price has been determined. All executable orders are executed at that initial price.
