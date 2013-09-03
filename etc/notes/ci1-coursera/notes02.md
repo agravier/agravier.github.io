@@ -204,15 +204,57 @@ r\_p &= w\_\text{IBM} r\_\text{IBM} + w\_\text{SPY} r\_\text{SPY} \\\\
 
 [((recommended) read the wiki)](http://wiki.quantsoftware.org/index.php?title=QSToolKit_Installation_Guide)
 
-### Installing the dependencies
+### My installation procedure
 
-There are automated installation scripts that take care of dependencies:
+I don't know if the following makes sense under Windows or OS X. It
+works for me under Archlinux.
+
+Anyway, regardless of your OS, I recommend installing everything in a
+[virtualenv](pypi.python.org/pypi/virtualenv) if you can. Manage your
+virtualenvs using
+[virtualenvwrapper](https://pypi.python.org/pypi/virtualenvwrapper). I
+assume that you're doing that.
+
+I used ``pip`` to install QSTK, the dependencies are automatically
+pulled. However, numpy and scipy are better installed explicitly
+first, because they are somewhat ill-tempered and mean. 
+
+Scipy needs *swig* and a fortran compiler. *gfortran* will do. It's
+possilbe that it needs more than that, I installed the required
+dependencies long ago so I'm not sure. Generally, install what it
+needs normally, with your package manager, before running the
+following:
+
+<div class="highlight"><pre><code>
+mkvirtualenv coursera-ci
+pip install numpy
+pip install scipy
+pip install QSTK
+</code></pre></div>
+
+Now that the libraries are installed, we test if QSTK works:
+
+<div class="highlight"><pre><code>
+wget https://spark-public.s3.amazonaws.com/compinvesting1/QSTK-Setups/Examples.zip
+unzip Examples.zip
+cd Examples
+python2 Validation.py
+</code></pre></div>
+
+It should display ``Everything works fine: You're all set.`` in the end.
+
+### The official procedure
+
+#### Installing
+
+There are automated installation scripts that take care of
+dependencies, or official installation procedures on the wiki:
 
 [OS X](http://wiki.quantsoftware.org/index.php?title=QSToolKit_Installation_Guide_Mac) ([script](https://raw.github.com/tucker777/QuantSoftwareToolkit/master/MacInstallation.sh) (required: XCode, Homebrew))  
 [Ubuntu](http://wiki.quantsoftware.org/index.php?title=QSToolKit_Installation_Guide_Ubuntu)  
 [Windows](http://wiki.quantsoftware.org/index.php?title=QSToolKit_Installation_Guide_Windows)  
 
-Manually: the requirements are:
+To install all manually: the requirements are:
 
 **Python 2.7**
 
@@ -235,8 +277,6 @@ Manually: the requirements are:
 **Statsmodel**
 
 **QSTK**
-
-I recommend installing everything in a [virtualenv](pypi.python.org/pypi/virtualenv) if you can. Manage your virtualenvs using [virtualenvwrapper](https://pypi.python.org/pypi/virtualenvwrapper).
 
 ### Testing the installation:
 
