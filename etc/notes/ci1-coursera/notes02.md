@@ -186,7 +186,7 @@ The portfolio return is thus:
 \\[ 
 \begin{align}
 r\_p &= w\_\text{IBM} r\_\text{IBM} + w\_\text{SPY} r\_\text{SPY} \\\\
-&= \dfrac{1}{2} + \dfrac{1}{2}\alpha\_\text{IBM} - \dfrac{1}{2}
+&= \dfrac{1}{2} + \dfrac{1}{2}\alpha\_\text{IBM} - \dfrac{1}{2} \\\\\
 &= \dfrac{1}{2}\alpha\_\text{IBM}
 \end{align}
 \\]
