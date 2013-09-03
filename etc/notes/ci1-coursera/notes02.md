@@ -174,7 +174,7 @@ w\_\text{IBM} r\_\text{IBM} &= w\_\text{IBM}\beta\_\text{IBM} + w\_\text{IBM}\al
 w\_\text{SPY} r\_\text{SPY} &= w\_\text{SPY}\beta\_\text{SPY} + w\_\text{SPY}\alpha\_\text{SPY}
 \end{cases}
 \\]
-We have some of these numbers, and we further assume that \alpha\_\text{SPY} = 0, because it follows the market:
+We have some of these numbers, and we further assume that \\(\alpha\_\text{SPY} = 0\\), because it follows the market:
 \\[
 \Rightarrow
 \begin{cases}
@@ -186,7 +186,7 @@ The portfolio return is thus:
 \\[ 
 \begin{align}
 r\_p &= w\_\text{IBM} r\_\text{IBM} + w\_\text{SPY} r\_\text{SPY} \\\\
-&= \dfrac{1}{2} + \dfrac{1}{2}\alpha\_\text{IBM} - \dfrac{1}{2}
+&= \dfrac{1}{2} + \dfrac{1}{2}\alpha\_\text{IBM} - \dfrac{1}{2} \\\\\
 &= \dfrac{1}{2}\alpha\_\text{IBM}
 \end{align}
 \\]
