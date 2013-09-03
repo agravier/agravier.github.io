@@ -91,19 +91,32 @@ It was invented to differentiate which portfolio is better in cases of similar r
 The original definition was:
 
 \\[
-S = \frac{E[R-R_f]}{\sqrt{\text{var}[R-R_f]}} 
+S = \frac{E[R-R\_f]}{\sqrt{\text{var}[R-R\_f]}} 
 \\]
 
 \\(R\\) is the return of the asset,
-\\(R_f\\) is the risk-free return, like Libor or some very low-risk asset.
+\\(R\_f\\) is the risk-free return, like Libor or some very low-risk asset.
 
-Nowadays, the \\(R_f\\) component is often ignored, and the Sharpe ratio is computed as
+Nowadays, the \\(R\_f\\) component is often ignored, and the Sharpe ratio is computed as
 
 \\[
 S = k\frac{\mathtt{mean(d)}}{\mathtt{sd(d)}} 
 \\]
 
-where ``d`` is the series of daily returns (``d[i]`` the daily return for day ``i``), ``sd(d)`` is the measure of standard deviation of daily returns, and \\(k=\sqrt{250}\\) for the number of trading days in a year.
+where ``d`` is the series of daily returns (``d[i]`` the daily return for day ``i``), ``sd(d)`` is the measure of standard deviation of daily returns, and \\(k= \frac{250}{\sqrt{250}} = \sqrt{250}\\) for the number of trading days in a year.
+
+The presence of \\(k\\) stems from the assumption that all daily return rate \\(d\_i\\) are random variables with the same distribution \\(d\\): \\(d\_1 = d\_2 = \ldots = d\_k\\). The addition of those \\(k\\) variables give \\(R\\), the random variable for the whole period: \\(R = d\_1 + \ldots + d\_k = k d\\). With that in mind, looking at our initial definition of the Sharpe ratio, but ignoring the risk-free return component \\(R\_f\\), we have:
+
+\\[
+\begin{align}
+S &= \frac{E[R]}{\sqrt{\text{var}[R]}} \\\\
+&= \frac{E[k d]}{\sqrt{\text{var}[k d]}} \\\\
+&= \frac{E[250 d]}{\sqrt{\text{var}[250 d]}} \\\\
+&= \frac{250 E[d]}{\sqrt{250} \sqrt{\text{var}[d]}} \\\\
+&= \frac{250}{\sqrt{250}} \frac{E[d]}{\sqrt{\text{var}[d]}} \\\\
+&= \sqrt{250} \frac{E[d]}{\sqrt{\text{var}[d]}}
+\end{align}
+\\]
 
 #### Practical basic data manipulation
 
