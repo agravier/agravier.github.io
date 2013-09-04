@@ -93,11 +93,11 @@ The value of a company = book value + intrinsic value
 
 But the market is a very efficient information processor, the reaction to news reflects the potential future revenue of the company.
 
-This is the **efficient markets hypothesis**: the market process information sufficiently rapidly to come to an equilibrium price that reflects the right value of the company.
+This is the **efficient markets hypothesis**: the markets process information sufficiently rapidly to come to an equilibrium price that reflects the right value of the company.
 
 The value of a company = number of shares \\(\times\\) price
 
-This hypothesis entails that we can't beat the market in that regard, and as investors, we can't exploit the difference between the true of a company and its market cap, because it's null.
+This hypothesis entails that we can't beat the market in that regard, and as investors, we can't exploit the difference between the value true of a company and its market cap, because it's null.
 
 ## The CPAM
 
@@ -110,7 +110,7 @@ When comparing the price chart of Exxon Mobil (XOM) to that of the S&P 500, we n
 
 We can observe that the most important factor of influence on a stock's daily price is the entire market. The CAPM says that the influence of the whole market on a stock's price is generally stronger than the small individual variations in stock price. The CAPM is a way to express and analyse that influence. 
 
-CAPM had a large impact on finance, it kickstarted index investing. The CAPM implies that you're better off investing in a market portfolio rather than trying to pick a small number of stocks. This goes agains hedge fund and active portfolio management, where we assume that you can make money by picking individual stocks. The burden to prove it wrong is on us.
+CAPM had a large impact on finance, it kickstarted index investing. The CAPM implies that you're better off investing in a market portfolio rather than trying to pick a small number of stocks. This goes agains hedge funds logic and active portfolio management, where we assume that you can make money by picking individual stocks. But the burden to prove the CAPM wrong is on us.
 
 Let \\(r\_i\\) the daily return on a particular stock \\(i\\).
 
@@ -167,26 +167,26 @@ Now, imagining that we have forecast information for one of those stocks; for in
 * SPY is an ETF exactly representing S&P 500, that we can trade like stock. So, in the IBM example, let's imagine a portfolio made of 2 positions: IBM and SPY. 
 * Let's assume that \\(\beta\_\text{IBM}=1\\) and  \\(\beta\_\text{SPY}=1\\), and let's have 50% of out portfolio in IBM, and 50% in SPY:  \\(w\_\text{IBM}=\dfrac{1}{2}\\) and \\(w\_\text{SPY}=\dfrac{1}{2}\\). 
 * Now, **we short SPY: \\(w\_\text{SPY} \gets -\dfrac{1}{2}\\)**
-* Let's calculate our daily returns for IBM and SPY:
+* Let's calculate our daily returns for IBM and SPY. We multiply each \\(r\_i\\)'s definition by its share \\(w\_i\\) in the portfolio:
 \\[
 \begin{cases}
-w\_\text{IBM} r\_\text{IBM} &= w\_\text{IBM}\beta\_\text{IBM} + w\_\text{IBM}\alpha\_\text{IBM} \\\\
-w\_\text{SPY} r\_\text{SPY} &= w\_\text{SPY}\beta\_\text{SPY} + w\_\text{SPY}\alpha\_\text{SPY}
+w\_\text{IBM} r\_\text{IBM} &= w\_\text{IBM}\beta\_\text{IBM}r\_m + w\_\text{IBM}\alpha\_\text{IBM} \\\\
+w\_\text{SPY} r\_\text{SPY} &= w\_\text{SPY}\beta\_\text{SPY}r\_m + w\_\text{SPY}\alpha\_\text{SPY}
 \end{cases}
 \\]
 We have some of these numbers, and we further assume that \\(\alpha\_\text{SPY} = 0\\), because it follows the market:
 \\[
 \Rightarrow
 \begin{cases}
-\dfrac{1}{2} r\_\text{IBM} &= \dfrac{1}{2} + \dfrac{1}{2}\alpha\_\text{IBM} \\\\
--\dfrac{1}{2} r\_\text{SPY} &= -\dfrac{1}{2}
+\dfrac{1}{2} r\_\text{IBM} &= \dfrac{1}{2}r\_m + \dfrac{1}{2}\alpha\_\text{IBM} \\\\
+-\dfrac{1}{2} r\_\text{SPY} &= -\dfrac{1}{2}r\_m
 \end{cases}
 \\]
 The portfolio return is thus:
 \\[ 
 \begin{align}
 r\_p &= w\_\text{IBM} r\_\text{IBM} + w\_\text{SPY} r\_\text{SPY} \\\\
-&= \dfrac{1}{2} + \dfrac{1}{2}\alpha\_\text{IBM} - \dfrac{1}{2} \\\\\
+&= \dfrac{1}{2}r\_m + \dfrac{1}{2}\alpha\_\text{IBM} - \dfrac{1}{2}r\_m \\\\\
 &= \dfrac{1}{2}\alpha\_\text{IBM}
 \end{align}
 \\]
@@ -225,21 +225,17 @@ dependencies long ago so I'm not sure. Generally, install what it
 needs normally, with your package manager, before running the
 following:
 
-<div class="highlight"><pre><code>
-mkvirtualenv coursera-ci
+<div class="highlight"><pre><code>mkvirtualenv coursera-ci
 pip install numpy
 pip install scipy
-pip install QSTK
-</code></pre></div>
+pip install QSTK</code></pre></div>
 
 Now that the libraries are installed, we test if QSTK works:
 
-<div class="highlight"><pre><code>
-wget https://spark-public.s3.amazonaws.com/compinvesting1/QSTK-Setups/Examples.zip
+<div class="highlight"><pre><code>wget https://spark-public.s3.amazonaws.com/compinvesting1/QSTK-Setups/Examples.zip
 unzip Examples.zip
 cd Examples
-python2 Validation.py
-</code></pre></div>
+python2 Validation.py</code></pre></div>
 
 It should display ``Everything works fine: You're all set.`` in the end.
 
@@ -278,6 +274,6 @@ To install all manually: the requirements are:
 
 **QSTK**
 
-### Testing the installation:
+#### Testing the installation:
 
 Download and uncompress the [examples](https://spark-public.s3.amazonaws.com/compinvesting1/QSTK-Setups/Examples.zip) archive, and run the *Validation.py* file.
