@@ -20,3 +20,18 @@ I generated all styles with
 ```bash
 python -c "from pygments.styles import get_all_styles; print list(get_all_styles())" | tr -cd [:alnum:][:blank:] | xargs -d" " -I {} sh -c 'pygmentize -S "$1" -f html > "stylesheets/$1.css"' -- {} \;
 ```
+
+with the header ```jquery: true```, main_jquery.js gets included,
+which defines the behaviour of
+
+    <p class="toggle_trigger"><a href="#">toggle link</p>
+    <div markdown="1" class="toggle_container">
+       blabla
+    </div>
+
+Note that the markdown=1 attribute is not supported by rdiscount yet
+(but Maruku doesn't play well with MathJax, so I have to use rdiscount).
+
+To make a markdown rendering of an IPython notebook: ```ipython
+nbconvert --to markdown notebook.ipynb```. Remember to add the jekyll
+header for processing.

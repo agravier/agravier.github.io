@@ -225,21 +225,17 @@ dependencies long ago so I'm not sure. Generally, install what it
 needs normally, with your package manager, before running the
 following:
 
-<div class="highlight"><pre><code>
-mkvirtualenv coursera-ci
+<div class="highlight"><pre><code>mkvirtualenv coursera-ci
 pip install numpy
 pip install scipy
-pip install QSTK
-</code></pre></div>
+pip install QSTK</code></pre></div>
 
 Now that the libraries are installed, we test if QSTK works:
 
-<div class="highlight"><pre><code>
-wget https://spark-public.s3.amazonaws.com/compinvesting1/QSTK-Setups/Examples.zip
+<div class="highlight"><pre><code>wget https://spark-public.s3.amazonaws.com/compinvesting1/QSTK-Setups/Examples.zip
 unzip Examples.zip
 cd Examples
-python2 Validation.py
-</code></pre></div>
+python2 Validation.py</code></pre></div>
 
 It should display ``Everything works fine: You're all set.`` in the end.
 

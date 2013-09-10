@@ -6,6 +6,7 @@ title: Stuff like reading notes, ideas, etc...
 
 [Lecture notes for week 1](notes/ci1-coursera/notes01.html)  
 [Lecture notes for week 2](notes/ci1-coursera/notes02.html)  
+[Lecture notes for week 3](notes/ci1-coursera/notes03.html)  
 
 
 [Link to the course](https://class.coursera.org/compinvesting1-003/)

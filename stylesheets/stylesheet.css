@@ -407,6 +407,26 @@ ul.related li span.date {
     color: #55bb55; 
 }
 
+/** JQuery code folding **/
+p.toggle_trigger{
+    margin-bottom:5px;
+    margin-top:5px;
+    border-bottom: 1px dotted #ba8740
+}
+
+
+.toggle_container p{
+    margin:2px;
+}
+
+.toggle_container{
+    border-bottom: 1px dotted #ba8740;
+    border-top: none;
+    /*background: black;*/
+    clear: both;
+    font-size:100%;
+}
+
 
 /*******************************************************************************
 Full-Width Styles
