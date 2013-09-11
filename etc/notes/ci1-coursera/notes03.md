@@ -5,11 +5,10 @@ mathjax: true
 disqus: true
 ---
 
-# Week 3: NumPy, QSTK/Pandas Demo, Interview with Tom Sosnoff and Homework 1
+# Week 3: NumPy, QSTK/Pandas Demo, Homework 1 and Interview with Tom Sosnoff
 
 ## NumPy tutorial
-[(watch section)](https://class.coursera.org/compinvesting1-003/lecture/view?lecture_id=147)  
-[(Read the original script)](http://wiki.quantsoftware.org/index.php?title=Numpy_Tutorial_1)
+[(read the tutorial script)](http://wiki.quantsoftware.org/index.php?title=Numpy_Tutorial_1)
 
 ### Many ways
 
@@ -20,6 +19,12 @@ favourite ways to red a Python tutorial are
 extensions](github.com/gabrielelanaro/emacs-for-python) worth using, or
 * to go through the tutorial by copy-pasting it in [an IPython Notebook](http://ipython.org/ipython-doc/stable/interactive/notebook.html)
 
+To run IPython and copy-paste things in it, you don't need to change
+directory, but in case you may want to run a script
+(```execfile('script.py')```), import something local to that
+directory (```import mylibrary as mlib```) or output
+something, it's better to be in the right place fromt the start.
+
 <div class="highlight"><pre><code>cd dev/coursera-comp-invest-1/Examples/Basic</code></pre></div>
 
 Activate the virtualenv, start iPython
@@ -27,13 +32,24 @@ Activate the virtualenv, start iPython
 <div class="highlight"><pre><code>workon finance64
 ipython</code></pre></div>
 
-The rest of this section is mostly copied from the Quantsoftware
-wiki-based [Numpy tutorial](http://wiki.quantsoftware.org/index.php?title=Numpy_Tutorial_1).
+The rest of this section is copied from the Quantsoftware
+wiki-based [Numpy
+tutorial](http://wiki.quantsoftware.org/index.php?title=Numpy_Tutorial_1),
+with a few additional comments of my own.
 
-As an alternative, you can [read the Tutorial as an IPython
-notebook, with Python interpreter output](quantsoftware_numpy_tutorial.html)
+As an alternative, if you want to see the Python interpreter
+output without running the tutorial, you can 
+
+* [read it as a fomatted IPython
+notebook](quantsoftware_numpy_tutorial.html), or
+* [read the same IPython Notebook on
+  nbviewer](http://nbviewer.ipython.org/urls/raw.github.com/agravier/agravier.github.io/master/etc/notes/ci1-coursera/quantsoftware_numpy_tutorial.ipynb), or
+* [download the
+notebook](https://raw.github.com/agravier/agravier.github.io/master/etc/notes/ci1-coursera/quantsoftware_numpy_tutorial.ipynb)
+for your own usage.
 
 ### Importing Numpy
+[(watch section)](https://class.coursera.org/compinvesting1-003/lecture/view?lecture_id=147)  
 
 The following loads the numpy library and lets us refer to it by the shorthand "np",
 which is the convention used in the numpy documentation and in many
@@ -42,10 +58,11 @@ online tutorials/examples.
 import numpy as np
 {% endhighlight %}
 
-### Creating arrays
-Now lets make an array to play around with. You can make numpy arrays in
-a number of ways,
-Filled with zeros:
+### Creating arrays 
+
+Now lets make an array to play around with. You can make numpy arrays
+in a number of ways, filled with zeros. Here, the argument ```(2,3)```
+is of basic type ```tuple```.
 
 {% highlight python %}
 zeroArray = np.zeros( (2,3) ) # [[ 0.  0.  0.]
@@ -116,6 +133,8 @@ print rangeArray # [[ 6  7  8]
                  #  [ 9 10 11]
 {% endhighlight %}
 
+[(watch section)](https://class.coursera.org/compinvesting1-003/lecture/view?lecture_id=149)
+
 When you use reshape(...) the total number of things in the array must stay
 the same. So reshaping an array with 2 rows and 3 columns into one with 
 3 rows and 2 columns is fine, but 3x3 or 1x5 won't work
@@ -124,8 +143,8 @@ the same. So reshaping an array with 2 rows and 3 columns into one with
 squareArray = np.arange(1,10).reshape( (3,3) ) #this is fine, 9 elements
 {% endhighlight %}
 
-
 ### Accessing array elements
+
 Accessing an array is also pretty straight forward. You access a specific
 spot in the table by referring to its row and column inside square braces
 after the array:
@@ -134,7 +153,8 @@ print rangeArray[0,1] #7
 {% endhighlight %}
 
 Note that row and column numbers start from 0, not 1! Numpy also lets you 
-refer to ranges inside an array:
+refer to ranges inside an array (note that the lower bound is
+included, and the upper bound is excluded):
 {% highlight python %}
 print rangeArray[0,0:2] #[6 7]
 print squareArray[0:2,0:2] #[[1 2]  # the top left corner of squareArray
@@ -206,6 +226,18 @@ print betterThanAverage             #[[False False  True]
 print squareArray[betterThanAverage] #[3 4 6]
 {% endhighlight %}
 
+[(watch
+section)](https://class.coursera.org/compinvesting1-003/lecture/view?lecture_id=151)
+(beware, the video follows another version of the tutorial, and
+squareArray is different)
+
+Note that a python assignment ```b = a``` from an ***object*** named
+_a_ to another name _b_ only copies the reference to the object, so
+mutating the original _a_ results in those changes bing reflected
+through _b_. To get a copy, objects assignment is not enough, a copy
+must be made too: ```b = a.copy()```. That remark is also valid for numpy
+arrays.
+
 Indexing like this can also be used to assign values to elements of the
 array. This is particularly useful if you want to filter an array, say by 
 making sure that all of its values are above/below a certain threshold:
@@ -270,4 +302,10 @@ numpy tutorial](http://www.scipy.org/Tentative_NumPy_Tutorial) for a more in dep
 
 
 ## QSTK/Pandas Demo
+
+
+## Homework 1
+
+
+## Interview with Tom Sosnoff
 
