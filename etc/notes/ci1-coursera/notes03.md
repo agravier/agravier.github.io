@@ -304,15 +304,16 @@ numpy tutorial](http://www.scipy.org/Tentative_NumPy_Tutorial) for a more in dep
 ## QSTK Demo
 
 [(watch section)](https://class.coursera.org/compinvesting1-003/lecture/view?lec
-ture_id=163)
+ture_id=163)  
 [(read the wiki)](http://wiki.quantsoftware.org/index.php?title=QSTK_Tutorial_1)
 
 The following is the output of an iPython notebook.
 
 * [download the
 notebook](https://raw.github.com/agravier/agravier.github.io/master/etc/notes/ci1-coursera/qstk_tutorial_1.ipynb))
-(* [read it on
-  nbviewer](http://nbviewer.ipython.org/urls/raw.github.com/agravier/agravier.github.io/master/etc/notes/ci1-coursera/qstk_tutorial_1.ipynb), or
+* [read it on
+  nbviewer](http://nbviewer.ipython.org/urls/raw.github.com/agravier/agravier.github.io/master/etc/notes/ci1-coursera/qstk_tutorial_1.ipynb)
+
 ### Imports
 
 * numpy, pylab and matplotlib provide a number of functions to Python that give
@@ -923,8 +924,175 @@ plt.xlabel('$SPX')
 
 
 
-## Homework 1
+## Homework 1: building, assessing and optimising a portfolio
 
+[(watch section)](https://class.coursera.org/compinvesting1-003/lecture/view?lecture_id=157)
+
+### Overview
+#### About part 1
+
+Given 4 equity symbols and a start date and end date spanning one year, we want to anser the question: what would have been the optimal allocation for the portfolios in the beginning of the year to maximise the Sharpe ratio?
+
+The required knowledge is in QSTK tutorials [1](http://wiki.quantsoftware.org/index.php?title=QSTK_Tutorial_1) and [3](http://wiki.quantsoftware.org/index.php?title=QSTK_Tutorial_3). 
+
+Note that the code used to combine individual equities' performances to get the overall portfolio performance does **not** apply to the assignment. Tutorial 3 rebalances the portfolio everday to keep the initial weighting, but the homework wants you to assign once in the begninning of the year and that's all.
+
+#### About part 2
+
+Write a ```simulate``` function which, given as parameters
+
+* start date (datetime object)
+* end date (datetime object)
+* a list of equity symbols 
+* a list of corresponding allocations summing up to 1
+
+simulates the initial investment as the start date as defined in the list of allocations, and calcualtes the cumulative daily returns and all other necessary data to get, as a 4-tuple output:
+
+* stdev of daily returns of the overall portfolio
+* average daily return of the overall portfolio
+* Sharpe ratio of the portfolio
+* cumulative return of the portfolio
+
+Example output:
+
+
+    Start Date: January 1, 2010
+    End Date: December 31, 2010
+    Symbols: ['AXP', 'HPQ', 'IBM', 'HNZ']
+    Optimal Allocations:  [0.0, 0.0, 0.0, 1.0]
+    Sharpe Ratio: 1.29889334008
+    Volatility (stdev of daily returns): 0.00924299255937
+    Average Daily Return: 0.000756285585593
+    Cumulative Return: 1.1960583568
+
+
+To verify that the function works well, see the wiki's [example outputs](http://wiki.quantsoftware.org/index.php?title=CompInvestI_Homework_1#Example_output)
+
+#### About part 3
+
+Use the simulate function to optimise portfolios. This portfolio optimiser will probably test many portfolios allocations and select the best one.
+
+A brute force search with nested for loops is manageable in 10% increments of allocation. Remember to only consider portfolios with weights adding up to 1.
+
+#### About part 4 (not to be submitted)
+
+Plot stuff and be happy! (That advice may or may not apply to all aspects of life)
+
+### More details
+[(watch section)](https://class.coursera.org/compinvesting1-003/lecture/view?lecture_id=159)
+
+Create a function that can assess a portfolio given 4 equities bought at the beginning of the period and held all along.
+
+The video shows how to use spreadsheet software to perform the portfolio performance calculation. In 2011, 252 adjusted closing price (1 per trading days). In Python, for each equity, 
+
+* store those in a Pandas dataframe,
+* create a new dataframe with normalised prices (divide all prices by the first day's price)
+* in the homework, we don't speak about dollars but just ratios, it's like investing a total of $1
+* calculate each investment's and the portfolio's cumulative returns
+* from that portfolio's cumulative return, calculate the portfolio's daily returns
+* From there, the necessary statistics
 
 ## Interview with Tom Sosnoff
 
+[(watch section)](https://class.coursera.org/compinvesting1-003/lecture/view?lecture_id=145)
+
+Tom was Market Maker, is now a trader, has influenced brokerage, CS, and trading. 
+
+Tastytrade is Tom's "vision of alternative financial content", creating a financial network focused on derivatives and an alternative strategic approach to investing. They want to better serve the individual investors. Bring the true power of self-directed investing to consumers. Self-directed investing is independent individual investing driven by logic.
+
+TB: What was it like before computers prevailed in markets? How did human orders get processed?
+
+TS: was a trader at the Chicago Board Options Exchange from 1980 to 2000. Had a proprietary trading firm on the floor there. Was both MM and traded their own capital. The customer wants to make an order, they reach their broker by phone (in the 1980s) or by some electronic system (in the 1990s). The broker then contacted the trader either by some wire service or on the phone, depending on the order size and the product. For large orders, it may be *called directly into the pit*, and for smaller orders, it's a *ticket is printed at a booth*, or *a runner runs the order out*.
+
+TB: What's left where TS used to work?
+
+TS: Nothing much, 2-300 ppl: the volatility index crowd and the S&P 500 people. The S&P 5000 people are trading *stock options of the whole S&P 500 index*. The second crowd *trades derivatives that are options on the VIX* (the volatility index of the S&P 500). 95% of the trade is now *server trading*, off the floor.
+
+TB: How did a trade happen?
+
+TS: Brokers and MM were clearly separated. The broker represented the order, and the MM was the facilitator, providing liquidity. One could not represent a customer order and execute it. Facilitation and execution were kept separate. It worked well but was innefficient time-wise. Efficiency, meaning milliseconds execution, leads to more liquidity and more opportunity.
+
+TB: How does a MM make money?
+
+TS: Let's forget acout principle risk. 3 parties want to be paid when a transaction gets done.
+
+1. the exchange, for housing, clearing, facilitating, they get a small exchange fee
+2. the broker, for executing the order, they get a transaction fee, a commission
+3. the MM gets "paid" by the amount of theoretical edge that they can lock up in the trade, the spread. However, they pay for the right to have that edge and to borrow capital to make that trade.
+
+TB: To MM take risks? Like what?
+
+TS: Risk is part of the job. To provide liquidity, you often enter a trade for which you don't have a counter-party. You get paid for that by the functionning of the market: less efficient symbols have a wider spread, and the risk you take as MM is compensated by the spread. So, the risk is naturally proportional to the reward. THe safest way to make money is "lots of little bits", a large number of transactions with a small edge is preferable. 
+
+
+[(watch section)](https://class.coursera.org/compinvesting1-003/lecture/view?lecture_id=153)
+
+TB: How did the transition into the period of computerised markets happen?
+
+TS: The biggest change was when exchanges because multilisting and competitive. Before, one exchange supported one product, then they started competing, and in ~2005, online brokers really drove that change. See thinkorswim.com. Force the exchanges to understand the cost of demand for certain products and strategies.
+
+TB: What happened to people being replaced?
+
+TS: MM lost their jobs. The electronic transactions reduced the spread and MM lost their edge. There was no more business on the floor, but overall, much more business.
+
+TB: How did the Black–Scholes model (that estimates the price of an option over time) affect you as MM?
+
+TS: We didn't understand it. We didn't have that perspective. But it was an incredible opportunity, we didn't think about it as a negative. The change came throughout the years, with the firms learning how to price and adjust for volatility skew. Volatility skew: stuff follows a normal distribution. With options though, it's not normal, the tails are fat, which extends the risk. And sometimes, the markets have irrational periods because the fat tails are harder to price. But that's where the edge is for MM and individual investors who learned to trade correctly.
+
+TB: So Black–Scholes is correct except for the tails...
+
+TS: Yes, in 1987, trading around the crash, we didn't really understad volatility risk, even into the 1990, and we didn't understand how to proce it for all that volatility skew. Now, they do.
+
+TB: before Black–Scholes, it was not clear how to price an option. Then, to what extend is Black–Scholes a self-fulfilling prophecy?
+
+TS: There are not many variables. It's a simple model. All the models tend to take the same kinds of inputs, which is smart, and I think that helps the business grow.
+
+TB: Black–Scholes doesn't have a price history.
+
+TS: yes, it's simple, and volatility comes right off the bd-ask spread, so Black–Scholes is pretty efficient.
+
+TB: so you can look at the market and see what it outght to be now...
+
+TS: yes
+
+[(watch section)](https://class.coursera.org/compinvesting1-003/lecture/view?lecture_id=155)
+
+TB: In the 1990s, you were trader at CBOE and MM, and had seen computer entering the market, and saw an opportunity. Tell us more.
+
+TS: We knew we were doomed. We saw the computer age coming, and as MM and traders on the floor, we knew it was the end. The business was changing and we though that at some future point it was going to be fully electronic. We had created some assets, and were able to raise money and fund our own idea to survive the change. In 1999, we build a very different brokerage firm, in a completely new direction: a derivative space boutique that commoditized technology, to allow people to do new things. The goal was to teach people to use products lying at the lowest cost spaces. It didn't go that way straight away, but went through an evolution.
+
+TB: Derivatives are complicated. Why did you think retail traders would want this?
+
+TS: The retail trader has been used and abused for a long time. The retail investor has never been successful. He can barely beat the inflation. But in an efficient marketplace, it makes no sense when one side wins most of the ime, and the other loses. It should come up as 50-50. We felt that the opportunity was huge to close the gap. For a long time, the industry has had a lack of domain expertise, and we though that we could bring that to people who would appreciate the intellectual discussion. It worked, when we sold thinkorswim, we had ~200k customers.
+
+TB: I see with Thinkorswim that there are many different tools that help you look at options, probabilites etc. Which of those tools are the most important?
+
+TS: We were the leader in delivering a probability-based approach to investors. We were the first to add context to a discussion about investing. The industry was collecting fees but not disseminating information. Thinkorswim changed that.
+
+TB: Now HFT and algo trading came. Around the 2000, there were people in the end of a trade. Now it's most often computers. What does that change?
+
+TS: Big difference betweent HFT and algo trading. Algo trading had never proven to be algo trading in its purest form of trying to figure out things. I don't think it has played that big a role. HFT has played a big role. But HFT is arbitrage. Arbing exchange models, speed, marketplaces, etc... People may bash it but HFT has provided an enorous amount of liquidity and more importantly, it has delivered a challenge to the tech community, which has helped create platforms to do a lot more stuff. 
+
+TB: Can a computer trade better than Tom Sosnoff?
+
+TS: Not a change in hell.
+
+TB: Why?
+
+TS: Event if I wrote all what we do and look for, I still think that there are general market tells that you can's program. If my model is arbitrage, no I cannot beat the computer. If my model is purely strateguc in retail, then I'll beat the computer.
+
+TB: There are corners where a machine can do better...
+
+TS: Not in a non-professional environment. The computer will always outperform if it's the counterparty (the professional, MM for instance). It will outperform if it's arbitrage.
+
+TB: The computer is good at speed, so the longer the timeframe, the better the human?
+
+TS: No, it's about size. If you talk about an unlimited use of capital, at a professional level, there is no capital limitation, and you may be able to simplify the decisions. At the level of individual investors, the decisions have to be made based on available capital, account permissioning, and all the other factors. I don't think it's possible.
+
+TB: How can computers best help people?
+
+TS: We're currently building a lot of tech geared in that direction. The computer can be very aggressive in helping you model your statistical change of success. Most investors try ot manage losses and control risk. That;s why they are not successful. You can't control risk or manage losses, and it's unecessary. You rahter have to manage your winners and focus on the number of occurences. The computer can help you do the calculations.
+
+TB: You think the market is random. How can you expect profit from that?
+
+TS: By random, we mean that we don't know at all whether stocks are boing up or down tomorrow. The information that might indicate that is already priced into the stock. You make money by taking a strategic approach using derivatives. You can do stuff where the odds are more in your favor, but the cost of losing is higher, and the expecancy is 0. Rather, you should manage your losers when they are winners. 
