@@ -323,13 +323,13 @@ it MATLAB-like capabilities.
 
  ```Input:```
 {% highlight python %}
-    import QSTK.qstkutil.qsdateutil as du
-    import QSTK.qstkutil.tsutil as tsu
-    import QSTK.qstkutil.DataAccess as da
-    
-    import datetime as dt
-    import matplotlib.pyplot as plt
-    import pandas as pd
+import QSTK.qstkutil.qsdateutil as du
+import QSTK.qstkutil.tsutil as tsu
+import QSTK.qstkutil.DataAccess as da
+
+import datetime as dt
+import matplotlib.pyplot as plt
+import pandas as pd
 {% endhighlight %}
 
 Some notebook magic, please ignore
@@ -337,7 +337,7 @@ Some notebook magic, please ignore
 
  ```Input:```
 {% highlight python %}
-    %matplotlib inline
+%matplotlib inline
 {% endhighlight %}
 
 ### Some symbols and dates
@@ -351,9 +351,9 @@ end date differs to so as we have 2 weeks of data. SPX is the S&P 500.
 
  ```Input:```
 {% highlight python %}
-    ls_symbols = ["AAPL", "GLD", "GOOG", "$SPX", "XOM"]
-    dt_start = dt.datetime(2010, 1, 1)
-    dt_end = dt.datetime(2010, 1, 15)
+ls_symbols = ["AAPL", "GLD", "GOOG", "$SPX", "XOM"]
+dt_start = dt.datetime(2010, 1, 1)
+dt_end = dt.datetime(2010, 1, 15)
 {% endhighlight %}
 
 The time at which the market closes is 16:00.
@@ -361,7 +361,7 @@ The time at which the market closes is 16:00.
 
  ```Input:```
 {% highlight python %}
-    dt_timeofday = dt.timedelta(hours=16)
+dt_timeofday = dt.timedelta(hours=16)
 {% endhighlight %}
 
 The function ```getNYSEdays(dt_start, dt_end, dt_timeofday)``` returns the days
@@ -371,13 +371,13 @@ time of day given as param to each datetime member of the result list.
 
  ```Input:```
 {% highlight python %}
-    ldt_timestamps = du.getNYSEdays(dt_start, dt_end, dt_timeofday)
+ldt_timestamps = du.getNYSEdays(dt_start, dt_end, dt_timeofday)
 {% endhighlight %}
 
 
  ```Input:```
 {% highlight python %}
-    ldt_timestamps
+ldt_timestamps
 {% endhighlight %}
 
 
@@ -405,7 +405,7 @@ Create an object that will be ready to read from our Yahoo data source
 
  ```Input:```
 {% highlight python %}
-    c_dataobj = da.DataAccess('Yahoo')
+c_dataobj = da.DataAccess('Yahoo')
 {% endhighlight %}
 
 ```c_dataobj.get_data``` creates a list of dataframe objects. The dict-zipping
@@ -414,9 +414,9 @@ converts this list into a dictionary for easier access.
 
  ```Input:```
 {% highlight python %}
-    ls_keys = ['open', 'high', 'low', 'close', 'volume', 'actual_close']
-    ldf_data = c_dataobj.get_data(ldt_timestamps, ls_symbols, ls_keys)
-    d_data = dict(zip(ls_keys, ldf_data))
+ls_keys = ['open', 'high', 'low', 'close', 'volume', 'actual_close']
+ldf_data = c_dataobj.get_data(ldt_timestamps, ls_symbols, ls_keys)
+d_data = dict(zip(ls_keys, ldf_data))
 {% endhighlight %}
 
 Note that in the list of keys, ```'close'``` refers to adjusted close, and
@@ -426,7 +426,7 @@ by get_data
 
  ```Input:```
 {% highlight python %}
-    ldf_data.__class__, ldf_data[1].__class__
+ldf_data.__class__, ldf_data[1].__class__
 {% endhighlight %}
 
 
@@ -440,7 +440,7 @@ by get_data
 
  ```Input:```
 {% highlight python %}
-    d_data['close']
+d_data['close']
 {% endhighlight %}
 
 
@@ -545,7 +545,7 @@ numpy array.
 
  ```Input:```
 {% highlight python %}
-    na_price = d_data['close'].values
+na_price = d_data['close'].values
 {% endhighlight %}
 
 Now, plotting with matplotlib. Here we first clear the plot (```clf```), plot
@@ -554,11 +554,11 @@ the data, and then modify the plot to add a legend and some labels.
 
  ```Input:```
 {% highlight python %}
-    plt.clf()
-    plt.plot(ldt_timestamps, na_price)
-    plt.legend(ls_symbols)
-    plt.ylabel('Adjusted Close')
-    plt.xlabel('Date')
+plt.clf()
+plt.plot(ldt_timestamps, na_price)
+plt.legend(ls_symbols)
+plt.ylabel('Adjusted Close')
+plt.xlabel('Date')
 {% endhighlight %}
 
 
@@ -578,7 +578,7 @@ To save a PDF file containing the plot:
 
  ```Input:```
 {% highlight python %}
-    plt.savefig('adjustedclose.pdf', format='pdf')
+plt.savefig('adjustedclose.pdf', format='pdf')
 {% endhighlight %}
 
 
@@ -596,7 +596,7 @@ day's price (so we divide all rows by the first row).
 
  ```Input:```
 {% highlight python %}
-    na_normalized_price = na_price / na_price[0, :]
+na_normalized_price = na_price / na_price[0, :]
 {% endhighlight %}
 
 Plotting:
@@ -604,11 +604,11 @@ Plotting:
 
  ```Input:```
 {% highlight python %}
-    plt.clf()
-    plt.plot(ldt_timestamps, na_normalized_price)
-    plt.legend(ls_symbols)
-    plt.ylabel('Normalised Adjusted Close')
-    plt.xlabel('Date')
+plt.clf()
+plt.plot(ldt_timestamps, na_normalized_price)
+plt.legend(ls_symbols)
+plt.ylabel('Normalised Adjusted Close')
+plt.xlabel('Date')
 {% endhighlight %}
 
 
@@ -633,8 +633,8 @@ Beware, ```returnize0``` mutates the array. Make a copy first:
 
  ```Input:```
 {% highlight python %}
-    na_rets = na_normalized_price.copy()
-    tsu.returnize0(na_rets)
+na_rets = na_normalized_price.copy()
+tsu.returnize0(na_rets)
 {% endhighlight %}
 
 
@@ -656,13 +656,13 @@ Beware, ```returnize0``` mutates the array. Make a copy first:
 
  ```Input:```
 {% highlight python %}
-    plt.clf()
-    plt.plot(ldt_timestamps[0:50], na_rets[0:50, 3])  # $SPX 50 days
-    plt.plot(ldt_timestamps[0:50], na_rets[0:50, 4])  # XOM 50 days
-    plt.axhline(y=0, color='r')
-    plt.legend(['$SPX', 'XOM'])
-    plt.ylabel('Daily Returns')
-    plt.xlabel('Date')
+plt.clf()
+plt.plot(ldt_timestamps[0:50], na_rets[0:50, 3])  # $SPX 50 days
+plt.plot(ldt_timestamps[0:50], na_rets[0:50, 4])  # XOM 50 days
+plt.axhline(y=0, color='r')
+plt.legend(['$SPX', 'XOM'])
+plt.ylabel('Daily Returns')
+plt.xlabel('Date')
 {% endhighlight %}
 
 
@@ -685,10 +685,10 @@ first.
 
  ```Input:```
 {% highlight python %}
-    dt_start = dt.datetime(2006, 1, 1)
-    dt_end = dt.datetime(2010, 12, 31)
-    ldt_timestamps = du.getNYSEdays(dt_start, dt_end, dt_timeofday)
-    d_data = dict(zip(ls_keys, c_dataobj.get_data(ldt_timestamps, ls_symbols, ls_keys)))
+dt_start = dt.datetime(2006, 1, 1)
+dt_end = dt.datetime(2010, 12, 31)
+ldt_timestamps = du.getNYSEdays(dt_start, dt_end, dt_timeofday)
+d_data = dict(zip(ls_keys, c_dataobj.get_data(ldt_timestamps, ls_symbols, ls_keys)))
 {% endhighlight %}
 
 Filling the data for NAN: we apply the filling functions in decreasing order of
@@ -697,10 +697,10 @@ preference.
 
  ```Input:```
 {% highlight python %}
-    for s_key in ls_keys:
-        d_data[s_key] = d_data[s_key].fillna(method='ffill')
-        d_data[s_key] = d_data[s_key].fillna(method='bfill')
-        d_data[s_key] = d_data[s_key].fillna(1.0)
+for s_key in ls_keys:
+    d_data[s_key] = d_data[s_key].fillna(method='ffill')
+    d_data[s_key] = d_data[s_key].fillna(method='bfill')
+    d_data[s_key] = d_data[s_key].fillna(1.0)
 {% endhighlight %}
 
 Getting the numpy ndarray of close prices.
@@ -708,10 +708,10 @@ Getting the numpy ndarray of close prices.
 
  ```Input:```
 {% highlight python %}
-    na_price = d_data['close'].values
-    na_normalized_price = na_price / na_price[0, :]
-    na_rets = na_normalized_price.copy()
-    tsu.returnize0(na_rets);
+na_price = d_data['close'].values
+na_normalized_price = na_price / na_price[0, :]
+na_rets = na_normalized_price.copy()
+tsu.returnize0(na_rets);
 {% endhighlight %}
 
 XOM vs. S&P 500:
@@ -719,10 +719,10 @@ XOM vs. S&P 500:
 
  ```Input:```
 {% highlight python %}
-    plt.clf()
-    plt.scatter(na_rets[:, 3], na_rets[:, 4], c='blue')
-    plt.ylabel('XOM')
-    plt.xlabel('$SPX')
+plt.clf()
+plt.scatter(na_rets[:, 3], na_rets[:, 4], c='blue')
+plt.ylabel('XOM')
+plt.xlabel('$SPX')
 {% endhighlight %}
 
 
@@ -742,10 +742,10 @@ Plotting the scatter plot of daily returns between $SPX VS GLD
 
  ```Input:```
 {% highlight python %}
-    plt.clf()
-    plt.scatter(na_rets[:, 3], na_rets[:, 1], c='yellow')
-    plt.ylabel('GLD')
-    plt.xlabel('$SPX')
+plt.clf()
+plt.scatter(na_rets[:, 3], na_rets[:, 1], c='yellow')
+plt.ylabel('GLD')
+plt.xlabel('$SPX')
 {% endhighlight %}
 
 
@@ -770,7 +770,7 @@ NOT Python code, it is an equation):
 
  ```Input:```
 {% highlight python %}
-    daily_cum_ret(t) = daily_cum_ret(t-1) * (1 + daily_ret(t))
+daily_cum_ret(t) = daily_cum_ret(t-1) * (1 + daily_ret(t))
 {% endhighlight %}
 
 I don't provide the code for this, as it is a programming assignment. If you
@@ -781,37 +781,37 @@ plot the result, it should look exactly like the normalized returns plot above.
 
  ```Input:```
 {% highlight python %}
-    import numpy as np
-    
-    def daily_cum_ret(np_arr):
-        "Reconstructs the cumulative returns from daily returns."
-        assert np_arr.size != 0
-        dcr = np.empty_like(np_arr, dtype=float)
-        dcr[0] = 1
-        for ri in xrange(1, np_arr.shape[0]):
-            dcr[ri] = dcr[ri-1] * (1+np_arr[ri])
-        return dcr
-    
-    # For comparison
-    plt.clf()
-    plt.figure(figsize=(8,16))
-    plt.subplot(311)
-    plt.plot(ldt_timestamps, na_normalized_price)
-    plt.ylabel('Normalised Adjusted Close')
-    plt.xlabel('Date')
-    
-    # Our reconstruction
-    plt.subplot(312)
-    plt.plot(ldt_timestamps, daily_cum_ret(na_rets))
-    plt.ylabel('Reconstructed Normalised Adjusted Close')
-    plt.xlabel('Date')
-    
-    # floating poing operations cumulative error
-    err = na_normalized_price - daily_cum_ret(na_rets)
-    plt.subplot(313)
-    plt.plot(ldt_timestamps, err)
-    plt.ylabel('Reconstruction error')
-    plt.xlabel('Date')
+import numpy as np
+
+def daily_cum_ret(np_arr):
+    "Reconstructs the cumulative returns from daily returns."
+    assert np_arr.size != 0
+    dcr = np.empty_like(np_arr, dtype=float)
+    dcr[0] = 1
+    for ri in xrange(1, np_arr.shape[0]):
+        dcr[ri] = dcr[ri-1] * (1+np_arr[ri])
+    return dcr
+
+# For comparison
+plt.clf()
+plt.figure(figsize=(8,16))
+plt.subplot(311)
+plt.plot(ldt_timestamps, na_normalized_price)
+plt.ylabel('Normalised Adjusted Close')
+plt.xlabel('Date')
+
+# Our reconstruction
+plt.subplot(312)
+plt.plot(ldt_timestamps, daily_cum_ret(na_rets))
+plt.ylabel('Reconstructed Normalised Adjusted Close')
+plt.xlabel('Date')
+
+# floating poing operations cumulative error
+err = na_normalized_price - daily_cum_ret(na_rets)
+plt.subplot(313)
+plt.plot(ldt_timestamps, err)
+plt.ylabel('Reconstruction error')
+plt.xlabel('Date')
 {% endhighlight %}
 
 
@@ -849,14 +849,14 @@ As I am lazy, I approximate \\(\text{SPX} \approx \text{SPY}\\)
 
  ```Input:```
 {% highlight python %}
-    p_rets = na_rets[:, 3] * 0.25 + na_rets[:, 1] * 0.75
-    na_plot_cumul_rets = daily_cum_ret(np.concatenate([na_rets[:, [1, 3]], p_rets[:, np.newaxis]], axis=1))
-    
-    plt.clf()
-    plt.plot(ldt_timestamps, na_plot_cumul_rets)
-    plt.legend(["GLD", "S&P 500", "portf."])
-    plt.ylabel('Cumulative returns')
-    plt.xlabel('Date')
+p_rets = na_rets[:, 3] * 0.25 + na_rets[:, 1] * 0.75
+na_plot_cumul_rets = daily_cum_ret(np.concatenate([na_rets[:, [1, 3]], p_rets[:, np.newaxis]], axis=1))
+
+plt.clf()
+plt.plot(ldt_timestamps, na_plot_cumul_rets)
+plt.legend(["GLD", "S&P 500", "portf."])
+plt.ylabel('Cumulative returns')
+plt.xlabel('Date')
 {% endhighlight %}
 
 
@@ -897,17 +897,17 @@ version works too.
 
  ```Input:```
 {% highlight python %}
-    spx_rets, xom_rets = na_rets[:, 3], na_rets[:, 4]
-    coefs = np.polyfit(x=spx_rets, y=xom_rets, deg=1)
-    fit_f = np.poly1d(coefs)
-    fit_x = [np.amin(spx_rets), np.amax(spx_rets)]
-    fit_y = fit_f(fit_x)
-    
-    plt.clf()
-    plt.scatter(spx_rets, xom_rets, c='blue')
-    plt.plot(fit_x, fit_y, c='red')
-    plt.ylabel('XOM')
-    plt.xlabel('$SPX')
+spx_rets, xom_rets = na_rets[:, 3], na_rets[:, 4]
+coefs = np.polyfit(x=spx_rets, y=xom_rets, deg=1)
+fit_f = np.poly1d(coefs)
+fit_x = [np.amin(spx_rets), np.amax(spx_rets)]
+fit_y = fit_f(fit_x)
+
+plt.clf()
+plt.scatter(spx_rets, xom_rets, c='blue')
+plt.plot(fit_x, fit_y, c='red')
+plt.ylabel('XOM')
+plt.xlabel('$SPX')
 {% endhighlight %}
 
 
