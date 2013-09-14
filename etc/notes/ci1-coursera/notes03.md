@@ -990,7 +990,7 @@ The video shows how to use spreadsheet software to perform the portfolio perform
 * in the homework, we don't speak about dollars but just ratios, it's like investing a total of $1
 * calculate each investment's and the portfolio's cumulative returns
 * from that portfolio's cumulative return, calculate the portfolio's daily returns
-* From there, the necessary statistics
+* From there, compute the necessary statistics
 
 ## Interview with Tom Sosnoff
 
@@ -1029,7 +1029,7 @@ TS: Risk is part of the job. To provide liquidity, you often enter a trade for w
 
 TB: How did the transition into the period of computerised markets happen?
 
-TS: The biggest change was when exchanges because multilisting and competitive. Before, one exchange supported one product, then they started competing, and in ~2005, online brokers really drove that change. See thinkorswim.com. Force the exchanges to understand the cost of demand for certain products and strategies.
+TS: The biggest change was when exchanges became multilisting and competitive. Before, one exchange supported one product, then they started competing, and in ~2005, online brokers really drove that change. See thinkorswim.com. Forced the exchanges to understand the cost of demand for certain products and strategies.
 
 TB: What happened to people being replaced?
 
@@ -1037,11 +1037,19 @@ TS: MM lost their jobs. The electronic transactions reduced the spread and MM lo
 
 TB: How did the Black–Scholes model (that estimates the price of an option over time) affect you as MM?
 
-TS: We didn't understand it. We didn't have that perspective. But it was an incredible opportunity, we didn't think about it as a negative. The change came throughout the years, with the firms learning how to price and adjust for volatility skew. Volatility skew: stuff follows a normal distribution. With options though, it's not normal, the tails are fat, which extends the risk. And sometimes, the markets have irrational periods because the fat tails are harder to price. But that's where the edge is for MM and individual investors who learned to trade correctly.
+TS: We didn't understand it. We didn't have that perspective. But it
+was an incredible opportunity, we didn't think about it as a
+negative. The change came throughout the years, with the firms
+learning how to price and adjust for volatility skew. Volatility skew:
+stuff usually follows a normal distribution. With options though, it's
+not normal, the tails are fat, which extends the risk. And sometimes,
+the markets have irrational periods because the fat tails are harder
+to price. But that's where the edge is for MM and individual investors
+who learned to trade correctly.
 
 TB: So Black–Scholes is correct except for the tails...
 
-TS: Yes, in 1987, trading around the crash, we didn't really understad volatility risk, even into the 1990, and we didn't understand how to proce it for all that volatility skew. Now, they do.
+TS: Yes, in 1987, trading around the crash, we didn't really understand volatility risk, even into the 1990, and we didn't understand how to price it for all that volatility skew. Now, they do.
 
 TB: before Black–Scholes, it was not clear how to price an option. Then, to what extend is Black–Scholes a self-fulfilling prophecy?
 
@@ -1049,7 +1057,7 @@ TS: There are not many variables. It's a simple model. All the models tend to ta
 
 TB: Black–Scholes doesn't have a price history.
 
-TS: yes, it's simple, and volatility comes right off the bd-ask spread, so Black–Scholes is pretty efficient.
+TS: yes, it's simple, and volatility comes right off the bid-ask spread, so Black–Scholes is pretty efficient.
 
 TB: so you can look at the market and see what it outght to be now...
 
@@ -1063,7 +1071,7 @@ TS: We knew we were doomed. We saw the computer age coming, and as MM and trader
 
 TB: Derivatives are complicated. Why did you think retail traders would want this?
 
-TS: The retail trader has been used and abused for a long time. The retail investor has never been successful. He can barely beat the inflation. But in an efficient marketplace, it makes no sense when one side wins most of the ime, and the other loses. It should come up as 50-50. We felt that the opportunity was huge to close the gap. For a long time, the industry has had a lack of domain expertise, and we though that we could bring that to people who would appreciate the intellectual discussion. It worked, when we sold thinkorswim, we had ~200k customers.
+TS: The retail trader has been used and abused for a long time. The retail investor has never been successful. He can barely beat the inflation. But in an efficient marketplace, it makes no sense when one side wins most of the time, and the other loses. It should come up as 50-50. We felt that the opportunity was huge to close the gap. For a long time, the industry has had a lack of domain expertise, and we though that we could bring that to people who would appreciate the intellectual discussion. It worked, when we sold thinkorswim, we had ~200k customers.
 
 TB: I see with Thinkorswim that there are many different tools that help you look at options, probabilites etc. Which of those tools are the most important?
 
@@ -1075,11 +1083,11 @@ TS: Big difference betweent HFT and algo trading. Algo trading had never proven 
 
 TB: Can a computer trade better than Tom Sosnoff?
 
-TS: Not a change in hell.
+TS: Not a chance in hell.
 
 TB: Why?
 
-TS: Event if I wrote all what we do and look for, I still think that there are general market tells that you can's program. If my model is arbitrage, no I cannot beat the computer. If my model is purely strateguc in retail, then I'll beat the computer.
+TS: Event if I wrote all what we do and look for, I still think that there are general market tells that you can's program. If my model is arbitrage, no I cannot beat the computer. If my model is purely strategic in retail, then I'll beat the computer.
 
 TB: There are corners where a machine can do better...
 
