@@ -23,24 +23,24 @@ To run IPython and copy-paste things in it, you don't need to change
 directory, but in case you may want to run a script
 (```execfile('script.py')```), import something local to that
 directory (```import mylibrary as mlib```) or output
-something, it's better to be in the right place fromt the start.
+something, it's better to be in the right place from the start.
 
 <div class="highlight"><pre><code>cd dev/coursera-comp-invest-1/Examples/Basic</code></pre></div>
 
-Activate the virtualenv, start iPython
+Activate the virtualenv, start IPython
 
 <div class="highlight"><pre><code>workon finance64
 ipython</code></pre></div>
 
 The rest of this section is copied from the Quantsoftware
-wiki-based [Numpy
+wiki-based [NumPy
 tutorial](http://wiki.quantsoftware.org/index.php?title=Numpy_Tutorial_1),
 with a few additional comments of my own.
 
 As an alternative, if you want to see the Python interpreter
 output without running the tutorial, you can 
 
-* [read it as a fomatted IPython
+* [read it as a formatted IPython
 notebook](quantsoftware_numpy_tutorial.html), or
 * [read the same IPython Notebook on
   nbviewer](http://nbviewer.ipython.org/urls/raw.github.com/agravier/agravier.github.io/master/etc/notes/ci1-coursera/quantsoftware_numpy_tutorial.ipynb), or
@@ -81,7 +81,7 @@ emptyArray = np.empty( (2,3) )
 print emptyArray
 {% endhighlight %}
 
-Note, emptyArray might look random, but it's just uninitialized which means
+Note, emptyArray might look random, but it's just uninitialised which means
 you shouldn't count on it having any particular data in it, even random
 data! If you do want random data you can use random():
 {% highlight python %}
@@ -233,7 +233,7 @@ squareArray is different)
 
 Note that a python assignment ```b = a``` from an ***object*** named
 _a_ to another name _b_ only copies the reference to the object, so
-mutating the original _a_ results in those changes bing reflected
+mutating the original _a_ results in those changes being reflected
 through _b_. To get a copy, objects assignment is not enough, a copy
 must be made too: ```b = a.copy()```. That remark is also valid for numpy
 arrays.
@@ -294,7 +294,7 @@ print np.dot(matA,matB) #[[19 22]
                         # [43 50]]
 {% endhighlight %}
 
-And thats it! There's a lot more to the numpy library, and there are a few
+And that's it! There's a lot more to the numpy library, and there are a few
 things I skipped over here, such as what happens when array dimensions
 don't line up when you're indexing or multiplying them together, so if 
 you're interested, I strongly suggest you head over to the [scipy wiki's
@@ -303,11 +303,10 @@ numpy tutorial](http://www.scipy.org/Tentative_NumPy_Tutorial) for a more in dep
 
 ## QSTK Demo
 
-[(watch section)](https://class.coursera.org/compinvesting1-003/lecture/view?lec
-ture_id=163)  
+[(watch section)](https://class.coursera.org/compinvesting1-003/lecture/view?lecture_id=163)  
 [(read the wiki)](http://wiki.quantsoftware.org/index.php?title=QSTK_Tutorial_1)
 
-The following is the output of an iPython notebook.
+The following is the output of an IPython notebook.
 
 * [download the
 notebook](https://raw.github.com/agravier/agravier.github.io/master/etc/notes/ci1-coursera/qstk_tutorial_1.ipynb))
@@ -409,7 +408,7 @@ Create an object that will be ready to read from our Yahoo data source
 c_dataobj = da.DataAccess('Yahoo')
 {% endhighlight %}
 
-```c_dataobj.get_data``` creates a list of dataframe objects. The dict-zipping
+```c_dataobj.get_data``` creates a list of DataFrame objects. The dict-zipping
 converts this list into a dictionary for easier access.
 
 
@@ -540,7 +539,7 @@ d_data['close']
 
 ### Drawing a figure
 
-We pull the close prices we cant to plot out of the pandas dataframe, into a 2D
+We pull the close prices we cant to plot out of the pandas DataFrame, into a 2D
 numpy array.
 
 
@@ -588,10 +587,9 @@ plt.savefig('adjustedclose.pdf', format='pdf')
 
 
 ### Data normalisation
-[(watch section)](https://class.coursera.org/compinvesting1-003/lecture/view?lec
-ture_id=165)
+[(watch section)](https://class.coursera.org/compinvesting1-003/lecture/view?lecture_id=165)
 
-To better see the variations, we normalize the data with respect to the first
+To better see the variations, we normalise the data with respect to the first
 day's price (so we divide all rows by the first row).
 
 
@@ -807,7 +805,7 @@ plt.plot(ldt_timestamps, daily_cum_ret(na_rets))
 plt.ylabel('Reconstructed Normalised Adjusted Close')
 plt.xlabel('Date')
 
-# floating poing operations cumulative error
+# floating point operations cumulative error
 err = na_normalized_price - daily_cum_ret(na_rets)
 plt.subplot(313)
 plt.plot(ldt_timestamps, err)
@@ -874,7 +872,7 @@ plt.xlabel('Date')
 
 ### Exercise: Line fit to Daily Returns
 
-Finally, we revisit the scatterplots above that reveal visually how closely
+Finally, we revisit the scatter plots above that reveal visually how closely
 correlated (related) the daily movement of two stocks are. It's even better if
 can quantify this correlation by fitting a line to them using linear regression.
 Note the red line in the figure on the right; this was computed using one of
@@ -892,7 +890,7 @@ sort().
 #### Answer
 
 Note that there is no figure on the wiki. So I choose to fit the XOM
-scatterplot. I also don't use the same functions as the instructor, but my
+scatter plot. I also don't use the same functions as the instructor, but my
 version works too.
 
 
@@ -931,11 +929,11 @@ plt.xlabel('$SPX')
 ### Overview
 #### About part 1
 
-Given 4 equity symbols and a start date and end date spanning one year, we want to anser the question: what would have been the optimal allocation for the portfolios in the beginning of the year to maximise the Sharpe ratio?
+Given 4 equity symbols and a start date and end date spanning one year, we want to answer the question: what would have been the optimal allocation for the portfolios in the beginning of the year to maximise the Sharpe ratio?
 
 The required knowledge is in QSTK tutorials [1](http://wiki.quantsoftware.org/index.php?title=QSTK_Tutorial_1) and [3](http://wiki.quantsoftware.org/index.php?title=QSTK_Tutorial_3). 
 
-Note that the code used to combine individual equities' performances to get the overall portfolio performance does **not** apply to the assignment. Tutorial 3 rebalances the portfolio everday to keep the initial weighting, but the homework wants you to assign once in the begninning of the year and that's all.
+Note that the code used to combine individual equities' performances to get the overall portfolio performance does **not** apply to the assignment. Tutorial 3 re-balances the portfolio everyday to keep the initial weighting, but the homework wants you to assign once in the beginning of the year and that's all.
 
 #### About part 2
 
@@ -946,7 +944,7 @@ Write a ```simulate``` function which, given as parameters
 * a list of equity symbols 
 * a list of corresponding allocations summing up to 1
 
-simulates the initial investment as the start date as defined in the list of allocations, and calcualtes the cumulative daily returns and all other necessary data to get, as a 4-tuple output:
+simulates the initial investment as the start date as defined in the list of allocations, and calculates the cumulative daily returns and all other necessary data to get, as a 4-tuple output:
 
 * stdev of daily returns of the overall portfolio
 * average daily return of the overall portfolio
@@ -985,8 +983,8 @@ Create a function that can assess a portfolio given 4 equities bought at the beg
 
 The video shows how to use spreadsheet software to perform the portfolio performance calculation. In 2011, 252 adjusted closing price (1 per trading days). In Python, for each equity, 
 
-* store those in a Pandas dataframe,
-* create a new dataframe with normalised prices (divide all prices by the first day's price)
+* store those in a Pandas DataFrame,
+* create a new DataFrame with normalised prices (divide all prices by the first day's price)
 * in the homework, we don't speak about dollars but just ratios, it's like investing a total of $1
 * calculate each investment's and the portfolio's cumulative returns
 * from that portfolio's cumulative return, calculate the portfolio's daily returns
@@ -1010,11 +1008,11 @@ TS: Nothing much, 2-300 ppl: the volatility index crowd and the S&P 500 people. 
 
 TB: How did a trade happen?
 
-TS: Brokers and MM were clearly separated. The broker represented the order, and the MM was the facilitator, providing liquidity. One could not represent a customer order and execute it. Facilitation and execution were kept separate. It worked well but was innefficient time-wise. Efficiency, meaning milliseconds execution, leads to more liquidity and more opportunity.
+TS: Brokers and MM were clearly separated. The broker represented the order, and the MM was the facilitator, providing liquidity. One could not represent a customer order and execute it. Facilitation and execution were kept separate. It worked well but was inefficient time-wise. Efficiency, meaning milliseconds execution, leads to more liquidity and more opportunity.
 
 TB: How does a MM make money?
 
-TS: Let's forget acout principle risk. 3 parties want to be paid when a transaction gets done.
+TS: Let's forget about principle risk. 3 parties want to be paid when a transaction gets done.
 
 1. the exchange, for housing, clearing, facilitating, they get a small exchange fee
 2. the broker, for executing the order, they get a transaction fee, a commission
@@ -1022,7 +1020,7 @@ TS: Let's forget acout principle risk. 3 parties want to be paid when a transact
 
 TB: To MM take risks? Like what?
 
-TS: Risk is part of the job. To provide liquidity, you often enter a trade for which you don't have a counter-party. You get paid for that by the functionning of the market: less efficient symbols have a wider spread, and the risk you take as MM is compensated by the spread. So, the risk is naturally proportional to the reward. THe safest way to make money is "lots of little bits", a large number of transactions with a small edge is preferable. 
+TS: Risk is part of the job. To provide liquidity, you often enter a trade for which you don't have a counter-party. You get paid for that by the functioning of the market: less efficient symbols have a wider spread, and the risk you take as MM is compensated by the spread. So, the risk is naturally proportional to the reward. The safest way to make money is "lots of little bits", a large number of transactions with a small edge is preferable. 
 
 
 [(watch section)](https://class.coursera.org/compinvesting1-003/lecture/view?lecture_id=153)
@@ -1059,7 +1057,7 @@ TB: Black–Scholes doesn't have a price history.
 
 TS: yes, it's simple, and volatility comes right off the bid-ask spread, so Black–Scholes is pretty efficient.
 
-TB: so you can look at the market and see what it outght to be now...
+TB: so you can look at the market and see what it ought to be now...
 
 TS: yes
 
@@ -1067,19 +1065,19 @@ TS: yes
 
 TB: In the 1990s, you were trader at CBOE and MM, and had seen computer entering the market, and saw an opportunity. Tell us more.
 
-TS: We knew we were doomed. We saw the computer age coming, and as MM and traders on the floor, we knew it was the end. The business was changing and we though that at some future point it was going to be fully electronic. We had created some assets, and were able to raise money and fund our own idea to survive the change. In 1999, we build a very different brokerage firm, in a completely new direction: a derivative space boutique that commoditized technology, to allow people to do new things. The goal was to teach people to use products lying at the lowest cost spaces. It didn't go that way straight away, but went through an evolution.
+TS: We knew we were doomed. We saw the computer age coming, and as MM and traders on the floor, we knew it was the end. The business was changing and we though that at some future point it was going to be fully electronic. We had created some assets, and were able to raise money and fund our own idea to survive the change. In 1999, we build a very different brokerage firm, in a completely new direction: a derivative space boutique that commoditised technology, to allow people to do new things. The goal was to teach people to use products lying at the lowest cost spaces. It didn't go that way straight away, but went through an evolution.
 
 TB: Derivatives are complicated. Why did you think retail traders would want this?
 
 TS: The retail trader has been used and abused for a long time. The retail investor has never been successful. He can barely beat the inflation. But in an efficient marketplace, it makes no sense when one side wins most of the time, and the other loses. It should come up as 50-50. We felt that the opportunity was huge to close the gap. For a long time, the industry has had a lack of domain expertise, and we though that we could bring that to people who would appreciate the intellectual discussion. It worked, when we sold thinkorswim, we had ~200k customers.
 
-TB: I see with Thinkorswim that there are many different tools that help you look at options, probabilites etc. Which of those tools are the most important?
+TB: I see with Thinkorswim that there are many different tools that help you look at options, probabilities etc. Which of those tools are the most important?
 
 TS: We were the leader in delivering a probability-based approach to investors. We were the first to add context to a discussion about investing. The industry was collecting fees but not disseminating information. Thinkorswim changed that.
 
 TB: Now HFT and algo trading came. Around the 2000, there were people in the end of a trade. Now it's most often computers. What does that change?
 
-TS: Big difference betweent HFT and algo trading. Algo trading had never proven to be algo trading in its purest form of trying to figure out things. I don't think it has played that big a role. HFT has played a big role. But HFT is arbitrage. Arbing exchange models, speed, marketplaces, etc... People may bash it but HFT has provided an enorous amount of liquidity and more importantly, it has delivered a challenge to the tech community, which has helped create platforms to do a lot more stuff. 
+TS: Big difference between HFT and algo trading. Algo trading had never proven to be algo trading in its purest form of trying to figure out things. I don't think it has played that big a role. HFT has played a big role. But HFT is arbitrage. Arbing exchange models, speed, marketplaces, etc... People may bash it but HFT has provided an enormous amount of liquidity and more importantly, it has delivered a challenge to the tech community, which has helped create platforms to do a lot more stuff. 
 
 TB: Can a computer trade better than Tom Sosnoff?
 
@@ -1091,16 +1089,16 @@ TS: Event if I wrote all what we do and look for, I still think that there are g
 
 TB: There are corners where a machine can do better...
 
-TS: Not in a non-professional environment. The computer will always outperform if it's the counterparty (the professional, MM for instance). It will outperform if it's arbitrage.
+TS: Not in a non-professional environment. The computer will always outperform if it's the counter-party (the professional, MM for instance). It will outperform if it's arbitrage.
 
-TB: The computer is good at speed, so the longer the timeframe, the better the human?
+TB: The computer is good at speed, so the longer the time-frame, the better the human?
 
 TS: No, it's about size. If you talk about an unlimited use of capital, at a professional level, there is no capital limitation, and you may be able to simplify the decisions. At the level of individual investors, the decisions have to be made based on available capital, account permissioning, and all the other factors. I don't think it's possible.
 
 TB: How can computers best help people?
 
-TS: We're currently building a lot of tech geared in that direction. The computer can be very aggressive in helping you model your statistical change of success. Most investors try ot manage losses and control risk. That;s why they are not successful. You can't control risk or manage losses, and it's unecessary. You rahter have to manage your winners and focus on the number of occurences. The computer can help you do the calculations.
+TS: We're currently building a lot of tech geared in that direction. The computer can be very aggressive in helping you model your statistical change of success. Most investors try to manage losses and control risk. That;s why they are not successful. You can't control risk or manage losses, and it's unnecessary. You rather have to manage your winners and focus on the number of occurrences. The computer can help you do the calculations.
 
 TB: You think the market is random. How can you expect profit from that?
 
-TS: By random, we mean that we don't know at all whether stocks are boing up or down tomorrow. The information that might indicate that is already priced into the stock. You make money by taking a strategic approach using derivatives. You can do stuff where the odds are more in your favor, but the cost of losing is higher, and the expecancy is 0. Rather, you should manage your losers when they are winners. 
+TS: By random, we mean that we don't know at all whether stocks are being up or down tomorrow. The information that might indicate that is already priced into the stock. You make money by taking a strategic approach using derivatives. You can do stuff where the odds are more in your favour, but the cost of losing is higher, and the expectancy is 0. Rather, you should manage your losers when they are winners. 
