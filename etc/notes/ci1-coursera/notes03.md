@@ -16,7 +16,7 @@ There are many ways to go through a programming tutorial. My two
 favourite ways to red a Python tutorial are
 
 * to open the tutorial script in emacs in python-mode. There are [nice
-extensions](github.com/gabrielelanaro/emacs-for-python) worth using, or
+extensions](http://github.com/gabrielelanaro/emacs-for-python) worth using, or
 * to go through the tutorial by copy-pasting it in [an IPython Notebook](http://ipython.org/ipython-doc/stable/interactive/notebook.html)
 
 To run IPython and copy-paste things in it, you don't need to change
