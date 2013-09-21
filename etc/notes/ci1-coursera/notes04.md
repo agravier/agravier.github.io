@@ -149,14 +149,13 @@ Extra: think about different event definitions and try if they give interesting 
 ## Portfolio Optimisation and the Efficient Frontier
 [(watch section)](https://class.coursera.org/compinvesting1-003/lecture/view?lecture_id=95)
 
-Goals: 
+The goals of this module are to understand: 
 
 * **risk**
 * **correlation** and **covariance** between stocks
 * mean variance optimisation
 
 ### Optimisation overview
-
 
 *Portfolio optimisation*: allocation of resources in to a set of equities to minimise risk and reach a target return. Given a set of equities, how much of the resources to allocate to each to minimise risk while reaching the target return.
 
