@@ -42,9 +42,9 @@ As the EMH says that stock price movements already reflect what the market belie
 
 There are 3 versions of the efficient market hypothesis, some of which may allow some arbitrage:
 
-* **weak EMH**: current process reflect all past publicly available information. Assuming that version, it implies that there is no extra information in past price/volume data, and *technical analysis is moot*. However, current information may still be exploitable.
-* **semi-strong EMH**: current process reflect all past publicly available information and change instantly to reflect new public information. Hence, *technical analysis and fundamental analysis are useless*
-* **strong EMH**: current process reflect all past information and change instantly to reflect public and hidden "insider" information. The strong EMH prohibits profit from all types of information, even insider information. The strong version is unfortunately regularly proven false.
+* **weak EMH**: current prices reflect all past publicly available information. Assuming that version, it implies that there is no extra information in past price/volume data, and *technical analysis is moot*. However, current information may still be exploitable.
+* **semi-strong EMH**: current prices reflect all past publicly available information and change instantly to reflect new public information. Hence, *technical analysis and fundamental analysis are useless*
+* **strong EMH**: current prices reflect all past information and change instantly to reflect public and hidden "insider" information. The strong EMH prohibits profit from all types of information, even insider information. The strong version is unfortunately regularly proven false.
 
 But is any version true?
 
@@ -52,7 +52,7 @@ But is any version true?
 
 #####  P/E ratios vs. annualised return
 
-Price/earnings ratio (P/E): \\(=\frac{\text{share price}}{\text{earnings per share}}\\) over a recent period of time (last 4 quarters, for instance). The earnings per share (for a year) are \\(\frac{\text{net income for the year}}{\text{weighted average number of shares over the year}}. Use the weighted average number of shares over the period of reporting because the number of shares can vary. 
+Price/earnings ratio (P/E): \\(=\frac{\text{share price}}{\text{earnings per share}}\\) over a recent period of time (last 4 quarters, for instance). The earnings per share (for a year) are \\(\frac{\text{net income for the year}}{\text{weighted average number of shares over the year}}\\). Use the weighted average number of shares over the period of reporting because the number of shares can vary. 
 
 Projected P/E uses forecasted price and earnings. 
 
@@ -73,9 +73,9 @@ Example: strong drop in price in response to news that often gradually returns b
 
 Coming back on the paper by McKinlay that we saw in [Week 2](notes02.html), that introduced event studies (MacKinlay, A. C. “Event Studies in Economics and Finance,” Journal of Economic Literature Vol. XXXV, Issue 1, 1997).
 
-The documented the dates of positive, negative, and random news events for 1700 stocks, looked at how the valency of events correlated with price changes of the concerned stocks.
+They documented the dates of positive, negative, and random news events for 1700 stocks, looked at how the valency of events correlated with price changes of the concerned stocks.
 
-McKinlay takes a $\pm$20-days window centred on each event, clusters them by valency, and shifts them to a common value of 0 at t-20 to extract changes in value. For each clusters, he plots the mean of those shifted daily prices. 
+McKinlay takes a \\(\pm\\)20-days window centred on each event, clusters them by valency, and shifts them to a common value of 0 at t-20 to extract changes in value. For each clusters, he plots the mean of those shifted daily prices. 
 
 The plot of average stock price change for negative news events shows a sharp drop the day after the event. 
 
@@ -90,7 +90,7 @@ Before the event, the stock price drifts in the direction of the sharp change. I
 
 For negative events, the sharp negative reaction is followed by a recovery. For good news, the surge in price is not followed by a negative rebound, it just levels off. However, without confidence intervals, it's hard to be sure about those things.
 
-Part of QSDK includes code to do event studies. Given several stocks' price history and an event at time *t*, the event study function of QSDK goes through each stock's history to the event time, cuts off a centred window around it, aligns all histories on that event, and takes the mean of all those centred histories and draws a char with it. It draws standard deviation error bars around each point.
+Part of QSDK includes code to do event studies. Given several stocks' price history and an event at time *t*, the event study function of QSDK goes through each stock's history to the event time, cuts off a centred window around it, aligns all histories on that event, and takes the mean of all those centred histories and draws a chart with it. It draws standard deviation error bars around each point.
 
 Such chart allows to quantitatively test the hypothesis that a particular event affects prices. If the error is small, we can predict that that "kind" of event will likely result in the same price reaction, in the future.
 
@@ -101,7 +101,7 @@ Such chart allows to quantitatively test the hypothesis that a particular event 
 
 Event studies work best on many events. 
 
-QSTK has an event profiler. It lets the user scan through a dataframes of dates $\times\ stocks and input 1 where there is an event and NaN where there is no event. Afterwards, the plotting software takes charge of the plotting.
+QSTK has an event profiler. It lets the user scan through a dataframe of dates \\(\times\\) stocks and input 1 where there is an event and NaN where there is no event. Afterwards, the plotting software takes charge of the plotting.
 
 ### QSTK tutorial 9
 
@@ -115,7 +115,7 @@ Then, it determines if an event occurs. An event is said to occur if a stock goe
 
 <div class="highlight"><pre><code>
 for each (symbol x timestamp):
-  let [ $s_t$ the price of the symbol today (i.e. for current timestamp),
+  let [ s_t the price of the symbol today (i.e. for current timestamp),
         s_{t-1} the price of the symbol yesterday,
         m_t the price of the market today,
         m_{t-1} the price of the market yesterday ] in
