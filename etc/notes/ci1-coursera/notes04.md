@@ -113,17 +113,17 @@ The find_events function takes a list of symbols and the dict-zipped stock data 
 
 Then, it determines if an event occurs. An event is said to occur if a stock goes down 3% or more while the market went up 2% or more. The following pseudocode explains the alto implemented by find_event:
 
-%{ highlight none }%
+<div class="highlight"><pre><code>
 for each (symbol x timestamp):
   let [ $s_t$ the price of the symbol today (i.e. for current timestamp),
-        $s_{t-1}$ the price of the symbol yesterday,
-        $m_t$ the price of the market today,
-        $m_{t-1}$ the price of the market yesterday ] in
-     today's market return $r_m$ = $\frac{m_t}{m_{t-1}} - 1$
-     today's return for symbol $r_s$ = $\frac{s_t}{s_{t-1}} - 1$
+        s_{t-1} the price of the symbol yesterday,
+        m_t the price of the market today,
+        m_{t-1} the price of the market yesterday ] in
+     today's market return r_m = (m_t)/(m_{t-1}) - 1
+     today's return for symbol r_s = (s_t)/(s_{t-1}) - 1
      event matrix[symbol, timestamp] <- 
-       $r_s \le -0.03 and $r_m \ge 0.02$ ? 1 : NaN
-%{ endhighlight }%
+       r_s <= -0.03 and r_m >= 0.02 ? 1 : NaN
+</code></pre></div>
        
 The event matrix is given to an event profiler along with the price data, the lookback and lookforward sizes to make the time window around the events, a flag indicating that we want market-neutral event studies, and some output parameters. Note that events that happen in the beginning of the time series, with less than lookback days of slack time in front, or those that happen in the end, with less than look forward days in front, are discarded. The number of events counted in the event matrix can be larger than the number of events used by the profiler. 
 
