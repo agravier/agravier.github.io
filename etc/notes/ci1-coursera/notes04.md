@@ -149,14 +149,13 @@ Extra: think about different event definitions and try if they give interesting 
 ## Portfolio Optimisation and the Efficient Frontier
 [(watch section)](https://class.coursera.org/compinvesting1-003/lecture/view?lecture_id=95)
 
-Goals: 
+The goals of this module are to understand: 
 
 * **risk**
 * **correlation** and **covariance** between stocks
 * mean variance optimisation
 
 ### Optimisation overview
-
 
 *Portfolio optimisation*: allocation of resources in to a set of equities to minimise risk and reach a target return. Given a set of equities, how much of the resources to allocate to each to minimise risk while reaching the target return.
 
@@ -225,14 +224,14 @@ QSTK tutorial 8 explores optimisation.
 
 A portfolio optimiser leverages the properties of an **optimising algorithm** to optimise a portfolio.
 
-Define variables that the optimiser will modify: the weights of each equity in the portfolio.
+1. Define variables that the optimiser will modify: the weights of each equity in the portfolio.
+2. Define constraints. For instance, the sum of all weights adds up to 1, some specific equities must be at least 5% of the portfolio, etc...
+3. Define the optimisation criteria: the function of variables to optimise. In this case, the function to optimise is risk.
 
-Define constraints. For instance, the sum of all weights adds up to 1, some specific equities must be at least 5% of the portfolio, etc...
-
-Define the optimisation criteria: the function of variables to optimise. In this case, the function to optimise is risk.
-
-In general, an optimiser tweaks the weights, checks the constraints, calls the optimised function, and repeats
+With that, the optimiser tries to optimiser tweaks the variables (weights), while checking the constraints, checks the value of the function bing optimised, and repeats until an optimum is reached.
 
 QSTK uses [cvxopt](http://cvxopt.org/), which is a convex function optimiser. So, QSTK assumes that the optimised function is **convex**, which implies that there is no local optimum, so optimisation is much easier.
 
-Summary: give the covariance matrix of equities, their volatilities and a target return, we can find an optimal portfolio that minimises risk. 
+### Summary 
+
+Given the covariance matrix of equities, their volatilities and a target return, we can find an optimal portfolio that minimises risk. 
