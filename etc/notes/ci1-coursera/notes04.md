@@ -192,7 +192,7 @@ A portfolio's risk is not necessarily the weighted average of its constituent eq
 
 Imagine 3 stocks with the same total return. Stock GHI moves in opposite direction of stocks ABC and DEF. The correlation of ABC and DEF is positive, say 0.9, and between GHI and any other it's negative, for instance, corr(ABC, GHI) = -0.9.
 
-If we built a portfolio of 50% ABC and 50% DEF, the resulting portfolio lacks diversity, and although the end result has the average return of ABC and GHI, the risk is about that of ABC or of GHI.
+If we built a portfolio of 50% ABC and 50% DEF, the resulting portfolio lacks diversity, and although the end result has the average return of ABC and DEF, the risk is about that of ABC or of DEF.
 
 However, a portfolio made of 25% ABC, 25% DEF and 50% GHI has still the same return, but has a much lower risk than any of its components.
 
