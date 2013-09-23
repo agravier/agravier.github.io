@@ -13,7 +13,7 @@ disqus: true
 ### Many ways
 
 There are many ways to go through a programming tutorial. My two
-favourite ways to red a Python tutorial are
+favourite ways to read a Python tutorial are
 
 * to open the tutorial script in emacs in python-mode. There are [nice
 extensions](http://github.com/gabrielelanaro/emacs-for-python) worth using, or
@@ -27,9 +27,9 @@ something, it's better to be in the right place from the start.
 
 <div class="highlight"><pre><code>cd dev/coursera-comp-invest-1/Examples/Basic</code></pre></div>
 
-Activate the virtualenv, start IPython
+Activate the virtualenv (you create it with ```mkvirtualenv somename```, deactivate it with ```deactivate```, and read the doc for more), start IPython
 
-<div class="highlight"><pre><code>workon finance64
+<div class="highlight"><pre><code>workon somename
 ipython</code></pre></div>
 
 The rest of this section is copied from the Quantsoftware
@@ -346,7 +346,7 @@ We'll be using historical adjusted close data. QSTK has a DataAccess class
 designed to quickly read this data into pandas DataFrame object. We must first
 select which symbols we're interested in, and for which time periods. Note that
 the wiki tutorial script uses 2006, but in the video tutorial, we use 2010. The
-end date differs to so as we have 2 weeks of data. SPX is the S&P 500.
+end date differs too, so as we have 2 weeks of data. SPX is the S&P 500.
 
 
  ```Input:```
@@ -365,7 +365,7 @@ dt_timeofday = dt.timedelta(hours=16)
 {% endhighlight %}
 
 The function ```getNYSEdays(dt_start, dt_end, dt_timeofday)``` returns the days
-of the interval for which the New York stock exchange was open. It adds  the
+of the interval for which the New York stock exchange was open. It adds the
 time of day given as param to each datetime member of the result list.
 
 
