@@ -27,10 +27,10 @@ something, it's better to be in the right place from the start.
 
 <div class="highlight"><pre><code>cd dev/coursera-comp-invest-1/Examples/Basic</code></pre></div>
 
-Activate the virtualenv (you create it with ```mkvirtualenv somename```, deactivate it with ```deactivate```, and read the doc for more), start IPython
+Activate the virtualenv (you create it with ```mkvirtualenv somename```, deactivate it with ```deactivate```, and read the doc for more), start the IPython notebook server
 
 <div class="highlight"><pre><code>workon somename
-ipython</code></pre></div>
+ipython notebook</code></pre></div>
 
 The rest of this section is copied from the Quantsoftware
 wiki-based [NumPy
