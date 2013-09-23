@@ -251,7 +251,7 @@ If the MM decides that it doesn't want to fulfil an order internally, it sends i
 
 An order is tagged with a unique ID by the broker right when it's made. The unique ID is transmitted along with the order all the way to the exchange, and when the trade is executed, the ID returns to the initial broker via two paths (redundancy for better safety).
 
-In an exchange, the MM has to have a **resting bit** (bit? beat?). Not too much info about that. It's something unpleasant, apparently.
+In an exchange, the MM has to have a **resting bid**. Not too much info about that. It's something unpleasant, apparently.
 
 ### Something goes wrong
 [(watch section)](https://class.coursera.org/compinvesting1-003/lecture/view?lecture_id=137)
