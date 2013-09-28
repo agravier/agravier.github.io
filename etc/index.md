@@ -14,6 +14,7 @@ available here for other students.
 [Lecture notes for week 2](notes/ci1-coursera/notes02.html)  
 [Lecture notes for week 3](notes/ci1-coursera/notes03.html)  
 [Lecture notes for week 4](notes/ci1-coursera/notes04.html)  
+[Lecture notes for week 5](notes/ci1-coursera/notes05.html)  
 
   
 
