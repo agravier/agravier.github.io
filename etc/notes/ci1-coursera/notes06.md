@@ -123,9 +123,9 @@ What is better, one $1000 bet, or 1000 bets with $1 tokens? The analogy is that 
 
 We consider the reward / risk ratio. The expectation (reward) is the same in both cases, $20:
 
-If we make one $1000 bet, \\(E(\text{gain}) = 0.51 \ times 1000 + 0.49 \times -1000 = 20\\)
+If we make one $1000 bet, \\(E(\text{gain}) = 0.51 \times 1000 + 0.49 \times -1000 = 20\\)
 
-If we make 1000 times a $1 bet, our expected return is 1000 time 2 pennies: \\(E(\text{gain}) = 1000 (0.51 \ times 1 + 0.49 \times -1) = 20\\)
+If we make 1000 times a $1 bet, our expected return is 1000 time 2 pennies: \\(E(\text{gain}) = 1000 (0.51 \times 1 + 0.49 \times -1) = 20\\)
 
 The risks are very different. 
 
