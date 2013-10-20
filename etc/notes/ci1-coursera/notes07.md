@@ -124,7 +124,7 @@ Bollinger bands around a SMA indicate a stock's volatility by reflecting the sta
 
 [(watch section)](https://class.coursera.org/compinvesting1-003/lecture/view?lecture_id=179)
 
-Bollinger bands are computed by looking back over \\(N\\) days, calculating the SMA and standard deviation of price over those \\(N\\) days. The bands are \\(\text{SMA}_N \pm k\sigma_{N}\\) for a factor \\(k\\). If we convert data so as the bands for \\(k=1\\) are always \\(-1\\) and \\(+1\\), then we can just carry one number, the converted price, and implicitly get the Bollinger bands signal for all values of k. 
+Bollinger bands are computed by looking back over \\(N\\) days, calculating the SMA and standard deviation of price over those \\(N\\) days. The bands are \\(\text{SMA}\_N \pm k\sigma\_{N}\\) for a factor \\(k\\). If we convert data so as the bands for \\(k=1\\) are always \\(-1\\) and \\(+1\\), then we can just carry one number, the converted price, and implicitly get the Bollinger bands signal for all values of k. 
 
 The idea that John Bollinger had was that a technical indicator should adapt to a stock's volatility.
 
