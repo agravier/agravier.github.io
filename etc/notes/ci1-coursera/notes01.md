@@ -262,7 +262,7 @@ The initial public offering of stock happens in the same way, although not neces
 
 The Facebook IPO crashed the servers due to too many orders. 
 
-A computer glitch happened at the NYSE with the retail liquidity program. New software had to be written for Aug 1 to support a new order type, and Knight only deployed it properly on 7 of 8 servers there. It resulted in a hard to detect bug and a loss of $10m/min for 40 minutes.
+A computer glitch happened at the NYSE with the retail liquidity program. New software had to be written for Aug 1 to support a new order type, and Knight only deployed it properly on 7 of 8 servers there. It resulted in a hard to detect bug and a loss of $10m/min for 40 minutes. ([read more](http://pythonsweetness.tumblr.com/post/64740079543/how-to-lose-172-222-a-second-for-45-minutes))
 
 ## Vocabulary:
 
