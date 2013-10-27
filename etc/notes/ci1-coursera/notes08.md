@@ -153,7 +153,7 @@ Non-linear or non-polynomial models are hard to fit.
 
 ### "Data-driven" (non-parametric) models
 
-The queries for a data-driven *K-nearest-neighbours model* are made by searching for the K closest points in range to the query (\\(KNN(X) \, \to \, Y\_\text{hist}\\), for instance). Then, apply a function to these points, for instance, take their average: \\(\text{forecast} = <{Y\_\text{hist}>\\).
+The queries for a data-driven *K-nearest-neighbours model* are made by searching for the K closest points in range to the query (\\(KNN(X) \, \to \, Y\_\text{hist}\\), for instance). Then, apply a function to these points, for instance, take their average: \\(\text{forecast} = \langle{Y\_\text{hist}\rangle\\).
 
 With this data-drive model, it fits the data at every point. It doesn't impose a parametric model.
 
