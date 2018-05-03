@@ -1,7 +1,7 @@
-url: http://noelusion.com
+url: http://agravier.com
 safe: true
 lsi: false
 pygments: true
-markdown: rdiscount
+markdown: kramdown
 permalink: /:year/:title
 rdiscount extensions: [smart]
