@@ -83,8 +83,9 @@
     </script>
     <script type="text/javascript">
       try {
-      var pageTracker = _gat._getTracker("UA-40459855-1");
-      pageTracker._trackPageview();
+        ga('create', 'UA-40459855-1', 'auto');
+        ga('require', '{{ site.url }}{{ page.url }}');
+        ga('send', 'pageview');
       } catch(err) {}
     </script>
 
