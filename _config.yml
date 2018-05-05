@@ -1,7 +1,5 @@
 url: http://agravier.com
 safe: true
 lsi: false
-pygments: true
 markdown: kramdown
 permalink: /:year/:title
-rdiscount extensions: [smart]
