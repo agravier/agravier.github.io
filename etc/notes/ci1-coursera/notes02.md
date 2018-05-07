@@ -28,32 +28,32 @@ In other words, if someone *promises* an output of one dollar in the future (**d
 
 One way to estimate that is to compare it to the money lent to a bank. How much are you willing to lend a bank in order to get a dollar in a year? Seeing that current interest rates are about 1%, you could expect to have to give about $0.99 in order to get back $1 a year later.
 
-Assuming that you trust the bank more, the ACME dollar company would need to make a better offer than the bank to get you to lend  them money. If you are ready to accept 95 cents in exchange of ACME's remise of a dollar in the future, that means that the **discount rate** on that future dollar is 5.2% (\\(.95 + 5/95 * .95 = 1\\)). The **discount factor \\(\gamma\\)** (current-to-future value ratio) is 0.95.
+Assuming that you trust the bank more, the ACME dollar company would need to make a better offer than the bank to get you to lend  them money. If you are ready to accept 95 cents in exchange of ACME's remise of a dollar in the future, that means that the **discount rate** on that future dollar is 5.2% ($$.95 + 5/95 * .95 = 1$$). The **discount factor $$\gamma$$** (current-to-future value ratio) is 0.95.
 
-Based on that information, the current value of $1 in 2 years is \\(.95^ 2\\); in \\(N\\) years, \\(.95^ N\\)
+Based on that information, the current value of $1 in 2 years is $$.95^ 2$$; in $$N$$ years, $$.95^ N$$
 
 Hence,
  
-\\[
-\text{present value of dividend promises} = \sum\_{i=1}^ {\infty} d \gamma^ i 
-\\]
+$$
+\text{present value of dividend promises} = \sum_{i=1}^ {\infty} d \gamma^ i 
+$$
 
-where \\(d\\) is the dividend of $1, \\(\gamma\\) is the discount factor of \\(0.95\\), and the summation over \\(i\\) is a summation over the years.
+where $$d$$ is the dividend of $1, $$\gamma$$ is the discount factor of $$0.95$$, and the summation over $$i$$ is a summation over the years.
 
 The discounted present value of an asset's future income is called the **intrinsic value**.
 
 There is an analytical solution to this simple power series:
 
-\\[
+$$
 \begin{align}
-\text{intrinsic value} &= \sum\_{i=1}^ {\infty} d \gamma^ i \\\\
+\text{intrinsic value} &= \sum_{i=1}^ {\infty} d \gamma^ i \\\\
 &= d \frac{1}{1-\gamma}
 \end{align}
-\\]
+$$
 
 So, for ACME:
 
-\\[\text{intrinsic value} = \dfrac{1}{1-0.95} = 20\\]
+$$\text{intrinsic value} = \dfrac{1}{1-0.95} = 20$$
 
 So, estimating the value of the ACME dollar printing company by the (subjective) value of future dividends yields $20.
 
@@ -95,7 +95,7 @@ But the market is a very efficient information processor, the reaction to news r
 
 This is the **efficient markets hypothesis**: the markets process information sufficiently rapidly to come to an equilibrium price that reflects the right value of the company.
 
-The value of a company = number of shares \\(\times\\) price
+The value of a company = number of shares $$\times$$ price
 
 This hypothesis entails that we can't beat the market in that regard, and as investors, we can't exploit the difference between the value true of a company and its market cap, because it's null.
 
@@ -112,85 +112,85 @@ We can observe that the most important factor of influence on a stock's daily pr
 
 CAPM had a large impact on finance, it kickstarted index investing. The CAPM implies that you're better off investing in a market portfolio rather than trying to pick a small number of stocks. This goes agains hedge funds logic and active portfolio management, where we assume that you can make money by picking individual stocks. But the burden to prove the CAPM wrong is on us.
 
-Let \\(r\_i\\) the daily return on a particular stock \\(i\\).
+Let $$r_i$$ the daily return on a particular stock $$i$$.
 
-The CAPM assumes that **the daily return \\(r\_i\\) is compound of a systematic component that represents the influence of the whole market, and a residual component**:
+The CAPM assumes that **the daily return $$r_i$$ is compound of a systematic component that represents the influence of the whole market, and a residual component**:
 
-\\[
-r\_i = \beta\_i r\_m + \alpha\_i
-\\]
+$$
+r_i = \beta_i r_m + \alpha_i
+$$
  
-where \\(r\_i\\) is the daily return on a particular stock, \\(r\_m\\) is the daily market return, \\(\beta\_i\\) factors how much the market return influences the stock's return, and \\(\alpha\_i\\) is the residual. As we could see on the XOM vs S&P500, alpha varies.
+where $$r_i$$ is the daily return on a particular stock, $$r_m$$ is the daily market return, $$\beta_i$$ factors how much the market return influences the stock's return, and $$\alpha_i$$ is the residual. As we could see on the XOM vs S&P500, alpha varies.
 
-> The CAPM asserts that the expected value of the residual term \\(\alpha\_i\\) is 0, implying that there is no possibility to leverage information and make additional return.
+> The CAPM asserts that the expected value of the residual term $$\alpha_i$$ is 0, implying that there is no possibility to leverage information and make additional return.
 
 The market's portfolio refers to a broad (representative) cap-weighted index. In the US, the Standard and Poor's 500 (S&P500) has the advantage that it is unbiased: it's the 500 largest US companies. The Dow Jones (DJ30) is a hand-picked sample of 30 companies, which may show some bias. In the UK, the FTA. Japan -- TOPIX. SPX/SPY are symbols that represents the whole market.
 
 ### Beta
 [(watch section)](https://class.coursera.org/compinvesting1-003/lecture/view?lecture_id=73)
 
-The CAPM considers that the residual \\(\alpha\_i\\) is akin to a random number with 0 expectation and non forecastable. The most important information is the \\(\beta_i\\) for the stock.
+The CAPM considers that the residual $$\alpha_i$$ is akin to a random number with 0 expectation and non forecastable. The most important information is the $$\beta_i$$ for the stock.
 
-As the CAPM is a linear model \\(r\_i = \beta\_i r\_m + \alpha\_i\\) where we are trying to assess the factors \\(\alpha\_i\\) and \\(\beta\_i\\), a normal linear statistical regression of \\(r\_i\\) against \\(r\_m\\) should yield the slope \\(\beta\_i\\) and intercept \\(\alpha\_i\\) (which is positive for stocks that do better than the market). Each day yields a data point made of the market performance and stock performance that day. The scatter plot looks like an elongated Gaussian.
+As the CAPM is a linear model $$r_i = \beta_i r_m + \alpha_i$$ where we are trying to assess the factors $$\alpha_i$$ and $$\beta_i$$, a normal linear statistical regression of $$r_i$$ against $$r_m$$ should yield the slope $$\beta_i$$ and intercept $$\alpha_i$$ (which is positive for stocks that do better than the market). Each day yields a data point made of the market performance and stock performance that day. The scatter plot looks like an elongated Gaussian.
 
-\\(\beta\\) and correlation are different: two equities can be equally correlated to the market and have different betas.
+$$\beta$$ and correlation are different: two equities can be equally correlated to the market and have different betas.
 
-The correlation coefficient between \\(r\_i\\) and \\(r\_m\\) (\\(\text{cc} \in [-1, 1]\\) indicates the spread of the scatter cloud perpendicularly to the fitted CAPM line. Two lines could have the same slope, but the point cloud in one could be less spread than in the other.
+The correlation coefficient between $$r_i$$ and $$r_m$$ ($$\text{cc} \in [-1, 1]$$ indicates the spread of the scatter cloud perpendicularly to the fitted CAPM line. Two lines could have the same slope, but the point cloud in one could be less spread than in the other.
 
-* \\(\text{cc} = -1 \to\\) all data points aligned and \\(\beta < 0\\).
-* \\(-1 < \text{cc} < 0 \to\\) data points scattered in an ellipsoid, and \\(\beta < 0\\). 
-* \\(\text{cc} = 0 \to\\) points scattered in a circle and beta meaningless
-* \\(0 < \text{cc} < 1 \to\\) data points scattered in an ellipsoid, and \\(\beta > 0\\). 
-* \\(\text{cc} = 1 \to\\) all data points aligned and \\(\beta > 0\\). 
+* $$\text{cc} = -1 \to$$ all data points aligned and $$\beta < 0$$.
+* $$-1 < \text{cc} < 0 \to$$ data points scattered in an ellipsoid, and $$\beta < 0$$. 
+* $$\text{cc} = 0 \to$$ points scattered in a circle and beta meaningless
+* $$0 < \text{cc} < 1 \to$$ data points scattered in an ellipsoid, and $$\beta > 0$$. 
+* $$\text{cc} = 1 \to$$ all data points aligned and $$\beta > 0$$. 
 
 ### How hedge funds use the CAPM
 [(watch section)](https://class.coursera.org/compinvesting1-003/lecture/view?lecture_id=75)
 
-CAPM implies that expected returns are proportional to \\(\beta\\), and excess return (above the market) is achievable if and only if \\(\beta > 1\\).
+CAPM implies that expected returns are proportional to $$\beta$$, and excess return (above the market) is achievable if and only if $$\beta > 1$$.
 
-Naturally, a greater \\(\beta\\) also implies a greater risk.
+Naturally, a greater $$\beta$$ also implies a greater risk.
 
-The return of a portfolio \\(r\_p\\) is the sum of the returns of its components \\(r\_i\\) weighted by their proportions \\(w\_i\\) in value in the portfolio:
+The return of a portfolio $$r_p$$ is the sum of the returns of its components $$r_i$$ weighted by their proportions $$w_i$$ in value in the portfolio:
 
-\\[
-r\_p = \sum_i w\_i r\_i
-\\]
+$$
+r_p = \sum_i w_i r_i
+$$
 
 Moreover, the beta of a portfolio is the sum of the betas of is components:
 
-\\[
-\beta\_p = \sum_i w\_i \beta\_i
-\\]
+$$
+\beta_p = \sum_i w_i \beta_i
+$$
 
-Now, imagining that we have forecast information for one of those stocks; for instance, IBM will go up. That means that we have info on \\(\alpha\_\text{IBM}\\). But the final daily return for IBM \\(r\_\text{IBM}\\) is still mostly subject to market forces \\(\beta\_\text{IBM} r\_m\\), and if market conditions are unfavourable, the daily return will be negative regardless of the IBM forecast. Imagining that the market goes down: the \\(r\_\text{IBM}\\) will dive too, but less steeply than the \\(r\_\text{SPX}\\) thanks to the positive \\(\alpha\_\text{IBM}\\) (that we forecasted). And we can still make money on that differential by taking a long position in IBM and shorting the market. Let's run through that example:
+Now, imagining that we have forecast information for one of those stocks; for instance, IBM will go up. That means that we have info on $$\alpha_\text{IBM}$$. But the final daily return for IBM $$r_\text{IBM}$$ is still mostly subject to market forces $$\beta_\text{IBM} r_m$$, and if market conditions are unfavourable, the daily return will be negative regardless of the IBM forecast. Imagining that the market goes down: the $$r_\text{IBM}$$ will dive too, but less steeply than the $$r_\text{SPX}$$ thanks to the positive $$\alpha_\text{IBM}$$ (that we forecasted). And we can still make money on that differential by taking a long position in IBM and shorting the market. Let's run through that example:
 
 * SPY is an ETF exactly representing S&P 500, that we can trade like stock. So, in the IBM example, let's imagine a portfolio made of 2 positions: IBM and SPY. 
-* Let's assume that \\(\beta\_\text{IBM}=1\\) and  \\(\beta\_\text{SPY}=1\\), and let's have 50% of out portfolio in IBM, and 50% in SPY:  \\(w\_\text{IBM}=\dfrac{1}{2}\\) and \\(w\_\text{SPY}=\dfrac{1}{2}\\). 
-* Now, **we short SPY: \\(w\_\text{SPY} \gets -\dfrac{1}{2}\\)**
-* Let's calculate our daily returns for IBM and SPY. We multiply each \\(r\_i\\)'s definition by its share \\(w\_i\\) in the portfolio:
-\\[
+* Let's assume that $$\beta_\text{IBM}=1$$ and  $$\beta_\text{SPY}=1$$, and let's have 50% of out portfolio in IBM, and 50% in SPY:  $$w_\text{IBM}=\dfrac{1}{2}$$ and $$w_\text{SPY}=\dfrac{1}{2}$$. 
+* Now, **we short SPY: $$w_\text{SPY} \gets -\dfrac{1}{2}$$**
+* Let's calculate our daily returns for IBM and SPY. We multiply each $$r_i$$'s definition by its share $$w_i$$ in the portfolio:
+$$
 \begin{cases}
-w\_\text{IBM} r\_\text{IBM} &= w\_\text{IBM}\beta\_\text{IBM}r\_m + w\_\text{IBM}\alpha\_\text{IBM} \\\\
-w\_\text{SPY} r\_\text{SPY} &= w\_\text{SPY}\beta\_\text{SPY}r\_m + w\_\text{SPY}\alpha\_\text{SPY}
+w_\text{IBM} r_\text{IBM} &= w_\text{IBM}\beta_\text{IBM}r_m + w_\text{IBM}\alpha_\text{IBM} \\\\
+w_\text{SPY} r_\text{SPY} &= w_\text{SPY}\beta_\text{SPY}r_m + w_\text{SPY}\alpha_\text{SPY}
 \end{cases}
-\\]
-We have some of these numbers, and we further assume that \\(\alpha\_\text{SPY} = 0\\), because it follows the market:
-\\[
+$$
+We have some of these numbers, and we further assume that $$\alpha_\text{SPY} = 0$$, because it follows the market:
+$$
 \Rightarrow
 \begin{cases}
-\dfrac{1}{2} r\_\text{IBM} &= \dfrac{1}{2}r\_m + \dfrac{1}{2}\alpha\_\text{IBM} \\\\
--\dfrac{1}{2} r\_\text{SPY} &= -\dfrac{1}{2}r\_m
+\dfrac{1}{2} r_\text{IBM} &= \dfrac{1}{2}r_m + \dfrac{1}{2}\alpha_\text{IBM} \\\\
+-\dfrac{1}{2} r_\text{SPY} &= -\dfrac{1}{2}r_m
 \end{cases}
-\\]
+$$
 The portfolio return is thus:
-\\[ 
+$$ 
 \begin{align}
-r\_p &= w\_\text{IBM} r\_\text{IBM} + w\_\text{SPY} r\_\text{SPY} \\\\
-&= \dfrac{1}{2}r\_m + \dfrac{1}{2}\alpha\_\text{IBM} - \dfrac{1}{2}r\_m \\\\\
-&= \dfrac{1}{2}\alpha\_\text{IBM}
+r_p &= w_\text{IBM} r_\text{IBM} + w_\text{SPY} r_\text{SPY} \\\\
+&= \dfrac{1}{2}r_m + \dfrac{1}{2}\alpha_\text{IBM} - \dfrac{1}{2}r_m \\\\\
+&= \dfrac{1}{2}\alpha_\text{IBM}
 \end{align}
-\\]
-* So, our portfolio makes an amount of money proportional to the residual of IBM, regardless of the movements of the market: the IBM price line is always \\(\dfrac{1}{2}\alpha\_\text{IBM}\\) above the SPY price line, and that's where we make money. 
+$$
+* So, our portfolio makes an amount of money proportional to the residual of IBM, regardless of the movements of the market: the IBM price line is always $$\dfrac{1}{2}\alpha_\text{IBM}$$ above the SPY price line, and that's where we make money. 
 * The short SPY position just removes the market trend from our IBM bet.
   * If the market goes down, we lose money in IBM, but we gain more on our short position in SPY.
   * If the market goes up, we lose money on SPY, but we gain more on IBM.

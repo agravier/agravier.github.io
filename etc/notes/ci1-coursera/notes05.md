@@ -73,7 +73,7 @@ AGNC is an ETF with a 200% increase in actual close prices within 4 years. Howev
 
 Imagine a stock that starts at $10, then grows to $11, at which point it pays a $1 dividend. The graphs of actual close prices looks like a seesaw: steady rise to $11, instant drop to %10, further steady rise, etc... 
 
-The dividend payout happens after the closing of the trading day, and before the opening of the next day, making the opening price lower than the closing price by the value of the dividend. The dividend payment is literally made out of the stock value. So, if you hold one $11 share on the day before the payment, the next day you hold one $10 share plus an extra $1 in cash. As the company take out 1$ per share from the bank to give it to its shareholders, **the book value of the company goes down by $1 \\(\times\\) the number of shares**.
+The dividend payout happens after the closing of the trading day, and before the opening of the next day, making the opening price lower than the closing price by the value of the dividend. The dividend payment is literally made out of the stock value. So, if you hold one $11 share on the day before the payment, the next day you hold one $10 share plus an extra $1 in cash. As the company take out 1$ per share from the bank to give it to its shareholders, **the book value of the company goes down by $1 $$\times$$ the number of shares**.
 
 In historical adjusted close prices, the dividends are accounted for by going back in the history of actual close prices, and dividing the all previous prices before a dividend by the ratio of the dividend
 
@@ -193,7 +193,7 @@ Create marketsim.py accepting as arguments:
  One line of the orders file is as follows: 
 
 
-    year, month, day, symbol, buy|sell, qty
+    year, month, day, symbol, buy\|sell, qty
 
 
 The program will go throughout those orders one at a time, calculating the value of the portfolio all along.

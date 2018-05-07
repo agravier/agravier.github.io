@@ -20,7 +20,7 @@ In the previous lectures, we defined price events, but there are other events th
 
 *Bollinger Bands* are a volatility indicator consisting of two bands equal to a moving price average plus/minus several times the standard deviation.
 
-The *Relative Strength Index* is an index that may hint whether an equity is being oversold or overbought: \\(\text{RSI} = \frac{X}{X+1}\\) where X is the ratio of moving average up close prices over moving average down close prices \\(X=\frac{\langle\text{up close price}\rangle}{\langle\text{down close prices}\rangle}\\). It's overbought when the RSI gets close to 0.7, and undervalued when close to 0.3.
+The *Relative Strength Index* is an index that may hint whether an equity is being oversold or overbought: $$\text{RSI} = \frac{X}{X+1}$$ where X is the ratio of moving average up close prices over moving average down close prices $$X=\frac{\langle\text{up close price}\rangle}{\langle\text{down close prices}\rangle}$$. It's overbought when the RSI gets close to 0.7, and undervalued when close to 0.3.
 
 So, the event profiler takes the event definition and generates events. The profiler can then generate a chart from them. You can also use those events to generate order in a market simulator. Homework 4 is about converting events into orders.
 
@@ -123,23 +123,23 @@ What is better, one $1000 bet, or 1000 bets with $1 tokens? The analogy is that 
 
 We consider the reward / risk ratio. The expectation (reward) is the same in both cases, $20:
 
-If we make one $1000 bet, \\(E(\text{gain}) = 0.51 \times 1000 + 0.49 \times -1000 = 20\\)
+If we make one $1000 bet, $$E(\text{gain}) = 0.51 \times 1000 + 0.49 \times -1000 = 20$$
 
-If we make 1000 times a $1 bet, our expected return is 1000 time 2 pennies: \\(E(\text{gain}) = 1000 (0.51 \times 1 + 0.49 \times -1) = 20\\)
+If we make 1000 times a $1 bet, our expected return is 1000 time 2 pennies: $$E(\text{gain}) = 1000 (0.51 \times 1 + 0.49 \times -1) = 20$$
 
 The risks are very different. 
 
 The first risk measure is the **probability to lose everything**.
 
-If we make one $1000 bet, \\(p(\text{outcome}=-1000) = 0.49\\), it's a huge risk.
+If we make one $1000 bet, $$p(\text{outcome}=-1000) = 0.49$$, it's a huge risk.
 
-If we make 1000 times a $1 bet, \\(p(\text{outcome}=-1000) = 0.49^ 1000\\), it's not very risky
+If we make 1000 times a $1 bet, $$p(\text{outcome}=-1000) = 0.49^ 1000$$, it's not very risky
 
 The second measure of risk is the **standard deviation of returns**. The problem is that there is no meaningful standard deviation for one event such as out $1000 bet. So, we assimilate the $1000 bet to be followed by 999 bets of $0.
 
-If we make one $1000 bet, \\(\sigma(1000, 0, 0, 0, \ldots, 0) = 31.62\\). 
+If we make one $1000 bet, $$\sigma(1000, 0, 0, 0, \ldots, 0) = 31.62$$. 
 
-If we make 1000 $1 bet, \\(\sigma(1, -1, 1, 1, -1, \ldots, -1) = 1\\), 
+If we make 1000 $1 bet, $$\sigma(1, -1, 1, 1, -1, \ldots, -1) = 1$$, 
 
 Using this second measure of risk, the reward/risk ratio is 0.63 for the single bet, and 20 for the 1000 bets.
 
@@ -149,13 +149,13 @@ So, the multiple bet case is better in many ways. For the same expected return, 
 
 The Sharpe ratio or the reward/risk ratio for the multi-bet case is equal to that of the single bet case times the square root of the number of bets in the multi-bet case. 
 
-\\[
-\text{Sharpe}\_\text{multiple bets} = C \alpha \sqrt{n\_\text{bets}}
-\\]
+$$
+\text{Sharpe}_\text{multiple bets} = C \alpha \sqrt{n_\text{bets}}
+$$
 
-in our case, \\( \text{Sharpe}\_\text{1000 coin flip bets} = \text{Sharpe}\_\text{single coin flip bet} \sqrt{1000} = 0.63 \times 31.62 = 20 \\)
+in our case, $$ \text{Sharpe}_\text{1000 coin flip bets} = \text{Sharpe}_\text{single coin flip bet} \sqrt{1000} = 0.63 \times 31.62 = 20 $$
 
-Where \\(\alpha\\) is what we know about the bias, the 2% chance that the coin is likely to come up heads and C is a constant coefficient.
+Where $$\alpha$$ is what we know about the bias, the 2% chance that the coin is likely to come up heads and C is a constant coefficient.
 
 It means that:
 
@@ -184,11 +184,11 @@ We can compare these two approaches in the context of the fundamental law.
 
 Let's look again at the CAPM:
 
-\\[
-r\_p(t) = \beta\_p r\_m(t) + \alpha\_p(t)
-\\]
+$$
+r_p(t) = \beta_p r_m(t) + \alpha_p(t)
+$$
 
-where the portfolio return \\(r\_p(t)\\) is the compound of the return due to the market \\(\beta\_p r\_m(t)\\) and of the *residual return \\(\alpha\_p(t)\\)*. Alpha, the residual return, is usually considered to be the contribution of the portfolio manager.
+where the portfolio return $$r_p(t)$$ is the compound of the return due to the market $$\beta_p r_m(t)$$ and of the *residual return $$\alpha_p(t)$$*. Alpha, the residual return, is usually considered to be the contribution of the portfolio manager.
 
 The standard deviation of each component contributes to risk. The standard deviation of the market return represents the *market risk*, due to market volatility. The standard deviation of the alpha component is the inherent risk of the portfolio manager's strategy or lack of it. 
 
@@ -196,7 +196,7 @@ The *standard deviation of the residual return* (alpha component) is called *res
 
 The *mean of the residual return* is the *return due to skill*.
 
-Grinold's *information ratio* IR is the return due to skill divided by the redial risk: \\(IR = \frac{\text{mean}(\alpha\_p(t))}{\text{stdev}(\alpha\_p(t))}\\). This IR is also defined as *forecasting performance times root of strategy breadth*, as we will see below.
+Grinold's *information ratio* IR is the return due to skill divided by the redial risk: $$IR = \frac{\text{mean}(\alpha_p(t))}{\text{stdev}(\alpha_p(t))}$$. This IR is also defined as *forecasting performance times root of strategy breadth*, as we will see below.
 
 The *information coefficient* IC represents the forecasting skill of a manager. It is the *correlation between the forecast and the actual return*. In the biased coin example, with all the information we have (51% probability of heads), we have to always assume that it comes up heads, so our IC is the correlation between a series of 1 and a series of 51% or 1 and 49% of 0. If we could have extra info at the last moment telling us what the outcome will be, then we could take advantage of it and have a perfect information coefficient. In terms of investing, the IC related to how good we are at predicting a future stock price.
 
@@ -206,7 +206,7 @@ With that, we can write the fundamental law:
 
 > **The fundamental law:** The information ratio equals the info coefficient times the square root of the strategy breadth.
 > 
-> \\[\text{IR} = \text{IC}\sqrt{\text{BR}}\\]
+> $$\text{IR} = \text{IC}\sqrt{\text{BR}}$$
 
 So, the fundamental law makes the balance between strategy specificity and strategy breadth explicit: the more specific and predictive, the less breadth, reducing the IR by the square root of the reduction in breadth, but increasing it linearly with prediction performance (IC, skill).
 
@@ -227,7 +227,7 @@ Buffet's portfolio: small breadth because small number of equities, holding for 
 
 Simons' portfolio: very large breadth because large number of bets everyday. Much lower alpha.
 
-Let's use the law of active portfolio management \\(\text{IR} = \text{IC}\sqrt{\text{BR}}\\) to compare some made-up numbers about Buffet and Simons.
+Let's use the law of active portfolio management $$\text{IR} = \text{IC}\sqrt{\text{BR}}$$ to compare some made-up numbers about Buffet and Simons.
 
 ##### Solving of Buffet's skill
 
@@ -235,13 +235,13 @@ We assume that Buffet's Sharpe ratio is 3, and that he makes 120 trades per year
 
 We can use the Fundamental law to quantify Buffet's skill.
 
-\\[
+$$
 \begin{align}
 \text{IR} &= \text{IC}\sqrt{\text{BR}}\\\\
 3 &= \text{IC}\sqrt{120}\\\\
 IC &= 0.27
 \end{align}
-\\] 
+$$ 
 
 ##### RenTec
 
@@ -249,17 +249,17 @@ We assume that Renaissance Technologies is 100 times less skilled than Buffet. R
 
 How many trades does RenTec need to make to achieve Buffet's reward/risk ratio of 3.0?
 
-\\[
+$$
 \begin{align}
 \text{IR} &= \text{IC}\sqrt{\text{BR}}\\\\
 3 &= 0.0027 \sqrt{BR}\\\\
 BR &= 1234567 
 \end{align}
-\\] 
+$$ 
 
 If Renaissance Technologies is 100 times less skilled than Buffet, they need to make 10000 times more trades than Buffet.
 
-\\(\to\\) If you have lower skill, but you can scale it, you can reach the same performance levels as Buffet. The key is to be able to scale and make lots of little bets.
+$$\to$$ If you have lower skill, but you can scale it, you can reach the same performance levels as Buffet. The key is to be able to scale and make lots of little bets.
 
 > There are two ways to succeed (and you should work on both). One is to improve your skill. The other is to improve your breadth. But remember, the Sharpe ration only increases as the square root of the breadth. 
 
@@ -279,42 +279,42 @@ Besides, the CAPM is important for machine learning. It's good to read the refer
 
 The CAPM:
 
-\\[
-r\_i(t) = \beta\_i r\_m(t) + \alpha\_i
-\\]
+$$
+r_i(t) = \beta_i r_m(t) + \alpha_i
+$$
 
-where \\(r\_i(t)\\) is the equity's expected return, the beta of that equity to the market times the return on the market \\(\beta\_i r\_m(t)\\) is the return that we expect on our equity because of its association with the market, and \\(\alpha\_i\\) is the return that is specific to the stock.
+where $$r_i(t)$$ is the equity's expected return, the beta of that equity to the market times the return on the market $$\beta_i r_m(t)$$ is the return that we expect on our equity because of its association with the market, and $$\alpha_i$$ is the return that is specific to the stock.
 
-This \\(\alpha\_i\\) is further conceptualised as the sum of  \\(\alpha(t)\\), a forecasted component, and  \\(\epsilon(t)\\), a random noise component. Of course, \\(\epsilon\\) is not intrinsic noise, it's just the part of a stock's performance that we don't model. 
+This $$\alpha_i$$ is further conceptualised as the sum of  $$\alpha(t)$$, a forecasted component, and  $$\epsilon(t)$$, a random noise component. Of course, $$\epsilon$$ is not intrinsic noise, it's just the part of a stock's performance that we don't model. 
 
 #### Extending the CAPM to portfolios
 
-Let \\(h\_i\\) the share of the portfolio in equity \\(i\\). 
+Let $$h_i$$ the share of the portfolio in equity $$i$$. 
 
-The equation that gives the return of the whole portfolio is just a weighted sum: \\(r\_p(t) = \sum\_i h\_i r\_i(t)\\), where \\(r\_i(t) = \beta\_i r\_m(t) + \alpha\_i\\) as per the CAPM.
+The equation that gives the return of the whole portfolio is just a weighted sum: $$r_p(t) = \sum_i h_i r_i(t)$$, where $$r_i(t) = \beta_i r_m(t) + \alpha_i$$ as per the CAPM.
 
 ##### Example
 
 2 assets: asset one with a beta of 3 to the market is 25% of the value of the portfolio, and asset two with a beta of 1, is 75% of the portfolio.
 
-\\[
+$$
 \begin{cases}
-h\_1 = 0.25\\\\
-h\_2 = 0.75\\\\
-\beta\_1 = 3\\\\
-\beta\_2 = 1\\\\
+h_1 = 0.25\\\\
+h_2 = 0.75\\\\
+\beta_1 = 3\\\\
+\beta_2 = 1\\\\
 \end{cases} 
-\\]
+$$
 
-\\[
+$$
 \begin{align}
-r\_p(t) &= \sum\_i h\_i r\_i(t)\\\\
-&= h\_1 (\beta\_1 r\_m(t) + \alpha\_1) + h\_2 (\beta\_2 r\_m(t) + \alpha\_2)\\\\
-&= h\_1 \beta\_1 r\_m(t) +  h\_2 \beta\_2 r\_m(t) + h\_1 \alpha\_1 + h\_2 \alpha\_2\\\\
+r_p(t) &= \sum_i h_i r_i(t)\\\\
+&= h_1 (\beta_1 r_m(t) + \alpha_1) + h_2 (\beta_2 r_m(t) + \alpha_2)\\\\
+&= h_1 \beta_1 r_m(t) +  h_2 \beta_2 r_m(t) + h_1 \alpha_1 + h_2 \alpha_2\\\\
 &= \text{return due to market} + \text{return due to "skill"}\\\\
-&= 1.5 r\_m + .25\alpha\_1 + .75\alpha\_2
+&= 1.5 r_m + .25\alpha_1 + .75\alpha_2
 \end{align}
-\\]
+$$
 
 The overall portfolio has a beta of 1.5 to the market, and one alpha component per equity. We can control these individual alpha components, and we want to use them to both reduce the exposure to the uncontrollable beta component, and make profit. 
 
@@ -325,9 +325,9 @@ The CAPM can be used to reduce market risk from a portfolio.
 
 Consider a situation where a portfolio has two stocks:
 
-Stock 1 is forecasted to go down (relative to the market. it's always relative to the market.). So we want to short it. We also know that \\(\beta\_1=2\\), which means that when the market moves by 1%, stock 1 moves by 2%.
+Stock 1 is forecasted to go down (relative to the market. it's always relative to the market.). So we want to short it. We also know that $$\beta_1=2$$, which means that when the market moves by 1%, stock 1 moves by 2%.
 
-Stock 2 is forecasted to go up, so we want to long it. \\(\beta\_2=1\\).
+Stock 2 is forecasted to go up, so we want to long it. $$\beta_2=1$$.
 
 #### Plan: -50% stock 1, +50% stock 2
 
@@ -347,7 +347,7 @@ Stock 2 tracks the market closely. Stock 1 varies twice as much as the market. L
 
 * stock 1, which we shorted, goes down by its alpha of 2% plus its beta (2) times the market (-10%), going down for a total of 22%, so we made 22% return on stock 1
 * stock 2 goes up 2% plus its beta of 1 times the market return or -10%, totalling 8% loss, so we lose 8%. 
-* Overall, our portfolio makes \\(\frac{22\%-8\%}{2} = 7\%\\).
+* Overall, our portfolio makes $$\frac{22\%-8\%}{2} = 7\%$$.
 
 ##### If stocks perform as expected and the market goes up 10%
 
@@ -355,26 +355,26 @@ Stock 2 tracks the market closely. Stock 1 varies twice as much as the market. L
 
 * stock 1, which we shorted, goes down by its alpha of 2% but up by its beta (2) times the market (10%), going up for a total of 18%, so we lost 18% on stock 1
 * stock 2 goes up 2% plus its beta of 1 times the market return or 10%, totalling 12% return, so we gain 12%. 
-* Overall, our portfolio makes \\(\frac{-18\%+12\%}{2} = -3\%\\).
+* Overall, our portfolio makes $$\frac{-18\%+12\%}{2} = -3\%$$.
 
 But we predicted the stocks' alphas correctly! We shouldn't lose! We have skillzz!1!
 
 The **mistake was to short a high beta stock without hedging against a positive market return**. The market overwhelmed our "skill".
 
-To avoid that this happens, we can to take advantage of the CAPM: in \\(r\_p(t) = \beta\_p r\_m(t) + \alpha\_p(t)\\), we want to do is eliminate the return due to the market \\(\beta\_p r\_m(t)\\), thereby eliminating the market risk.
+To avoid that this happens, we can to take advantage of the CAPM: in $$r_p(t) = \beta_p r_m(t) + \alpha_p(t)$$, we want to do is eliminate the return due to the market $$\beta_p r_m(t)$$, thereby eliminating the market risk.
 
-To do that, we find holding \\(h_i\\) that cancel the portfolio's beta.
+To do that, we find holding $$h_i$$ that cancel the portfolio's beta.
 
 #### Plan: -33% stock 1, +66% stock 2
 
-As \\(\beta\_1 = 2\\) and \\(\beta\_2 = 1\\), the \\(h_1=-33\%\\) and \\(h_2=66\%\\) allocation will result in a portfolio beta of \\(\beta\_p = -0.33\times 2 + 0.66\times 1 = 0\\)
+As $$\beta_1 = 2$$ and $$\beta_2 = 1$$, the $$h_1=-33\%$$ and $$h_2=66\%$$ allocation will result in a portfolio beta of $$\beta_p = -0.33\times 2 + 0.66\times 1 = 0$$
 
-As a result, the market component is now 0 in our portfolio return equation: \\(r\_p(t) = 0 + -0.33\alpha\_1 + 0.66\alpha\_2\\)
+As a result, the market component is now 0 in our portfolio return equation: $$r_p(t) = 0 + -0.33\alpha_1 + 0.66\alpha_2$$
 
 ##### If stocks perform as expected and the market goes up 10%
 
 ![svg](portfolio3.svg)
 
-* stock 1, which we shorted, goes down by its alpha of 2% but up by its beta (2) times the market (10%), going up for a total of 18%, so we lost 18% on stock 1, but now with an \\(\alpha\_1 = \dfrac{1}{2}\alpha\_2\\)
+* stock 1, which we shorted, goes down by its alpha of 2% but up by its beta (2) times the market (10%), going up for a total of 18%, so we lost 18% on stock 1, but now with an $$\alpha_1 = \dfrac{1}{2}\alpha_2$$
 * stock 2 goes up 2% plus its beta of 1 times the market return or 10%, totalling 12% return, so we gain 12% but with with a larger alpha 
-* Overall, our portfolio makes \\(-18\%\times 0.33+12\%\times 0.66 = 1.98\%\\).
+* Overall, our portfolio makes $$-18\%\times 0.33+12\%\times 0.66 = 1.98\%$$.

@@ -120,21 +120,21 @@ When the fast SMA crosses up the slow SMA, it's a "golden cross" indicating a bu
 
 Bollinger bands around a SMA indicate a stock's volatility by reflecting the standard deviation of the price over a parameter able number of past days. They expand when price is more volatile and contract when it's not. The idea is that when a stock crosses its top band, it has been overbought, and when it crosses the lower band, it has been oversold.
 
-**It is important to convert price info and so on to standard units, for instance, a \\([-1, 1]\\) range.**
+**It is important to convert price info and so on to standard units, for instance, a $$[-1, 1]$$ range.**
 
 [(watch section)](https://class.coursera.org/compinvesting1-003/lecture/view?lecture_id=179)
 
-Bollinger bands are computed by looking back over \\(N\\) days, calculating the SMA and standard deviation of price over those \\(N\\) days. The bands are \\(\text{SMA}\_N \pm k\sigma\_{N}\\) for a factor \\(k\\). If we convert data so as the bands for \\(k=1\\) are always \\(-1\\) and \\(+1\\), then we can just carry one number, the converted price, and implicitly get the Bollinger bands signal for all values of k. 
+Bollinger bands are computed by looking back over $$N$$ days, calculating the SMA and standard deviation of price over those $$N$$ days. The bands are $$\text{SMA}_N \pm k\sigma_{N}$$ for a factor $$k$$. If we convert data so as the bands for $$k=1$$ are always $$-1$$ and $$+1$$, then we can just carry one number, the converted price, and implicitly get the Bollinger bands signal for all values of k. 
 
 The idea that John Bollinger had was that a technical indicator should adapt to a stock's volatility.
 
 ##### How to compute Bollinger bands
 
 1. Read historical price data
-2. Let \\(\text{mid} = \text{rolling mean over the loopback period}\\)
-3. Let \\(\text{std} = \text{rolling stdev over the loopback period}\\)
-4. \\(\text{lower BB} = \text{mid} - \text{std}\\)
-5. \\(\text{higher BB} = \text{mid} + \text{std}\\)
-6. Normalisation, to convert the data to -1 and 1 Bollinger bands: \\(\text{Value} = \frac{\text{price} - \text{mid}}{\text{std}}\\)
+2. Let $$\text{mid} = \text{rolling mean over the loopback period}$$
+3. Let $$\text{std} = \text{rolling stdev over the loopback period}$$
+4. $$\text{lower BB} = \text{mid} - \text{std}$$
+5. $$\text{higher BB} = \text{mid} + \text{std}$$
+6. Normalisation, to convert the data to -1 and 1 Bollinger bands: $$\text{Value} = \frac{\text{price} - \text{mid}}{\text{std}}$$
 
 Note: Pandas, NumPy have rolling statistics, so it's not necessary to reinvent the wheel.

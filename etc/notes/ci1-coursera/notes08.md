@@ -16,9 +16,9 @@ disqus: true
 
 We can express the market component of the CAPM as:
 
-The expected return on investment \\(E(R\_i)\\) equals the risk-free rate of return \\(R\_f\\) plus the beta of the asset \\(\beta\_i\\) times the expected market return minus the risk-free rate \\((E(R\_m) - R\_f)\\).
+The expected return on investment $$E(R_i)$$ equals the risk-free rate of return $$R_f$$ plus the beta of the asset $$\beta_i$$ times the expected market return minus the risk-free rate $$(E(R_m) - R_f)$$.
 
-\\[ E(R\_i) = R\_f + \beta\_i (E(R\_m) - R\_f) \\]
+$$ E(R_i) = R_f + \beta_i (E(R_m) - R_f) $$
 
 The risk-free rate is currently very close to 0, but if interests rate climb up again, the risk-free rate may become significant again.
 
@@ -26,7 +26,7 @@ The risk-free rate is currently very close to 0, but if interests rate climb up 
 
 ### CAPM vs actual returns
 
-The equation \\( E(R\_i) = R\_f + \beta\_i (E(R\_m) - R\_f) \\) doesn't exactly add up : when comparing an equity's return to the market
+The equation $$ E(R_i) = R_f + \beta_i (E(R_m) - R_f) $$ doesn't exactly add up : when comparing an equity's return to the market
 
 For instance, comparing SPLV to the S&P 500 in 2013 to date: although the symbol has a beta of 0.75, it outperforms the market. The return should not be as high as the market, but it's higher.
 
@@ -34,11 +34,11 @@ That difference is alpha.
 
 ### The Full CAPM with alpha
 
-\\[ E(R\_i) = R\_f + \beta\_i (E(R\_m) - R\_f) + E(\alpha) \\]
+$$ E(R_i) = R_f + \beta_i (E(R_m) - R_f) + E(\alpha) $$
 
-The CAPM asserts that \\(E(\alpha) = 0\\).
+The CAPM asserts that $$E(\alpha) = 0$$.
 
-However, investors believe that \\(E(\alpha) > 0\\) and represents the skill of the investor.
+However, investors believe that $$E(\alpha) > 0$$ and represents the skill of the investor.
 
 When plotting the daily returns of SPLV (minus risk-free rate) against the market (minus risk-free rate too), we can obtain an estimate of beta and of alpha: 
 
@@ -135,7 +135,7 @@ We want to **build a model from data**. The model then takes an input X (observa
 
 Example: model of rain amount in function of change in barometric pressure. One data point contains <change in pressure that day, amount of rain that day>
 
-We can model that using a linear function, the parametric model has only 2 parameters: \\(\text{rain} = m \times \text{pressure} + b\\).
+We can model that using a linear function, the parametric model has only 2 parameters: $$\text{rain} = m \times \text{pressure} + b$$.
 
 A second-order polynomial requires learning 3 parameters, etc... 
 
@@ -153,7 +153,7 @@ Non-linear or non-polynomial models are hard to fit.
 
 ### "Data-driven" (non-parametric) models
 
-The queries for a data-driven *K-nearest-neighbours model* are made by searching for the K closest points in range to the query (\\(KNN(X) \, \to \, Y\_\text{hist}\\), for instance). Then, apply a function to these points, for instance, take their average: \\(\text{forecast} = \langle Y\_\text{hist} \rangle\\).
+The queries for a data-driven *K-nearest-neighbours model* are made by searching for the K closest points in range to the query ($$KNN(X) \, \to \, Y_\text{hist}$$, for instance). Then, apply a function to these points, for instance, take their average: $$\text{forecast} = \langle Y_\text{hist} \rangle$$.
 
 With this data-drive model, it fits the data at every point. It doesn't impose a parametric model.
 

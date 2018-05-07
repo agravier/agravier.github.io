@@ -52,7 +52,7 @@ But is any version true?
 
 #####  P/E ratios vs. annualised return
 
-Price/earnings ratio (P/E): \\(=\frac{\text{share price}}{\text{earnings per share}}\\) over a recent period of time (last 4 quarters, for instance). The earnings per share (for a year) are \\(\frac{\text{net income for the year}}{\text{weighted average number of shares over the year}}\\). Use the weighted average number of shares over the period of reporting because the number of shares can vary. 
+Price/earnings ratio (P/E): $$=\frac{\text{share price}}{\text{earnings per share}}$$ over a recent period of time (last 4 quarters, for instance). The earnings per share (for a year) are $$\frac{\text{net income for the year}}{\text{weighted average number of shares over the year}}$$. Use the weighted average number of shares over the period of reporting because the number of shares can vary. 
 
 Projected P/E uses forecasted price and earnings. 
 
@@ -75,7 +75,7 @@ Coming back on the paper by McKinlay that we saw in [Week 2](notes02.html), that
 
 They documented the dates of positive, negative, and random news events for 1700 stocks, looked at how the valency of events correlated with price changes of the concerned stocks.
 
-McKinlay takes a \\(\pm\\)20-days window centred on each event, clusters them by valency, and shifts them to a common value of 0 at t-20 to extract changes in value. For each clusters, he plots the mean of those shifted daily prices. 
+McKinlay takes a $$\pm$$20-days window centred on each event, clusters them by valency, and shifts them to a common value of 0 at t-20 to extract changes in value. For each clusters, he plots the mean of those shifted daily prices. 
 
 The plot of average stock price change for negative news events shows a sharp drop the day after the event. 
 
@@ -101,7 +101,7 @@ Such chart allows to quantitatively test the hypothesis that a particular event 
 
 Event studies work best on many events. 
 
-QSTK has an event profiler. It lets the user scan through a dataframe of dates \\(\times\\) stocks and input 1 where there is an event and NaN where there is no event. Afterwards, the plotting software takes charge of the plotting.
+QSTK has an event profiler. It lets the user scan through a dataframe of dates $$\times$$ stocks and input 1 where there is an event and NaN where there is no event. Afterwards, the plotting software takes charge of the plotting.
 
 ### QSTK tutorial 9
 

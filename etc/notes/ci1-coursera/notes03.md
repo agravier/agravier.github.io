@@ -626,7 +626,7 @@ plt.xlabel('Date')
 **(From here, there are no video tutorials, only the wiki)**
 
 The QSTK function ```returnize0``` computes the daily return of stocks
-(remember, \\(\text{ret}(t) = \frac{\text{price}(t)}{\text{price}(t-1)} -1\\)).
+(remember, $$\text{ret}(t) = \frac{\text{price}(t)}{\text{price}(t-1)} -1$$).
 Beware, ```returnize0``` mutates the array. Make a copy first:
 
 
@@ -843,7 +843,7 @@ so I don't list the code for it here.
 
 #### Answer
 
-As I am lazy, I approximate \\(\text{SPX} \approx \text{SPY}\\)
+As I am lazy, I approximate $$\text{SPX} \approx \text{SPY}$$
 
 
  ```Input:```

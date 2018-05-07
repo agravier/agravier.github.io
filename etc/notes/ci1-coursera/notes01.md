@@ -61,23 +61,23 @@ The evolution of the fund value is compared to the evolution of the value of an 
 ### Metrics
 [(watch section)](https://class.coursera.org/compinvesting1-003/lecture/view?lecture_id=9)
 
-* Daily return: \\(\frac{\text{value(day)}}{\text{value(previous day)}}-1\\)
-* Drawn-down: Take a high point's value \\(h\\),  take the next low point's value \\(l\\), the draw-dawn is \\(1-\frac{l}{h}\\)
+* Daily return: $$\frac{\text{value(day)}}{\text{value(previous day)}}-1$$
+* Drawn-down: Take a high point's value $$h$$,  take the next low point's value $$l$$, the draw-dawn is $$1-\frac{l}{h}$$
 
 Reward metric:
 
-* Annual return: percentage of profit in a year. \\(\frac{\text{value(end)}}{\text{value(start)}}-1\\) (all returns are calculated like that)
+* Annual return: percentage of profit in a year. $$\frac{\text{value(end)}}{\text{value(start)}}-1$$ (all returns are calculated like that)
 
 Risk metrics:
 
 * Standard deviation of daily return, indicating volatility
 * Max draw-down: over a period of time, what was the largest loss of value (in percentage)
 * Average draw-down: on average, how much (as a share of the overall fund size) the value goes down when it does.
-* Beta: volatility in comparison to the market as a whole. \\(\beta=0.5\\) means that the security's volatility is 50% that of the market.
+* Beta: volatility in comparison to the market as a whole. $$\beta=0.5$$ means that the security's volatility is 50% that of the market.
 
 Risk-adjusted performance metrics:
 
-* Sharpe ratio: how much reward for how much risk: \\(\frac{\text{reward}}{\text{risk}}\\)
+* Sharpe ratio: how much reward for how much risk: $$\frac{\text{reward}}{\text{risk}}$$
 * Sortino ratio: same, but only using a measure of downward volatility.
 * Jensen's alpha: average return on a portfolio over and above that predicted by the capital asset pricing model (CAPM), given the portfolio's beta and the average market return. 
 
@@ -90,24 +90,24 @@ It was invented to differentiate which portfolio is better in cases of similar r
 
 The original definition was:
 
-\\[
-S = \frac{E[R-R\_f]}{\sqrt{\text{var}[R-R\_f]}} 
-\\]
+$$
+S = \frac{E[R-R_f]}{\sqrt{\text{var}[R-R_f]}} 
+$$
 
-\\(R\\) is the return of the asset,
-\\(R\_f\\) is the risk-free return, like Libor or some very low-risk asset.
+$$R$$ is the return of the asset,
+$$R_f$$ is the risk-free return, like Libor or some very low-risk asset.
 
-Nowadays, the \\(R\_f\\) component is often ignored, and the Sharpe ratio is computed as
+Nowadays, the $$R_f$$ component is often ignored, and the Sharpe ratio is computed as
 
-\\[
+$$
 S = k\frac{\mathtt{mean(d)}}{\mathtt{sd(d)}} 
-\\]
+$$
 
-where ``d`` is the series of daily returns (``d[i]`` the daily return for day ``i``), ``sd(d)`` is the measure of standard deviation of daily returns, and \\(k= \frac{250}{\sqrt{250}} = \sqrt{250}\\) for the number of trading days in a year.
+where ``d`` is the series of daily returns (``d[i]`` the daily return for day ``i``), ``sd(d)`` is the measure of standard deviation of daily returns, and $$k= \frac{250}{\sqrt{250}} = \sqrt{250}$$ for the number of trading days in a year.
 
-The presence of \\(k\\) stems from the assumption that all daily return rate \\(d\_i\\) are random variables with the same distribution \\(d\\): \\(d\_1 = d\_2 = \ldots = d\_k\\). The addition of those \\(k\\) variables give \\(R\\), the random variable for the whole period: \\(R = d\_1 + \ldots + d\_k = k d\\). With that in mind, looking at our initial definition of the Sharpe ratio, but ignoring the risk-free return component \\(R\_f\\), we have:
+The presence of $$k$$ stems from the assumption that all daily return rate $$d_i$$ are random variables with the same distribution $$d$$: $$d_1 = d_2 = \ldots = d_k$$. The addition of those $$k$$ variables give $$R$$, the random variable for the whole period: $$R = d_1 + \ldots + d_k = k d$$. With that in mind, looking at our initial definition of the Sharpe ratio, but ignoring the risk-free return component $$R_f$$, we have:
 
-\\[
+$$
 \begin{align}
 S &= \frac{E[R]}{\sqrt{\text{var}[R]}} \\\\
 &= \frac{E[k d]}{\sqrt{\text{var}[k d]}} \\\\
@@ -116,7 +116,7 @@ S &= \frac{E[R]}{\sqrt{\text{var}[R]}} \\\\
 &= \frac{250}{\sqrt{250}} \frac{E[d]}{\sqrt{\text{var}[d]}} \\\\
 &= \sqrt{250} \frac{E[d]}{\sqrt{\text{var}[d]}}
 \end{align}
-\\]
+$$
 
 #### Practical basic data manipulation
 

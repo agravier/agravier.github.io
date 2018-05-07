@@ -18,7 +18,8 @@ available here for other students.
 [Lecture notes for week 6](notes/ci1-coursera/notes06.html)  
 [Lecture notes for week 7](notes/ci1-coursera/notes07.html)  
 [Lecture notes for week 8](notes/ci1-coursera/notes08.html)  
-
+[NumPy tutorial](notes/ci1-coursera/quantsoftware_numpy_tutorial.html)  
+[Qstk tutorial](notes/ci1-coursera/qstk_tutorial_1.html)
   
 
 [Link to the course](https://class.coursera.org/compinvesting1-003/)
@@ -37,5 +38,4 @@ available here for other students.
 [Lecture notes for week 8](notes/cn-coursera/notes08.html)  
 
   
-
 [Link to the course](https://class.coursera.org/compneuro-001/)
