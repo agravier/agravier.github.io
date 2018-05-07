@@ -30,8 +30,8 @@ Given **one** neural response from one trial of the experiment, how can one use 
 Plotting the the neuron's success rate in function of the coherence requires a decoding step. 
 
 - Plot the distribution of responses:
- - Probability of a number r of spikes given that the stimulus moved in one direction p(r|-) \\(\rightarrow\\) normal centered on <r->
- - Probability of a number r of spikes given that the stimulus moved in the other direction p(r|+) \\(\rightarrow\\) normal centered on <r+>
+ - Probability of a number r of spikes given that the stimulus moved in one direction $$p(r \mid -) \rightarrow$$ normal centered on <r->
+ - Probability of a number r of spikes given that the stimulus moved in the other direction $$p(r \mid +) \rightarrow$$ normal centered on <r+>
 - Map a a range of the abscissa (r) to a direction by defining a threshold below which we choose none direction, and above which we choose the other.
 
 Q: Where would you put the threshold value?
@@ -41,38 +41,38 @@ Q: Where would you put the threshold value?
 - Additional analysis needs to be conducted before a threshold can be estimated. 
 - None of these.
 
-Let z the crossing point of the two distributions. We maximize the total prediction error by using z as the threshold. The area under the portion of the p(r|-) curve that lies below the p(r|+) curve is then our false positive (type II error) probability for the + guess \\( p(r \geq z | -) \\), and the area below the higher curve past r=z is the probability of true positive \\( p(r \geq z | +) \\)
+Let z the crossing point of the two distributions. We maximize the total prediction error by using z as the threshold. The area under the portion of the $$p(r \mid -)$$ curve that lies below the $$p(r \mid +)$$ curve is then our false positive (type II error) probability for the + guess $$ p(r \geq z  \mid  -) $$, and the area below the higher curve past r=z is the probability of true positive $$ p(r \geq z  \mid  +) $$
 
 Probability of correct prediction = probability of positive exemplar * probability of true positive + probability of negative exemplar * probability of true negative 
 
-\\[
-P\_{\textrm{correct}} = p(+) p(r \geq z | +) + p(-) (1 - p(r \geq z | -))
-\\]
+$$
+P_{\textrm{correct}} = p(+) p(r \geq z  \mid  +) + p(-) (1 - p(r \geq z  \mid  -))
+$$
 
 Probability of erroneous predicition = probability of positive * probability of type II error + probability of negative examplar * probability of type I error
 
-\\[
-P\_{\textrm{error}} = p(+) p(r \lt z | +) + p(-) (1 - p(r \lt z | -)) \textrm{tbc}
-\\]
+$$
+P_{\textrm{error}} = p(+) p(r \lt z  \mid  +) + p(-) (1 - p(r \lt z  \mid  -)) \textrm{tbc}
+$$
 
-We want the likelihood ratio to be greater than 1: \\( \frac{p(r|+)}{p(r|-)} \gt 1 \\). (Neyman-Pearson lemma)
+We want the likelihood ratio to be greater than 1: $$ \frac{p(r \mid +)}{p(r \mid -)} \gt 1 $$. (Neyman-Pearson lemma)
 
 The neural response of one neuron is already closely correlated with the behavioral response.
 
 The likelihood ratio can be explicitly computed to make decisions. We listen to the rustling noise and register a stimulus s that is quite likely be due to the breeze and quite unlikely to be due to a dangerous animal. Then, we compute the likelihood ratio of that sample:
 
-\\[
-L(s) = \frac{p(s|tiger)}{p(s|breeze)}
-\\]
+$$
+L(s) = \frac{p(s \mid \text{tiger})}{p(s \mid \text{breeze})}
+$$
 
 This is less than one in our case.
 
 Listening to the leaves during a long time, we collect **independent** samples. So, with several independent observations, we can multiply the corresponding probabilities together. We can also sum their logs, or the log of the likelihood:
 
-\\[
-L(s) = \frac{p(s|tiger)}{p(s|breeze)} < 1 \\
+$$
+L(s) = \frac{p(s \mid \text{tiger})}{p(s \mid \text{breeze})} < 1 \\
 \Rightarrow log(L(s)) < 0
-\\]
+$$
 
 Each sample adds to or subtract from log(L(s)), until a threshold is reached.
 
@@ -96,20 +96,20 @@ A: True
 
 Explanation: The prior probability gives us a way of quantifying the distribution of firing rates of the cell in an average case, which we can think of as simply the noisy case (the cell is receiving any random input). By adjusting for that normal firing rate, we can pick out instances when the firing rate is significantly different from what we consider normal.
 
-Let \\(L\_-\\) the effective loss (penalty weight) for a false positive and \\(L\_+\\) the cost of a type II error.
+Let $$L_-$$ the effective loss (penalty weight) for a false positive and $$L_+$$ the cost of a type II error.
 
 The expected losses are:
 
-\\[
+$$
 \begin{cases}
-  \textrm{Loss}\_- = L\_- P[+|r]\\\\
-  \textrm{Loss}\_+ = L\_+ P[-|r]
+  \textrm{Loss}_- = L_- P[+ \mid r]\\
+  \textrm{Loss}_+ = L_+ P[- \mid r]
 \end{cases}
-\\]
+$$
 
-So, when \\( \textrm{Loss}\_+ < \textrm{Loss}\_- \\), the loss minimizing strategy is to choose +. USing Bayes' rule, \\( P[-|r] = \frac{p(r|-) p(-)}{p(r)} \\) and \\( P[+|r] = \frac{p(r|+) p(+)}{p(r)} \\), which means that:
+So, when $$ \textrm{Loss}_+ < \textrm{Loss}_- $$, the loss minimizing strategy is to choose +. USing Bayes' rule, $$ P[- \mid r] = \frac{p(r \mid -) p(-)}{p(r)} $$ and $$ P[+ \mid r] = \frac{p(r \mid +) p(+)}{p(r)} $$, which means that:
 
-The loss-minimizing strategy is to decide to decode a + when the likelihood ratio is greater than the ration of expected losses: \\( \frac{p(r|+)}{p(r|-)} > \frac{L\_+ p(+)}{L\_- p(-)} \\).
+The loss-minimizing strategy is to decide to decode a + when the likelihood ratio is greater than the ration of expected losses: $$ \frac{p(r \mid +)}{p(r \mid -)} > \frac{L_+ p(+)}{L_- p(-)} $$.
 
 ### Vision and starlight (Fred Rieke)
 
@@ -130,7 +130,7 @@ One advantage of studying the retina is that we have theoretical data about the 
 
 A second advantage is that we have anatomical data hinting at where such thresholding non-linearity may take place.
 
-several rods \\(\rightarrow\\) one rod bipolar cell \\(\rightarrow\\) AII amacrine cell \\(\rightarrow\\) ...
+several rods $$\rightarrow$$ one rod bipolar cell $$\rightarrow$$ AII amacrine cell $$\rightarrow$$ ...
 
 The rod bipolar cell is already receiving aggregate input from several rods, so the last opportunity to apply the filtering non-linearity is at the synapse between rod and bipolar cell.
 
@@ -143,13 +143,13 @@ Recording rod bipolar cells reveals the thresholding on-linearity. Using the mea
 
 Cricket cereal system: 2 hind organs that sense air movement. Each  is covered in hairs connected to mechanoreceptors that transmit AP to a bunch of interneurons. 4 of these interneurons respond to 4 cardinal wind directions for low wind speeds.
 
-And it happens that the response of one neuron is \\( \left(\frac{f(s)}{r\_{\textrm{max}}}\right)\_a = [\overrightarrow{v}\cdot\overrightarrow{c}\_a]\_+ \\) where \\(\overrightarrow{c}\_a\\) is the preferred direction of that neuron
+And it happens that the response of one neuron is $$ \left(\frac{f(s)}{r_{\textrm{max}}}\right)_a = [\overrightarrow{v}\cdot\overrightarrow{c}_a]_+ $$ where $$\overrightarrow{c}_a$$ is the preferred direction of that neuron
 
-The population vector for those four neurons is the sum of their \\(\overrightarrow{c}\_a\\), weighted by their firing rate:
+The population vector for those four neurons is the sum of their $$\overrightarrow{c}_a$$, weighted by their firing rate:
 
-\\[
-\overrightarrow{v}\_\textrm{pop} = \sum\_{a=1}^ 4 \left(\frac{r}{r\_\textrm{max}}\right)\_a \overrightarrow{c}\_a
-\\]
+$$
+\overrightarrow{v}_\textrm{pop} = \sum_{a=1}^ 4 \left(\frac{r}{r_\textrm{max}}\right)_a \overrightarrow{c}_a
+$$
 
 Q: Which of these options presents a plausible explanation for the presence of neurons that encode for motion in 4 different directions in a 2-dimensional plane?
 
@@ -162,17 +162,17 @@ Explanation: This has to do with negation and how it relates to the physical wor
 
 ### M1 neurons: population vector with many neurons
 
-Again, neurons responding to angle (this time arm movement) by cosine. With a base firing rate of \\(r\_0\\), the firing rate of a neuron with preference \\(\overrightarrow{c}\_a\\) is
+Again, neurons responding to angle (this time arm movement) by cosine. With a base firing rate of $$r_0$$, the firing rate of a neuron with preference $$\overrightarrow{c}_a$$ is
 
-\\[
-\left(\frac{f(s) - r\_0}{r\_{\textrm{max}}}\right)\_a = \overrightarrow{v} \cdot \overrightarrow{c}\_a
-\\]
+$$
+\left(\frac{f(s) - r_0}{r_{\textrm{max}}}\right)_a = \overrightarrow{v} \cdot \overrightarrow{c}_a
+$$
 
-The population vector for \\(N\\) such neurons is the sum of their \\(\overrightarrow{c}\_a\\), weighted by their firing rate:
+The population vector for $$N$$ such neurons is the sum of their $$\overrightarrow{c}_a$$, weighted by their firing rate:
 
-\\[
-\overrightarrow{v}\_\textrm{pop} = \sum\_{a=1}^ N \left(\frac{r-r\_0}{r\_\textrm{max}}\right) \overrightarrow{c}\_a = \sum\_{a=1}^ N\left(\overrightarrow{v}\cdot\overrightarrow{c}\_a\right) \overrightarrow{c}\_a
-\\]
+$$
+\overrightarrow{v}_\textrm{pop} = \sum_{a=1}^ N \left(\frac{r-r_0}{r_\textrm{max}}\right) \overrightarrow{c}_a = \sum_{a=1}^ N\left(\overrightarrow{v}\cdot\overrightarrow{c}_a\right) \overrightarrow{c}_a
+$$
 
 Q: In this equation, we normalize the contribution of each neuron to the population vector by its maximum firing rate. Why do we do this?
 
@@ -189,46 +189,46 @@ Not all responses are cosines, and not all population responses are the weighted
 
 #### Bayesian inference
 
-Vocabulary: in \\(p[s|r] = \frac{p[r|s] p[s]}{p[r]}\\),
+Vocabulary: in $$p[s \mid r] = \frac{p[r \mid s] p[s]}{p[r]}$$,
 
-- posterior distribution: \\(p[s|r]\\)
-- likelihood function or conditional distribution: \\(p[r|s]\\)
-- prior distribution: \\(p[s]\\)
-- marginal distribution: \\(p[r]\\)
+- posterior distribution: $$p[s \mid r]$$
+- likelihood function or conditional distribution: $$p[r \mid s]$$
+- prior distribution: $$p[s]$$
+- marginal distribution: $$p[r]$$
 
 Two strategies: 
 
 - Maximum Likelihood (ML), trying to optimize the likelihood function
-- Maximum a posteriori (MAP), trying to optimize the posterior distribution (and using our knowledge of \\(p[s]\\) to bias our choice)
+- Maximum a posteriori (MAP), trying to optimize the posterior distribution (and using our knowledge of $$p[s]$$ to bias our choice)
 
 Example:
 
-A population encodes a stimulus s. Each neuron a responds to s with a Gaussian tuning curve \\(f\_a(s)\\) (mean \\(s\_a\\); all tuning curves have the same spread and are evenly spaced along s, so as the mean population response is more or less constant.
+A population encodes a stimulus s. Each neuron a responds to s with a Gaussian tuning curve $$f_a(s)$$ (mean $$s_a$$; all tuning curves have the same spread and are evenly spaced along s, so as the mean population response is more or less constant.
 
 Neurons responses are assumed independent.
 
 What is the standard deviation of a poisson neuron with an average firing rate of r?
 
-- \\(r\\) 
-- ** \\(\sqrt{r}\\) **
+- $$r$$ 
+- ** $$\sqrt{r}$$ **
 - λ 
 - None of these.
 
-Explanation: The variance of a poisson distribution is equal to the mean and the standard deviation is the square root of the variance. Therefore, if the mean firing rate is r, the variance is equal to \\(\sqrt{r}\\).
+Explanation: The variance of a poisson distribution is equal to the mean and the standard deviation is the square root of the variance. Therefore, if the mean firing rate is r, the variance is equal to $$\sqrt{r}$$.
 
 ##### Maximum likelihood
 
-The probability of the population response vector \\(r\\) given stimulus s is the product (indep.) of the probabilities \\(P[r\_a|s]\\). As we are assuming a Poisson distribution, we have
+The probability of the population response vector $$r$$ given stimulus s is the product (indep.) of the probabilities $$P[r_a \mid s]$$. As we are assuming a Poisson distribution, we have
 
-\\[
-P[r\_a|s] = \frac{(f\_a(s)T)^ {r\_aT}}{(r\_aT)!}\mathrm{exp}(-f\_a(s)T)
-\\]
+$$
+P[r_a \mid s] = \frac{(f_a(s)T)^ {r_aT}}{(r_aT)!}\mathrm{exp}(-f_a(s)T)
+$$
 
 so 
 
-\\[
-P[r|s] = \prod\_{a=1}^ N \frac{(f\_a(s)T)^ {r\_aT}}{(r\_aT)!}\mathrm{exp}(-f\_a(s)T)
-\\]
+$$
+P[r \mid s] = \prod_{a=1}^ N \frac{(f_a(s)T)^ {r_aT}}{(r_aT)!}\mathrm{exp}(-f_a(s)T)
+$$
 
 Q: log(ab/c)=?
 
@@ -237,31 +237,31 @@ Q: log(ab/c)=?
 - **log(a)+log(b)−log(c)**
 - None of these.
 
-We want to maximize this expression of \\(P[r|s]\\) in function of s. For that, we can log-linearlize that expression, as maximizing the logarithm of the function is equivalent.
+We want to maximize this expression of $$P[r \mid s]$$ in function of s. For that, we can log-linearlize that expression, as maximizing the logarithm of the function is equivalent.
 
-As maximization technique, we can set the gradient to 0. The derivative of the log-linearized expression of \\(P[r|s]\\) is simplified a lot by various constants:
+As maximization technique, we can set the gradient to 0. The derivative of the log-linearized expression of $$P[r \mid s]$$ is simplified a lot by various constants:
 
-\\[
-\ln(P[r|s]) = \sum\_{a=1}^ N r\_a \frac{f'(s)}{f(s)} = 0
-\\]
+$$
+\ln(P[r \mid s]) = \sum_{a=1}^ N r_a \frac{f'(s)}{f(s)} = 0
+$$
 
-where \\(f\_a = A e^ {-\frac{1}{2\sigma\_a^ 2}(s-s\_a)^ 2}\\) in our case, which makes that the solution is 
+where $$f_a = A e^ {-\frac{1}{2\sigma_a^ 2}(s-s_a)^ 2}$$ in our case, which makes that the solution is 
 
-\\[
-s^ * = \frac{\sum\_{a=1}^ N\frac{r\_as\_a}{\sigma\_a^ 2}}{\frac{r\_a}{\sigma\_a^ 2}}
-\\]
+$$
+s^ * = \frac{\sum_{a=1}^ N\frac{r_as_a}{\sigma_a^ 2}}{\frac{r_a}{\sigma_a^ 2}}
+$$
 
 If variances are all equal, we find an expression of the population vector.
 
-If not, the **informativeness** of each neuron is taken into account in the expression of \\(s^ *\\), as the inverse of the spread is used to weight its contribution!
+If not, the **informativeness** of each neuron is taken into account in the expression of $$s^ *$$, as the inverse of the spread is used to weight its contribution!
 
 
 ##### Maximum a posteriori
 
-If the likelihood distribution is P(A|B), what is the a posteriori distribution?
+If the likelihood distribution is $$P(A \mid B)$$, what is the a posteriori distribution?
 
 - P(A)
-- **P(B|A)**
+- **P(B\|A)**
 - P(B)
 - P(AB)
 
@@ -269,18 +269,18 @@ Explanation: Sorry for all the Latin phrases! Mathematicians love that stuff.
 
 Remember that with Bayesian reasoning, we start with an initial belief about a distribution of something, we call that the "prior" distribution. As we collect new evidence, we can adjust our belief. Our belief after adjusting for the new evidence is called the "a posteriori" distribution. The likelihood tells us how likely we are to observe our evidence, given the various possible values of the thing we are concerned with, which is something we taken into account while estimating the posterior distribution. Bayes Rule tells us precisely how we can take that likelihood into account to come up with the posterior.
 
-In the case of this question, our prior would be P(B). Our evidence is represented by A, and the likelihood of our evidence is P(A|B). In the Bayes Rule formula, it is P(B|A) that plays the role of the posterior.
+In the case of this question, our prior would be $$P(B)$$. Our evidence is represented by A, and the likelihood of our evidence is $$P(A \mid B)$$. In the Bayes Rule formula, it is $$P(B \mid A)$$ that plays the role of the posterior.
 
 
-We want to maximize \\(\textrm{ln} p[s|r] = \textrm{ln} P[r|s] + \textrm{ln} p[s] - \textrm{ln} P[r]\\)
+We want to maximize $$\textrm{ln} p[s \mid r] = \textrm{ln} P[r \mid s] + \textrm{ln} p[s] - \textrm{ln} P[r]$$
 
-Again, we replace \\( ln(P[r|s]) \\) by \\( \sum\_{a=1}^ N r\_a \frac{f'(s)}{f(s)} \\), find \\(s^ *\\) for which the derivative of the function is 0:
+Again, we replace $$ ln(P[r \mid s]) $$ by $$ \sum_{a=1}^ N r_a \frac{f'(s)}{f(s)} $$, find $$s^ *$$ for which the derivative of the function is 0:
 
-\\[
-s^ * = \frac{T\sum\_{a=1}^ N\frac{r\_as\_a}{\sigma\_a^ 2} + \frac{s\_\textrm{prior}}{\sigma^ 2\_\textrm{prior}}}{T\sum\_{a=1}^ N \frac{r\_a}{\sigma\_a^ 2} + \frac{1}{\sigma^ 2\_\textrm{prior}}}
-\\]
+$$
+s^ * = \frac{T\sum_{a=1}^ N\frac{r_as_a}{\sigma_a^ 2} + \frac{s_\textrm{prior}}{\sigma^ 2_\textrm{prior}}}{T\sum_{a=1}^ N \frac{r_a}{\sigma_a^ 2} + \frac{1}{\sigma^ 2_\textrm{prior}}}
+$$
 
-Now, compared to the ML case, information about the prior is taken into account, and here in the case of a gaussian prior distribution, the smaller its spread, the more influence \\(s\_\textrm{prior}\\) has.
+Now, compared to the ML case, information about the prior is taken into account, and here in the case of a gaussian prior distribution, the smaller its spread, the more influence $$s_\textrm{prior}$$ has.
 
 ### Limitations of population vector, ML ad MAP
 
@@ -292,19 +292,19 @@ Now, compared to the ML case, information about the prior is taken into account,
 
 Extend Bayesian decoding to continuous time-varying stimuli (and responses).
 
-Let's minimize (parameter \\(s\_{\textrm{Bayes}}\\) is the optimal estimator that we are trying to determine) an error function:
+Let's minimize (parameter $$s_{\textrm{Bayes}}$$ is the optimal estimator that we are trying to determine) an error function:
 
-\\[
-\int L(s,s\_\textrm{Bayes})p[s|r]\mathrm{d}s
-\\]
+$$
+\int L(s,s_\textrm{Bayes})p[s \mid r]\mathrm{d}s
+$$
 
-We can choose L() = MSE, and as usual, try to find \\(s\_\textrm{Bayes}\\) so as \\(\frac{\mathrm{d}}{\mathrm{d}s\_\textrm{Bayes}} \int L(s,s\_\textrm{Bayes})p[s|r]\mathrm{d}s = 0\\). Using the MSE as error function L, we have
+We can choose L() = MSE, and as usual, try to find $$s_\textrm{Bayes}$$ so as $$\frac{\mathrm{d}}{\mathrm{d}s_\textrm{Bayes}} \int L(s,s_\textrm{Bayes})p[s \mid r]\mathrm{d}s = 0$$. Using the MSE as error function L, we have
 
-\\[
-2 \int (s-s\_\textrm{Bayes})p[s|r]\mathrm{d}s = 0
-\\]
-\\[\Rightarrow s\_\textrm{Bayes} = \int sp[s|r]\mathrm{d}s
-\\]
+$$
+2 \int (s-s_\textrm{Bayes})p[s \mid r]\mathrm{d}s = 0
+$$
+$$\Rightarrow s_\textrm{Bayes} = \int sp[s \mid r]\mathrm{d}s
+$$
 
 ... which is no more than the continuous expression of the STA.
 

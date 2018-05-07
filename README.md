@@ -11,7 +11,31 @@ reproduce them provided you properly cite me.
 
 ## Notes to self
 
-the pygments gem calls `python`. This calls python3 on Arch. You
+This can be built locally by following [this guide](https://help.github.com/articles/setting-up-your-github-pages-site-locally-with-jekyll/_).
+
+- installing: `bundle install`
+- updating: `bundle update`
+- serving: `bundle exec jekyll serve`
+
+I used to use pygments for syntax highlighting, but GH pages only allows rouge.
+I'm not sure if there this is a breaking change.
+
+Similarly, I ised to use rdiscount, but now it's deprecated, and kramdown should
+be used. It breaks mathjax, vertical bars inside equations are interpreted as 
+table delimiters. So `\mid` should be used for conditioning, `\lvert` and 
+`\rvert` for delimiters.
+
+```
+With regex: \\\\[()\]\[] -> $$$$
+No regex:
+\\\\ -> \\
+\| or \left| or \right| -> \parallel, \lVert, \rVert
+| -> \mid, \lvert, \rvert
+```
+
+### Old notes, not entirely sure if some may not still be useful:
+
+The pygments gem calls `python`. This calls python3 on Arch. You
 should Jekyll in server more in a virtualenv as python will be an
 alias of python2.
 
@@ -21,7 +45,7 @@ I generated all styles with
 python -c "from pygments.styles import get_all_styles; print list(get_all_styles())" | tr -cd [:alnum:][:blank:] | xargs -d" " -I {} sh -c 'pygmentize -S "$1" -f html > "stylesheets/$1.css"' -- {} \;
 ```
 
-with the header ```jquery: true```, main_jquery.js gets included,
+With the header ```jquery: true```, main_jquery.js gets included,
 which defines the behaviour of
 
     <p class="toggle_trigger"><a href="#">toggle link</p>

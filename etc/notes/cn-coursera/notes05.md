@@ -14,7 +14,7 @@ mathjax: true
 - Resistor R: resists the flow of current
 - Battery E: causes drop in electrical potential
 
-Conductance: \\(g = R^ {-1}\\)
+Conductance: $$g = R^ {-1}$$
 
 Kirchhoff's current law: the total current at a junction of wires is zero (note: current is a signed quantity).
 
@@ -36,18 +36,18 @@ Without ion channels, the circuit model is a resistor (for insulation) and a cap
 
 What is the voltage across the membrane?
 
-Ohm's law \\(V = I\_RR\\) gives \\(I\_R\\)
+Ohm's law $$V = I_RR$$ gives $$I_R$$
 
-Capacitor: \\(Q = CV\\). gives \\(I\_C\\) by deriving:
-\\[\frac{dQ}{dt} = C\frac{dV}{dt}\\]
-as \\(I\_C = \frac{dQ}{dt}\\), we have 
-\\[I\_C = C\frac{dV}{dt}\\]
+Capacitor: $$Q = CV$$. gives $$I_C$$ by deriving:
+$$\frac{dQ}{dt} = C\frac{dV}{dt}$$
+as $$I_C = \frac{dQ}{dt}$$, we have 
+$$I_C = C\frac{dV}{dt}$$
 
-Into Kirchhoff's first law: \\(I\_\textrm{ext} + I\_C + I\_R = 0\\)
+Into Kirchhoff's first law: $$I_\textrm{ext} + I_C + I_R = 0$$
 
-\\[
-C\frac{dV}{dt} = -\frac{V}{R} + I\_\textrm{ext}
-\\]
+$$
+C\frac{dV}{dt} = -\frac{V}{R} + I_\textrm{ext}
+$$
 
 A first-order linear differential equation.
 
@@ -60,9 +60,9 @@ A first-order linear differential equation.
 
 Nernst potential: voltage at which osmotic and electrical forces are at equilibrium. It is the log of the ratio of ionic concentrations times an expression of the universal gas constant, temperature, electric charge and Faraday constant.
 
-\\[
+$$
 E = \frac{RT}{zF}\textrm{ln}\frac{\textrm{ions out}}{\textrm{ions in}}
-\\]
+$$
 
 This modelled with an extra battery in the electrical circuit model:
 
@@ -70,19 +70,19 @@ This modelled with an extra battery in the electrical circuit model:
     *--+     +--*
        +--C--+
 
-E represents the battery with a voltage of \\(V\_\textrm{rest}\\)
+E represents the battery with a voltage of $$V_\textrm{rest}$$
 
-\\[
-C\frac{dV}{dt} = -\frac{V-V\_\textrm{rest}}{R} + I\_\textrm{ext}
-\\]
+$$
+C\frac{dV}{dt} = -\frac{V-V_\textrm{rest}}{R} + I_\textrm{ext}
+$$
 
 With that battery, the voltage drop across the circuit is lesser, as part is accounted for by the battery, and part by the resistor.
 
 We transform that into:
 
-\\[
-\tau \frac{dV}{dt} = -V + V\_\infty
-\\]
+$$
+\tau \frac{dV}{dt} = -V + V_\infty
+$$
 
 Q: What is τ?
 
@@ -91,7 +91,7 @@ Q: What is τ?
 - Iext
 - **RC**
 
-\\(V\_\infty\\) is the steady state value of V.
+$$V_\infty$$ is the steady state value of V.
 
 Q: What is V∞ in case of constant input current?
 
@@ -102,18 +102,18 @@ Q: What is V∞ in case of constant input current?
 
 In case of square pulse, (step-wise constant current input), the solution is 
 
-\\[
+$$
 V(t) = 
 \begin{cases}
-  V\_\infty \left(1-e^ {-\frac{t}{\tau}}\right) & \textrm{ when there is current input} \\\\
-  V\_\infty \left(e^ {-\frac{t}{\tau}}\right) & \textrm{ when there is no current input}
+  V_\infty \left(1-e^ {-\frac{t}{\tau}}\right) & \textrm{ when there is current input} \\
+  V_\infty \left(e^ {-\frac{t}{\tau}}\right) & \textrm{ when there is no current input}
 \end{cases}
-\\]
+$$
 
 
 #### With voltage-sensitive ion channels
 
-One ion channel's current is determined by Ohm's law. So, the current flowing through one ion channel is determined by the voltage across the membrane and the conductance of the channel: \\(I=Vg\\). Each ion channel has its own conductance. The higher the conductance for one ion, the more the membrane potential is pulled towards the equilibrium potential of that ion, as defined by the Nernst potential.
+One ion channel's current is determined by Ohm's law. So, the current flowing through one ion channel is determined by the voltage across the membrane and the conductance of the channel: $$I=Vg$$. Each ion channel has its own conductance. The higher the conductance for one ion, the more the membrane potential is pulled towards the equilibrium potential of that ion, as defined by the Nernst potential.
 
  ion | potential
 ---|---
@@ -124,11 +124,11 @@ Cl-  |-60mV
 
 We focus on sodium and potassium. Na+ currents tend to depolarize the membrane, and K+ currents tend to repolarize it.
 
-Each ion channel is modeled by a resistor in series with a battery: +--R-E--+, with a resistor conductance \\(g\_i\\) and a battery potential \\(E\_i\\) proper to each channel. For ion channel \\(i\\):
+Each ion channel is modeled by a resistor in series with a battery: +--R-E--+, with a resistor conductance $$g_i$$ and a battery potential $$E_i$$ proper to each channel. For ion channel $$i$$:
 
-\\[
-I\_i = g\_i(V-E\_i)
-\\]
+$$
+I_i = g_i(V-E_i)
+$$
 
 Where V is the membrane potential.
 
@@ -162,7 +162,7 @@ This circuit is now active, in that the conductance of the Na and K channels is 
 
 ##### Potassium VG channels
 
-There is a molecular "gate" with a probability to be open that increases with depolarisation (for K channels) or polarisation (for Na channels). In K channels, this probability \\(P\_K\\) depends on the configuration of four sub-units of the channel;  \\(P\_K = n^ 4\\) 
+There is a molecular "gate" with a probability to be open that increases with depolarisation (for K channels) or polarisation (for Na channels). In K channels, this probability $$P_K$$ depends on the configuration of four sub-units of the channel;  $$P_K = n^ 4$$ 
 
 Q: What is an assumption we make here?
 
@@ -171,17 +171,17 @@ Q: What is an assumption we make here?
 - At any given time, we only need to know if a single subunit is open to determine if the channel will be open. 
 - All of the above.
 
-Explanation: The probability of both of two independent events happening is the product of the probabilities of each event happening separately. If we assume the 4 subunits open and close independent of one another, then the probability that all of them will be open at the same time is the probability that one of them is open at any given time (n), raised to the 4th power, so that the probability the channel is open (all subunits are in the open configuration) is n*n*n*n. A similar concept would apply if we flipped 4 coins at the same time; the probability of getting 4 heads would be \\(\frac{1}{2}^ 4\\), since the probability of getting heads on each individual quarter does not depend on whether or not any of the other quarters land on heads.
+Explanation: The probability of both of two independent events happening is the product of the probabilities of each event happening separately. If we assume the 4 subunits open and close independent of one another, then the probability that all of them will be open at the same time is the probability that one of them is open at any given time (n), raised to the 4th power, so that the probability the channel is open (all subunits are in the open configuration) is n*n*n*n. A similar concept would apply if we flipped 4 coins at the same time; the probability of getting 4 heads would be $$\frac{1}{2}^ 4$$, since the probability of getting heads on each individual quarter does not depend on whether or not any of the other quarters land on heads.
 
-Each of the channel's subunits fluctuates between open (probability n) and closed (1-n) state. Current only flows though the channel when all four units are open at the same time. \\(n\\) does **not** directly depend on the voltage. Rather, the **transition** of each sub-unit between open and closed state occurs at a voltage-dependent rates \\(\alpha(V)\\) for the closed-to-open transition and \\(\beta(V)\\) for the open-to-closed transition. With that, n varies as such:
+Each of the channel's subunits fluctuates between open (probability n) and closed (1-n) state. Current only flows though the channel when all four units are open at the same time. $$n$$ does **not** directly depend on the voltage. Rather, the **transition** of each sub-unit between open and closed state occurs at a voltage-dependent rates $$\alpha(V)$$ for the closed-to-open transition and $$\beta(V)$$ for the open-to-closed transition. With that, n varies as such:
 
-\\[
-\frac{\textrm{d}n}{\textrm{d}t} = \alpha\_n(V)(1-n)-\beta\_n(V)n
-\\]
+$$
+\frac{\textrm{d}n}{\textrm{d}t} = \alpha_n(V)(1-n)-\beta_n(V)n
+$$
 
-That is the rate at which the open probability for a subunit gate changes. \\((1-n)\alpha\_n(V)\\) : opening rate times probability of finding the gate closed. \\(n\beta\_n(V)\\): closing rate times probability of finding the gate open.
+That is the rate at which the open probability for a subunit gate changes. $$(1-n)\alpha_n(V)$$ : opening rate times probability of finding the gate closed. $$n\beta_n(V)$$: closing rate times probability of finding the gate open.
 
-Q: Can you speculate on the effect that voltage dependence has on these rates (C \\(\rightarrow\\) O & O \\(\rightarrow\\) C)?
+Q: Can you speculate on the effect that voltage dependence has on these rates (C $$\rightarrow$$ O & O $$\rightarrow$$ C)?
 
 - It produces linear rates of change. 
 - **It allows for a positive feedback loop.**
@@ -192,81 +192,81 @@ Explanation: As the voltage increases, the probability of the gate being opened,
 
 At steady state for a fixed V:
 
-\\[
-\tau\_n(V)\frac{\textrm{d}n}{\textrm{d}t} = n\_\infty(V)-n
-\\]
+$$
+\tau_n(V)\frac{\textrm{d}n}{\textrm{d}t} = n_\infty(V)-n
+$$
 
 where
 
-\\[
-\tau\_n(V) = \frac{1}{\alpha\_n(V)+\beta\_n(V)}
-\\]
+$$
+\tau_n(V) = \frac{1}{\alpha_n(V)+\beta_n(V)}
+$$
 
 and
 
-\\[
-n\_\infty(V) = \frac{\alpha\_n(V)}{\alpha\_n(V)+\beta\_n(V)}
-\\]
+$$
+n_\infty(V) = \frac{\alpha_n(V)}{\alpha_n(V)+\beta_n(V)}
+$$
 
 ##### Sodium VG channels
 
 The Na+ channel has 3 subunit. It also has an additional second gating mechanism that has to be de-inactivated.
 
-Let m the probability of the Na gate subunits to be open, and h that of the additional inactivation gate being open: \\(P\_\textrm{Na} ~ m^ 3h\\).
+Let m the probability of the Na gate subunits to be open, and h that of the additional inactivation gate being open: $$P_\textrm{Na} ~ m^ 3h$$.
 
 Voltage increases m (making it an **activation variable**), but decreases h (**inactivation variable**). As a result, sodium flows are transient and self-limiting.
 
 ##### Putting it together into the Hodgkin-Huxley model
 
-\\[
+$$
 \begin{cases}
-\frac{\textrm{d}n}{\textrm{d}t} = \alpha\_n(V)(1-n)-\beta\_n(V)n\\\\
-\frac{\textrm{d}m}{\textrm{d}t} = \alpha\_m(V)(1-m)-\beta\_m(V)m\\\\
-\frac{\textrm{d}h}{\textrm{d}t} = \alpha\_h(V)(1-h)-\beta\_h(V)h
+\frac{\textrm{d}n}{\textrm{d}t} = \alpha_n(V)(1-n)-\beta_n(V)n\\
+\frac{\textrm{d}m}{\textrm{d}t} = \alpha_m(V)(1-m)-\beta_m(V)m\\
+\frac{\textrm{d}h}{\textrm{d}t} = \alpha_h(V)(1-h)-\beta_h(V)h
 \end{cases}
-\\]
+$$
 
 Resulting in equivalent steady states for a fixed V:
 
-\\[
+$$
 \begin{cases}
-\tau\_n(V)\frac{\textrm{d}n}{\textrm{d}t} = n\_\infty(V)-n\\\\
-\tau\_m(V)\frac{\textrm{d}m}{\textrm{d}t} = m\_\infty(V)-m\\\\
-\tau\_h(V)\frac{\textrm{d}h}{\textrm{d}t} = h\_\infty(V)-h
+\tau_n(V)\frac{\textrm{d}n}{\textrm{d}t} = n_\infty(V)-n\\
+\tau_m(V)\frac{\textrm{d}m}{\textrm{d}t} = m_\infty(V)-m\\
+\tau_h(V)\frac{\textrm{d}h}{\textrm{d}t} = h_\infty(V)-h
 \end{cases}
-\\]
+$$
 
-Combining these individual ion channels models, we obtain all voltage-dependent conductances \\(g\_i\\) as functions of maximal conductances \\(\overline{g}\_i\\):
+Combining these individual ion channels models, we obtain all voltage-dependent conductances $$g_i$$ as functions of maximal conductances $$\overline{g}_i$$:
 
-\\[
+$$
 \begin{cases}
-g\_K(V) =& \overline{g}\_K n^ 4\\\\
-g\_\textrm{Na}(V) =& \overline{g}\_\textrm{Na} m^ 3h
+g_K(V) =& \overline{g}_K n^ 4\\
+g_\textrm{Na}(V) =& \overline{g}_\textrm{Na} m^ 3h
 \end{cases}
-\\]
+$$
 
 And we apply Ohm's and Kirchhoff's laws:
 
-With \\(C\_m \frac{\textrm{d}V}{\textrm{d}t}\\) the capacitative current (so, in the circuit model, going throughout the membrane capacitor Cm), \\(-\sum\_i g\_i\left(V-E\_i\right)\\) the sum of ionic currents going through channels, and \\(I\_e\\) the external stimulus:
+With $$C_m \frac{\textrm{d}V}{\textrm{d}t}$$ the capacitative current (so, in the circuit model, going throughout the membrane capacitor Cm), $$-\sum_i g_i\left(V-E_i\right)$$ the sum of ionic currents going through channels, and $$I_e$$ the external stimulus:
 
-\\[
-C\_m \frac{\textrm{d}V}{\textrm{d}t} = -\sum\_i g\_i\left(V-E\_i\right) + I\_e
-\\]
+$$
+C_m \frac{\textrm{d}V}{\textrm{d}t} = -\sum_i g_i\left(V-E_i\right) + I_e
+$$
 
 The HH model is that system of equations:
 
-\\[
+$$
 \begin{cases}
-\frac{\textrm{d}n}{\textrm{d}t} = \alpha\_n(V)(1-n)-\beta\_n(V)n\\\\
-\frac{\textrm{d}m}{\textrm{d}t} = \alpha\_m(V)(1-m)-\beta\_m(V)m\\\\
-\frac{\textrm{d}h}{\textrm{d}t} = \alpha\_h(V)(1-h)-\beta\_h(V)h\\\\
--C\_m \frac{\textrm{d}V}{\textrm{d}t} = g\_L\left(V-E\_L\right) + \overline{g}\_Kn^ 4\left(V-E\_K\right) + \overline{g}\_\textrm{Na}m^ 3h\left(V-E\_\textrm{Na}\right) - I\_e
+\frac{\textrm{d}n}{\textrm{d}t} = \alpha_n(V)(1-n)-\beta_n(V)n\\
+\frac{\textrm{d}m}{\textrm{d}t} = \alpha_m(V)(1-m)-\beta_m(V)m\\
+\frac{\textrm{d}h}{\textrm{d}t} = \alpha_h(V)(1-h)-\beta_h(V)h\\
+-C_m \frac{\textrm{d}V}{\textrm{d}t} = g_L\left(V-E_L\right) + \overline{g}_Kn^ 4\left(V-E_K\right) + \overline{g}_\textrm{Na}m^ 3h\left(V-E_\textrm{Na}\right) - I_e
 \end{cases}
-\\]
+$$
 
-Plotting \\(n\_\infty(V)\\), \\(m\_\infty(V)\\), and \\(h\_\infty(V)\\), we can see read the probable sequence of gates opening and closing during a depolarization.
+Plotting $$n_\infty(V)$$, $$m_\infty(V)$$, and $$h_\infty(V)$$, we can see read the probable sequence of gates opening and closing during a depolarization.
 
-The time constants \\(\tau\_n(V)\\), \\(\tau\_m(V)\\) and \\(\tau\_h(V)\\) determine the speed at which n, m and h reach their limit values for a certain voltage. Plotting them reveals the speed at which each reacts to a change in voltage. 
+The time constants $$\tau_n(V)$$, $$\tau_m(V)$$ and $$\tau_h(V)$$ determine the speed at which n, m and h reach their limit values for a certain voltage. Plotting them reveals the speed at which each reacts to a change in voltage. 
 
 Q: Based on the previous graph on the right side of the slide, which variable reacts fastest?
 
@@ -296,13 +296,13 @@ In real data, there isn't always a clear rate-coded response, and the spike timi
 
 ### Engineering a model that can present spiking and bursting modes: the Integrate-and-Fire model
 
-Which function \\(f(V)\\) will make the following simple differential equation best describe a neuron's membrane potential response?
+Which function $$f(V)$$ will make the following simple differential equation best describe a neuron's membrane potential response?
 
-\\[
+$$
 \frac{\textrm{d}V}{\textrm{d}t} = f(V) + I(t)  
-\\]
+$$
 
-What about \\(f(V) = -a(V - V\_0)\\)? (we assume that the conductance a=1, do simplify)
+What about $$f(V) = -a(V - V_0)$$? (we assume that the conductance a=1, do simplify)
 
 Q: Based on the linear model and resulting values of dV/dt around V0, what kind of fixed point is V0?
 
@@ -313,23 +313,23 @@ Q: Based on the linear model and resulting values of dV/dt around V0, what kind 
 
 Explanations: Any input that pushes the voltage to some value to the left of the fixed point (V0) causes dV/dt to be positive, so V slides back up towards V0. Any input that pushes the voltage to the right of the fixed point causes dV/dt to be negative, so V slides back down toward V0. Either way, we end up back at V0, so we call the V0 a STABLE fixed point.
 
-In absence of input I(t), we can plot \\(f(V)\\) around \\(V\_0\\) and notice that \\(V\_0\\) is a stable attractor. This is similar to the passive membrane equation.
+In absence of input I(t), we can plot $$f(V)$$ around $$V_0$$ and notice that $$V_0$$ is a stable attractor. This is similar to the passive membrane equation.
 
 How to introduce the non-linear spiking behavior? With ad-hoc rules! Here is the full IaF model:
 
-\\[
+$$
 \begin{cases}
-\textrm{if } V\lt V\_\textrm{th},& C\_m\frac{\textrm{d}V}{\textrm{d}t} = -g\_L(V-Ei)-I\_e\\\\
-\textrm{if } V\geq V\_\textrm{th},& \textrm{ fire a spike: }V\to V\_\textrm{max}\\\\
-\textrm{if } V = V\_\textrm{max},& \textrm{ reset the membrane potential: }V\to V\_\textrm{reset} 
+\textrm{if } V\lt V_\textrm{th},& C_m\frac{\textrm{d}V}{\textrm{d}t} = -g_L(V-Ei)-I_e\\
+\textrm{if } V\geq V_\textrm{th},& \textrm{ fire a spike: }V\to V_\textrm{max}\\
+\textrm{if } V = V_\textrm{max},& \textrm{ reset the membrane potential: }V\to V_\textrm{reset} 
 \end{cases}
-\\]
+$$
 
 This works, but it is not nice to look at it.
 
 ### A more less clunky model: Exponential IaF
 
-If we add a second piece of curve on the right of \\(V\_0\\), after \\(V\_{th}\\), so as \\(f(V)\\) crosses zero again...
+If we add a second piece of curve on the right of $$V_0$$, after $$V_{th}$$, so as $$f(V)$$ crosses zero again...
 
 Q: As we think about what happens when crossing this new fixed point, let's first determine the stability of the new fixed point:
 - Stable
@@ -339,48 +339,48 @@ Q: As we think about what happens when crossing this new fixed point, let's firs
 
 Explanation: The new fixed point is unstable because dV/dt is negative to the left and positive to the right. Thus, when voltage has a value close to the fixed point, voltage tends to change in a way that moves it away from the fixed point voltage. More explanation to follow in the lecture.
 
-Back to the expression \\(
+Back to the expression $$
 \frac{\textrm{d}V}{\textrm{d}t} = f(V) + I(t)  
-\\), \\(f\\) could be quadratic, or a linear plus an exponential:
+$$, $$f$$ could be quadratic, or a linear plus an exponential:
 
-\\[
-f(V) = -a(V-V\_0) + e^ {\frac{V-V\_\textrm{th}}{\Delta}}
-\\]
+$$
+f(V) = -a(V-V_0) + e^ {\frac{V-V_\textrm{th}}{\Delta}}
+$$
 
-\\(\Delta\\) determines the sharpness of the rise of f(V) in the exponential part.
+$$\Delta$$ determines the sharpness of the rise of f(V) in the exponential part.
 
-We still need a ad-hoc reset of the voltage when it reaches \\(V\_\textrm{max}\\).
+We still need a ad-hoc reset of the voltage when it reaches $$V_\textrm{max}$$.
 
 ### An elegant model: the theta neuron
 
 The theta neuron is a one-dimensional model on the unit circle:
 
-\\[
+$$
 \frac{\textrm{d}\theta}{\textrm{d}t} = i - \cos \theta + (1 + \cos \theta)I(t)
-\\]
+$$
 
-where the phase \\(\theta\\) represents the voltage. 
+where the phase $$\theta$$ represents the voltage. 
 
-\\(\theta = \pi\\) corresponds to a spike, and the reset corresponds to the \\([2\pi]\\) congruence \\(\theta = -\pi\\).
+$$\theta = \pi$$ corresponds to a spike, and the reset corresponds to the $$[2\pi]$$ congruence $$\theta = -\pi$$.
 
 This model is equivalent to a IaF model with quadratic non-linearity.
 
-However, it's notable that the model fires regularly when \\(I(t) = 0\\), so it's a useful model of periodically firing neurons.
+However, it's notable that the model fires regularly when $$I(t) = 0$$, so it's a useful model of periodically firing neurons.
 
 ### An extra dimension
 
-The problem of the IaF model is that it's one-dimensional, so there is no other solution than working in a Lie group or patching the dynamics. We need a second variable \\(u\\) to take care of inactivation:
+The problem of the IaF model is that it's one-dimensional, so there is no other solution than working in a Lie group or patching the dynamics. We need a second variable $$u$$ to take care of inactivation:
 
-\\[
+$$
 \begin{cases}
-\frac{\textrm{d}V}{\textrm{d}t} = F(V) + G(u) + I(t)\\\\
-\frac{\textrm{d}u}{\textrm{d}t} = -u + H(V)\\\\
+\frac{\textrm{d}V}{\textrm{d}t} = F(V) + G(u) + I(t)\\
+\frac{\textrm{d}u}{\textrm{d}t} = -u + H(V)\\
 \end{cases}
-\\]
+$$
 
 #### The phase plane diagram
 
-On the <u,V> plane, the points where \\(\frac{\textrm{d}V}{\textrm{d}t} = 0\\) and those where \\(\frac{\textrm{d}u}{\textrm{d}t} = 0\\) define the **nullclines** of V and u.
+On the <u,V> plane, the points where $$\frac{\textrm{d}V}{\textrm{d}t} = 0$$ and those where $$\frac{\textrm{d}u}{\textrm{d}t} = 0$$ define the **nullclines** of V and u.
 
 
 Q: Can you identify the fixed point or points in this phase plane?
@@ -392,7 +392,7 @@ Q: Can you identify the fixed point or points in this phase plane?
 
 Explanation: Similar to our simple linear model, V0 would occur at the location where all rates of change are 0, that is where dudt=0 and dVdt=0, which is the intersection of the u nullcline and V nullcline (red and green curves).
 
-At any point \\(\langle V, u\rangle\\) in the phase plane, the trajectory is determined by \\(\frac{\textrm{d}V}{\textrm{d}t}(V, u)\\) and \\(\frac{\textrm{d}u}{\textrm{d}t}(V, u)\\). 
+At any point $$\langle V, u\rangle$$ in the phase plane, the trajectory is determined by $$\frac{\textrm{d}V}{\textrm{d}t}(V, u)$$ and $$\frac{\textrm{d}u}{\textrm{d}t}(V, u)$$. 
 
 Explanation: These concepts can be difficult if you have not encountered them before. Let's recap, if you like. Earlier in the lecture we saw a system with only one dimension (voltage), and we represented the system as movement (or flow) along a line. The direction and speed of flow was determined by the dV/dt function that we plotted. The system was attracted to stable fixed points and repelled away from unstable fixed points. Now we have a system with two dimensions, V and u, and correspondingly we represent the system as flow in a 2-dimensional plane (the phase plane). Both dV/dt and du/dt are defined at every point in the plane, although we cannot show the curves for these derivatives like we could when we only had one dimension. Instead, we plot the curves that show where the derivatives are 0 (these are the nullclines) to give a sense of the system's structure. Similar to our one-dimensional case, our two-dimensional system flows toward the fixed point. But, as you will see, sometimes the system travels through the phase plane in interesting ways.
 
@@ -400,15 +400,15 @@ Explanation: These concepts can be difficult if you have not encountered them be
 
 It's a "zoomed" version of the 2D model above:
 
-\\[
+$$
 \begin{cases}
-\frac{\textrm{d}V}{\textrm{d}t} = -\alpha V + \beta V^ 2 + \gamma + I(t)\\\\
-\frac{\textrm{d}u}{\textrm{d}t} = a(bV-u)\\\\
-\textrm{if } V\geq V\_\textrm{th},& \textrm{ then }V\gets c, u\gets u+d
+\frac{\textrm{d}V}{\textrm{d}t} = -\alpha V + \beta V^ 2 + \gamma + I(t)\\
+\frac{\textrm{d}u}{\textrm{d}t} = a(bV-u)\\
+\textrm{if } V\geq V_\textrm{th},& \textrm{ then }V\gets c, u\gets u+d
 \end{cases}
-\\]
+$$
 
-Example values: \\(\alpha=5\\),  \\(\beta=0.04\\),  \\(\gamma=140\\),  \\(V\_\textrm{th}=30\\).
+Example values: $$\alpha=5$$,  $$\beta=0.04$$,  $$\gamma=140$$,  $$V_\textrm{th}=30$$.
 
 a and b determine decay rate and sensitivity of u to changes in V.
 c and d determine the resets of V and u.
@@ -429,21 +429,21 @@ Experiment: inject current in the dendrite, measure membrane voltage on the soma
 
 Cable theory is used to understand voltage propagation in dendrites. V is now a function of position x and time t, resulting in partial differential equations.
 
-A dendrite segment is a circuit with two continuous resistances along the dendrite: one outside of the cell \\(r\_0\\), and one inside \\(r\_i\\). all along the dendrite, these two resisting cables are connected by the passive circuit that represents the membrane: a capacitor and a resistor in parallel. They are abstracted in a continuous representation. 
+A dendrite segment is a circuit with two continuous resistances along the dendrite: one outside of the cell $$r_0$$, and one inside $$r_i$$. all along the dendrite, these two resisting cables are connected by the passive circuit that represents the membrane: a capacitor and a resistor in parallel. They are abstracted in a continuous representation. 
 
 The changes in current are a function of space: a voltage difference between two points in the membrane will drive a current towards the larger difference.
 
-\\[
-\frac{1}{r\_i}\frac{\partial{d}^ 2V\_m(x,t)}{\partial{d}x^ 2} = c\_m\frac{\partial{d}V}{\partial{d}t} + \frac{V\_m}{r\_m} 
-\\]
+$$
+\frac{1}{r_i}\frac{\partial{d}^ 2V_m(x,t)}{\partial{d}x^ 2} = c_m\frac{\partial{d}V}{\partial{d}t} + \frac{V_m}{r_m} 
+$$
 
 which is equivalent to 
 
-\\[
-\lambda^ 2\frac{\partial{d}^ 2V\_m}{\partial{d}x^ 2} = \tau\_m\frac{\partial{d}V\_m}{\partial{d}t} + V\_m 
-\\]
+$$
+\lambda^ 2\frac{\partial{d}^ 2V_m}{\partial{d}x^ 2} = \tau_m\frac{\partial{d}V_m}{\partial{d}t} + V_m 
+$$
 
-where \\(\tau\_m = r\_mc\_m\\) is the time constant (timescale) and \\(\lambda=\sqrt{\frac{r\_m}{r\_i}}\\) is the space constant (spatial scale, indicating how far the signal can propagate).
+where $$\tau_m = r_mc_m$$ is the time constant (timescale) and $$\lambda=\sqrt{\frac{r_m}{r_i}}$$ is the space constant (spatial scale, indicating how far the signal can propagate).
 
 Q: Can you speculate how ri changes as the diameter of a dendrite increases?
 
@@ -465,17 +465,17 @@ Explanation: As the number of channels increases along the membrane that allows 
 
 For a constant current input at x=0 on an infinite cable, the potential decays exponentially with distance:
 
-\\[
-v(x) \propto e^ {\left(-\frac{|x|}{\lambda}\right)}
-\\]
+$$
+v(x) \propto e^ {\left(-\frac{\lvert x \rvert}{\lambda}\right)}
+$$
 
-For a discrete input, the propagation velocity is \\(c = \frac{2\lambda}{\tau}\\). The full expression for the propagation is:
+For a discrete input, the propagation velocity is $$c = \frac{2\lambda}{\tau}$$. The full expression for the propagation is:
 
-\\[
+$$
 v(x,t) \propto \sqrt{\frac{\tau}{4\pi\lambda^ 2t}} e^ {-\frac{t}{\tau}-\frac{\tau x^ 2}{4\lambda^ 2t}}
-\\]
+$$
 
-\\(e^ (-\frac{\tau x^ 2}{4\lambda^ 2t}\\) is a diffusive spread, and \\(e^ -\frac{t}{\tau}\\) is the exponential decay.
+$$e^ (-\frac{\tau x^ 2}{4\lambda^ 2t}$$ is a diffusive spread, and $$e^ -\frac{t}{\tau}$$ is the exponential decay.
 
 This expression filters the input pulses, much like a convolution filter.
 
@@ -487,9 +487,9 @@ A dendritic tree is not a passive cable. It's a tree, and it has ion channels al
 
 We divide the dendrites into pieces of cable, or compartments, that are each assumed to have a constant density of ion channels, constant diameter, etc...
 
-Each compartment is now described by a simpler differential equation that depends on \\(\frac{\textrm{d}V}{\textrm{d}t}\\), but not on \\(x\\).
+Each compartment is now described by a simpler differential equation that depends on $$\frac{\textrm{d}V}{\textrm{d}t}$$, but not on $$x$$.
 
-The dendritic branching of compartment of diameter d1 into children with diameters d11 and d12 can be simplified in such model into one compartment of the diameter d1 when and appropriate electronic length, if \\(d\_{11}^ \frac{3}{2}+d\_{12}^ \frac{3}{2}=d\_1^ \frac{3}{2}\\). Applying recursively, we can get down to one single cable going out of the soma.
+The dendritic branching of compartment of diameter d1 into children with diameters d11 and d12 can be simplified in such model into one compartment of the diameter d1 when and appropriate electronic length, if $$d_{11}^ \frac{3}{2}+d_{12}^ \frac{3}{2}=d_1^ \frac{3}{2}$$. Applying recursively, we can get down to one single cable going out of the soma.
 
 This property is often approximately satisfied by biological dendrites, so it's a common simplification.
 
@@ -560,7 +560,7 @@ Other interesting statistics that may give clues about the way neurons represent
 - we can plot the individual tuning curves of several neurons and their variance. 
 - we can study the paired response of cells: considering two of the cells of the population at a time, measure their Pearson's correlation coefficient:
  - Take a sliding window of width T, move it in parallel along the spikes records of two cells from the population, and count the number of spikes in that window.
- - \\(\rho\_Y = \frac{\textrm{Cov}(n\_1n\_2)}{\sqrt{\textrm{Var}(n\_1)\textrm{Var}(n\_2)}}\\)
+ - $$\rho_Y = \frac{\textrm{Cov}(n_1n_2)}{\sqrt{\textrm{Var}(n_1)\textrm{Var}(n_2)}}$$
  - Studies have revealed that this correlation coefficient tends to be non-zero in a to of cases.
  - That does not indicate if that co-variance has any role in information encoding
 
@@ -574,7 +574,7 @@ Also, the presence of correlated response could be itself in some cases indicati
 
 ### Pairwise, triplet, ... n-tuplet spike patterns
 
-Array recording techniques pose a challenge: how to represent those data? Enumeration of correlations is astronomical: for a 100 cells, that makes 10000 pairwise statistics, \\(100^ 3\\) triplet, etc...
+Array recording techniques pose a challenge: how to represent those data? Enumeration of correlations is astronomical: for a 100 cells, that makes 10000 pairwise statistics, $$100^ 3$$ triplet, etc...
 
 There are many different approaches to this problem. 
 

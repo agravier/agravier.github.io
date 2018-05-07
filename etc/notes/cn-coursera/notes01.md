@@ -14,9 +14,9 @@ mathjax: true
 
 Computational neuroscience aims at explaining formally how brains generate behaviors (Sejnowski) by providing tools and methods for
 
-- characterizing _what_ nervous systems do ( \\(\rightarrow\\) descriptive models )
-- determining _how_ they function ( \\(\rightarrow\\) mechanistic models )
-- understanding _why_ they operate in the way they do ( \\(\rightarrow\\) interpretive models )
+- characterizing _what_ nervous systems do ( $$\rightarrow$$ descriptive models )
+- determining _how_ they function ( $$\rightarrow$$ mechanistic models )
+- understanding _why_ they operate in the way they do ( $$\rightarrow$$ interpretive models )
 
 ## The concept of receptive field
 
@@ -36,7 +36,7 @@ Retina: tissue of receptors at the back of the eye. Retinal ganglion cells conve
 
 Experiments to understand the RF of cells in the retina:
 
-Flash circular spots of light on different locations on the retina. Each cell responds to a spot of light in one particular location. Spot of light in the surrounding area inhibits response \\(\rightarrow\\) concept of center-surround RF in the retina (on-center, off-surround or off-center, on-surrond)
+Flash circular spots of light on different locations on the retina. Each cell responds to a spot of light in one particular location. Spot of light in the surrounding area inhibits response $$\rightarrow$$ concept of center-surround RF in the retina (on-center, off-surround or off-center, on-surrond)
 
 Q: The On-Center / Off-Surround receptive field can be thought of as a filter. This filter results in more activation due to certain stimuli, and a depression in activation due to other stimuli. What is this particular filter doing?
 
@@ -50,7 +50,7 @@ Answers the question: _how_ are oriented receptive fields built from center-surr
 
 We need to look at the neuroanatomy of the visual system.
 
-Retina \\(\rightarrow\\) optic nerve \\(\rightarrow\\) LGN \\(\rightarrow\\) V1
+Retina $$\rightarrow$$ optic nerve $$\rightarrow$$ LGN $$\rightarrow$$ V1
 
 In LGN, RFs are circular center surround, but in V1, they are elongated. How is the transformation done? The anatomy gives us an important clue: several LGN cells converge to each V1 cell. Model proposed by Hubel & Wiesel: several LGN cells whose combined RFs form an elongated RFs forward their output to one V1 cell. This model is controversial as it does not take into account recurrent (intra-layer) V1 connections.
 
@@ -62,7 +62,7 @@ Efficient Coding Hypothesis: the [evolutionary] goal [of the brain] is to repres
 
 Idea: linear combinations (weighted sums) of superposed oriented RFs can be used to reconstruct more complex images.
 
-Computationally, given an image I and its reconstruction Î by a set of receptive fields \\(RF_i\\) with \\(i \in [1, N]\\):
+Computationally, given an image I and its reconstruction Î by a set of receptive fields $$RF_i$$ with $$i \in [1, N]$$:
 
 - minimize the total square pixelwise error between I and Î 
 - while keeping the RF as independent as possible (note: this "independence" criterion is not properly defined)
@@ -99,12 +99,12 @@ The cell membrane is a lipid bilayer that is impermeable to charged ions.
 
 Resting membrane potential of -70mV thanks to difference in relative ionic concentrations:
 
-- outside: more Na\\(^ +\\), more Cl\\(^ -\\)
+- outside: more Na$$^ +$$, more Cl$$^ -$$
 - inside: more K+, more organic anions (conjugate bases of organic acids)
-- active ionic pumps on the cell membrane expel Na\\(^ +\\) and let K\\(^ +\\) in.
+- active ionic pumps on the cell membrane expel Na$$^ +$$ and let K$$^ +$$ in.
 - diffusion forces around open passive channels let ions flow.
 
-Excitatory (depolarizing) post-synaptic electrical potential \\(\rightarrow\\) local summation of those EPSP \\(\rightarrow\\) AP threshold of ~-65mV \\(\rightarrow\\) output spike
+Excitatory (depolarizing) post-synaptic electrical potential $$\rightarrow$$ local summation of those EPSP $$\rightarrow$$ AP threshold of ~-65mV $$\rightarrow$$ output spike
 
 The local depolarization and repolarization of the membrane happens thanks to ion-selective membrane channels (proteins), that can be:
 
@@ -114,7 +114,7 @@ The local depolarization and repolarization of the membrane happens thanks to io
 
 ### AP propagation
 
-The local depolarization of the membrane causes the opening of voltage-gated Na\\(^ +\\) channels, in turn causing the opening of more V-G Na\\(^ +\\) channels (positive feedback loop), typically raising the potential difference from -70mV to +30mV. Once most V-G Na\\(^ +\\) channels have opened, they will close, and potassium channels will open, letting potassium cations out. That repolarizes the membrane, and slightly hyper-polarizes it (refractionary period). K\\(^ +\\) channels then close. The whole sequence of events (Na\\(^ +\\) channels "chain reaction", K\\(^ +\\) channels opening) constitutes an action potential. In myelinated neurons, the AP propagates from one node of Ranvier to the next. As this _saltatory conduction_ is an active mechanism, the signal is propagation is lossless. Spikes propagate faster, and on a longer range.
+The local depolarization of the membrane causes the opening of voltage-gated Na$$^ +$$ channels, in turn causing the opening of more V-G Na$$^ +$$ channels (positive feedback loop), typically raising the potential difference from -70mV to +30mV. Once most V-G Na$$^ +$$ channels have opened, they will close, and potassium channels will open, letting potassium cations out. That repolarizes the membrane, and slightly hyper-polarizes it (refractionary period). K$$^ +$$ channels then close. The whole sequence of events (Na$$^ +$$ channels "chain reaction", K$$^ +$$ channels opening) constitutes an action potential. In myelinated neurons, the AP propagates from one node of Ranvier to the next. As this _saltatory conduction_ is an active mechanism, the signal is propagation is lossless. Spikes propagate faster, and on a longer range.
 
 Multiple sclerosis leads to the loss of myelin on axons. (oligodendrocytes are true cells producing myelin)
 
@@ -127,9 +127,9 @@ Two kinds of synapses:
 
 Electrical synapses directly propagate the electrical activity from one neuron to the other: gap junctions are ion channels through the membranes of both cells at once. As a result, ionic concentrations imbalanced can be directly propagated to the postsynaptic neuron, resulting in fast synchronization of the neurons. They are found in the SK reflex loop of the crayfish, f.e.
 
-Chemical synapses: the AP triggers the release of neurotransmitters in the synaptic cleft (vesicles containing the NT fuse with the membrane). The NT then bind with the chemically-gated ion channels on the other side, and the channels open. For instance, channels that let Na\\(^ +\\) in, resulting in increasnig the membrane potential.
+Chemical synapses: the AP triggers the release of neurotransmitters in the synaptic cleft (vesicles containing the NT fuse with the membrane). The NT then bind with the chemically-gated ion channels on the other side, and the channels open. For instance, channels that let Na$$^ +$$ in, resulting in increasnig the membrane potential.
 
-Evolutionary perspective: what justifies chemical synapses? Possible answer: synapse strength more adjustable (density of inning channels) \\(\rightarrow\\) chemical synapses as the basis of learning.
+Evolutionary perspective: what justifies chemical synapses? Possible answer: synapse strength more adjustable (density of inning channels) $$\rightarrow$$ chemical synapses as the basis of learning.
 
 1 cortical neuron ~ 10k synapses.
 
@@ -138,11 +138,11 @@ Inhibitory synapse: decrease the post-synaptic membrane potential
 
 An example of transmission at an excitatory synapse:
 
-input spike \\(\rightarrow\\) release of NT (e.g. *glutamate*) \\(\rightarrow\\) NT binds to ion channel receptors \\(\rightarrow\\) ion channels open \\(\rightarrow\\) Na\\(^ +\\) influx \\(\rightarrow\\) depolarization \\(\rightarrow\\) excitatory post-synaptic potential (EPSP)
+input spike $$\rightarrow$$ release of NT (e.g. *glutamate*) $$\rightarrow$$ NT binds to ion channel receptors $$\rightarrow$$ ion channels open $$\rightarrow$$ Na$$^ +$$ influx $$\rightarrow$$ depolarization $$\rightarrow$$ excitatory post-synaptic potential (EPSP)
 
 An example of transmission at an inhibitory synapse: 
 
-input spike \\(\rightarrow\\) release of NT (e.g. *GABA*) \\(\rightarrow\\) NT binds to ion channel receptors \\(\rightarrow\\) ion channels open \\(\rightarrow\\) K\\(^ +\\) outflux \\(\rightarrow\\) hyperpolarization \\(\rightarrow\\) inhibitory post-synaptic potential (IPSP)
+input spike $$\rightarrow$$ release of NT (e.g. *GABA*) $$\rightarrow$$ NT binds to ion channel receptors $$\rightarrow$$ ion channels open $$\rightarrow$$ K$$^ +$$ outflux $$\rightarrow$$ hyperpolarization $$\rightarrow$$ inhibitory post-synaptic potential (IPSP)
 
 Synapse doctrine:
 
@@ -168,7 +168,7 @@ The direction of synaptic plasticity (LDP or LTD) depends on the relative timing
 
 nerve = bundle of axons
 
-somatic NS: nerves connecting to _voluntary_ skeletal muscles (efferent nerves: infer goes CNS \\(\rightarrow\\) periphery) and sensory receptors (afferent). 
+somatic NS: nerves connecting to _voluntary_ skeletal muscles (efferent nerves: infer goes CNS $$\rightarrow$$ periphery) and sensory receptors (afferent). 
 
 Autonomic NS: nerves that connect to the heart, blood vessels, smooth muscles and glands. Mostly unconscious, many vital functions
 
@@ -192,7 +192,7 @@ Brain:
   - amygdala
   - basal ganglia
   - hippocampus
-  - cerebral cortex: layered sheet of neurons ~= 14 inch pizza stuffed in a too small box. 14 billion neurons, so like 300 trillion synapses. 6 layers of neurons, quite uniform across the cortex (\\(\rightarrow\\) common computational principle?). Input arrive in layer 4 (middle), output to thalamus to layer 6, output to other subcortical regions from layer 5, output to higher cortical areas from layers 2 and 3, input from other layers in layer 1 (and also in other layers).
+  - cerebral cortex: layered sheet of neurons ~= 14 inch pizza stuffed in a too small box. 14 billion neurons, so like 300 trillion synapses. 6 layers of neurons, quite uniform across the cortex ($$\rightarrow$$ common computational principle?). Input arrive in layer 4 (middle), output to thalamus to layer 6, output to other subcortical regions from layer 5, output to higher cortical areas from layers 2 and 3, input from other layers in layer 1 (and also in other layers).
 
 How do brain regions interact? Discovery using lesion studies, electrophysiology, optical and functional imaging, molecular studies, anatomy, connectomic, etc…
 
@@ -200,7 +200,7 @@ Computing comparison:
 
 - transistors in microprocessors are much more sparsely connected than brain neurons
 - brain: 100 microseconds temporal resolution at best; digital circuits: 100picoseconds for a 10GHz computer
-- computing paradigm: brain: massive parallelism, adaptive connectivity; digital computers: mostly sequential, fixed connectivity. \\(\rightarrow\\) capabilities: brains can solve ill-posed problems, digital computers are good at numerical computation and symbol processing.
+- computing paradigm: brain: massive parallelism, adaptive connectivity; digital computers: mostly sequential, fixed connectivity. $$\rightarrow$$ capabilities: brains can solve ill-posed problems, digital computers are good at numerical computation and symbol processing.
 
 ### Conclusions
 
@@ -231,11 +231,11 @@ Notes from [opencourseonline](http://opencourseonline.com/334/coursera-open-cour
 `[1 2; 3 4; 5 6]` : matrix row by row  
 `[1 2 3]` : row vector
 
-`v = 1:0.1:2` \\(\rightarrow\\) `[1 1.1 1.2 … 2]`  
-`1:4` \\(\rightarrow\\)  `[1 2 3 4]`
+`v = 1:0.1:2` $$\rightarrow$$ `[1 1.1 1.2 … 2]`  
+`1:4` $$\rightarrow$$  `[1 2 3 4]`
 
 `zeros(1,3)`  
-`2 * ones(2,3)` \\(\rightarrow\\) `[2 2 2; 2 2 2]`  
+`2 * ones(2,3)` $$\rightarrow$$ `[2 2 2; 2 2 2]`  
 `rand(4,4)` : uniform  
 `randn` : unit gaussian
 
@@ -359,7 +359,7 @@ corresponding call:
 
 `length` : size of the longest dimension, mostly for vectors
 
-`load file.dat` or `load('file.dat')` : load data file \\(\rightarrow\\) creates 'file' variable
+`load file.dat` or `load('file.dat')` : load data file $$\rightarrow$$ creates 'file' variable
 
 `who` : list variables available
 
@@ -377,7 +377,7 @@ corresponding call:
 
 `save hello.mat v -ascii` : human-readable
 
-`load hello.mat` : \\(\rightarrow\\) creates variable v
+`load hello.mat` : $$\rightarrow$$ creates variable v
 
 `A(3,2)` : A_{3,2}
 

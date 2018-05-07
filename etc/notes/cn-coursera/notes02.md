@@ -12,13 +12,13 @@ mathjax: true
 
 Brain placed in a magnetic field. Measures magnetic field variations and interprets them as changes in blood oxygenation of brain areas. 
 
-Average activity of many neurons \\(\rightarrow\\) rather low spatial resolution. Slow response (seconds), low temporal resolution.
+Average activity of many neurons $$\rightarrow$$ rather low spatial resolution. Slow response (seconds), low temporal resolution.
 
 ### EEG
 
 Measures electrical field variations at the surface of the scalp, that correspond to the transmission of electrical signals along the axons of neurons (that match certain orientation criteria).
 
-Fast response \\(\rightarrow\\) higher temporal resolution. Non invasive
+Fast response $$\rightarrow$$ higher temporal resolution. Non invasive
 
 Q: Though fMRI and EEG are useful techniques in that they can record neural activity in awake and behaving humans, what is the downside to their function?
 
@@ -32,7 +32,7 @@ Very high spatial resolution, very high temporal resolution, limited area. Invas
 
 ### Calcium imaging
 
-Inject a fluorescent calcium indicator that emits more light when bound to calcium. Ca\\(^ +\\) enters the cell during AP generation and decays fast, so spikes are highlighted.
+Inject a fluorescent calcium indicator that emits more light when bound to calcium. Ca$$^ +$$ enters the cell during AP generation and decays fast, so spikes are highlighted.
 
 Very high spatial resolution (individual neurons), good temporal resolution. Invasive. Surgical settings only. Limited area.
 
@@ -64,11 +64,11 @@ A: The cell fires very reliably (upon every iteration of the stimulus) at that p
 
 How to determine the meaning of these responses? Is it a complex population code? Are individual responses understandable independently form other neurons's responses?
 
-\\(\rightarrow\\) 2 problems: encoding and decoding
+$$\rightarrow$$ 2 problems: encoding and decoding
 
 Encoding: from stimulus to response. From descriptive models to mechanistic models.
 
-Decoding: What do the responses tell about the stimulus if all we have access to are the responses? \\(\rightarrow\\) decoding algorithm: how to evaluate how accurate it is?
+Decoding: What do the responses tell about the stimulus if all we have access to are the responses? $$\rightarrow$$ decoding algorithm: how to evaluate how accurate it is?
 
 Probabilistic response models: 
 
@@ -78,8 +78,8 @@ Probabilistic response models:
 In a single cell:
 
 - response = spike
-- stimulus = unknown, so we need to determine to what feature of a stimulus a neuron responds \\(\rightarrow\\) dimensionality reduction techniques
-- what is the relationship between spike and stimulus, simply modeled as P(spike | stimulus feature) and P(stimulus feature | spike). The probabilistic model is justified by the non-determinism observed in the raster plot. Also, the input features that we model are not complete, and neglected features and sensitivities are modeled as noise \\(\rightarrow\\) stochastic model
+- stimulus = unknown, so we need to determine to what feature of a stimulus a neuron responds $$\rightarrow$$ dimensionality reduction techniques
+- what is the relationship between spike and stimulus, simply modeled as $$P(\textrm{spike} \mid \textrm{stimulus feature})$$ and $$P(\textrm{stimulus feature} \mid \textrm{spike})$$. The probabilistic model is justified by the non-determinism observed in the raster plot. Also, the input features that we model are not complete, and neglected features and sensitivities are modeled as noise $$\rightarrow$$ stochastic model
 
 ### Neural tuning curves
 
@@ -107,7 +107,7 @@ Q: In order for higher order feature detection to occur, what must be happening 
 
 A: Differential firing rates of these cells responding to particular, but simple (bars of light), features that are brought together to produce complex shapes and concepts.
 
-The neural tuning curves of high-area neurons responding to complex features like faces is mapped by a showing discrete samples of the input signal and recording the number of spikes. The tuning curve is then just an histogram without predefined order, and one has to look at the response to try to find an underlying common feature (e.g. pictures of brad pitt and aniston together only, pamela anderson pictures and name written out). Those neurons can even respond to processed auditory signal \\(\rightarrow\\) "concept neurons".
+The neural tuning curves of high-area neurons responding to complex features like faces is mapped by a showing discrete samples of the input signal and recording the number of spikes. The tuning curve is then just an histogram without predefined order, and one has to look at the response to try to find an underlying common feature (e.g. pictures of brad pitt and aniston together only, pamela anderson pictures and name written out). Those neurons can even respond to processed auditory signal $$\rightarrow$$ "concept neurons".
 
 #### Building up complexity
 
@@ -115,7 +115,7 @@ How the processing stream builds up from geometric features selectivity to seman
 
 The stream is not a linear chain of processing, there is a lot of interconnection. For instance, the thalamus relays info to cortical areas but also receives a lot of feedback from them.
 
-\\(\rightarrow\\) reasons to believe that these higher-order representations can, through feedback mechanisms, influence what is being selected at lower level from the stimulus. There is evidence that semantics can influence the representation of an image in V1 and V4. (expectations, learning: what you think you're looking at can shape what you see).
+$$\rightarrow$$ reasons to believe that these higher-order representations can, through feedback mechanisms, influence what is being selected at lower level from the stimulus. There is evidence that semantics can influence the representation of an image in V1 and V4. (expectations, learning: what you think you're looking at can shape what you see).
 
 ## Constructing simple response models
 
@@ -124,45 +124,45 @@ In general, the experimenter does not know what stimulus feature may be the one 
 We first consider the response function as a probability of firing. The simplest function imaginable is a linear relationship: response = factor * stimulus. For instance:
 
 - retinotopic c-s RF: the RF looks like a difference of Gaussians (mexican hat, cf. "Difference of Gaussians" filter in GIMP). Let's assume that the response is proportional: r = f s
-  - on the continuous retinal map, let \\((x, y)\\) the coordinates of the center of a c-s RF of interest. for each \\((x', y')\\) in the proximity of (x, y), we multiply the luminous power of that pixel by the value of the RF of unit \\((x, y)\\) at \\((x', y')\\). We sum (as we are on a continuous retinal map, we integrate) those values over the whole map:
+  - on the continuous retinal map, let $$(x, y)$$ the coordinates of the center of a c-s RF of interest. for each $$(x', y')$$ in the proximity of (x, y), we multiply the luminous power of that pixel by the value of the RF of unit $$(x, y)$$ at $$(x', y')$$. We sum (as we are on a continuous retinal map, we integrate) those values over the whole map:
 
-\\[ \int \int f(x',y') s(x-x', y-y', t) \mathrm{d}x' \mathrm{d}y' \\]
+$$ \int \int f(x',y') s(x-x', y-y', t) \mathrm{d}x' \mathrm{d}y' $$
 
-where \\(f(x,y)\\) denotes the luminous power at \\((x,y)\\), and \\(s(tr\_x, tr\_y, t)\\) represents the weight of the receptive field function at the point located at the offset \\(tr\_x, tr\_y\\) from \\((x, y)\\).
+where $$f(x,y)$$ denotes the luminous power at $$(x,y)$$, and $$s(tr_x, tr_y, t)$$ represents the weight of the receptive field function at the point located at the offset $$tr_x, tr_y$$ from $$(x, y)$$.
 
-The relationship is still linear as in \\(r = f s\\), where the filter \\(f\\) is the difference of Gaussians weighting, and the stimulus \\(s\\) is the image.
+The relationship is still linear as in $$r = f s$$, where the filter $$f$$ is the difference of Gaussians weighting, and the stimulus $$s$$ is the image.
 
-  - We can now add more details to this model: we introduce a time lag, where the neuron responds to a a stimulus that happened \\(\tau\\) units of time ago: \\(r(t) = f s(t-\tau)\\)
+  - We can now add more details to this model: we introduce a time lag, where the neuron responds to a a stimulus that happened $$\tau$$ units of time ago: $$r(t) = f s(t-\tau)$$
 
-  - in general, the response at time t to a stimulus s will depend on the stimulus values on a past range of time: \\(r(t) = \int f(\tau) s(t-\tau) \mathrm{d}\tau \\), where \\(f(t)\\) is a time filter that weights the stimulus depending on its time offset. For instance, using the simple moving average of the stimulus in the considered timeframe, 
+  - in general, the response at time t to a stimulus s will depend on the stimulus values on a past range of time: $$r(t) = \int f(\tau) s(t-\tau) \mathrm{d}\tau $$, where $$f(t)$$ is a time filter that weights the stimulus depending on its time offset. For instance, using the simple moving average of the stimulus in the considered timeframe, 
 
 
-\\[
+$$
  f(\tau) =
   \begin{cases}
-   0 & \text{if } \tau \notin [t-a, t-b] \\\\
+   0 & \text{if } \tau \notin [t-a, t-b] \\
    c & \text{otherwise}
   \end{cases}
-\\]
+$$
 
   - A more plausible time filter function is one where closer times have higher weights:
 
-\\[
+$$
  f(\tau) = e^ {-\frac{\tau}{c}} \text{ for } \tau \lt a
-\\]
+$$
 
 - This leads to an overall picture of spatiotemporal filtering:
 
-\\[ \int \int f(x', y', \tau) s(x-x', y-y', t-\tau) \mathrm{d}x' \mathrm{d}y' \mathrm{d}\tau \\]
+$$ \int \int f(x', y', \tau) s(x-x', y-y', t-\tau) \mathrm{d}x' \mathrm{d}y' \mathrm{d}\tau $$
 
-\\(f(x', y', \tau)\\) can be visualized as "frames of receptive field".
+$$f(x', y', \tau)$$ can be visualized as "frames of receptive field".
 
 
-Back to \\(r(t) = \int f(\tau) s(t-\tau) \mathrm{d}\tau \\), the formulation has a big shortcoming: unbounded rate, including the possibility of negative rates.
+Back to $$r(t) = \int f(\tau) s(t-\tau) \mathrm{d}\tau $$, the formulation has a big shortcoming: unbounded rate, including the possibility of negative rates.
 
 Introducing a static non-linearity solves that problems and adds flexibility. This is the general form of a linear/non-linear model (LN model):
 
-\\[ r(t) = g( \int f(\tau) s(t-\tau) \mathrm{d}\tau ) \\]
+$$ r(t) = g( \int f(\tau) s(t-\tau) \mathrm{d}\tau ) $$
 
 g could be a sigmoidal function that introduces a saturating non-linearity and guarantees the bounding of the firing rate.
 
@@ -171,8 +171,8 @@ g could be a sigmoidal function that introduces a saturating non-linearity and g
 Reverse correlation:
 
 - Present the system with random stimulus values, collect output spikes.
-- collect stimulus samples \\(s\_i\\) leading to a spike
-- average all \\(s\_i\\) into a _spike-triggered average_
+- collect stimulus samples $$s_i$$ leading to a spike
+- average all $$s_i$$ into a _spike-triggered average_
 
 Q: What would increase the accuracy (with respect to the true representation of a given cell's preferred filter) of the calculated spike triggered average?
 
@@ -180,25 +180,25 @@ A: Using the reverse correlation technique to sum over many more iterations of t
 
 ### Determining the non-linear filter g from data
 
-Given the i/o function P(spike | stimulus),  we can use Bayes' rule to figure out g:
+Given the i/o function $$P(\textrm{spike} \mid \textrm{stimulis})$$,  we can use Bayes' rule to figure out g:
 
-\\[
-P(spike | stimulus) = \frac{P(stimulus | spike) P(spike)}{P(stimulus)}
-\\]
+$$
+P(\textrm{spike} \mid \textrm{stimulis}) = \frac{P(\textrm{stimulus} \mid \textrm{spike}) P(\textrm{spike})}{P(\textrm{stimulis})}
+$$
 
 But stimulus is not just the value of the stimulus at t, but also the value at preceding times, as per temporal filtering. Even discretized, that makes an unconveniently large probability table.
 
-\\(\rightarrow\\) Instead, we use the the convolution of the temporal filter with the stimulus over the past timeframe: \\( s\_1 = \int f(\tau) s(t-\tau) \mathrm{d}\tau \\). It's a scalar
+$$\rightarrow$$ Instead, we use the the convolution of the temporal filter with the stimulus over the past timeframe: $$ s_1 = \int f(\tau) s(t-\tau) \mathrm{d}\tau $$. It's a scalar
 
 Now, we can use: 
 
-\\[
-P(spike | s\_1) = \frac{P(s\_1 | spike) P(spike)}{P(s\_1)}
-\\]
+$$
+P(\textrm{spike} \mid s_1) = \frac{P(s_1 \mid \textrm{spike}) P(\textrm{spike})}{P(s_1)}
+$$
 
-\\(s\_1\\) is smoother than the signal because it is the convolution of the rapidly varying stimulus with the usually smooth filter.
+$$s_1$$ is smoother than the signal because it is the convolution of the rapidly varying stimulus with the usually smooth filter.
 
-Having the values of s1 over time, we can now lookup what value s1 had at the time of spikes, and make a distribution (histogram) of those values, this gives us the distribution of \\(P(s\_1 | \textrm{spike})\\). We have \\(P(s\_1)\\) simply as the distribution of all \\(s\_1\\) values, and P(spike) as we have the spikes records.
+Having the values of s1 over time, we can now lookup what value s1 had at the time of spikes, and make a distribution (histogram) of those values, this gives us the distribution of $$P(s_1 \mid \textrm{spike})$$. We have $$P(s_1)$$ simply as the distribution of all $$s_1$$ values, and P(\textrm{spike}) as we have the spikes records.
 
 Q: What exactly does the shape of the curve of S1 represent?
 
@@ -208,20 +208,20 @@ Explanation: S1 is a representation of the stimulus curve after it has been cont
 
 ## Feature selection
 
-Neural systems don't only respond to one feature. \\(\rightarrow\\) How to introduce more features in our LN models?
+Neural systems don't only respond to one feature. $$\rightarrow$$ How to introduce more features in our LN models?
 
-To add the possibility to respond to multiple features, we now have one scalar-valued spatiotemporal filter function \\(f\_i\\) per feature, and we use a multi-dimensional i/o function (for instance, a 2 dimensional sigmoid).
+To add the possibility to respond to multiple features, we now have one scalar-valued spatiotemporal filter function $$f_i$$ per feature, and we use a multi-dimensional i/o function (for instance, a 2 dimensional sigmoid).
 
 We still hope for a dimensionality reduction: if the stimulus is intrinsically 20 dimensional, the feature space should preferably not be 30 dimensional.
 
-So, we try to find a good mapping \\(P(\textrm{spike} |
-\textrm{stimulus}) \rightarrow P(\textrm{spike} | s\_1, s\_2, ..., s\_n) \\).
+So, we try to find a good mapping $$P(\textrm{spike}  \mid 
+\textrm{stimulus}) \rightarrow P(\textrm{spike} \mid s_1, s_2, ..., s_n) $$.
 
 There are many ways to do that:
 
-- We could use the discretized time as coordinate system. The value of the input stimulus at each time step \\(t\_i\\) determines the value of this input sequence in dimension i. So, a stimulus recording with a 100 samples becomes one point in a 100-dimensional coordinate system.
+- We could use the discretized time as coordinate system. The value of the input stimulus at each time step $$t_i$$ determines the value of this input sequence in dimension i. So, a stimulus recording with a 100 samples becomes one point in a 100-dimensional coordinate system.
 - We could perform a Fourier transform, and s(t) would be understood as a sum of sines and cosines at different frequencies: 
-\\( s(t) = \sum\_{i} \alpha\_i a(\omega\_i)) \\) for the component frequencies \\(\omega\_i\\), \\(\alpha\_i\\) coefficients, and a trig functions. Then, the transformed space is defined by those component frequencies.
+$$ s(t) = \sum_{i} \alpha_i a(\omega_i)) $$ for the component frequencies $$\omega_i$$, $$\alpha_i$$ coefficients, and a trig functions. Then, the transformed space is defined by those component frequencies.
 
 Q: In other words, the Fourier transform gives us a way to:
 
@@ -232,18 +232,18 @@ Q: In other words, the Fourier transform gives us a way to:
 
 Now, but projecting the sample sequence point on the feature vector f in this high-dimensional space, he have a measure of how much the signal matches the unit's preference.
 
-We are not limited to time and Fourier transforms, any set of features vector \\((f\_1, f\_2, f\_3, \ldots)\\) may represent the input sequence. The issue is to choose the features \\(f\_i\\) that best capture interesting aspects of the stimulus wrt AP firing.
+We are not limited to time and Fourier transforms, any set of features vector $$(f_1, f_2, f_3, \ldots)$$ may represent the input sequence. The issue is to choose the features $$f_i$$ that best capture interesting aspects of the stimulus wrt AP firing.
 
 
 ### Determining multiple features from white noise.
 
-Let a Gaussian white noise stimulus: \\( P(s(t)) = \mathcal{N}(0,sigma^ 2) \\)
+Let a Gaussian white noise stimulus: $$ P(s(t)) = \mathcal{N}(0,sigma^ 2) $$
 
 If we look a the (square of) the amplitude of the stimulus in function of the frequency component, we notice that it has equal power at all frequencies, until the limit sampling resolution, meaning until the frequencies at which the signal resolution is lost and the signal becomes smooth. The point at which the power spectrum starts to dwindle is about the inverse of the correlation time of the stimulus.
 
 Such a normal stimulus has the property that it will fill out a gaussian N-sphere in any transformed N-dimensional space. So, alone any feature, it will have a Gaussian distribution.
 
-\\(\rightarrow\\) always spherically symmetric with respect to our choice of representation.
+$$\rightarrow$$ always spherically symmetric with respect to our choice of representation.
 
 Feeding the unit with many such Gaussian noise input sequences, some will end up triggering spikes. 
 
@@ -257,11 +257,11 @@ Besides the average of the spike-conditional distribution, we consider its covar
 
 Reminder: 
 
-- \\(Var(x) = <(\bar{x} - x)^ 2>\\) where <> denotes the avearage.
-- \\(Cov(v) = <(v - \bar{v}) (v - \bar{v})^ T>\\) where \\(v\\) is a column vector. So component \\(C\_{i,j}\\) of the covariance matrix is \\(<(x\_i-\bar{x}\_i)(x\_j-\bar{x}\_j)>\\)
-- We perform the Eigenvector decomposition: \\(C = V \Sigma V^ T\\), where
-  - \\(V\\) is a matrix of Eigenvectors,
-  - \\(\Sigma\\) is a diagonal matrix of Eigenvalues \\(\sigma\_i^ 2\\)
+- $$Var(x) = <(\bar{x} - x)^ 2>$$ where <> denotes the avearage.
+- $$Cov(v) = <(v - \bar{v}) (v - \bar{v})^ T>$$ where $$v$$ is a column vector. So component $$C_{i,j}$$ of the covariance matrix is $$<(x_i-\bar{x}_i)(x_j-\bar{x}_j)>$$
+- We perform the Eigenvector decomposition: $$C = V \Sigma V^ T$$, where
+  - $$V$$ is a matrix of Eigenvectors,
+  - $$\Sigma$$ is a diagonal matrix of Eigenvalues $$\sigma_i^ 2$$
 
 The Eigenvectors of the decomposition of the covariance matrix make a new coordinate system in which to represent the data. Each Eigenvector has a corresponding Eigenvalue that is the squared variance of the data along that axis in that new coordinate system. We select the Eigenvectors with the highest Eigenvalues, and call those principal components of the spike-conditional distribution.
 
@@ -287,7 +287,7 @@ PCA can also be used to separate waveforms from different neurons that were reco
 
 We are looking for PCA dimensions with variances that are different from the prior distribution.
 
-For that, we take the variances from the diagonal of the \\(\Sigma\\) matrix of Eigenvalues. All eigenvalues that are equal to the variance of the prior are unlikely to correspond to interesting dimensions (recall that we are looking for dimensions that have relevant to spike firing). However, there will be eigenvalues where the variance is wither increased or increased compared to the prior.
+For that, we take the variances from the diagonal of the $$\Sigma$$ matrix of Eigenvalues. All eigenvalues that are equal to the variance of the prior are unlikely to correspond to interesting dimensions (recall that we are looking for dimensions that have relevant to spike firing). However, there will be eigenvalues where the variance is wither increased or increased compared to the prior.
 
 Plotting the density of samples projected on the corresponding Eigenvector against the background prior (which, projected in anyway, remains white noise), they will:
 - often be shifted
@@ -298,29 +298,29 @@ Q: Mark 'true' if: covariance analysis allows us to find spike-conditioned featu
 
 A: Check for 'true'
 
-Example: vibration-sensitive neuron that is sensitive to the frequency but not to the phase of the signal \\(\rightarrow\\) complex project shape 
+Example: vibration-sensitive neuron that is sensitive to the frequency but not to the phase of the signal $$\rightarrow$$ complex project shape 
 
 Example: Complex cells in V1 that respond to grating frequencies  but are insensitive to the spatial phase of the grating (it can be shifted) make that the spike-triggered average is just a blur. Only higher-order analysis can reveal it.
 
 ### Evaluating features
 
-As we are trying features to describe the unit's sensitivity, we try to obtain an interesting tuning curve. That means a tuning curve \\(P(spike | s) = P(s | spike) \frac{P(spike)}{P(s)}\\) where the ratio \\(\frac{P(s | spike)}{P(s)}\\) varies most. 
+As we are trying features to describe the unit's sensitivity, we try to obtain an interesting tuning curve. That means a tuning curve $$P(\textrm{spike} \mid s) = P(s \mid \textrm{spike}) \frac{P(\textrm{spike})}{P(s)}$$ where the ratio $$\frac{P(s \mid \textrm{spike})}{P(s)}$$ varies most. 
 
 Q: In other words, we prefer tuning curves which:
 
 A: Make our prior and spike-conditioned distributions look much different for a wide range of possible stimuli, allowing us to discriminate between them.
 
-Expl: We do not particularly care if our spike-conditioned distributions have multiple modes (peaks) or have large responses (high peaks), since they can still look exactly like the prior and therefore would not be very useful to us! What we want is to be able to tell the difference between a spike-conditioned stimulus and a random stimulus. That means our model can provide us with a useful probability of whether a spike will occur (referred to here as p(spike|s), aka the tuning curve).
+Expl: We do not particularly care if our spike-conditioned distributions have multiple modes (peaks) or have large responses (high peaks), since they can still look exactly like the prior and therefore would not be very useful to us! What we want is to be able to tell the difference between a spike-conditioned stimulus and a random stimulus. That means our model can provide us with a useful probability of whether a spike will occur (referred to here as P(\textrm{spike} \mid s), aka the tuning curve).
 
-So, we can me sure the discrepancy between the two distributions to estimate the value of the chosen feature. For instance, using the Kullback-Leibler divergence of \\(P(s)\\) from \\(P(s | spike) \\).
+So, we can me sure the discrepancy between the two distributions to estimate the value of the chosen feature. For instance, using the Kullback-Leibler divergence of $$P(s)$$ from $$P(s \mid \textrm{spike}) $$.
 
-[Wikipedia](http://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence): the Kullback–Leibler divergence of Q from P, denoted \\(D_\textrm{KL}(P||Q)\\), is a measure of the information lost when Q is used to approximate P: KL measures the expected number of extra bits required to code samples from P when using a code based on Q, rather than using a code based on P. Typically P represents the "true" distribution of data, observations, or a precisely calculated theoretical distribution. The measure Q typically represents a theory, model, description, or approximation of P.
+[Wikipedia](http://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence): the Kullback–Leibler divergence of Q from P, denoted $$D_\textrm{KL}(P \parallel Q)$$, is a measure of the information lost when Q is used to approximate P: KL measures the expected number of extra bits required to code samples from P when using a code based on Q, rather than using a code based on P. Typically P represents the "true" distribution of data, observations, or a precisely calculated theoretical distribution. The measure Q typically represents a theory, model, description, or approximation of P.
 
-\\[
-D_{KL}(P(s | spike), P(s)) = \int ln(\frac{P(x | spike)}{P(s)}) P(s | spike) \mathrm{d}s
-\\]
+$$
+D_{KL}(P(s \mid \textrm{spike}), P(s)) = \int ln(\frac{P(x \mid \textrm{spike})}{P(s)}) P(s \mid \textrm{spike}) \mathrm{d}s
+$$
 
-To maximize the Kullback-Leibler divergence of P(s) from P(s | spike), we use the method of maximally informative dimensions (Sharpee et al., Neural Computations, 2004). The filter is optimized by looking for a base vector in the multidimensional signal space that maximizes \\( D_{KL}(P(s | spike), P(s)) \\).
+To maximize the Kullback-Leibler divergence of $$P(s)$$ from $$P(s \mid \textrm{spike})$$, we use the method of maximally informative dimensions (Sharpee et al., Neural Computations, 2004). The filter is optimized by looking for a base vector in the multidimensional signal space that maximizes $$ D_{KL}(P(s \mid \textrm{spike}), P(s)) $$.
 
 Unlike PCA, this technique of maximally informative dimensions accepts any sort of distribution as prior, not just white noise, so it can be used with natural stimuli (neurons will often not respond to white noise at all).
 
@@ -338,7 +338,7 @@ Spiking history affects unit activity. How to introduce that dependence in the m
 
 ### The generalized linear model (GLM)
 
-It's the same as the linear/non-linear model (signal\\(\rightarrow\\)feature filter\\(\rightarrow\\)static non-linearity (exponential)), with an additional nonlinear feedback filter that is convoluted with the output spike train and incorporated in the input to the static non-linearity. The shape of the additional non-linear feedback filter determines the if the feedback is positive of negative, and on which timescale.
+It's the same as the linear/non-linear model (signal$$\rightarrow$$feature filter$$\rightarrow$$static non-linearity (exponential)), with an additional nonlinear feedback filter that is convoluted with the output spike train and incorporated in the input to the static non-linearity. The shape of the additional non-linear feedback filter determines the if the feedback is positive of negative, and on which timescale.
 
 The maximum likelihood method is used to fit GLM. The choice of an exponential static non-linearity makes the application of the maximum likelihood method easier.
 
@@ -355,34 +355,34 @@ To generalize this model to the case of multiple neurons, where a some neurons' 
 
 ### Modeling noise
 
-Until now, we had a model that produces an instantaneous average firing rate at time t \\( r(t) \\), but no actual spikes. \\(\rightarrow\\) we need an explicit model of spiking. How to generate the spike train from a firing rate? \\(\rightarrow\\) stochastic generators (the Poisson generator)
+Until now, we had a model that produces an instantaneous average firing rate at time t $$ r(t) $$, but no actual spikes. $$\rightarrow$$ we need an explicit model of spiking. How to generate the spike train from a firing rate? $$\rightarrow$$ stochastic generators (the Poisson generator)
 
 #### Bernoulli trials
 
 Coin flip:
 
-\\[
+$$
 \begin{cases}
-p = \frac{1}{2} & \text{ of head}\\\\
-1-p = \frac{1}{2} & \text{ of tail}\\\\
+p = \frac{1}{2} & \text{ of head}\\
+1-p = \frac{1}{2} & \text{ of tail}\\
 \end{cases}
-\\]
+$$
 
-Discretize time into equal bins. There is an _independent_ coin flip in each bin with probability \\( p(t) = r(t)\Delta t \\) of generating a spike.
+Discretize time into equal bins. There is an _independent_ coin flip in each bin with probability $$ p(t) = r(t)\Delta t $$ of generating a spike.
 
-To simplify out analysis, let's first assume that the firing rate is constant: \\( p = r \Delta t \\)
+To simplify out analysis, let's first assume that the firing rate is constant: $$ p = r \Delta t $$
 
-What is the distribution of the number of spikes? Time being equally partitioned, the probability that the n bins contain in total k spikes is \\( P\_n[k] = \binom{n}{k} p^ k (1-p)^ {n-k} \\). The mean number of spikes (expected value) is \\( \mathrm{E}(x) = np \\). The variance is \\( \mathrm{Var}(x) = np (1-p) \\).
+What is the distribution of the number of spikes? Time being equally partitioned, the probability that the n bins contain in total k spikes is $$ P_n[k] = \binom{n}{k} p^ k (1-p)^ {n-k} $$. The mean number of spikes (expected value) is $$ \mathrm{E}(x) = np $$. The variance is $$ \mathrm{Var}(x) = np (1-p) $$.
 
 #### Poisson
 
 Bringing the bin size to the limit, for a duration of T time units, we have the Poisson distribution:
 
-- Distribution: \\( P\_T[k] = (rT)^ k \frac{\mathrm{exp}(-rT)}{k!} \\)
-- Mean: \\( E(x) = rT \\)
-- Variance: \\( \mathrm{Var}(x) = rT \\)
-- Fano factor (\\( = \frac{\mathrm{Var}}{\mathrm{E}} \\)): \\( F = 1 \\)
-- Interval distribution (distribution of time between spikes): \\( P(T) = r \mathrm{exp}(-rT) \\)
+- Distribution: $$ P_T[k] = (rT)^ k \frac{\mathrm{exp}(-rT)}{k!} $$
+- Mean: $$ E(x) = rT $$
+- Variance: $$ \mathrm{Var}(x) = rT $$
+- Fano factor ($$ = \frac{\mathrm{Var}}{\mathrm{E}} $$): $$ F = 1 $$
+- Interval distribution (distribution of time between spikes): $$ P(T) = r \mathrm{exp}(-rT) $$
 
 The Poisson distribution is a good model of the spikes distribution on very short intervals (~O(100 ms)): The Fano factor is close to one, the interval distribution is close to exponential-like (but not really because the refractory period prevents a true Poisson distribution, as very short intervals are not possible. But apart from ver short intervals, the distribution of intervals for a large range of intervals is exponential and matches the Poisson distribution). 
 
