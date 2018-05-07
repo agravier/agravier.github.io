@@ -137,7 +137,7 @@ Present a long random stimulus, and slide a window of width $$L$$ over the respo
 
 It results in the probability distribution of words $$p(w)$$. 
 
-We can then compute its entropy: $$H(w) = -\sum_\textrm{words}p(w)\textrm(log)_2p(w)$$
+We can then compute its entropy: $$H(w) = -\sum_\textrm{words}p(w)\textrm{log}_2p(w)$$
 
 We also compute the noise entropy of that distribution. For that, the cell is presented with a stimulus that is repeated over many trials. One trial must be long and random. Then, we calculate the entropy of the response at the same offset t in all trials, and average all entropies over t: $$H_\textrm{noise}$$ becomes $$\langle H_{s_t}\rangle_t$$, which means $$-\frac{\Delta t}{T}\sum_t\sum_r P[r \mid s_t]\textrm{log}_2P[r \mid s_t]$$.
 
