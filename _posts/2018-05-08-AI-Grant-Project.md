@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Using CMAC and RL for dynamic balancing of a humanoid robot"
+title: "Using CMAC and RL for dynamic balancing of a humanoid robot (AI Grant submission)"
 disqus: true
 mathjax: true
 ---
@@ -9,7 +9,7 @@ mathjax: true
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Kqsx2f8xfls?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 </div>
 
-In this post, I'll introduce my AI grant submission for Spring 2018.
+In this post, I introduce my AI grant submission for Spring 2018.
 
 It has been a few years since I have done research in AI or robotics. I am 
 still partial to embodiment, and I have been learning about different 
@@ -27,4 +27,12 @@ I will have to hook up with the simulator. I will also try again to create a GPU
 machine for local experiments with Kirikou, and will try to get a new battery as
 well as the version 5 of the NAO head.
 
-TBC(explain CMAC-RL controller project)
+I know that the plan will certainly not survive contact with the enemy, but here
+it is for now: make use of CMAC in a RL setting, to learn self-balancing in an
+actual physical robot in various settings (when standing and pushed, when 
+standing on unstable ground, and eventually while walking). I have not fully 
+explored prior works, but I know that Sutton used CMAC-like tile coding with 
+Sarsa in [RLAI] to address the mountain car problem. However, the montain car 
+problem is a toy problem. Instead, I would like to explore several CMAC variants
+and RL algos to solve the more complicated problems of active dynamic 
+balancing of a NAO robot in various settings.
