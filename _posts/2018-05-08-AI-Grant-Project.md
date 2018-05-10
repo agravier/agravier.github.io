@@ -36,3 +36,13 @@ Sarsa in [RLAI] to address the mountain car problem. However, the montain car
 problem is a toy problem. Instead, I would like to explore several CMAC variants
 and RL algos to solve the more complicated problems of active dynamic 
 balancing of a NAO robot in various settings.
+
+## Update (2018-05-10)
+
+I didn't get the grant; I'll take this as a sign that the interest of that 
+community in this project is rather low. I was looking forward to working with
+fellows from the "distributed lab" described on the AI Grant website, too bad.
+
+I'll sell the hardware and do something else instead, probably not AI research 
+until I find an affordable way to access lots of compute power.
+
