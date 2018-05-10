@@ -3,3 +3,5 @@ safe: true
 lsi: false
 markdown: kramdown
 permalink: /:year/:title
+plugins:
+  - jekyll-sitemap
